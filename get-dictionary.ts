@@ -1,4 +1,5 @@
 import "server-only";
+
 import type { Locale } from "./i18n-config";
 
 const dictionaryLookup = {

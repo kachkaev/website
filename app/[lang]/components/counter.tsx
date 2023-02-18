@@ -11,14 +11,23 @@ export default function Counter({
   };
 }) {
   const [count, setCount] = useState(0);
+
   return (
     <p>
       This compoment is rendered on client:{" "}
-      <button onClick={() => setCount((n) => n - 1)}>
+      <button
+        onClick={() => {
+          setCount((n) => n - 1);
+        }}
+      >
         {dictionary.decrement}
       </button>{" "}
       {count}{" "}
-      <button onClick={() => setCount((n) => n + 1)}>
+      <button
+        onClick={() => {
+          setCount((n) => n + 1);
+        }}
+      >
         {dictionary.increment}
       </button>
     </p>

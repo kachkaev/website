@@ -1,0 +1,46 @@
+#####################
+## Specific to ESLint
+#####################
+
+## Ignore all files (but still allow sub-folder scanning)
+*
+!*/
+
+## Allow certain file types
+!*.cjs
+!*.js
+!*.json
+!*.mjs
+!*.ts
+!*.tsx
+
+########################
+## Same as in .gitignore
+########################
+
+## Dependencies
+.yarn/*
+!.yarn/patches/
+!.yarn/plugins/
+!.yarn/releases/
+!.yarn/sdks/
+!.yarn/versions/
+/node_modules/
+
+## Next.js
+/.next/
+tsconfig.tsbuildinfo
+
+## Misc
+.~lock.*
+.DS_Store
+.env*.local
+*.log
+coverage
+
+#########################
+## Shared between linters
+#########################
+
+.git/
+.yarn/

@@ -1,0 +1,4 @@
+{
+  "extends": "@kachkaev/markdownlint-config",
+  "no-duplicate-heading": { "siblings_only": true }
+}
