@@ -1,7 +1,7 @@
 {
   "extends": "@tsconfig/node-lts-strictest-esm",
   "compilerOptions": {
-    "lib": ["ESNext", "DOM"],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "jsx": "preserve",
     "noEmit": true,
     "resolveJsonModule": true,
