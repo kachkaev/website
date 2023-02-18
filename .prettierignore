@@ -1,0 +1,40 @@
+#######################
+## Specific to Prettier
+#######################
+
+## Ignore all files (but still allow sub-folder scanning)
+*
+!*/
+
+## Allow certain file types
+!*.cjs
+!*.js
+!*.json
+!*.md
+!*.mjs
+!*.ts
+!*.tsx
+!*.yml
+
+########################
+## Same as in .gitignore
+########################
+
+## dependencies
+/node_modules/
+/.pnp
+.pnp.js
+.pnpm-debug.log*
+
+## Next.js
+/.next/
+/out/
+*.tsbuildinfo
+next-env.d.ts
+
+## misc
+.DS_Store
+.env*.local
+*.log
+*.pem
+/coverage/
