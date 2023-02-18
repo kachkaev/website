@@ -1,0 +1,54 @@
+{
+  "common": {
+    "websiteSourceCode": "исходники сайта",
+    "signature": "Алекандр Качкаев"
+  },
+  "index": {
+    "title": "Александр Качкаев",
+    "description": "Сайт Александра Качкаева",
+    "h1.firstName": "Александр",
+    "h1.lastName": "Качкаев",
+    "description.l1": "Британский учёный. Визуализирую данные и\u00A0проектирую софт.",
+    "description.l2": "Пи-эйч-ди в\u00A0сфере геоинформатики (выпускник <0>Джи-ай-центра</0>).",
+    "description.l3": "Вырос\u00A0в\u00A0Пензе, пожил\u00A0в\u00A0Питере, переехал\u00A0в\u00A0Лондон\u00A0в\u00A02009\u00A0году.",
+    "photoAlt": "Александр Качкаев",
+    "profiles.openaccess.name": "Сити-рисёч-онлайн",
+    "profiles.openaccess.description": "{publicationCount, number} {publicationCount, plural, one {научная работа} few {научные работы} other {научных работ}}, в том числе\u00A0<0>кандидатская</0>",
+    "profiles.linkedin.name": "Линкд-ин",
+    "profiles.linkedin.description": "{connectionCount, number} {connectionCount, plural, one {контакт} few {контакта} other {контактов}}",
+    "profiles.github.name": "Гитхаб",
+    "profiles.github.description": "{repoCount, number} {repoCount, plural, one {публичный репозиторий} few {публичных репозитория} other {публичных репозиториев}} на {languageCount, number} {languageCount, plural, one {языке} other {языках}} (<0>{sourceCount}\u00A0{sourceCount, plural, one {собственный\u00A0проект} few {собственных\u00A0проекта} other {собственных\u00A0проектов}}</0>)",
+    "profiles.gitlab.name": "Гитлаб",
+    "profiles.gitlab.description": "{repoCount, number} {repoCount, plural, one {публичный репозиторий} few {публичных репозитория} other {публичных репозиториев}}, включая <0>исходники\u00A0этого\u00A0сайта</0>",
+    "profiles.osm.name": "Опен-стрит-мап",
+    "profiles.osm.description": "{changesetCount, number} {changesetCount, plural, one {правка} few {правки} other {правок}} карты и {gpsTraceCount, number} {gpsTraceCount, plural, one {трек} few {трека} other {треков}} (в\u00A0основном\u00A0<0>по\u00A0Пензе\u00A0и\u00A0Лондону</0>)",
+    "profiles.twitter.name": "Твиттер",
+    "profiles.twitter.description": "{statusCountEn, number} {statusCountEn, plural, one {твит} few {твита} other {твитов}} на английском, {statusCountRu, number}\u00A0на\u00A0русском",
+    "profiles.flickr.name": "Фликр",
+    "profiles.flickr.description": "{photoCount, number} {photoCount, plural, one {фотография} few {фотографии} other {фотографий}}, из\u00A0часто\u00A0просматриваемых:",
+    "profiles.telegram.name": "Телеграм",
+    "profiles.facebook.name": "Фейсбук",
+    "profiles.vk.name": "ВК",
+    "profiles.habr.name": "Хабр",
+    "profiles.stackoverflow.name": "Стек-оверфлоу",
+    "profiles.wikipedia.name": "Википедия",
+    "profiles.instagram.name": "Инстаграм",
+    "profiles.tiktok.name": "ТикТок",
+    "notUsedProfilesRemark": "этими почти не пользовался",
+    "emailRemark": "лучший способ связаться"
+  },
+  "error": {
+    "title": "Страница не найдена",
+    "h1": "Страница не найдена",
+    "explanation": "Либо страница была удалена, либо её никогда не было. Если вы тут из‑за поломки на сайте, пожалуйста, <0>напишите мне</0>."
+  },
+  "photos": {
+    "title": "Об использовании фотографий",
+    "h1": "Об использовании фотографий",
+    "photo.alt": "Панорама Лондонского Сити во время лазерного шоу в честь открытия Шарда",
+    "explanation": "Скорее всего, вы оказались на этой странице, потому что увидели ссылку в углу моей фотографии (например, <0>на Фликре</0>). Если вас интересуют условия использования, вот три совета:",
+    "hint1": "Попробуйте найти на странице с фотографией ссылку на оригинал или упоминание типа лицензии. Большинство моих работ распространяются по правилам <0>Криейтив-коммонс</0>, что делает их бесплатными в том числе и для коммерческих целей.",
+    "hint2": "Если фотография уже скачена на компьютер, посмотрите тип лицензии в метаданных EXIF.",
+    "hint3": "Если вы ищете фотографию в более высоком разрешении или вам не подходит её лицензия, <0>напишите мне</0>."
+  }
+}
