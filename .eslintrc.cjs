@@ -17,14 +17,4 @@ module.exports = {
     "react/react-in-jsx-scope": "off",
     "unicorn/import-style": "off",
   },
-  overrides: [
-    {
-      files: ["**/scripts/**/shared/**"],
-      rules: {
-        "no-restricted-syntax": require("@kachkaev/eslint-config-base").rules[
-          "no-restricted-syntax"
-        ],
-      },
-    },
-  ],
 };
