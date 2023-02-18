@@ -1,4 +1,8 @@
-## dependencies
+########################
+## Same as in .gitignore
+########################
+
+## Dependencies
 /node_modules/
 /.pnp
 .pnp.js
@@ -10,9 +14,20 @@
 *.tsbuildinfo
 next-env.d.ts
 
-## misc
+## Testing
+/coverage/
+
+## Misc
 .DS_Store
 .env*.local
 *.log
 *.pem
-/coverage/
+
+## App-specific
+/profile-infos/
+
+#########################
+## Shared between linters
+#########################
+
+/pnpm-lock.yaml
