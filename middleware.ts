@@ -8,7 +8,6 @@ import { i18n } from "./i18n-config";
 function getLocale(request: NextRequest): string | undefined {
   // Negotiator expects plain object so we need to transform headers
   const negotiatorHeaders: Record<string, string> = {};
-  // @ts-expect-error -- needs investigation
   for (const [key, value] of request.headers.entries()) {
     negotiatorHeaders[key] = value;
   }

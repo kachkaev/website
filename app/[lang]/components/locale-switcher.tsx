@@ -24,7 +24,6 @@ export default function LocaleSwitcher() {
         {i18n.locales.map((locale) => {
           return (
             <li key={locale}>
-              {/* @ts-expect-error -- needs investigation */}
               <Link href={redirectedPathName(locale)}>{locale}</Link>
             </li>
           );
