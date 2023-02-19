@@ -170,7 +170,7 @@ export async function Osm({ lang, dictionary }: KeyProfileProps) {
             lang,
             dictionary.index["profiles.osm.description.1"],
           )}
-          <a href="http://yosmhm.neis-one.org/?u=Kachkaev">
+          <a href="https://yosmhm.neis-one.org/?u=Kachkaev&zoom=4&lat=50&lon=20&layers=B00TTF">
             {stringifyProfileInfo(
               profileInfo,
               lang,
@@ -188,28 +188,58 @@ export async function Osm({ lang, dictionary }: KeyProfileProps) {
   );
 }
 
-export async function Twitter(/* {  lang, dictionary  }: KeyProfileProps */) {
-  return <p>Twitter - TODO</p>;
+export async function Twitter({ lang, dictionary }: KeyProfileProps) {
+  const profileInfoEn = await readProfileInfo("twitter-en");
+  const profileInfoRu = await readProfileInfo("twitter-ru");
+  const urlEn = "https://twitter.com/kachkaev";
+  const urlRu = "https://twitter.com/kachkaev_ru";
+
+  return (
+    <KeyProfile
+      name={dictionary.index["profiles.twitter.name"]}
+      url={lang === "en" ? urlEn : urlRu}
+    >
+      {profileInfoEn && profileInfoRu ? (
+        <>
+          {stringifyProfileInfo(
+            lang === "en" ? profileInfoEn : profileInfoRu,
+            lang,
+            dictionary.index["profiles.twitter.description.1"],
+          )}
+          {stringifyProfileInfo(
+            lang === "en" ? profileInfoRu : profileInfoEn,
+            lang,
+            dictionary.index["profiles.twitter.description.2"],
+          )}
+          <a href={lang === "en" ? urlRu : urlEn}>
+            {dictionary.index["profiles.twitter.description.3"]}
+          </a>
+        </>
+      ) : undefined}
+    </KeyProfile>
+  );
 }
 
 export async function Flickr({ lang, dictionary }: KeyProfileProps) {
   const profileInfo = await readProfileInfo("flickr");
 
   return (
-    <KeyProfile
-      name={dictionary.index["profiles.flickr.name"]}
-      url="https://www.flickr.com/people/kachkaev"
-    >
-      {profileInfo ? (
-        <>
-          {stringifyProfileInfo(
-            profileInfo,
-            lang,
-            dictionary.index["profiles.flickr.description"],
-          )}
-          <div>TODO</div>
-        </>
-      ) : undefined}
-    </KeyProfile>
+    <>
+      <KeyProfile
+        name={dictionary.index["profiles.flickr.name"]}
+        url="https://www.flickr.com/people/kachkaev"
+      >
+        {profileInfo ? (
+          <>
+            {stringifyProfileInfo(
+              profileInfo,
+              lang,
+              dictionary.index["profiles.flickr.description"],
+            )}
+          </>
+        ) : undefined}
+      </KeyProfile>
+      <div>TODO</div>
+    </>
   );
 }
