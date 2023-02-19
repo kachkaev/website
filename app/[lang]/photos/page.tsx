@@ -1,12 +1,8 @@
 import Link from "next/link";
 
 import { getDictionary } from "../../../get-dictionary";
-import { type Locale, i18n } from "../../../i18n-config";
+import type { Locale } from "../../../i18n-config";
 import Mailto from "../shared/mailto";
-
-export async function generateStaticParams() {
-  return i18n.locales.map((locale) => ({ lang: locale }));
-}
 
 function PhotoSample({ alt }: { alt: string }) {
   return (

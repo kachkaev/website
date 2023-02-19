@@ -6,9 +6,7 @@ import * as React from "react";
 
 import type { Dictionary, Locale } from "../../../i18n-config";
 
-// This is optional but highly recommended
-// since it prevents memory leak
-const cache = createIntlCache();
+const intlCache = createIntlCache();
 
 interface KeyProfileProps {
   lang: Locale;
@@ -33,7 +31,7 @@ function formatMessage(
   messageId: keyof Dictionary["index"],
   valueLookup: Record<string, unknown>,
 ): string {
-  const intl = createIntl({ locale, messages: messageLookup }, cache);
+  const intl = createIntl({ locale, messages: messageLookup }, intlCache);
 
   return intl.formatMessage(
     { id: messageId },
@@ -221,23 +219,25 @@ export async function Flickr({ lang, dictionary }: KeyProfileProps) {
       {mostViewedPhotos && (
         <div className="relative -mt-2 h-[50px] overflow-hidden rounded-[5px] bg-gray-300 bg-clip-padding">
           <div className="absolute whitespace-nowrap">
-            {mostViewedPhotos.map(({ title, url, thumbnailUrl }) => (
-              <a
-                key={url}
-                href={url}
-                className="group relative inline-block h-[50px] w-[50px] !border-none grayscale hover:grayscale-0 active:grayscale-0"
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element -- external image */}
-                <img
-                  className="inline-block"
-                  src={thumbnailUrl}
-                  alt={title}
-                  width={50}
-                  height={50}
-                />
-                <span className="absolute inset-x-0 bottom-0 block bg-slate-500 group-hover:border-t-2 group-hover:border-t-red-500" />
-              </a>
-            ))}
+            {mostViewedPhotos
+              .sort(() => (Math.random() >= 0.5 ? 1 : -1))
+              .map(({ title, url, thumbnailUrl }) => (
+                <a
+                  key={url}
+                  href={url}
+                  className="group relative inline-block h-[50px] w-[50px] !border-none grayscale hover:grayscale-0 active:grayscale-0"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element -- external image */}
+                  <img
+                    className="inline-block"
+                    src={thumbnailUrl}
+                    alt={title}
+                    width={50}
+                    height={50}
+                  />
+                  <span className="absolute inset-x-0 bottom-0 block bg-slate-500 group-hover:border-t-2 group-hover:border-t-red-500" />
+                </a>
+              ))}
           </div>
         </div>
       )}

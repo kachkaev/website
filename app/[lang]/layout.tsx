@@ -23,3 +23,5 @@ export default async function Root({
     </html>
   );
 }
+
+export const dynamic = "force-dynamic";
