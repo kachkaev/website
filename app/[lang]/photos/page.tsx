@@ -27,11 +27,11 @@ function PhotoSample({ alt }: { alt: string }) {
   );
 }
 
-export default async function IndexPage({
-  params: { lang },
-}: {
+interface PageProps {
   params: { lang: Locale };
-}) {
+}
+
+export default async function Page({ params: { lang } }: PageProps) {
   const dictionary = await getDictionary(lang);
 
   return (
@@ -67,4 +67,10 @@ export default async function IndexPage({
       </div>
     </>
   );
+}
+
+export async function generateMetadata({ params: { lang } }: PageProps) {
+  const dictionary = await getDictionary(lang);
+
+  return { title: dictionary.photos.title };
 }
