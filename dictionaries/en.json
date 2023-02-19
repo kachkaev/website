@@ -20,7 +20,7 @@
     "profiles.linkedin.name": "LinkedIn",
     "profiles.linkedin.description": "{connectionCount, number} connections",
     "profiles.github.name": "GitHub",
-    "profiles.github.description.1": "{repoCount, number} public repositories in {languageCount, number} languages, including\u00A0",
+    "profiles.github.description.1": "{repoCount, number} public repositories including\u00A0",
     "profiles.github.description.2": "this\u00A0website",
     "profiles.github.description.3": "",
     "profiles.osm.name": "OpenStreetMap",

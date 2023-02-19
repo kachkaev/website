@@ -20,7 +20,7 @@
     "profiles.linkedin.name": "Линкд-ин",
     "profiles.linkedin.description": "{connectionCount, number} {connectionCount, plural, one {контакт} few {контакта} other {контактов}}",
     "profiles.github.name": "Гитхаб",
-    "profiles.github.description.1": "{repoCount, number} {repoCount, plural, one {публичный репозиторий} few {публичных репозитория} other {публичных репозиториев}} на {languageCount, number} {languageCount, plural, one {языке} other {языках}}, в\u00A0том\u00A0числе\u00A0",
+    "profiles.github.description.1": "{repoCount, number} {repoCount, plural, one {публичный репозиторий} few {публичных репозитория} other {публичных репозиториев}}, включая\u00A0",
     "profiles.github.description.2": "этот\u00A0сайт",
     "profiles.github.description.3": "",
     "profiles.osm.name": "Опен-стрит-мап",
