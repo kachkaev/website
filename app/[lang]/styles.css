@@ -5,7 +5,8 @@
 @layer base {
   html {
     @apply h-full w-full;
-    font: 14px/1.4rem Helvetica, Arial, "Lucida Grande", sans-serif;
+    font: 14px Helvetica, Arial, "Lucida Grande", sans-serif;
+    line-height: 1.4em;
   }
 
   @media (max-width: 440px) {

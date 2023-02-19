@@ -57,7 +57,7 @@ function KeyProfile({
           {name}
         </a>
       </h2>
-      <p className="mt-[1px] mb-4 opacity-60">{children ?? <>&nbsp;</>}</p>
+      <p className="mt-[1px] mb-3 opacity-60">{children ?? <>&nbsp;</>}</p>
     </>
   );
 }
@@ -219,7 +219,7 @@ export async function Flickr({ lang, dictionary }: KeyProfileProps) {
         ) : undefined}
       </KeyProfile>
       {mostViewedPhotos && (
-        <div className="relative mt-[-10px] h-[50px] overflow-hidden rounded-[5px] bg-gray-300 bg-clip-padding">
+        <div className="relative -mt-2 h-[50px] overflow-hidden rounded-[5px] bg-gray-300 bg-clip-padding">
           <div className="absolute whitespace-nowrap">
             {mostViewedPhotos.map(({ title, url, thumbnailUrl }) => (
               <a
