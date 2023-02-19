@@ -57,30 +57,24 @@
 
 @layer components {
   .description-on-index-page {
-    @apply pt-4 pb-9 text-center;
+    @apply mb-0 pt-4 pb-8;
   }
 
-  @media (max-width: 310px) {
+  @media (min-width: 310px) {
     body.en .description-on-index-page {
-      @apply text-left;
+      @apply text-center;
     }
-    body.en .description-on-index-page br {
-      content: "";
-    }
-    body.en .description-on-index-page br:after {
-      content: " ";
+    body.en .description-on-index-page span {
+      display: block;
     }
   }
 
-  @media (max-width: 470px) {
+  @media (min-width: 470px) {
     body.ru .description-on-index-page {
-      @apply text-left;
+      @apply text-center;
     }
-    body.ru .description-on-index-page br {
-      content: "";
-    }
-    body.ru .description-on-index-page br:after {
-      content: " ";
+    body.ru .description-on-index-page span {
+      display: block;
     }
   }
 }

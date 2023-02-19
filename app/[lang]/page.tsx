@@ -32,17 +32,17 @@ export default async function Page({ params: { lang } }: PageProps) {
       </h1>
 
       {/* Description */}
-      <div className="description-on-index-page">
-        {dictionary.index["description.l1"]}
-        <br />
-        {dictionary.index["description.l2.1"]}
-        <a href="http://www.gicentre.net/" className="whitespace-nowrap">
-          {dictionary.index["description.l2.2"]}
-        </a>
-        {dictionary.index["description.l2.3"]}
-        <br />
-        {dictionary.index["description.l3"]}
-      </div>
+      <p className="description-on-index-page">
+        <span>{dictionary.index["description.l1"]}</span>{" "}
+        <span>
+          {dictionary.index["description.l2.1"]}
+          <a href="http://www.gicentre.net/" className="whitespace-nowrap">
+            {dictionary.index["description.l2.2"]}
+          </a>
+          {dictionary.index["description.l2.3"]}
+        </span>{" "}
+        <span>{dictionary.index["description.l3"]}</span>
+      </p>
 
       {/* Photo */}
       <div className="float-right ml-8">
