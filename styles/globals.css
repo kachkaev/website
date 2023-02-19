@@ -1,3 +1,44 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    @apply h-full w-full;
+    font: 14px/20px Helvetica, Arial, "Lucida Grande", sans-serif;
+  }
+  @media (max-width: 440px) {
+    html {
+      font-size: 13px;
+    }
+  }
+
+  @media (max-width: 370px) {
+    html {
+      font-size: 12px;
+    }
+  }
+
+  h1 {
+    font-size: 1.75rem;
+    line-height: 2rem;
+    font-weight: bold;
+    margin: 0.67em 0;
+    text-align: center;
+  }
+
+  a {
+    text-decoration: none;
+    color: rgb(8, 100, 210);
+    border-bottom: 1px solid !important;
+    border-bottom-color: rgba(8, 100, 210, 0.3) !important;
+  }
+  a:visited {
+    color: rgb(85, 26, 139);
+    border-bottom-color: rgba(85, 26, 139, 0.3) !important;
+  }
+  a:hover {
+    color: #ff0000;
+    border-bottom-color: rgba(255, 0, 0, 0.3) !important;
+  }
+}

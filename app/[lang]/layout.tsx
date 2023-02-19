@@ -1,24 +1,24 @@
 import "../../styles/globals.css";
 
-import { i18n } from "../../i18n-config";
-import LocaleSwitcher from "./components/locale-switcher";
+import type { Locale } from "../../i18n-config";
+import LocaleSwitcher from "./layout/locale-switcher";
 
-export async function generateStaticParams() {
-  return i18n.locales.map((locale) => ({ lang: locale }));
-}
-
-export default function Root({
+export default async function Root({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: { lang: string };
+  params: { lang: Locale };
 }) {
   return (
     <html lang={params.lang}>
-      <body>
+      <body className="relative flex h-full w-full flex-col overflow-y-scroll px-6 py-4">
         <LocaleSwitcher />
-        {children}
+        <div className="center flex grow flex-row self-center align-middle">
+          <div className="max-w-[480px] self-center align-middle">
+            {children}
+          </div>
+        </div>
       </body>
     </html>
   );

@@ -18,11 +18,11 @@ export default function LocaleSwitcher() {
   };
 
   return (
-    <div className="float-right">
+    <div className="self-end leading-3">
       <ul>
         {i18n.locales.map((locale) => {
           return (
-            <li key={locale} className="inline-block mr-2">
+            <li key={locale} className="ml-3 inline-block">
               <Link href={redirectedPathName(locale)}>{locale}</Link>
             </li>
           );

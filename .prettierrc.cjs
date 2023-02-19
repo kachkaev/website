@@ -1,1 +1,6 @@
-module.exports = require("@kachkaev/prettier-config");
+const baseConfig = require("@kachkaev/prettier-config");
+
+module.exports = {
+  ...baseConfig,
+  plugins: [require("prettier-plugin-tailwindcss"), ...baseConfig.plugins],
+};
