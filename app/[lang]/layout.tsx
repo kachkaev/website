@@ -5,19 +5,19 @@ import LocaleSwitcher from "./layout/locale-switcher";
 
 export default async function Root({
   children,
-  params,
+  params: { lang },
 }: {
   children: React.ReactNode;
   params: { lang: Locale };
 }) {
   return (
-    <html lang={params.lang}>
-      <body className="relative flex h-full w-full flex-col overflow-y-scroll px-5 py-4">
+    <html lang={lang}>
+      <body
+        className={`relative flex h-full w-full flex-col overflow-y-scroll px-5 py-4 ${lang}`}
+      >
         <LocaleSwitcher />
-        <div className="center flex grow flex-row self-center align-middle">
-          <div className="min-[480]:w-[480px] max-w-[480px] self-center align-middle">
-            {children}
-          </div>
+        <div className="flex w-full min-w-[260px] max-w-[500px] grow self-center">
+          <div className="w-full self-center">{children}</div>
         </div>
       </body>
     </html>

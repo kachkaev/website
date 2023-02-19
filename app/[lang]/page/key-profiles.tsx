@@ -150,7 +150,7 @@ export async function Osm({ lang, dictionary }: KeyProfileProps) {
             "profiles.osm.description.1",
             profileInfo,
           )}
-          <a href="https://yosmhm.neis-one.org/?u=Kachkaev&zoom=4&lat=50&lon=20&layers=B00TTF">
+          <a href="https://yosmhm.neis-one.org/?u=Kachkaev&zoom=3&lat=50&lon=20&layers=B00TTF">
             {dictionary.index["profiles.osm.description.2"]}
           </a>
           {dictionary.index["profiles.osm.description.3"]}
@@ -197,6 +197,10 @@ export async function Twitter({ lang, dictionary }: KeyProfileProps) {
 export async function Flickr({ lang, dictionary }: KeyProfileProps) {
   const profileInfo = await readProfileInfo("flickr");
 
+  const mostViewedPhotos = profileInfo?.["mostViewedPhotos"] as
+    | Array<{ title: string; url: string; thumbnailUrl: string }>
+    | undefined;
+
   return (
     <>
       <KeyProfile
@@ -214,7 +218,30 @@ export async function Flickr({ lang, dictionary }: KeyProfileProps) {
           </>
         ) : undefined}
       </KeyProfile>
-      <div>TODO</div>
+      {mostViewedPhotos && (
+        <div className="relative mt-[-10px] h-[50px] overflow-hidden rounded-[5px] bg-gray-300 bg-clip-padding">
+          <div className="absolute whitespace-nowrap">
+            {mostViewedPhotos.map(({ title, url, thumbnailUrl }) => (
+              <a
+                key={url}
+                href={url}
+                className="group relative inline-block h-[50px] w-[50px] !border-none grayscale hover:grayscale-0 active:grayscale-0"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element -- external image */}
+                <img
+                  className="inline-block"
+                  src={thumbnailUrl}
+                  alt={title}
+                  width={50}
+                  height={50}
+                />
+                <span className="absolute inset-x-0 bottom-0 block bg-slate-500 group-hover:border-t-2 group-hover:border-t-red-500" />
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+      {}
     </>
   );
 }

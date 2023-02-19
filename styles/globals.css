@@ -5,7 +5,12 @@
 @layer base {
   html {
     @apply h-full w-full;
-    font: 14px/20px Helvetica, Arial, "Lucida Grande", sans-serif;
+    font: 15px/1.4rem Helvetica, Arial, "Lucida Grande", sans-serif;
+  }
+  @media (max-width: 800px) {
+    html {
+      font-size: 14px;
+    }
   }
   @media (max-width: 440px) {
     html {
@@ -23,7 +28,7 @@
     font-size: 1.75rem;
     line-height: 2rem;
     font-weight: bold;
-    margin: 0.67em 0;
+    margin: 1rem 0;
     text-align: center;
   }
 
@@ -47,5 +52,35 @@
   }
   li {
     @apply mb-5;
+  }
+}
+
+@layer components {
+  .description-on-index-page {
+    @apply pt-4 pb-9 text-center;
+  }
+
+  @media (max-width: 310px) {
+    body.en .description-on-index-page {
+      @apply text-left;
+    }
+    body.en .description-on-index-page br {
+      content: "";
+    }
+    body.en .description-on-index-page br:after {
+      content: " ";
+    }
+  }
+
+  @media (max-width: 470px) {
+    body.ru .description-on-index-page {
+      @apply text-left;
+    }
+    body.ru .description-on-index-page br {
+      content: "";
+    }
+    body.ru .description-on-index-page br:after {
+      content: " ";
+    }
   }
 }

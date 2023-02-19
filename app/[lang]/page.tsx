@@ -32,7 +32,7 @@ export default async function Page({ params: { lang } }: PageProps) {
       </h1>
 
       {/* Description */}
-      <div className="pt-[12px] pb-[32px] text-center">
+      <div className="description-on-index-page">
         {dictionary.index["description.l1"]}
         <br />
         {dictionary.index["description.l2.1"]}
@@ -45,7 +45,7 @@ export default async function Page({ params: { lang } }: PageProps) {
       </div>
 
       {/* Photo */}
-      <div className="float-right ml-[10px]">
+      <div className="float-right ml-8">
         <Image
           className="overflow-hidden rounded-[5px] bg-gray-300 text-gray-300"
           width={100}
@@ -102,7 +102,7 @@ export default async function Page({ params: { lang } }: PageProps) {
       </div>
 
       {/* Email */}
-      <div className="mt-6 text-center">
+      <div className="mt-5 text-center">
         <a href="mailto:alexander@kachkaev.ru">alexander@kachkaev.ru</a>
         <div className="opacity-60">{dictionary.index.emailRemark}</div>
       </div>
