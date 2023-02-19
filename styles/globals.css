@@ -5,13 +5,9 @@
 @layer base {
   html {
     @apply h-full w-full;
-    font: 15px/1.4rem Helvetica, Arial, "Lucida Grande", sans-serif;
+    font: 14px/1.4rem Helvetica, Arial, "Lucida Grande", sans-serif;
   }
-  @media (max-width: 800px) {
-    html {
-      font-size: 14px;
-    }
-  }
+
   @media (max-width: 440px) {
     html {
       font-size: 13px;
