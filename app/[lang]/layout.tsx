@@ -1,4 +1,4 @@
-import "../../styles/globals.css";
+import "./styles.css";
 
 import type { Locale } from "../../i18n-config";
 import LocaleSwitcher from "./layout/locale-switcher";
