@@ -17,12 +17,12 @@
     "profiles.openaccess.description.1": "{publicationCount, number} {publicationCount, plural, one {paper} other {papers}} including ",
     "profiles.openaccess.description.2": "the\u00A0doctoral\u00A0thesis",
     "profiles.openaccess.description.3": "",
-    "profiles.openaccess.phd": "the doctoral thesis",
     "profiles.linkedin.name": "LinkedIn",
     "profiles.linkedin.description": "{connectionCount, number} connections",
     "profiles.github.name": "GitHub",
-    "profiles.github.description.1": "{repoCount, number} public repos in {languageCount, number} languages, including ",
-    "profiles.github.description.2": "this website",
+    "profiles.github.description.1": "{repoCount, number} public repos in {languageCount, number} languages, including\u00A0",
+    "profiles.github.description.2": "this\u00A0website",
+    "profiles.github.description.3": "",
     "profiles.osm.name": "OpenStreetMap",
     "profiles.osm.description.1": "{changesetCount, number} map edits and {gpsTraceCount, number} gps traces (mainly\u00A0",
     "profiles.osm.description.2": "around\u00A0Penza\u00A0and\u00A0London",
@@ -43,11 +43,11 @@
   "error": {
     "title": "Page not found",
     "h1": "Page not found",
-    "explanation.1": "Looks like the page you were looking for was either removed or never existed. Please ",
+    "explanation.1": "Looks like the page you were looking for has been either removed or\u00A0has never existed. Please ",
     "explanation.2": "send me an email",
-    "explanation.3": " or ",
-    "explanation.4": "report a bug on GitHub",
-    "explanation.5": " if you think that something is broken."
+    "explanation.3": " or\u00A0",
+    "explanation.4": "report an issue on\u00A0GitHub",
+    "explanation.5": " if you think that something is\u00A0broken."
   },
   "photos": {
     "title": "On usage of my photographs",

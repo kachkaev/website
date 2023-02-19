@@ -12,7 +12,7 @@ export default async function Root({
 }) {
   return (
     <html lang={params.lang}>
-      <body className="relative flex h-full w-full flex-col overflow-y-scroll px-6 py-4">
+      <body className="relative flex h-full w-full flex-col overflow-y-scroll px-5 py-4">
         <LocaleSwitcher />
         <div className="center flex grow flex-row self-center align-middle">
           <div className="max-w-[480px] self-center align-middle">

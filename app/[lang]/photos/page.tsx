@@ -38,7 +38,7 @@ export default async function Page({ params: { lang } }: PageProps) {
     <>
       <h1>{dictionary.photos.h1}</h1>
       <PhotoSample alt={dictionary.photos["photo.alt"]} />
-      <p className="mb-5">
+      <p>
         {dictionary.photos["explanation.1"]}
         <a href="https://www.flickr.com/people/kachkaev">
           {dictionary.photos["explanation.2"]}
@@ -46,15 +46,15 @@ export default async function Page({ params: { lang } }: PageProps) {
         {dictionary.photos["explanation.3"]}
       </p>
       <ul className="ml-4">
-        <li className="mb-5">
+        <li>
           {dictionary.photos["hint1.1"]}
           <a href={`https://${lang}.wikipedia.org/wiki/Creative_Commons`}>
             {dictionary.photos["hint1.2"]}
           </a>
           {dictionary.photos["hint1.3"]}
         </li>
-        <li className="mb-5">{dictionary.photos.hint2}</li>
-        <li className="mb-5">
+        <li>{dictionary.photos.hint2}</li>
+        <li>
           {dictionary.photos["hint3.1"]}
           <a href="mailto:alexander@kachkaev.ru">
             {dictionary.photos["hint3.2"]}

@@ -18,7 +18,9 @@
     "start": "next start"
   },
   "dependencies": {
+    "@formatjs/intl": "^2.6.5",
     "@formatjs/intl-localematcher": "^0.2.32",
+    "js-yaml": "^4.1.0",
     "negotiator": "0.6.3",
     "next": "13.1.7-canary.20",
     "react": "^18.2.0",
@@ -31,6 +33,7 @@
     "@kachkaev/prettier-config": "^1.4.0",
     "@next/eslint-plugin-next": "13.1.7-canary.20",
     "@tsconfig/node-lts-strictest-esm": "^18.12.1",
+    "@types/js-yaml": "^4.0.5",
     "@types/negotiator": "0.6.1",
     "@types/node": "^18.11.5",
     "@types/react": "^18.0.23",
