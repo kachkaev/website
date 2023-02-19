@@ -17,35 +17,27 @@ interface KeyProfileProps {
 
 async function readProfileInfo(
   baseFileName: string,
-): Promise<unknown | undefined> {
+): Promise<Record<string, unknown> | undefined> {
   try {
     return load(
       await fs.readFile(`./profile-infos/${baseFileName}.yaml`, "utf8"),
-    );
+    ) as Record<string, unknown>;
   } catch {
     return undefined;
   }
 }
 
-function stringifyProfileInfo(
-  profileInfo: unknown,
+function formatMessage(
   locale: Locale,
-  message: string,
+  messageLookup: Dictionary["index"],
+  messageId: keyof Dictionary["index"],
+  valueLookup: Record<string, unknown>,
 ): string {
-  const intl = createIntl(
-    {
-      locale,
-      messages: {},
-    },
-    cache,
-  );
+  const intl = createIntl({ locale, messages: messageLookup }, cache);
 
   return intl.formatMessage(
-    {
-      id: message || " ",
-      defaultMessage: message,
-    },
-    profileInfo as Record<string, string>,
+    { id: messageId },
+    valueLookup as Record<string, string>,
   );
 }
 
@@ -59,14 +51,14 @@ function KeyProfile({
   children: React.ReactNode;
 }) {
   return (
-    <div>
+    <>
       <h2>
         <a className="whitespace-nowrap font-semibold" href={url}>
           {name}
         </a>
       </h2>
-      <p>{children}</p>
-    </div>
+      <p className="mb-4 opacity-60">{children ?? <>&nbsp;</>}</p>
+    </>
   );
 }
 
@@ -80,23 +72,16 @@ export async function Openaccess({ lang, dictionary }: KeyProfileProps) {
     >
       {profileInfo ? (
         <>
-          {stringifyProfileInfo(
-            profileInfo,
+          {formatMessage(
             lang,
-            dictionary.index["profiles.openaccess.description.1"],
+            dictionary.index,
+            "profiles.openaccess.description.1",
+            profileInfo,
           )}
           <a href="http://openaccess.city.ac.uk/12460/">
-            {stringifyProfileInfo(
-              profileInfo,
-              lang,
-              dictionary.index["profiles.openaccess.description.2"],
-            )}
+            {dictionary.index["profiles.openaccess.description.2"]}
           </a>
-          {stringifyProfileInfo(
-            profileInfo,
-            lang,
-            dictionary.index["profiles.openaccess.description.3"],
-          )}
+          {dictionary.index["profiles.openaccess.description.3"]}
         </>
       ) : undefined}
     </KeyProfile>
@@ -112,10 +97,11 @@ export async function LinkedIn({ lang, dictionary }: KeyProfileProps) {
       url="https://www.linkedin.com/in/kachkaev/"
     >
       {profileInfo
-        ? stringifyProfileInfo(
-            profileInfo,
+        ? formatMessage(
             lang,
-            dictionary.index["profiles.linkedin.description"],
+            dictionary.index,
+            "profiles.linkedin.description",
+            profileInfo,
           )
         : undefined}
     </KeyProfile>
@@ -132,23 +118,16 @@ export async function GitHub({ lang, dictionary }: KeyProfileProps) {
     >
       {profileInfo ? (
         <>
-          {stringifyProfileInfo(
-            profileInfo,
+          {formatMessage(
             lang,
-            dictionary.index["profiles.github.description.1"],
+            dictionary.index,
+            "profiles.github.description.1",
+            profileInfo,
           )}
           <a href="https://github.com/kachkaev/website">
-            {stringifyProfileInfo(
-              profileInfo,
-              lang,
-              dictionary.index["profiles.github.description.2"],
-            )}
+            {dictionary.index["profiles.github.description.2"]}
           </a>
-          {stringifyProfileInfo(
-            profileInfo,
-            lang,
-            dictionary.index["profiles.github.description.3"],
-          )}
+          {dictionary.index["profiles.github.description.3"]}
         </>
       ) : undefined}
     </KeyProfile>
@@ -165,23 +144,16 @@ export async function Osm({ lang, dictionary }: KeyProfileProps) {
     >
       {profileInfo ? (
         <>
-          {stringifyProfileInfo(
-            profileInfo,
+          {formatMessage(
             lang,
-            dictionary.index["profiles.osm.description.1"],
+            dictionary.index,
+            "profiles.osm.description.1",
+            profileInfo,
           )}
           <a href="https://yosmhm.neis-one.org/?u=Kachkaev&zoom=4&lat=50&lon=20&layers=B00TTF">
-            {stringifyProfileInfo(
-              profileInfo,
-              lang,
-              dictionary.index["profiles.osm.description.2"],
-            )}
+            {dictionary.index["profiles.osm.description.2"]}
           </a>
-          {stringifyProfileInfo(
-            profileInfo,
-            lang,
-            dictionary.index["profiles.osm.description.3"],
-          )}
+          {dictionary.index["profiles.osm.description.3"]}
         </>
       ) : undefined}
     </KeyProfile>
@@ -201,15 +173,17 @@ export async function Twitter({ lang, dictionary }: KeyProfileProps) {
     >
       {profileInfoEn && profileInfoRu ? (
         <>
-          {stringifyProfileInfo(
+          {formatMessage(
+            lang,
+            dictionary.index,
+            "profiles.twitter.description.1",
             lang === "en" ? profileInfoEn : profileInfoRu,
-            lang,
-            dictionary.index["profiles.twitter.description.1"],
           )}
-          {stringifyProfileInfo(
-            lang === "en" ? profileInfoRu : profileInfoEn,
+          {formatMessage(
             lang,
-            dictionary.index["profiles.twitter.description.2"],
+            dictionary.index,
+            "profiles.twitter.description.2",
+            lang === "en" ? profileInfoRu : profileInfoEn,
           )}
           <a href={lang === "en" ? urlRu : urlEn}>
             {dictionary.index["profiles.twitter.description.3"]}
@@ -231,10 +205,11 @@ export async function Flickr({ lang, dictionary }: KeyProfileProps) {
       >
         {profileInfo ? (
           <>
-            {stringifyProfileInfo(
-              profileInfo,
+            {formatMessage(
               lang,
-              dictionary.index["profiles.flickr.description"],
+              dictionary.index,
+              "profiles.flickr.description",
+              profileInfo,
             )}
           </>
         ) : undefined}
