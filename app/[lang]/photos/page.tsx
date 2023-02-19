@@ -10,9 +10,9 @@ function PhotoSample({ alt }: { alt: string }) {
       className="group relative mx-auto mb-6 block w-full overflow-hidden rounded-[4px]"
       href="https://www.flickr.com/photos/kachkaev/7511763574/"
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
+      {/* eslint-disable-next-line @next/next/no-img-element -- external image */}
       <img
-        className="inline-block w-full align-middle grayscale hover:grayscale-0 active:grayscale-0"
+        className="inline-block aspect-[450/298] w-full align-middle grayscale hover:grayscale-0 active:grayscale-0"
         alt={alt}
         src="https://farm8.staticflickr.com/7247/7511763574_d528f4ce04_z_d.jpg"
       />
