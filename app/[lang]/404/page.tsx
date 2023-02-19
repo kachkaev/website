@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { getDictionary } from "../../../get-dictionary";
 import type { Locale } from "../../../i18n-config";
+import Mailto from "../shared/mailto";
 
 interface PageProps {
   params: { lang: Locale };
@@ -16,9 +17,7 @@ export default async function Page({ params: { lang } }: PageProps) {
       <h1>{dictionary.error.h1}</h1>
       <p>
         {dictionary.error["explanation.1"]}
-        <a href="mailto:alexander@kachkaev.ru">
-          {dictionary.error["explanation.2"]}
-        </a>
+        <Mailto lang={lang}>{dictionary.error["explanation.2"]}</Mailto>
         {dictionary.error["explanation.3"]}
         <a href="https://github.com/kachkaev/website/issues">
           {dictionary.error["explanation.4"]}

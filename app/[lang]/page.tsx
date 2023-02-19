@@ -5,6 +5,7 @@ import { getDictionary } from "../../get-dictionary";
 import type { Locale } from "../../i18n-config";
 import photo from "../../public/images/alexander_kachkaev.jpg";
 import * as keyProfiles from "./page/key-profiles";
+import Mailto from "./shared/mailto";
 
 interface PageProps {
   params: { lang: Locale };
@@ -103,7 +104,7 @@ export default async function Page({ params: { lang } }: PageProps) {
 
       {/* Email */}
       <div className="mt-5 text-center">
-        <a href="mailto:alexander@kachkaev.ru">alexander@kachkaev.ru</a>
+        <Mailto lang={lang} />
         <div className="opacity-60">{dictionary.index.emailRemark}</div>
       </div>
     </>

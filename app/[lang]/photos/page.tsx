@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { getDictionary } from "../../../get-dictionary";
 import { type Locale, i18n } from "../../../i18n-config";
+import Mailto from "../shared/mailto";
 
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
@@ -56,9 +57,7 @@ export default async function Page({ params: { lang } }: PageProps) {
         <li>{dictionary.photos.hint2}</li>
         <li>
           {dictionary.photos["hint3.1"]}
-          <a href="mailto:alexander@kachkaev.ru">
-            {dictionary.photos["hint3.2"]}
-          </a>
+          <Mailto lang={lang}>{dictionary.photos["hint3.2"]}</Mailto>
           {dictionary.photos["hint3.3"]}
         </li>
       </ul>
