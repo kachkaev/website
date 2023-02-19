@@ -15,7 +15,7 @@ export default async function Root({
       <body className="relative flex h-full w-full flex-col overflow-y-scroll px-5 py-4">
         <LocaleSwitcher />
         <div className="center flex grow flex-row self-center align-middle">
-          <div className="max-w-[480px] self-center align-middle">
+          <div className="min-[480]:w-[480px] max-w-[480px] self-center align-middle">
             {children}
           </div>
         </div>

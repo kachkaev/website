@@ -31,11 +31,11 @@
     text-decoration: none;
     color: rgb(8, 100, 210);
     border-bottom: 1px solid !important;
-    border-bottom-color: rgba(8, 100, 210, 0.3) !important;
+    border-bottom-color: rgba(8, 100, 210, 0.2) !important;
   }
   a:visited {
     color: rgb(85, 26, 139);
-    border-bottom-color: rgba(85, 26, 139, 0.3) !important;
+    border-bottom-color: rgba(85, 26, 139, 0.2) !important;
   }
   a:hover {
     color: #ff0000;
