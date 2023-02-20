@@ -25,7 +25,7 @@ export default function LocaleSwitcherInner({
                 currentLocale
               ) : (
                 <Link
-                  href={`${baseUrlByLocale[locale]}${pathname}${
+                  href={`${baseUrlByLocale[currentLocale]}${pathname}${
                     stringifiedSearchParams ? `?${stringifiedSearchParams}` : ""
                   }`}
                 >
