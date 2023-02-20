@@ -1,5 +1,7 @@
 import "./styles.css";
 
+import type { Metadata } from "next";
+
 import type { Locale } from "../../i18n-config";
 import LocaleSwitcher from "./layout/locale-switcher";
 
@@ -22,6 +24,39 @@ export default async function Root({
       </body>
     </html>
   );
+}
+
+export function generateMetadata(): Metadata {
+  /* @todo https://beta.nextjs.org/docs/api-reference/metadata
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#ffffff" />
+  <meta name="msapplication-config" content="/browserconfig.xml" />
+  */
+
+  return {
+    icons: {
+      apple: "/favicon/apple-touch-icon.png",
+      icon: [
+        {
+          sizes: "32x32",
+          url: "/favicon/favicon-32x32.png",
+        },
+        {
+          sizes: "16x16",
+          url: "/favicon/favicon-16x16.png",
+        },
+      ],
+      other: [
+        {
+          rel: "msapplication-config",
+          url: "/browserconfig.xml",
+        },
+      ],
+      shortcut: "/favicon.ico",
+    },
+    manifest: "/manifest.json",
+    themeColor: "#ffffff",
+  };
 }
 
 export const dynamic = "force-dynamic";

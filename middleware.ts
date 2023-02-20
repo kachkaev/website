@@ -23,7 +23,9 @@ function getLocale(request: NextRequest): string | undefined {
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
-  if (["/manifest.json", "/robots.txt"].includes(pathname)) {
+  if (
+    ["/browserconfig.xml", "/manifest.json", "/robots.txt"].includes(pathname)
+  ) {
     return NextResponse.next();
   }
 
