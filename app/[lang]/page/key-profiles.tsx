@@ -221,6 +221,7 @@ export async function Flickr({ lang, dictionary }: KeyProfileProps) {
           <div className="absolute whitespace-nowrap">
             {mostViewedPhotos
               .sort(() => (Math.random() >= 0.5 ? 1 : -1))
+              .slice(0, 9)
               .map(({ title, url, thumbnailUrl }) => (
                 <a
                   key={url}
