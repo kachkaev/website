@@ -3,14 +3,14 @@ import * as React from "react";
 import type { Locale } from "../../../i18n-config";
 
 export default function Mailto({
-  lang,
+  locale,
   children,
 }: {
-  lang: Locale;
+  locale: Locale;
   children?: React.ReactNode;
 }) {
   const email =
-    lang === "en" ? "alexander@kachkaev.uk" : "alexander@kachkaev.ru";
+    locale === "en" ? "alexander@kachkaev.uk" : "alexander@kachkaev.ru";
 
   return <a href={`mailto:${email}`}>{children ?? email}</a>;
 }

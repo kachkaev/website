@@ -25,11 +25,11 @@ function PhotoSample({ alt }: { alt: string }) {
 }
 
 interface PageProps {
-  params: { lang: Locale };
+  params: { locale: Locale };
 }
 
-export default async function Page({ params: { lang } }: PageProps) {
-  const dictionary = await getDictionary(lang);
+export default async function Page({ params: { locale } }: PageProps) {
+  const dictionary = await getDictionary(locale);
 
   return (
     <>
@@ -45,7 +45,7 @@ export default async function Page({ params: { lang } }: PageProps) {
       <ul className="ml-4">
         <li>
           {dictionary.photos["hint1.1"]}
-          <a href={`https://${lang}.wikipedia.org/wiki/Creative_Commons`}>
+          <a href={`https://${locale}.wikipedia.org/wiki/Creative_Commons`}>
             {dictionary.photos["hint1.2"]}
           </a>
           {dictionary.photos["hint1.3"]}
@@ -53,7 +53,7 @@ export default async function Page({ params: { lang } }: PageProps) {
         <li>{dictionary.photos.hint2}</li>
         <li>
           {dictionary.photos["hint3.1"]}
-          <Mailto lang={lang}>{dictionary.photos["hint3.2"]}</Mailto>
+          <Mailto locale={locale}>{dictionary.photos["hint3.2"]}</Mailto>
           {dictionary.photos["hint3.3"]}
         </li>
       </ul>
@@ -64,8 +64,8 @@ export default async function Page({ params: { lang } }: PageProps) {
   );
 }
 
-export async function generateMetadata({ params: { lang } }: PageProps) {
-  const dictionary = await getDictionary(lang);
+export async function generateMetadata({ params: { locale } }: PageProps) {
+  const dictionary = await getDictionary(locale);
 
   return { title: dictionary.photos.title };
 }

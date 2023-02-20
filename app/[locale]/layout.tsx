@@ -7,15 +7,15 @@ import LocaleSwitcher from "./layout/locale-switcher";
 
 export default async function Root({
   children,
-  params: { lang },
+  params: { locale },
 }: {
   children: React.ReactNode;
-  params: { lang: Locale };
+  params: { locale: Locale };
 }) {
   return (
-    <html lang={lang}>
+    <html lang={locale}>
       <body
-        className={`relative flex h-full w-full flex-col overflow-y-scroll px-5 pt-4 ${lang}`}
+        className={`relative flex h-full w-full flex-col overflow-y-scroll px-5 pt-4 ${locale}`}
       >
         <LocaleSwitcher />
         <div className="flex w-full min-w-[260px] max-w-[450px] grow self-center">

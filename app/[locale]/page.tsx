@@ -8,11 +8,11 @@ import * as keyProfiles from "./page/key-profiles";
 import Mailto from "./shared/mailto";
 
 interface PageProps {
-  params: { lang: Locale };
+  params: { locale: Locale };
 }
 
-export default async function Page({ params: { lang } }: PageProps) {
-  const dictionary = await getDictionary(lang);
+export default async function Page({ params: { locale } }: PageProps) {
+  const dictionary = await getDictionary(locale);
 
   return (
     <>
@@ -21,7 +21,7 @@ export default async function Page({ params: { lang } }: PageProps) {
         {dictionary.index["h1.firstName"]}{" "}
         <span className="relative inline-block">
           {dictionary.index["h1.lastName"]}
-          {lang === "en" && (
+          {locale === "en" && (
             <span className="absolute bottom-[-20px] left-0 right-0 inline-block text-center text-[13px] font-normal opacity-60">
               {" "}
               <span className="invisible">(</span>
@@ -58,17 +58,17 @@ export default async function Page({ params: { lang } }: PageProps) {
 
       {/* Key profiles */}
       {/* @ts-expect-error -- server component https://github.com/vercel/next.js/issues/42292 */}
-      <keyProfiles.Openaccess lang={lang} dictionary={dictionary} />
+      <keyProfiles.Openaccess locale={locale} dictionary={dictionary} />
       {/* @ts-expect-error -- server component */}
-      <keyProfiles.LinkedIn lang={lang} dictionary={dictionary} />
+      <keyProfiles.LinkedIn locale={locale} dictionary={dictionary} />
       {/* @ts-expect-error -- server component */}
-      <keyProfiles.GitHub lang={lang} dictionary={dictionary} />
+      <keyProfiles.GitHub locale={locale} dictionary={dictionary} />
       {/* @ts-expect-error -- server component */}
-      <keyProfiles.Osm lang={lang} dictionary={dictionary} />
+      <keyProfiles.Osm locale={locale} dictionary={dictionary} />
       {/* @ts-expect-error -- server component */}
-      <keyProfiles.Twitter lang={lang} dictionary={dictionary} />
+      <keyProfiles.Twitter locale={locale} dictionary={dictionary} />
       {/* @ts-expect-error -- server component */}
-      <keyProfiles.Flickr lang={lang} dictionary={dictionary} />
+      <keyProfiles.Flickr locale={locale} dictionary={dictionary} />
 
       {/* Misc profiles */}
       <div className="clear-both" />
@@ -85,7 +85,7 @@ export default async function Page({ params: { lang } }: PageProps) {
         <a className="mx-1" href="https://vk.com/kachkaev">
           {dictionary.index["profiles.vk.name"]}
         </a>
-        {lang === "ru" && (
+        {locale === "ru" && (
           <>
             {" "}
             <a className="mx-1" href="https://habr.com/users/kachkaev/">
@@ -104,7 +104,7 @@ export default async function Page({ params: { lang } }: PageProps) {
 
       {/* Email */}
       <div className="mt-5 text-center">
-        <Mailto lang={lang} />
+        <Mailto locale={locale} />
         <div className="opacity-60">{dictionary.index.emailRemark}</div>
       </div>
     </>
@@ -112,9 +112,9 @@ export default async function Page({ params: { lang } }: PageProps) {
 }
 
 export async function generateMetadata({
-  params: { lang },
+  params: { locale },
 }: PageProps): Promise<Metadata> {
-  const dictionary = await getDictionary(lang);
+  const dictionary = await getDictionary(locale);
 
   return {
     title: dictionary.index.title,

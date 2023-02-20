@@ -6,18 +6,18 @@ import type { Locale } from "../../../i18n-config";
 import Mailto from "../shared/mailto";
 
 interface PageProps {
-  params: { lang: Locale };
+  params: { locale: Locale };
 }
 
-export default async function Page({ params: { lang } }: PageProps) {
-  const dictionary = await getDictionary(lang);
+export default async function Page({ params: { locale } }: PageProps) {
+  const dictionary = await getDictionary(locale);
 
   return (
     <>
       <h1>{dictionary.error.h1}</h1>
       <p>
         {dictionary.error["explanation.1"]}
-        <Mailto lang={lang}>{dictionary.error["explanation.2"]}</Mailto>
+        <Mailto locale={locale}>{dictionary.error["explanation.2"]}</Mailto>
         {dictionary.error["explanation.3"]}
         <a href="https://github.com/kachkaev/website/issues">
           {dictionary.error["explanation.4"]}
@@ -32,9 +32,9 @@ export default async function Page({ params: { lang } }: PageProps) {
 }
 
 export async function generateMetadata({
-  params: { lang },
+  params: { locale },
 }: PageProps): Promise<Metadata> {
-  const dictionary = await getDictionary(lang);
+  const dictionary = await getDictionary(locale);
 
   return {
     title: dictionary.error.title,

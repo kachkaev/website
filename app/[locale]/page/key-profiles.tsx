@@ -9,7 +9,7 @@ import type { Dictionary, Locale } from "../../../i18n-config";
 const intlCache = createIntlCache();
 
 interface KeyProfileProps {
-  lang: Locale;
+  locale: Locale;
   dictionary: Dictionary;
 }
 
@@ -60,7 +60,7 @@ function KeyProfile({
   );
 }
 
-export async function Openaccess({ lang, dictionary }: KeyProfileProps) {
+export async function Openaccess({ locale, dictionary }: KeyProfileProps) {
   const profileInfo = await readProfileInfo("openaccess");
 
   return (
@@ -71,7 +71,7 @@ export async function Openaccess({ lang, dictionary }: KeyProfileProps) {
       {profileInfo ? (
         <>
           {formatMessage(
-            lang,
+            locale,
             dictionary.index,
             "profiles.openaccess.description.1",
             profileInfo,
@@ -86,7 +86,7 @@ export async function Openaccess({ lang, dictionary }: KeyProfileProps) {
   );
 }
 
-export async function LinkedIn({ lang, dictionary }: KeyProfileProps) {
+export async function LinkedIn({ locale, dictionary }: KeyProfileProps) {
   const profileInfo = await readProfileInfo("linkedin");
 
   return (
@@ -96,7 +96,7 @@ export async function LinkedIn({ lang, dictionary }: KeyProfileProps) {
     >
       {profileInfo
         ? formatMessage(
-            lang,
+            locale,
             dictionary.index,
             "profiles.linkedin.description",
             profileInfo,
@@ -106,7 +106,7 @@ export async function LinkedIn({ lang, dictionary }: KeyProfileProps) {
   );
 }
 
-export async function GitHub({ lang, dictionary }: KeyProfileProps) {
+export async function GitHub({ locale, dictionary }: KeyProfileProps) {
   const profileInfo = await readProfileInfo("github");
 
   return (
@@ -117,7 +117,7 @@ export async function GitHub({ lang, dictionary }: KeyProfileProps) {
       {profileInfo ? (
         <>
           {formatMessage(
-            lang,
+            locale,
             dictionary.index,
             "profiles.github.description.1",
             profileInfo,
@@ -132,7 +132,7 @@ export async function GitHub({ lang, dictionary }: KeyProfileProps) {
   );
 }
 
-export async function Osm({ lang, dictionary }: KeyProfileProps) {
+export async function Osm({ locale, dictionary }: KeyProfileProps) {
   const profileInfo = await readProfileInfo("osm");
 
   return (
@@ -143,7 +143,7 @@ export async function Osm({ lang, dictionary }: KeyProfileProps) {
       {profileInfo ? (
         <>
           {formatMessage(
-            lang,
+            locale,
             dictionary.index,
             "profiles.osm.description.1",
             profileInfo,
@@ -158,7 +158,7 @@ export async function Osm({ lang, dictionary }: KeyProfileProps) {
   );
 }
 
-export async function Twitter({ lang, dictionary }: KeyProfileProps) {
+export async function Twitter({ locale, dictionary }: KeyProfileProps) {
   const profileInfoEn = await readProfileInfo("twitter-en");
   const profileInfoRu = await readProfileInfo("twitter-ru");
   const urlEn = "https://twitter.com/kachkaev";
@@ -167,23 +167,23 @@ export async function Twitter({ lang, dictionary }: KeyProfileProps) {
   return (
     <KeyProfile
       name={dictionary.index["profiles.twitter.name"]}
-      url={lang === "en" ? urlEn : urlRu}
+      url={locale === "en" ? urlEn : urlRu}
     >
       {profileInfoEn && profileInfoRu ? (
         <>
           {formatMessage(
-            lang,
+            locale,
             dictionary.index,
             "profiles.twitter.description.1",
-            lang === "en" ? profileInfoEn : profileInfoRu,
+            locale === "en" ? profileInfoEn : profileInfoRu,
           )}
           {formatMessage(
-            lang,
+            locale,
             dictionary.index,
             "profiles.twitter.description.2",
-            lang === "en" ? profileInfoRu : profileInfoEn,
+            locale === "en" ? profileInfoRu : profileInfoEn,
           )}
-          <a href={lang === "en" ? urlRu : urlEn}>
+          <a href={locale === "en" ? urlRu : urlEn}>
             {dictionary.index["profiles.twitter.description.3"]}
           </a>
         </>
@@ -192,7 +192,7 @@ export async function Twitter({ lang, dictionary }: KeyProfileProps) {
   );
 }
 
-export async function Flickr({ lang, dictionary }: KeyProfileProps) {
+export async function Flickr({ locale, dictionary }: KeyProfileProps) {
   const profileInfo = await readProfileInfo("flickr");
 
   const mostViewedPhotos = profileInfo?.["mostViewedPhotos"] as
@@ -208,7 +208,7 @@ export async function Flickr({ lang, dictionary }: KeyProfileProps) {
         {profileInfo ? (
           <>
             {formatMessage(
-              lang,
+              locale,
               dictionary.index,
               "profiles.flickr.description",
               profileInfo,
