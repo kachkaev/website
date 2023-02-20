@@ -11,6 +11,7 @@ const dictionaryLookup = {
 export const getDictionary = async (locale: Locale) =>
   dictionaryLookup[locale]();
 
-export const baseUrlEn = process.env["BASE_URL_EN"] || "http://localhost:3000";
-export const baseUrlRu =
-  process.env["BASE_URL_RU"] || "http://ru.localhost:3000";
+export const baseUrlByLocale: Record<Locale, string> = {
+  ru: process.env["BASE_URL_RU"] || "http://ru.localhost:3000",
+  en: process.env["BASE_URL_EN"] || "http://localhost:3000",
+};

@@ -1,13 +1,19 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
-import { baseUrlRu } from "./i18n-server";
+import { i18n } from "./i18n-config";
+import { baseUrlByLocale } from "./i18n-server";
 
 function geRequestHost(request: NextRequest) {
   return request.headers.get("x-forwarded-host") || request.headers.get("host");
 }
 
-const hostRu = new URL(baseUrlRu).host;
+const localeByHost = Object.fromEntries(
+  Object.entries(baseUrlByLocale).map(([locale, baseUrl]) => [
+    new URL(baseUrl).host,
+    locale,
+  ]),
+);
 
 export function middleware(request: NextRequest) {
   const newUrl = new URL(request.url);
@@ -29,9 +35,9 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(newUrl);
   }
 
-  newUrl.pathname = `/${hostRu === geRequestHost(request) ? "ru" : "en"}${
-    newUrl.pathname
-  }`;
+  newUrl.pathname = `/${
+    localeByHost[geRequestHost(request) ?? ""] ?? i18n.defaultLocale
+  }${newUrl.pathname}`;
 
   return NextResponse.rewrite(newUrl);
 }
