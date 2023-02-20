@@ -1,33 +1,15 @@
-"use client";
+import type { Locale } from "../../../i18n-config";
+import { baseUrlEn, baseUrlRu } from "../../../i18n-server";
+import LocaleSwitcherInner from "./locale-switcher-inner";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-
-import { i18n } from "../../../i18n-config";
-
-export default function LocaleSwitcher() {
-  const pathName = usePathname();
-  const redirectedPathName = (locale: string) => {
-    if (!pathName) {
-      return "/";
-    }
-    const segments = pathName.split("/");
-    segments[1] = locale;
-
-    return segments.join("/");
-  };
-
+export default function LocaleSwitcher({ locale }: { locale: Locale }) {
   return (
-    <div className="self-end leading-3">
-      <ul>
-        {i18n.locales.map((locale) => {
-          return (
-            <li key={locale} className="ml-3 inline-block">
-              <Link href={redirectedPathName(locale)}>{locale}</Link>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+    <LocaleSwitcherInner
+      locale={locale}
+      localeBaseUrlLookup={{
+        en: baseUrlEn,
+        ru: baseUrlRu,
+      }}
+    />
   );
 }

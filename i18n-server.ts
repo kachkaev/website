@@ -1,4 +1,5 @@
-import "server-only";
+// @todo Bring back the import when middleware.ts stops crashing because of that
+// import "server-only";
 
 import type { Locale } from "./i18n-config";
 
@@ -9,3 +10,7 @@ const dictionaryLookup = {
 
 export const getDictionary = async (locale: Locale) =>
   dictionaryLookup[locale]();
+
+export const baseUrlEn = process.env["BASE_URL_EN"] || "http://localhost:3000";
+export const baseUrlRu =
+  process.env["BASE_URL_RU"] || "http://ru.localhost:3000";

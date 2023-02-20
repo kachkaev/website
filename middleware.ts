@@ -1,51 +1,39 @@
-import { match as matchLocale } from "@formatjs/intl-localematcher";
-import Negotiator from "negotiator";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
-import { i18n } from "./i18n-config";
+import { baseUrlRu } from "./i18n-server";
 
-function getLocale(request: NextRequest): string | undefined {
-  // Negotiator expects plain object so we need to transform headers
-  const negotiatorHeaders: Record<string, string> = {};
-  for (const [key, value] of request.headers.entries()) {
-    negotiatorHeaders[key] = value;
-  }
-
-  // Use negotiator and intl-localematcher to get best locale
-  const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
-  // @ts-expect-error locales are readonly
-  const locales: string[] = i18n.locales;
-
-  return matchLocale(languages, locales, i18n.defaultLocale);
+function geRequestHost(request: NextRequest) {
+  return request.headers.get("x-forwarded-host") || request.headers.get("host");
 }
 
+const hostRu = new URL(baseUrlRu).host;
+
 export function middleware(request: NextRequest) {
-  const pathname = request.nextUrl.pathname;
+  const newUrl = new URL(request.url);
 
   if (
-    ["/browserconfig.xml", "/manifest.json", "/robots.txt"].includes(pathname)
+    ["/browserconfig.xml", "/manifest.json", "/robots.txt"].includes(
+      request.nextUrl.pathname,
+    )
   ) {
     return NextResponse.next();
   }
 
-  const pathnameIsMissingLocale = i18n.locales.every(
-    (locale) =>
-      !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`,
-  );
+  if (
+    newUrl.pathname.startsWith("/ru/") ||
+    newUrl.pathname.startsWith("/en/")
+  ) {
+    newUrl.pathname.slice(3);
 
-  // Redirect if there is no locale
-  if (pathnameIsMissingLocale) {
-    const locale = getLocale(request);
-
-    // e.g. incoming request is /products
-    // The new URL is now /en-US/products
-    return NextResponse.redirect(
-      new URL(`/${locale}/${pathname}`, request.url),
-    );
+    return NextResponse.redirect(newUrl);
   }
 
-  return NextResponse.next();
+  newUrl.pathname = `/${hostRu === geRequestHost(request) ? "ru" : "en"}${
+    newUrl.pathname
+  }`;
+
+  return NextResponse.rewrite(newUrl);
 }
 
 export const config = {

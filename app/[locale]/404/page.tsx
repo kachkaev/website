@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { getDictionary } from "../../../get-dictionary";
 import type { Locale } from "../../../i18n-config";
+import { getDictionary } from "../../../i18n-server";
 import Mailto from "../shared/mailto";
 
 interface PageProps {

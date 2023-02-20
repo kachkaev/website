@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
-import { getDictionary } from "../../get-dictionary";
 import type { Locale } from "../../i18n-config";
+import { getDictionary } from "../../i18n-server";
 import photo from "../../public/images/alexander_kachkaev.jpg";
 import * as keyProfiles from "./page/key-profiles";
 import Mailto from "./shared/mailto";

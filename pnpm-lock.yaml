@@ -2,14 +2,12 @@ lockfileVersion: 5.4
 
 specifiers:
   '@formatjs/intl': ^2.6.5
-  '@formatjs/intl-localematcher': ^0.2.32
   '@kachkaev/eslint-config-react': ^0.5.1
   '@kachkaev/markdownlint-config': ^0.5.0
   '@kachkaev/prettier-config': ^1.4.0
   '@next/eslint-plugin-next': 13.1.7-canary.20
   '@tsconfig/node-lts-strictest-esm': ^18.12.1
   '@types/js-yaml': ^4.0.5
-  '@types/negotiator': 0.6.1
   '@types/node': ^18.11.5
   '@types/react': ^18.0.23
   '@types/react-dom': ^18.0.7
@@ -17,7 +15,6 @@ specifiers:
   eslint: ^8.32.0
   js-yaml: ^4.1.0
   markdownlint-cli: ^0.33.0
-  negotiator: 0.6.3
   next: 13.1.7-canary.20
   npm-run-all: ^4.1.5
   postcss: ^8.4.21
@@ -32,9 +29,7 @@ specifiers:
 
 dependencies:
   '@formatjs/intl': 2.6.5_typescript@4.9.5
-  '@formatjs/intl-localematcher': 0.2.32
   js-yaml: 4.1.0
-  negotiator: 0.6.3
   next: 13.1.7-canary.20_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -48,7 +43,6 @@ devDependencies:
   '@next/eslint-plugin-next': 13.1.7-canary.20
   '@tsconfig/node-lts-strictest-esm': 18.12.1
   '@types/js-yaml': 4.0.5
-  '@types/negotiator': 0.6.1
   '@types/node': 18.14.0
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
@@ -428,10 +422,6 @@ packages:
 
   /@types/json5/0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
-    dev: true
-
-  /@types/negotiator/0.6.1:
-    resolution: {integrity: sha512-c4mvXFByghezQ/eVGN5HvH/jI63vm3B7FiE81BUzDAWmuiohRecCO6ddU60dfq29oKUMiQujsoB2h0JQC7JHKA==}
     dev: true
 
   /@types/node/18.14.0:
@@ -2226,11 +2216,6 @@ packages:
   /natural-compare/1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
-
-  /negotiator/0.6.3:
-    resolution: {integrity: sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==}
-    engines: {node: '>= 0.6'}
-    dev: false
 
   /next/13.1.7-canary.20_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-jxfm3dmECts5blU3OBnDuXaf6TKzKw8wVaD7fnREpSazrc70iinabhP7HX8YyxVCsfp+ZErVA1AaKZs0GtCV+g==}
