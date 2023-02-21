@@ -6,6 +6,7 @@ module.exports = {
   ],
   rules: {
     // @todo re-enable
+    "@typescript-eslint/naming-convention": "off", // GET / POST in handlers
     "@typescript-eslint/no-unsafe-assignment": "off",
     "@typescript-eslint/no-unsafe-call": "off",
     "@typescript-eslint/no-unsafe-member-access": "off",

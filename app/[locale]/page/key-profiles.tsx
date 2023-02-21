@@ -1,28 +1,14 @@
-import fs from "node:fs/promises";
-
 import { createIntl, createIntlCache } from "@formatjs/intl";
-import { load } from "js-yaml";
 import * as React from "react";
 
 import type { Dictionary, Locale } from "../../../i18n-config";
+import { readProfileInfo } from "../shared/profile-infos";
 
 const intlCache = createIntlCache();
 
 interface KeyProfileProps {
   locale: Locale;
   dictionary: Dictionary;
-}
-
-async function readProfileInfo(
-  baseFileName: string,
-): Promise<Record<string, unknown> | undefined> {
-  try {
-    return load(
-      await fs.readFile(`./profile-infos/${baseFileName}.yaml`, "utf8"),
-    ) as Record<string, unknown>;
-  } catch {
-    return undefined;
-  }
 }
 
 function formatMessage(
