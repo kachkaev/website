@@ -27,8 +27,7 @@ export function middleware(request: NextRequest) {
   }
 
   if (
-    newUrl.pathname.startsWith("/ru/") ||
-    newUrl.pathname.startsWith("/en/")
+    i18n.locales.some((locale) => newUrl.pathname.startsWith(`/${locale}/`))
   ) {
     newUrl.pathname.slice(3);
 
