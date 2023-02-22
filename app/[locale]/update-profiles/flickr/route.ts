@@ -1,6 +1,6 @@
-import * as envalid from "envalid";
 import { z } from "zod";
 
+import { cleanProcessEnv, envalid } from "../shared/env";
 import {
   fetchJson,
   generateUpdateProfileHandler,
@@ -9,7 +9,7 @@ import {
 export const GET = generateUpdateProfileHandler({
   profileName: "flickr",
   generateProfileInfo: async () => {
-    const env = envalid.cleanEnv(process.env, {
+    const env = cleanProcessEnv({
       FLICKR_API_KEY: envalid.str(),
       FLICKR_USER_ID: envalid.str(),
     });

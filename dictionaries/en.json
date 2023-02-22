@@ -14,7 +14,7 @@
     "description.l3": "Originally from Russia, moved to\u00A0London\u00A0in\u00A02009.",
     "photoAlt": "Alexander Kachkaev",
     "profiles.openaccess.name": "City Research Online",
-    "profiles.openaccess.description.1": "{publicationCount, number} {publicationCount, plural, one {paper} other {papers}} including ",
+    "profiles.openaccess.description.1": "{paperCount, number} {paperCount, plural, one {paper} other {papers}} including ",
     "profiles.openaccess.description.2": "the\u00A0doctoral\u00A0thesis",
     "profiles.openaccess.description.3": "",
     "profiles.linkedin.name": "LinkedIn",

@@ -14,7 +14,7 @@
     "description.l3": "Вырос\u00A0в\u00A0Пензе, пожил\u00A0в\u00A0Питере, переехал в\u00A0Лондон\u00A0в\u00A02009\u00A0году.",
     "photoAlt": "Александр Качкаев",
     "profiles.openaccess.name": "Сити-рисёч-онлайн",
-    "profiles.openaccess.description.1": "{publicationCount, number} {publicationCount, plural, one {научная работа} few {научные работы} other {научных работ}}, включая\u00A0",
+    "profiles.openaccess.description.1": "{paperCount, number} {paperCount, plural, one {научная работа} few {научные работы} other {научных работ}}, включая\u00A0",
     "profiles.openaccess.description.2": "кандидатскую",
     "profiles.openaccess.description.3": "",
     "profiles.linkedin.name": "Линкд-ин",
