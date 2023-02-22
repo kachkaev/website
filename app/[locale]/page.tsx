@@ -51,6 +51,7 @@ export default async function Page({ params: { locale } }: PageProps) {
           className="overflow-hidden rounded-[5px] bg-gray-300 text-gray-300"
           width={100}
           height={100}
+          priority={true}
           alt={dictionary.index.photoAlt}
           src={photo}
         />
