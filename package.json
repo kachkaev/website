@@ -18,18 +18,10 @@
     "start": "next start"
   },
   "dependencies": {
-    "@formatjs/intl": "^2.6.5",
-    "envalid": "^7.3.1",
-    "js-yaml": "^4.1.0",
-    "next": "13.1.7-canary.27",
-    "playwright": "^1.31.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "server-only": "0.0.1",
-    "sharp": "^0.31.3",
-    "zod": "^3.20.6"
+    "playwright": "^1.31.0"
   },
   "devDependencies": {
+    "@formatjs/intl": "^2.6.5",
     "@kachkaev/eslint-config-react": "^0.5.1",
     "@kachkaev/markdownlint-config": "^0.5.0",
     "@kachkaev/prettier-config": "^1.4.0",
@@ -40,13 +32,21 @@
     "@types/react": "^18.0.23",
     "@types/react-dom": "^18.0.7",
     "autoprefixer": "^10.4.13",
+    "envalid": "^7.3.1",
     "eslint": "^8.32.0",
+    "js-yaml": "^4.1.0",
     "markdownlint-cli": "^0.33.0",
+    "next": "13.1.7-canary.27",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.21",
     "prettier": "^2.8.4",
     "prettier-plugin-tailwindcss": "^0.2.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "server-only": "0.0.1",
+    "sharp": "^0.31.3",
     "tailwindcss": "^3.2.7",
-    "typescript": "4.9.5"
+    "typescript": "4.9.5",
+    "zod": "^3.20.6"
   }
 }
