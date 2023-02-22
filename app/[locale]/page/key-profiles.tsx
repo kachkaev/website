@@ -46,7 +46,7 @@ function KeyProfile({
   );
 }
 
-export async function Openaccess({ locale, dictionary }: KeyProfileProps) {
+async function Openaccess({ locale, dictionary }: KeyProfileProps) {
   const profileInfo = await readProfileInfo("openaccess");
 
   return (
@@ -72,7 +72,7 @@ export async function Openaccess({ locale, dictionary }: KeyProfileProps) {
   );
 }
 
-export async function LinkedIn({ locale, dictionary }: KeyProfileProps) {
+async function LinkedIn({ locale, dictionary }: KeyProfileProps) {
   const profileInfo = await readProfileInfo("linkedin");
 
   return (
@@ -92,7 +92,7 @@ export async function LinkedIn({ locale, dictionary }: KeyProfileProps) {
   );
 }
 
-export async function GitHub({ locale, dictionary }: KeyProfileProps) {
+async function GitHub({ locale, dictionary }: KeyProfileProps) {
   const profileInfo = await readProfileInfo("github");
 
   return (
@@ -118,7 +118,7 @@ export async function GitHub({ locale, dictionary }: KeyProfileProps) {
   );
 }
 
-export async function Osm({ locale, dictionary }: KeyProfileProps) {
+async function Osm({ locale, dictionary }: KeyProfileProps) {
   const profileInfo = await readProfileInfo("osm");
 
   return (
@@ -144,7 +144,7 @@ export async function Osm({ locale, dictionary }: KeyProfileProps) {
   );
 }
 
-export async function Twitter({ locale, dictionary }: KeyProfileProps) {
+async function Twitter({ locale, dictionary }: KeyProfileProps) {
   const profileInfoEn = await readProfileInfo("twitter-en");
   const profileInfoRu = await readProfileInfo("twitter-ru");
   const urlEn = "https://twitter.com/kachkaev";
@@ -178,7 +178,7 @@ export async function Twitter({ locale, dictionary }: KeyProfileProps) {
   );
 }
 
-export async function Flickr({ locale, dictionary }: KeyProfileProps) {
+async function Flickr({ locale, dictionary }: KeyProfileProps) {
   const profileInfo = await readProfileInfo("flickr");
 
   const mostViewedPhotos = profileInfo?.["mostViewedPhotos"] as
@@ -230,6 +230,25 @@ export async function Flickr({ locale, dictionary }: KeyProfileProps) {
         </div>
       )}
       {}
+    </>
+  );
+}
+
+export default async function KeyProfiles(props: KeyProfileProps) {
+  return (
+    <>
+      {/* @ts-expect-error -- server component https://github.com/vercel/next.js/issues/42292 */}
+      <Openaccess {...props} />
+      {/* @ts-expect-error -- server component */}
+      <LinkedIn {...props} />
+      {/* @ts-expect-error -- server component */}
+      <GitHub {...props} />
+      {/* @ts-expect-error -- server component */}
+      <Osm {...props} />
+      {/* @ts-expect-error -- server component */}
+      <Twitter {...props} />
+      {/* @ts-expect-error -- server component */}
+      <Flickr {...props} />
     </>
   );
 }

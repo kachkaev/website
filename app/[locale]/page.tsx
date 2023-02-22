@@ -4,7 +4,7 @@ import Image from "next/image";
 import type { Locale } from "../../i18n-config";
 import { getDictionary } from "../../i18n-server";
 import photo from "../../public/images/alexander_kachkaev.jpg";
-import * as keyProfiles from "./page/key-profiles";
+import KeyProfiles from "./page/key-profiles";
 import Mailto from "./shared/mailto";
 
 interface PageProps {
@@ -59,17 +59,7 @@ export default async function Page({ params: { locale } }: PageProps) {
 
       {/* Key profiles */}
       {/* @ts-expect-error -- server component https://github.com/vercel/next.js/issues/42292 */}
-      <keyProfiles.Openaccess locale={locale} dictionary={dictionary} />
-      {/* @ts-expect-error -- server component */}
-      <keyProfiles.LinkedIn locale={locale} dictionary={dictionary} />
-      {/* @ts-expect-error -- server component */}
-      <keyProfiles.GitHub locale={locale} dictionary={dictionary} />
-      {/* @ts-expect-error -- server component */}
-      <keyProfiles.Osm locale={locale} dictionary={dictionary} />
-      {/* @ts-expect-error -- server component */}
-      <keyProfiles.Twitter locale={locale} dictionary={dictionary} />
-      {/* @ts-expect-error -- server component */}
-      <keyProfiles.Flickr locale={locale} dictionary={dictionary} />
+      <KeyProfiles locale={locale} dictionary={dictionary} />
 
       {/* Misc profiles */}
       <div className="clear-both" />
