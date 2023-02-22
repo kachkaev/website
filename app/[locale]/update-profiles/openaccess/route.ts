@@ -25,3 +25,5 @@ export const GET = generateUpdateProfileHandler({
       return { paperCount };
     }),
 });
+
+export const dynamic = "force-dynamic";

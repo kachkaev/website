@@ -23,3 +23,5 @@ export const GET = generateUpdateProfileHandler({
       return { connectionCount };
     }),
 });
+
+export const dynamic = "force-dynamic";

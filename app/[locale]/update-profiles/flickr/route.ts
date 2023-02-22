@@ -48,3 +48,5 @@ export const GET = generateUpdateProfileHandler({
     };
   },
 });
+
+export const dynamic = "force-dynamic";
