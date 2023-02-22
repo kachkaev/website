@@ -37,7 +37,7 @@ export default async function Page({ params: { locale } }: PageProps) {
         <span>{dictionary.index["description.l1"]}</span>{" "}
         <span>
           {dictionary.index["description.l2.1"]}
-          <a href="http://www.gicentre.net/" className="whitespace-nowrap">
+          <a href="https://www.gicentre.net" className="whitespace-nowrap">
             {dictionary.index["description.l2.2"]}
           </a>
           {dictionary.index["description.l2.3"]}

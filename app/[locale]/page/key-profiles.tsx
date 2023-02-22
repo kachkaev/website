@@ -52,7 +52,7 @@ export async function Openaccess({ locale, dictionary }: KeyProfileProps) {
   return (
     <KeyProfile
       name={dictionary.index["profiles.openaccess.name"]}
-      url="http://openaccess.city.ac.uk/view/creators/Kachkaev=3AA=2E=3A=3A.html"
+      url="https://openaccess.city.ac.uk/view/creators/Kachkaev=3AA=2E=3A=3A.html"
     >
       {profileInfo ? (
         <>
@@ -62,7 +62,7 @@ export async function Openaccess({ locale, dictionary }: KeyProfileProps) {
             "profiles.openaccess.description.1",
             profileInfo,
           )}
-          <a href="http://openaccess.city.ac.uk/12460/">
+          <a href="https://openaccess.city.ac.uk/12460/">
             {dictionary.index["profiles.openaccess.description.2"]}
           </a>
           {dictionary.index["profiles.openaccess.description.3"]}
