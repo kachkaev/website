@@ -32,7 +32,7 @@
     "profiles.twitter.description.2": "and {statusCount, number} ",
     "profiles.twitter.description.3": "in Russian",
     "profiles.flickr.name": "Flickr",
-    "profiles.flickr.description": "{photoCount, number} photos, the most viewed ones:",
+    "profiles.flickr.description": "{photoCount, number} photos",
     "profiles.gitlab.name": "GitLab",
     "profiles.telegram.name": "Telegram",
     "profiles.facebook.name": "Facebook",

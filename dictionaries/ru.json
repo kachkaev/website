@@ -32,7 +32,7 @@
     "profiles.twitter.description.2": "{statusCount, number}\u00A0",
     "profiles.twitter.description.3": "на\u00A0английском",
     "profiles.flickr.name": "Фликр",
-    "profiles.flickr.description": "{photoCount, number} {photoCount, plural, one {фотография} few {фотографии} other {фотографий}}, из\u00A0часто\u00A0просматриваемых:",
+    "profiles.flickr.description": "{photoCount, number} {photoCount, plural, one {фотография} few {фотографии} other {фотографий}}",
     "profiles.gitlab.name": "Гитлаб",
     "profiles.telegram.name": "Телеграм",
     "profiles.facebook.name": "Фейсбук",
