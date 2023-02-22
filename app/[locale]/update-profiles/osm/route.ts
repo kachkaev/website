@@ -1,34 +1,26 @@
-import { NextResponse } from "next/server";
+import { z } from "zod";
 
-import { writeProfileInfo } from "../../shared/profile-infos";
+import {
+  fetchJson,
+  generateUpdateProfileHandler,
+} from "../shared/handler-helpers";
 
-export async function GET() {
-  try {
-    const res = await fetch(
+export const GET = generateUpdateProfileHandler({
+  profileName: "flickr",
+  generateProfileInfo: async () => {
+    const data = await fetchJson(
       "https://www.openstreetmap.org/api/0.6/user/231451.json",
-      {
-        headers: {
-          // @todo re-enable eslint-disable-next-line @typescript-eslint/naming-convention -- third-party API
-          "Content-Type": "application/json",
-        },
-      },
+      z.object({
+        user: z.object({
+          changesets: z.object({ count: z.number() }),
+          traces: z.object({ count: z.number() }),
+        }),
+      }),
     );
-    const { user } = await res.json();
 
-    const changesetCount = user?.changesets?.count;
-    const gpsTraceCount = user?.traces?.count;
-
-    if (!changesetCount || !gpsTraceCount) {
-      throw new Error("Unexpected empty changeset count");
-    }
-    const profileInfo = {
-      changesetCount,
-      gpsTraceCount,
+    return {
+      changesetCount: data.user.changesets.count,
+      gpsTraceCount: data.user.traces.count,
     };
-    await writeProfileInfo("osm", profileInfo);
-
-    return NextResponse.json({ profileInfo });
-  } catch (error: unknown) {
-    return NextResponse.json({ error });
-  }
-}
+  },
+});
