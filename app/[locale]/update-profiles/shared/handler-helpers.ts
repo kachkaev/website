@@ -45,10 +45,13 @@ export async function extractDataFromWebPage<Data>(
     });
 
     return await handler({ page });
+    // eslint-disable-next-line no-useless-catch -- @todo implement proper error handling (save screenshot, error message, etc.)
+  } catch (error: unknown) {
+    // if (page) {
+    //   await page.screenshot({ path: "/Users/ak/Desktop/screenshot.png" });
+    // }
+    throw error;
   } finally {
-    if (page) {
-      await page.screenshot({ path: "/Users/ak/Desktop/screenshot.png" });
-    }
     await page?.close();
     await context?.close();
     await browser?.close();
