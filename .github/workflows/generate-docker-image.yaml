@@ -14,4 +14,4 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: ${{ env.GITHUB_REPOSITORY }}:${{ env.SHORT_SHA }}
+          tags: ${{ github.repository }}:${{ env.SHORT_SHA }}
