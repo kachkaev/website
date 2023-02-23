@@ -7,8 +7,11 @@ jobs:
     name: Run
     runs-on: ubuntu-22.04
     steps:
+      - name: Generate SHORT_SHA environment variable
+        run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
+
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: user/app:latest
+          tags: ${{ env.GITHUB_REPOSITORY }}:${{ env.SHORT_SHA }}
