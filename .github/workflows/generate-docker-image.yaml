@@ -1,0 +1,14 @@
+name: Generate Docker image
+on:
+  workflow_dispatch:
+
+jobs:
+  run:
+    name: Run
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Build and push
+        uses: docker/build-push-action@v4
+        with:
+          push: true
+          tags: user/app:latest
