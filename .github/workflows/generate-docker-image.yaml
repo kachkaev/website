@@ -13,5 +13,6 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
+          registry: ghcr.io
           push: true
-          tags: ${{ github.repository }}:${{ env.SHORT_SHA }}
+          tags: ghcr.io/${{ github.repository }}:${{ env.SHORT_SHA }}
