@@ -1,3 +1,6 @@
+import fs from "node:fs/promises";
+import path from "node:path";
+
 import axios, { AxiosProxyConfig } from "axios";
 import { NextResponse } from "next/server";
 import type { Browser, BrowserContext, Page } from "playwright";
@@ -77,6 +80,7 @@ export async function extractDataFromWebPage<Data>({
 
     return await handler({ page });
   } catch (error: unknown) {
+    await fs.mkdir(path.dirname(errorPathPrefix), { recursive: true });
     await context?.tracing.stop({
       path: `${errorPathPrefix}.playwright-trace.zip`,
     });
