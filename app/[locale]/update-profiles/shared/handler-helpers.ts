@@ -1,9 +1,32 @@
+import axios, { AxiosProxyConfig } from "axios";
 import { NextResponse } from "next/server";
 import type { Browser, BrowserContext, Page } from "playwright";
 import type { TypeOf, ZodType } from "zod";
 
 import { cleanProcessEnv, envalid } from "../../shared/env";
 import { writeProfileInfo } from "../../shared/profile-infos";
+
+function getProxyServerUrl(): string | undefined {
+  const env = cleanProcessEnv({
+    UPDATE_PROFILE_PROXY_SERVER_URL: envalid.str({ default: "" }),
+  });
+
+  return env.UPDATE_PROFILE_PROXY_SERVER_URL || undefined;
+}
+
+function getProxyServerAxiosConfig(): AxiosProxyConfig | false {
+  const proxyServerUrl = getProxyServerUrl();
+  if (!proxyServerUrl) {
+    return false;
+  }
+  const parsedProxyServerUrl = new URL(proxyServerUrl);
+
+  return {
+    protocol: parsedProxyServerUrl.protocol,
+    host: parsedProxyServerUrl.hostname,
+    port: Number.parseInt(parsedProxyServerUrl.port),
+  };
+}
 
 export async function extractDataFromWebPage<Data>(
   handler: (payload: { page: Page }) => Promise<Data>,
@@ -31,8 +54,11 @@ export async function extractDataFromWebPage<Data>(
       headless: env.PLAYWRIGHT_HEADLESS,
     });
 
+    const proxyServerUrl = getProxyServerUrl();
+
     context = await browser.newContext({
       userAgent: env.PLAYWRIGHT_USER_AGENT,
+      ...(proxyServerUrl ? { proxy: { server: proxyServerUrl } } : {}),
     });
 
     context.setDefaultTimeout(5000);
@@ -62,13 +88,15 @@ export async function fetchJson<Schema extends ZodType>(
   url: string,
   schema: Schema,
 ): Promise<TypeOf<Schema>> {
-  const res = await fetch(url, {
+  const response = await axios.get(url, {
+    responseType: "json",
     headers: {
       "Content-Type": "application/json",
     },
+    proxy: getProxyServerAxiosConfig(),
   });
 
-  return schema.parse(await res.json()) as unknown;
+  return schema.parse(response.data) as unknown;
 }
 
 export function generateUpdateProfileHandler({
