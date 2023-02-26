@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { cleanProcessEnv, envalid } from "../shared/env";
+import { cleanProcessEnv, envalid } from "../../shared/env";
 import {
   fetchJson,
   generateUpdateProfileHandler,

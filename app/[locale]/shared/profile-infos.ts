@@ -3,9 +3,19 @@ import path from "node:path";
 
 import { dump, load } from "js-yaml";
 
-const profileInfosDirPath = path.resolve(
-  process.env["PROFILE_INFOS_DIR"] ?? "./profile-infos",
-);
+import { cleanProcessEnv, envalid } from "./env";
+
+function getProfileInfosDirPath(): string {
+  const env = cleanProcessEnv({
+    PROFILE_INFOS_DIR: envalid.str({
+      default: "./profile-infos",
+    }),
+  });
+
+  return path.resolve(env.PROFILE_INFOS_DIR);
+}
+
+const profileInfosDirPath = getProfileInfosDirPath();
 
 export async function readProfileInfo(
   profileName: string,
@@ -26,6 +36,7 @@ export async function writeProfileInfo(
   profileName: string,
   profileInfo: Record<string, unknown>,
 ) {
+  await fs.mkdir(profileInfosDirPath, { recursive: true });
   await fs.writeFile(
     path.resolve(profileInfosDirPath, `${profileName}.yaml`),
     dump(profileInfo),

@@ -42,8 +42,9 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone  ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static  ./.next/static
 COPY --from=builder --chown=nextjs:nodejs /app/public  ./public
 
-RUN mkdir ./profile-infos \
-  && chown nextjs:nodejs ./profile-infos
+RUN mkdir -p /data/profile-infos \
+  && chown -R nextjs:nodejs /data
+ENV PROFILE_INFOS_DIR /data/profile-infos
 
 USER nextjs
 

@@ -2,8 +2,8 @@ import { NextResponse } from "next/server";
 import type { Browser, BrowserContext, Page } from "playwright";
 import type { TypeOf, ZodType } from "zod";
 
+import { cleanProcessEnv, envalid } from "../../shared/env";
 import { writeProfileInfo } from "../../shared/profile-infos";
-import { cleanProcessEnv, envalid } from "./env";
 
 export async function extractDataFromWebPage<Data>(
   handler: (payload: { page: Page }) => Promise<Data>,
