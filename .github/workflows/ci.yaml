@@ -9,7 +9,7 @@ on:
       - main
 
 env:
-  PNPM_VERSION: 7.27.1
+  PNPM_VERSION: 7.28.0
 
 jobs:
   lint:
