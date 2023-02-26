@@ -6,7 +6,7 @@ import {
 } from "../shared/handler-helpers";
 
 export const GET = generateUpdateProfileHandler({
-  profileName: "flickr",
+  profileName: "osm",
   generateProfileInfo: async () => {
     const data = await fetchJson(
       "https://www.openstreetmap.org/api/0.6/user/231451.json",
