@@ -16,6 +16,10 @@ function getProfileInfosDirPath(): string {
 }
 
 const profileInfosDirPath = getProfileInfosDirPath();
+const profileInfosUpdateErrorsDirPath = path.resolve(
+  profileInfosDirPath,
+  "update-errors",
+);
 
 export async function readProfileInfo(
   profileName: string,
@@ -41,5 +45,26 @@ export async function writeProfileInfo(
     path.resolve(profileInfosDirPath, `${profileName}.yaml`),
     dump(profileInfo),
     "utf8",
+  );
+}
+
+export async function ensureProfileInfosUpdateErrorsDir(): Promise<void> {
+  await fs.mkdir(path.resolve(profileInfosUpdateErrorsDirPath), {
+    recursive: true,
+  });
+}
+
+export function generateUpdateProfileErrorPathPrefix(
+  profileName: string,
+): string {
+  const stringifiedTime = new Date()
+    .toISOString()
+    .slice(0, 19)
+    .replace("T", "-")
+    .replaceAll(/:/g, "");
+
+  return path.resolve(
+    profileInfosUpdateErrorsDirPath,
+    `${stringifiedTime}-${profileName}`,
   );
 }

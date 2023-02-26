@@ -28,9 +28,13 @@ function getProxyServerAxiosConfig(): AxiosProxyConfig | false {
   };
 }
 
-export async function extractDataFromWebPage<Data>(
-  handler: (payload: { page: Page }) => Promise<Data>,
-): Promise<Data> {
+export async function extractDataFromWebPage<Data>({
+  errorPathPrefix,
+  handler,
+}: {
+  errorPathPrefix: string;
+  handler: (payload: { page: Page }) => Promise<Data>;
+}): Promise<Data> {
   const env = cleanProcessEnv({
     PLAYWRIGHT_HEADLESS: envalid.bool({ default: true }),
     PLAYWRIGHT_USER_AGENT: envalid.str({
@@ -63,6 +67,7 @@ export async function extractDataFromWebPage<Data>(
 
     context.setDefaultTimeout(5000);
     context.setDefaultNavigationTimeout(10_000);
+    await context.tracing.start({ snapshots: true, screenshots: true });
 
     page = await context.newPage();
     await page.setViewportSize({
@@ -71,11 +76,10 @@ export async function extractDataFromWebPage<Data>(
     });
 
     return await handler({ page });
-    // eslint-disable-next-line no-useless-catch -- @todo implement proper error handling (save screenshot, error message, etc.)
   } catch (error: unknown) {
-    // if (page) {
-    //   await page.screenshot({ path: "/Users/ak/Desktop/screenshot.png" });
-    // }
+    await context?.tracing.stop({
+      path: `${errorPathPrefix}.playwright-trace.zip`,
+    });
     throw error;
   } finally {
     await page?.close();
