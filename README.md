@@ -79,7 +79,7 @@ kubectl apply -f k8s/cron-jobs.yaml
 ### App image updates
 
 ```sh
-NEW_IMAGE_TAG=?? ## e.g. first 8 characters in the latest commit hash
+NEW_IMAGE_TAG=$(git rev-parse --short HEAD)
 kubectl set image --namespace=website deployment/website-app main=ghcr.io/kachkaev/website:${NEW_IMAGE_TAG}
 ```
 
