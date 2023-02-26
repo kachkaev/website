@@ -8,7 +8,7 @@ import {
 const maxReposPerPage = 100;
 
 export const GET = generateUpdateProfileHandler({
-  profileName: "flickr",
+  profileName: "github",
   generateProfileInfo: async () => {
     const schema = z.array(
       z.object({
