@@ -1,0 +1,130 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: website-app
+  namespace: website
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: website
+      part: website-app
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: website
+        part: website-app
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: website-data
+      containers:
+        - name: main
+          image: ghcr.io/kachkaev/website:latest
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: data
+              mountPath: /data
+          env:
+            - name: BASE_URL_EN
+              value: https://test.kachkaev.uk
+            - name: BASE_URL_RU
+              value: https://test.kachkaev.ru
+            - name: PROFILE_INFOS_DIR
+              value: /data/profile-infos
+            - name: FLICKR_USER_ID
+              valueFrom:
+                secretKeyRef:
+                  name: flickr-api
+                  key: user_id
+            - name: FLICKR_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: flickr-api
+                  key: api_key
+            - name: UPDATE_PROFILE_SECURITY_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: update-profile
+                  key: security-token
+            - name: UPDATE_PROFILE_PROXY_SERVER_URL
+              valueFrom:
+                secretKeyRef:
+                  name: update-profile
+                  key: proxy-server-url
+          readinessProbe:
+            tcpSocket:
+              port: 3000
+            initialDelaySeconds: 2
+            periodSeconds: 1
+          livenessProbe:
+            tcpSocket:
+              port: 3000
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          resources:
+            requests:
+              cpu: 200m
+              memory: 100Mi
+            limits:
+              cpu: 1500m
+              memory: 500Mi
+      dnsPolicy: None
+      dnsConfig:
+        nameservers:
+          - 1.1.1.1
+          - 8.8.8.8
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: website-app
+  namespace: website
+spec:
+  ports:
+    - name: http
+      targetPort: 3000
+      port: 3000
+  selector:
+    app: website
+    part: website-app
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: website-app
+  namespace: website
+  annotations:
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.tls.certresolver: letsencrypt
+spec:
+  rules:
+    - host: test.kachkaev.ru
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: website-app
+                port:
+                  number: 3000
+    - host: test.kachkaev.uk
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: website-app
+                port:
+                  number: 3000

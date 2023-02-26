@@ -1,0 +1,209 @@
+---
+kind: CronJob
+apiVersion: batch/v1
+metadata:
+  name: website-cron-job-update-flickr
+  namespace: website
+spec:
+  schedule: "21 2 * * *" ## 2:21 UTC
+  successfulJobsHistoryLimit: 16
+  failedJobsHistoryLimit: 32
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: main
+              image: curlimages/curl:7.88.1
+              imagePullPolicy: IfNotPresent
+              command:
+                - /bin/sh
+                - -ec
+                - "curl --fail https://test.kachkaev.uk/update-profiles/flickr?${UPDATE_PROFILE_SECURITY_TOKEN}"
+              env:
+                - name: UPDATE_PROFILE_SECURITY_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: update-profile
+                      key: security-token
+          restartPolicy: Never
+
+---
+kind: CronJob
+apiVersion: batch/v1
+metadata:
+  name: website-cron-job-update-github
+  namespace: website
+spec:
+  schedule: "22 2 * * *"
+  successfulJobsHistoryLimit: 16
+  failedJobsHistoryLimit: 32
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: main
+              image: curlimages/curl:7.88.1
+              imagePullPolicy: IfNotPresent
+              command:
+                - /bin/sh
+                - -ec
+                - "curl --fail https://test.kachkaev.uk/update-profiles/github?${UPDATE_PROFILE_SECURITY_TOKEN}"
+              env:
+                - name: UPDATE_PROFILE_SECURITY_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: update-profile
+                      key: security-token
+          restartPolicy: Never
+
+---
+kind: CronJob
+apiVersion: batch/v1
+metadata:
+  name: website-cron-job-update-openaccess
+  namespace: website
+spec:
+  schedule: "23 2 * * 0" ## 2:23 UTC on Sundays
+  successfulJobsHistoryLimit: 16
+  failedJobsHistoryLimit: 32
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: main
+              image: curlimages/curl:7.88.1
+              imagePullPolicy: IfNotPresent
+              command:
+                - /bin/sh
+                - -ec
+                - "curl --fail https://test.kachkaev.uk/update-profiles/openaccess?${UPDATE_PROFILE_SECURITY_TOKEN}"
+              env:
+                - name: UPDATE_PROFILE_SECURITY_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: update-profile
+                      key: security-token
+          restartPolicy: Never
+
+---
+kind: CronJob
+apiVersion: batch/v1
+metadata:
+  name: website-cron-job-update-linkedin
+  namespace: website
+spec:
+  schedule: "24 2 * * *"
+  successfulJobsHistoryLimit: 16
+  failedJobsHistoryLimit: 32
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: main
+              image: curlimages/curl:7.88.1
+              imagePullPolicy: IfNotPresent
+              command:
+                - /bin/sh
+                - -ec
+                - "curl --fail https://test.kachkaev.uk/update-profiles/linkedin?${UPDATE_PROFILE_SECURITY_TOKEN}"
+              env:
+                - name: UPDATE_PROFILE_SECURITY_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: update-profile
+                      key: security-token
+          restartPolicy: Never
+
+---
+kind: CronJob
+apiVersion: batch/v1
+metadata:
+  name: website-cron-job-update-osm
+  namespace: website
+spec:
+  schedule: "25 2 * * *"
+  successfulJobsHistoryLimit: 16
+  failedJobsHistoryLimit: 32
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: main
+              image: curlimages/curl:7.88.1
+              imagePullPolicy: IfNotPresent
+              command:
+                - /bin/sh
+                - -ec
+                - "curl --fail https://test.kachkaev.uk/update-profiles/osm?${UPDATE_PROFILE_SECURITY_TOKEN}"
+              env:
+                - name: UPDATE_PROFILE_SECURITY_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: update-profile
+                      key: security-token
+          restartPolicy: Never
+
+---
+kind: CronJob
+apiVersion: batch/v1
+metadata:
+  name: website-cron-job-update-twitter-en
+  namespace: website
+spec:
+  schedule: "26 2,10,18 * * *" ## 2:26, 10:26, 18:26 UTC
+  successfulJobsHistoryLimit: 16
+  failedJobsHistoryLimit: 32
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: main
+              image: curlimages/curl:7.88.1
+              imagePullPolicy: IfNotPresent
+              command:
+                - /bin/sh
+                - -ec
+                - "curl --fail https://test.kachkaev.uk/update-profiles/twitter-en?${UPDATE_PROFILE_SECURITY_TOKEN}"
+              env:
+                - name: UPDATE_PROFILE_SECURITY_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: update-profile
+                      key: security-token
+          restartPolicy: Never
+
+---
+kind: CronJob
+apiVersion: batch/v1
+metadata:
+  name: website-cron-job-update-twitter-ru
+  namespace: website
+spec:
+  schedule: "27 2,10,18 * * *" ## 2:27, 10:27, 18:27 UTC
+  successfulJobsHistoryLimit: 16
+  failedJobsHistoryLimit: 32
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: main
+              image: curlimages/curl:7.88.1
+              imagePullPolicy: IfNotPresent
+              command:
+                - /bin/sh
+                - -ec
+                - "curl --fail https://test.kachkaev.uk/update-profiles/twitter-ru?${UPDATE_PROFILE_SECURITY_TOKEN}"
+              env:
+                - name: UPDATE_PROFILE_SECURITY_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: update-profile
+                      key: security-token
+          restartPolicy: Never
