@@ -19,9 +19,11 @@ spec:
               command:
                 - /bin/sh
                 - -ec
-                - "curl --fail https://test.kachkaev.uk/update-profiles/flickr?${UPDATE_PROFILE_SECURITY_TOKEN}"
+                - curl --no-progress-meter --fail https://test.kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}; [ $? -eq 0 ]  || exit 1
               env:
-                - name: UPDATE_PROFILE_SECURITY_TOKEN
+                - name: PROFILE_NAME
+                  value: flickr
+                - name: SECURITY_TOKEN
                   valueFrom:
                     secretKeyRef:
                       name: update-profile
@@ -49,9 +51,11 @@ spec:
               command:
                 - /bin/sh
                 - -ec
-                - "curl --fail https://test.kachkaev.uk/update-profiles/github?${UPDATE_PROFILE_SECURITY_TOKEN}"
+                - curl --no-progress-meter --fail https://test.kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}; [ $? -eq 0 ]  || exit 1
               env:
-                - name: UPDATE_PROFILE_SECURITY_TOKEN
+                - name: PROFILE_NAME
+                  value: github
+                - name: SECURITY_TOKEN
                   valueFrom:
                     secretKeyRef:
                       name: update-profile
@@ -79,9 +83,11 @@ spec:
               command:
                 - /bin/sh
                 - -ec
-                - "curl --fail https://test.kachkaev.uk/update-profiles/openaccess?${UPDATE_PROFILE_SECURITY_TOKEN}"
+                - curl --no-progress-meter --fail https://test.kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}; [ $? -eq 0 ]  || exit 1
               env:
-                - name: UPDATE_PROFILE_SECURITY_TOKEN
+                - name: PROFILE_NAME
+                  value: openaccess
+                - name: SECURITY_TOKEN
                   valueFrom:
                     secretKeyRef:
                       name: update-profile
@@ -109,9 +115,11 @@ spec:
               command:
                 - /bin/sh
                 - -ec
-                - "curl --fail https://test.kachkaev.uk/update-profiles/linkedin?${UPDATE_PROFILE_SECURITY_TOKEN}"
+                - curl --no-progress-meter --fail https://test.kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}; [ $? -eq 0 ]  || exit 1
               env:
-                - name: UPDATE_PROFILE_SECURITY_TOKEN
+                - name: PROFILE_NAME
+                  value: linkedin
+                - name: SECURITY_TOKEN
                   valueFrom:
                     secretKeyRef:
                       name: update-profile
@@ -139,9 +147,11 @@ spec:
               command:
                 - /bin/sh
                 - -ec
-                - "curl --fail https://test.kachkaev.uk/update-profiles/osm?${UPDATE_PROFILE_SECURITY_TOKEN}"
+                - curl --no-progress-meter --fail https://test.kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}; [ $? -eq 0 ]  || exit 1
               env:
-                - name: UPDATE_PROFILE_SECURITY_TOKEN
+                - name: PROFILE_NAME
+                  value: osm
+                - name: SECURITY_TOKEN
                   valueFrom:
                     secretKeyRef:
                       name: update-profile
@@ -169,9 +179,11 @@ spec:
               command:
                 - /bin/sh
                 - -ec
-                - "curl --fail https://test.kachkaev.uk/update-profiles/twitter-en?${UPDATE_PROFILE_SECURITY_TOKEN}"
+                - curl --no-progress-meter --fail https://test.kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}; [ $? -eq 0 ]  || exit 1
               env:
-                - name: UPDATE_PROFILE_SECURITY_TOKEN
+                - name: PROFILE_NAME
+                  value: twitter-en
+                - name: SECURITY_TOKEN
                   valueFrom:
                     secretKeyRef:
                       name: update-profile
@@ -199,9 +211,11 @@ spec:
               command:
                 - /bin/sh
                 - -ec
-                - "curl --fail https://test.kachkaev.uk/update-profiles/twitter-ru?${UPDATE_PROFILE_SECURITY_TOKEN}"
+                - curl --no-progress-meter --fail https://test.kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}; [ $? -eq 0 ]  || exit 1
               env:
-                - name: UPDATE_PROFILE_SECURITY_TOKEN
+                - name: PROFILE_NAME
+                  value: twitter-ru
+                - name: SECURITY_TOKEN
                   valueFrom:
                     secretKeyRef:
                       name: update-profile
