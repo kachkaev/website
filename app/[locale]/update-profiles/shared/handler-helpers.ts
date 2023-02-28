@@ -137,9 +137,10 @@ export function generateUpdateProfileHandler({
 
       return NextResponse.json({ profileInfo });
     } catch (error: unknown) {
-      return NextResponse.json({
-        error: error instanceof Error ? error.message : error,
-      });
+      return NextResponse.json(
+        { error: error instanceof Error ? error.message : error },
+        { status: 500 },
+      );
     }
   };
 }
