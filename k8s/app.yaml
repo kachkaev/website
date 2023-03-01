@@ -34,9 +34,9 @@ spec:
               mountPath: /data
           env:
             - name: BASE_URL_EN
-              value: https://test.kachkaev.uk
+              value: https://kachkaev.uk
             - name: BASE_URL_RU
-              value: https://test.kachkaev.ru
+              value: https://kachkaev.ru
             - name: PROFILE_INFOS_DIR
               value: /data/profile-infos
             - name: FLICKR_USER_ID
@@ -110,7 +110,7 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls.certresolver: letsencrypt
 spec:
   rules:
-    - host: test.kachkaev.ru
+    - host: kachkaev.ru
       http:
         paths:
           - pathType: Prefix
@@ -120,7 +120,7 @@ spec:
                 name: website-app
                 port:
                   number: 3000
-    - host: test.kachkaev.uk
+    - host: kachkaev.uk
       http:
         paths:
           - pathType: Prefix

@@ -9,10 +9,10 @@
   - https://github.com/MauricioRobayo/nextjs-google-analytics/issues/304
 - [x] chron job for fetching profile infos
 - [x] 404s (temp solution)
-- [ ] locale animation
 
 ### Post-launch
 
+- [ ] locale animation
 - [ ] nbprogress
   - https://github.com/vercel/next.js/issues/45499
   - https://github.com/apal21/nextjs-progressbar/issues/86

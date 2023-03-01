@@ -19,7 +19,7 @@ spec:
               command:
                 - /bin/sh
                 - -ec
-                - curl --no-progress-meter --fail https://test.kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}; [ $? -eq 0 ]  || exit 1
+                - curl --no-progress-meter --fail https://kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}; [ $? -eq 0 ]  || exit 1
               env:
                 - name: PROFILE_NAME
                   value: flickr
@@ -51,7 +51,7 @@ spec:
               command:
                 - /bin/sh
                 - -ec
-                - curl --no-progress-meter --fail https://test.kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}; [ $? -eq 0 ]  || exit 1
+                - curl --no-progress-meter --fail https://kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}; [ $? -eq 0 ]  || exit 1
               env:
                 - name: PROFILE_NAME
                   value: github
@@ -83,7 +83,7 @@ spec:
               command:
                 - /bin/sh
                 - -ec
-                - curl --no-progress-meter --fail https://test.kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}; [ $? -eq 0 ]  || exit 1
+                - curl --no-progress-meter --fail https://kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}; [ $? -eq 0 ]  || exit 1
               env:
                 - name: PROFILE_NAME
                   value: openaccess
@@ -115,7 +115,7 @@ spec:
               command:
                 - /bin/sh
                 - -ec
-                - curl --no-progress-meter --fail https://test.kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}; [ $? -eq 0 ]  || exit 1
+                - curl --no-progress-meter --fail https://kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}; [ $? -eq 0 ]  || exit 1
               env:
                 - name: PROFILE_NAME
                   value: linkedin
@@ -147,7 +147,7 @@ spec:
               command:
                 - /bin/sh
                 - -ec
-                - curl --no-progress-meter --fail https://test.kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}; [ $? -eq 0 ]  || exit 1
+                - curl --no-progress-meter --fail https://kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}; [ $? -eq 0 ]  || exit 1
               env:
                 - name: PROFILE_NAME
                   value: osm
@@ -179,7 +179,7 @@ spec:
               command:
                 - /bin/sh
                 - -ec
-                - curl --no-progress-meter --fail https://test.kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}; [ $? -eq 0 ]  || exit 1
+                - curl --no-progress-meter --fail https://kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}; [ $? -eq 0 ]  || exit 1
               env:
                 - name: PROFILE_NAME
                   value: twitter-en
@@ -211,7 +211,7 @@ spec:
               command:
                 - /bin/sh
                 - -ec
-                - curl --no-progress-meter --fail https://test.kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}; [ $? -eq 0 ]  || exit 1
+                - curl --no-progress-meter --fail https://kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}; [ $? -eq 0 ]  || exit 1
               env:
                 - name: PROFILE_NAME
                   value: twitter-ru
