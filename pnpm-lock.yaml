@@ -1,5 +1,10 @@
 lockfileVersion: 5.4
 
+patchedDependencies:
+  next@13.2.3-canary.1:
+    hash: cwf24jdkxzduyq7efpvpdchaqm
+    path: patches/next@13.2.3-canary.1.patch
+
 specifiers:
   '@formatjs/intl': 2.6.7
   '@kachkaev/eslint-config-react': 0.5.1
@@ -51,7 +56,7 @@ devDependencies:
   eslint: 8.35.0
   js-yaml: 4.1.0
   markdownlint-cli: 0.33.0
-  next: 13.2.3-canary.1_biqbaboplfbrettd7655fr4n2y
+  next: 13.2.3-canary.1_cwf24jdkxzduyq7efpvpdchaqm_biqbaboplfbrettd7655fr4n2y
   npm-run-all: 4.1.5
   postcss: 8.4.21
   prettier: 2.8.4
@@ -2307,7 +2312,7 @@ packages:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
 
-  /next/13.2.3-canary.1_biqbaboplfbrettd7655fr4n2y:
+  /next/13.2.3-canary.1_cwf24jdkxzduyq7efpvpdchaqm_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-t6QV+oTD2xJ4oEVgGkekvnVNShZf+aBdD8SBLhwg4vOH9fN5WBq1khjXIfqXPMERXpuzA2GT5qyHIzl+Y9n6Jg==}
     engines: {node: '>=14.6.0'}
     hasBin: true
@@ -2353,6 +2358,7 @@ packages:
       - '@babel/core'
       - babel-plugin-macros
     dev: true
+    patched: true
 
   /nice-try/1.0.5:
     resolution: {integrity: sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==}

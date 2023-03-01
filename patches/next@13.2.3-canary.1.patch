@@ -1,0 +1,13 @@
+diff --git a/dist/cli/next-lint.js b/dist/cli/next-lint.js
+index ecd83a18b2455bf07c493d338ae5cd72b049b481..ec0962aa2e5fbadd1e5584d64106d85960c1ff72 100644
+--- a/dist/cli/next-lint.js
++++ b/dist/cli/next-lint.js
+@@ -201,7 +201,7 @@ const nextLint = async (argv)=>{
+     const { pagesDir , appDir  } = (0, _findPagesDir).findPagesDir(baseDir, !!nextConfig.experimental.appDir);
+     await (0, _verifyTypeScriptSetup).verifyTypeScriptSetup({
+         dir: baseDir,
+-        distDir,
++        distDir: nextConfig.distDir,
+         intentDirs: [
+             pagesDir,
+             appDir
