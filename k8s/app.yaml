@@ -49,6 +49,8 @@ spec:
                 secretKeyRef:
                   name: flickr-api
                   key: api_key
+            - name: GA_MEASUREMENT_ID
+              value: G-J6MN46V0VL
             - name: UPDATE_PROFILE_SECURITY_TOKEN
               valueFrom:
                 secretKeyRef:

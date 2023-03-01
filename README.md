@@ -3,7 +3,7 @@
 ## TODO
 
 - [x] location of site data → env
-- [ ] google analytics
+- [x] google analytics
   - https://github.com/MauricioRobayo/nextjs-google-analytics/issues/304
 - [x] chron job for fetching profile infos
 - [ ] locale animation
