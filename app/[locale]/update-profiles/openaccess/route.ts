@@ -14,6 +14,7 @@ export const GET = generateUpdateProfileHandler({
       handler: async ({ page }) => {
         await page.goto(
           "https://openaccess.city.ac.uk/view/creators/Kachkaev=3AA=2E=3A=3A.html",
+          { waitUntil: "domcontentloaded" },
         );
 
         const rawPaperCount = await page

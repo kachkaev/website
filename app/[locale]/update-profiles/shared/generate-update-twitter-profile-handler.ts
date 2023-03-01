@@ -17,7 +17,9 @@ export function generateUpdateTwitterProfileHandler({
       extractDataFromWebPage({
         errorPathPrefix: generateUpdateProfileErrorPathPrefix(profileName),
         handler: async ({ page }) => {
-          await page.goto(`https://twitter.com/${twitterAccountId}`);
+          await page.goto(`https://twitter.com/${twitterAccountId}`, {
+            waitUntil: "domcontentloaded",
+          });
           const rawTweetCount = await page.locator("h2+div").textContent();
           const tweetCount = Number.parseInt(rawTweetCount ?? "");
 

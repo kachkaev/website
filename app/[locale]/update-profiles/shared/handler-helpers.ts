@@ -69,7 +69,7 @@ export async function extractDataFromWebPage<Data>({
     });
 
     context.setDefaultTimeout(5000);
-    context.setDefaultNavigationTimeout(10_000);
+    context.setDefaultNavigationTimeout(15_000);
     await context.tracing.start({ snapshots: true, screenshots: true });
 
     page = await context.newPage();

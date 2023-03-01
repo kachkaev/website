@@ -12,7 +12,9 @@ export const GET = generateUpdateProfileHandler({
     extractDataFromWebPage({
       errorPathPrefix: generateUpdateProfileErrorPathPrefix(profileName),
       handler: async ({ page }) => {
-        await page.goto("https://www.linkedin.com/in/kachkaev/");
+        await page.goto("https://www.linkedin.com/in/kachkaev/", {
+          waitUntil: "domcontentloaded",
+        });
 
         const rawConnectionCount = await page
           .locator(".top-card__subline-item:last-child")
