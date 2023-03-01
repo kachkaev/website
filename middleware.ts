@@ -34,9 +34,18 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(newUrl);
   }
 
-  newUrl.pathname = `/${
-    localeByHost[geRequestHost(request) ?? ""] ?? i18n.defaultLocale
-  }${newUrl.pathname}`;
+  const locale =
+    localeByHost[geRequestHost(request) ?? ""] ?? i18n.defaultLocale;
+
+  // @todo Remove when catch-all ‘not found’ pages are implemented
+  const existingPathnames = ["/", "/photos"];
+  if (!existingPathnames.includes(newUrl.pathname)) {
+    newUrl.pathname = `/${locale}/404`;
+
+    return NextResponse.rewrite(newUrl, { status: 404 });
+  }
+
+  newUrl.pathname = `/${locale}${newUrl.pathname}`;
 
   return NextResponse.rewrite(newUrl);
 }

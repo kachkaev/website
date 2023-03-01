@@ -2,15 +2,21 @@
 
 ## TODO
 
+### Pre-launch
+
 - [x] location of site data → env
 - [x] google analytics
   - https://github.com/MauricioRobayo/nextjs-google-analytics/issues/304
 - [x] chron job for fetching profile infos
+- [x] 404s (temp solution)
 - [ ] locale animation
-- [ ] 404s
+
+### Post-launch
+
 - [ ] nbprogress
   - https://github.com/vercel/next.js/issues/45499
   - https://github.com/apal21/nextjs-progressbar/issues/86
+- [ ] 404s (permanent solution)
 
 ## Docker
 
