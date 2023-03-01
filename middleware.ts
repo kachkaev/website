@@ -38,8 +38,16 @@ export function middleware(request: NextRequest) {
     localeByHost[geRequestHost(request) ?? ""] ?? i18n.defaultLocale;
 
   // @todo Remove when catch-all ‘not found’ pages are implemented
-  const existingPathnames = ["/", "/photos"];
-  if (!existingPathnames.includes(newUrl.pathname)) {
+  const existingPathnamePatterns = [
+    /^\/$/,
+    /^\/photos$/,
+    /^\/update-profiles\//,
+  ];
+  if (
+    !existingPathnamePatterns.some((pathnamePattern) =>
+      pathnamePattern.test(newUrl.pathname),
+    )
+  ) {
     newUrl.pathname = `/${locale}/404`;
 
     return NextResponse.rewrite(newUrl, { status: 404 });
