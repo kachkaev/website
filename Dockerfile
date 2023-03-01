@@ -11,6 +11,7 @@ FROM base AS deps
 WORKDIR /app
 
 COPY package.json pnpm-lock.yaml ./
+COPY patches ./patches
 
 RUN pnpm install --frozen-lockfile
 
@@ -33,6 +34,7 @@ RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
 COPY package.json pnpm-lock.yaml ./
+COPY patches ./patches
 
 RUN pnpm install --frozen-lockfile --production \
   && pnpm playwright install-deps firefox \
