@@ -25,7 +25,7 @@
     "@kachkaev/eslint-config-react": "0.5.1",
     "@kachkaev/markdownlint-config": "0.5.0",
     "@kachkaev/prettier-config": "1.4.0",
-    "@next/eslint-plugin-next": "13.2.3-canary.1",
+    "@next/eslint-plugin-next": "13.2.4-canary.1",
     "@tsconfig/node-lts-strictest-esm": "18.12.1",
     "@types/js-yaml": "4.0.5",
     "@types/node": "18.14.2",
@@ -37,7 +37,7 @@
     "eslint": "8.35.0",
     "js-yaml": "4.1.0",
     "markdownlint-cli": "0.33.0",
-    "next": "13.2.3-canary.1",
+    "next": "13.2.4-canary.1",
     "npm-run-all": "4.1.5",
     "postcss": "8.4.21",
     "prettier": "2.8.4",
@@ -49,10 +49,5 @@
     "tailwindcss": "3.2.7",
     "typescript": "4.9.5",
     "zod": "3.20.6"
-  },
-  "pnpm": {
-    "patchedDependencies": {
-      "next@13.2.3-canary.1": "patches/next@13.2.3-canary.1.patch"
-    }
   }
 }
