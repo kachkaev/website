@@ -21,7 +21,8 @@ spec:
                 allowPrivilegeEscalation: false
                 capabilities:
                   drop: [ALL]
-                runAsUser: 999
+                readOnlyRootFilesystem: true
+                runAsUser: 10001
               command:
                 - /bin/sh
                 - -ec
@@ -66,7 +67,8 @@ spec:
                 allowPrivilegeEscalation: false
                 capabilities:
                   drop: [ALL]
-                runAsUser: 999
+                readOnlyRootFilesystem: true
+                runAsUser: 10001
               command:
                 - /bin/sh
                 - -ec
@@ -111,7 +113,8 @@ spec:
                 allowPrivilegeEscalation: false
                 capabilities:
                   drop: [ALL]
-                runAsUser: 999
+                readOnlyRootFilesystem: true
+                runAsUser: 10001
               command:
                 - /bin/sh
                 - -ec
@@ -156,7 +159,8 @@ spec:
                 allowPrivilegeEscalation: false
                 capabilities:
                   drop: [ALL]
-                runAsUser: 999
+                readOnlyRootFilesystem: true
+                runAsUser: 10001
               command:
                 - /bin/sh
                 - -ec
@@ -201,7 +205,8 @@ spec:
                 allowPrivilegeEscalation: false
                 capabilities:
                   drop: [ALL]
-                runAsUser: 999
+                readOnlyRootFilesystem: true
+                runAsUser: 10001
               command:
                 - /bin/sh
                 - -ec
@@ -246,7 +251,8 @@ spec:
                 allowPrivilegeEscalation: false
                 capabilities:
                   drop: [ALL]
-                runAsUser: 999
+                readOnlyRootFilesystem: true
+                runAsUser: 10001
               command:
                 - /bin/sh
                 - -ec
@@ -291,7 +297,8 @@ spec:
                 allowPrivilegeEscalation: false
                 capabilities:
                   drop: [ALL]
-                runAsUser: 999
+                readOnlyRootFilesystem: true
+                runAsUser: 10001
               command:
                 - /bin/sh
                 - -ec
