@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 
-import axios, { AxiosProxyConfig } from "axios";
+import axios from "axios";
 import { NextResponse } from "next/server";
 import type { Browser, BrowserContext, Page } from "playwright";
 import type { TypeOf, ZodType } from "zod";
@@ -15,20 +15,6 @@ function getProxyServerUrl(): string | undefined {
   });
 
   return env.UPDATE_PROFILE_PROXY_SERVER_URL || undefined;
-}
-
-function getProxyServerAxiosConfig(): AxiosProxyConfig | false {
-  const proxyServerUrl = getProxyServerUrl();
-  if (!proxyServerUrl) {
-    return false;
-  }
-  const parsedProxyServerUrl = new URL(proxyServerUrl);
-
-  return {
-    protocol: parsedProxyServerUrl.protocol,
-    host: parsedProxyServerUrl.hostname,
-    port: Number.parseInt(parsedProxyServerUrl.port),
-  };
 }
 
 export async function extractDataFromWebPage<Data>({
@@ -101,7 +87,6 @@ export async function fetchJson<Schema extends ZodType>(
     headers: {
       "Content-Type": "application/json",
     },
-    proxy: getProxyServerAxiosConfig(),
   });
 
   return schema.parse(response.data) as unknown;
