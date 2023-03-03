@@ -28,7 +28,7 @@ spec:
       containers:
         - name: main
           image: ghcr.io/kachkaev/website:latest
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           volumeMounts:
             - name: data
               mountPath: /data
@@ -78,6 +78,12 @@ spec:
             limits:
               cpu: 1500m
               memory: 500Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: [ALL]
+            readOnlyRootFilesystem: true
+            runAsUser: 10001
       dnsPolicy: None
       dnsConfig:
         nameservers:

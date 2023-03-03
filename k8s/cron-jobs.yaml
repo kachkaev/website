@@ -17,12 +17,6 @@ spec:
             - name: main
               image: curlimages/curl:7.88.1
               imagePullPolicy: IfNotPresent
-              securityContext:
-                allowPrivilegeEscalation: false
-                capabilities:
-                  drop: [ALL]
-                readOnlyRootFilesystem: true
-                runAsUser: 10001
               command:
                 - /bin/sh
                 - -ec
@@ -42,6 +36,12 @@ spec:
                 limits:
                   memory: 128Mi
                   cpu: 200m
+              securityContext:
+                allowPrivilegeEscalation: false
+                capabilities:
+                  drop: [ALL]
+                readOnlyRootFilesystem: true
+                runAsUser: 10001
           restartPolicy: Never
 
 ---
@@ -63,12 +63,6 @@ spec:
             - name: main
               image: curlimages/curl:7.88.1
               imagePullPolicy: IfNotPresent
-              securityContext:
-                allowPrivilegeEscalation: false
-                capabilities:
-                  drop: [ALL]
-                readOnlyRootFilesystem: true
-                runAsUser: 10001
               command:
                 - /bin/sh
                 - -ec
@@ -88,6 +82,12 @@ spec:
                 limits:
                   memory: 128Mi
                   cpu: 200m
+              securityContext:
+                allowPrivilegeEscalation: false
+                capabilities:
+                  drop: [ALL]
+                readOnlyRootFilesystem: true
+                runAsUser: 10001
           restartPolicy: Never
 
 ---
@@ -109,12 +109,6 @@ spec:
             - name: main
               image: curlimages/curl:7.88.1
               imagePullPolicy: IfNotPresent
-              securityContext:
-                allowPrivilegeEscalation: false
-                capabilities:
-                  drop: [ALL]
-                readOnlyRootFilesystem: true
-                runAsUser: 10001
               command:
                 - /bin/sh
                 - -ec
@@ -134,6 +128,12 @@ spec:
                 limits:
                   memory: 128Mi
                   cpu: 200m
+              securityContext:
+                allowPrivilegeEscalation: false
+                capabilities:
+                  drop: [ALL]
+                readOnlyRootFilesystem: true
+                runAsUser: 10001
           restartPolicy: Never
 
 ---
@@ -155,12 +155,6 @@ spec:
             - name: main
               image: curlimages/curl:7.88.1
               imagePullPolicy: IfNotPresent
-              securityContext:
-                allowPrivilegeEscalation: false
-                capabilities:
-                  drop: [ALL]
-                readOnlyRootFilesystem: true
-                runAsUser: 10001
               command:
                 - /bin/sh
                 - -ec
@@ -180,6 +174,12 @@ spec:
                 limits:
                   memory: 128Mi
                   cpu: 200m
+              securityContext:
+                allowPrivilegeEscalation: false
+                capabilities:
+                  drop: [ALL]
+                readOnlyRootFilesystem: true
+                runAsUser: 10001
           restartPolicy: Never
 
 ---
@@ -201,12 +201,6 @@ spec:
             - name: main
               image: curlimages/curl:7.88.1
               imagePullPolicy: IfNotPresent
-              securityContext:
-                allowPrivilegeEscalation: false
-                capabilities:
-                  drop: [ALL]
-                readOnlyRootFilesystem: true
-                runAsUser: 10001
               command:
                 - /bin/sh
                 - -ec
@@ -226,6 +220,12 @@ spec:
                 limits:
                   memory: 128Mi
                   cpu: 200m
+              securityContext:
+                allowPrivilegeEscalation: false
+                capabilities:
+                  drop: [ALL]
+                readOnlyRootFilesystem: true
+                runAsUser: 10001
           restartPolicy: Never
 
 ---
@@ -247,12 +247,6 @@ spec:
             - name: main
               image: curlimages/curl:7.88.1
               imagePullPolicy: IfNotPresent
-              securityContext:
-                allowPrivilegeEscalation: false
-                capabilities:
-                  drop: [ALL]
-                readOnlyRootFilesystem: true
-                runAsUser: 10001
               command:
                 - /bin/sh
                 - -ec
@@ -272,6 +266,12 @@ spec:
                 limits:
                   memory: 128Mi
                   cpu: 200m
+              securityContext:
+                allowPrivilegeEscalation: false
+                capabilities:
+                  drop: [ALL]
+                readOnlyRootFilesystem: true
+                runAsUser: 10001
           restartPolicy: Never
 
 ---
@@ -293,12 +293,6 @@ spec:
             - name: main
               image: curlimages/curl:7.88.1
               imagePullPolicy: IfNotPresent
-              securityContext:
-                allowPrivilegeEscalation: false
-                capabilities:
-                  drop: [ALL]
-                readOnlyRootFilesystem: true
-                runAsUser: 10001
               command:
                 - /bin/sh
                 - -ec
@@ -318,4 +312,10 @@ spec:
                 limits:
                   memory: 128Mi
                   cpu: 200m
+              securityContext:
+                allowPrivilegeEscalation: false
+                capabilities:
+                  drop: [ALL]
+                readOnlyRootFilesystem: true
+                runAsUser: 10001
           restartPolicy: Never
