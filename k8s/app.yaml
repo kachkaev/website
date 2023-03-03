@@ -82,7 +82,7 @@ spec:
             allowPrivilegeEscalation: false
             capabilities:
               drop: [ALL]
-            readOnlyRootFilesystem: true
+            readOnlyRootFilesystem: false ## https://github.com/microsoft/playwright/discussions/13716
             runAsUser: 10001
       dnsPolicy: None
       dnsConfig:

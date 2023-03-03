@@ -29,8 +29,8 @@ WORKDIR /app
 
 ENV NODE_ENV production
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
+RUN addgroup --system --gid 10001 nodejs
+RUN adduser --system --uid 10001 nextjs
 
 COPY package.json pnpm-lock.yaml ./
 
