@@ -12,6 +12,10 @@
 
 ### Post-launch
 
+- [x] deprecation notices at
+  - [x] https://gitlab.com/kachkaev/website
+  - [x] https://gitlab.com/kachkaev/website-graphql-server
+  - [x] https://gitlab.com/kachkaev/website-frontend
 - [ ] locale animation
 - [ ] nbprogress
   - https://github.com/vercel/next.js/issues/45499
@@ -49,11 +53,6 @@ FLICKR_API_KEY=??
 kubectl create secret generic flickr-api \
   --from-literal=user_id=${FLICKR_USER_ID} \
   --from-literal=api_key=${FLICKR_API_KEY} \
-  --namespace=website
-
-LINKEDIN_PROXY_SERVER=??
-kubectl create secret generic linkedin \
-  --from-literal=proxy_server=${LINKEDIN_PROXY_SERVER} \
   --namespace=website
 
 UPDATE_PROFILE_SECURITY_TOKEN=??
