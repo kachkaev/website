@@ -30,18 +30,13 @@
   }
 
   a {
-    text-decoration: none;
-    color: rgb(8, 100, 210);
-    border-bottom: 1px solid !important;
-    border-bottom-color: rgba(8, 100, 210, 0.2) !important;
+    @apply text-blue-600 no-underline border-b-[1px] border-b-blue-600/20;
   }
   a:visited {
-    color: rgb(85, 26, 139);
-    border-bottom-color: rgba(85, 26, 139, 0.2) !important;
+    @apply text-violet-800 border-b-violet-800/20;
   }
   a:hover {
-    color: #ff0000;
-    border-bottom-color: rgba(255, 0, 0, 0.3) !important;
+    @apply text-red-600  border-b-red-600/30;
   }
 
   p {

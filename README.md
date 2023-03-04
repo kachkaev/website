@@ -16,7 +16,8 @@
   - [x] https://gitlab.com/kachkaev/website
   - [x] https://gitlab.com/kachkaev/website-graphql-server
   - [x] https://gitlab.com/kachkaev/website-frontend
-- [ ] locale animation
+- [x] simple locale animation
+- [ ] improved locale animation
 - [ ] nbprogress
   - https://github.com/vercel/next.js/issues/45499
   - https://github.com/apal21/nextjs-progressbar/issues/86

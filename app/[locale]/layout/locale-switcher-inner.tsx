@@ -2,8 +2,86 @@
 
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
+import * as React from "react";
 
 import { i18n, Locale } from "../../../i18n-config";
+
+const localeHighlightLocalStorageKey = "hideLocaleHighlightUntil";
+
+function LocaleHighlighter() {
+  const [visible, setVisible] = React.useState(false);
+
+  React.useEffect(() => {
+    let tick = 1;
+    const interval = setInterval(() => {
+      if (tick > 3) {
+        setVisible((value) => !value);
+      }
+      tick += 1;
+      if (tick === 10) {
+        clearInterval(interval);
+      }
+    }, 500);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  if (!visible) {
+    return <></>;
+  }
+
+  return (
+    <span className="pointer-events-none absolute inset-1/2 align-middle">
+      <span className="absolute -left-5 -top-5 h-10 w-10 rounded-full bg-blue-400 opacity-25 group-visited:bg-purple-400 group-hover:bg-red-400 group-active:bg-red-400" />
+    </span>
+  );
+}
+
+function stopHighlightingLocaleForSomeTime() {
+  try {
+    localStorage.setItem(
+      localeHighlightLocalStorageKey,
+      `${Date.now() + 7 * 24 * 60 * 60 * 1000 /* one week */}`,
+    );
+  } catch {
+    // noop (handling unavailable localStorage in private tabs)
+  }
+}
+
+function LocaleListItem({
+  locale,
+  href,
+  highlighted,
+  onStopHighlighting,
+}: {
+  href?: string | undefined;
+  locale: string;
+  highlighted: boolean;
+  onStopHighlighting: () => void;
+}) {
+  return (
+    <li className="-mt-3 -mr-3 inline-block">
+      {href ? (
+        <Link
+          className="border-bottom-0 group relative inline-block border-none p-3"
+          href={href}
+          onClick={() => {
+            onStopHighlighting();
+          }}
+        >
+          {highlighted && <LocaleHighlighter />}
+          <span className="border-b-[1px] border-inherit text-inherit">
+            {locale}
+          </span>
+        </Link>
+      ) : (
+        <span className="inline-block p-3">{locale}</span>
+      )}
+    </li>
+  );
+}
 
 export default function LocaleSwitcherInner({
   locale,
@@ -15,24 +93,56 @@ export default function LocaleSwitcherInner({
   const pathname = usePathname();
   const stringifiedSearchParams = useSearchParams().toString();
 
+  const [highlightedLocale, setHighlightedLocale] = React.useState<
+    string | undefined
+  >();
+
+  React.useEffect(() => {
+    const localeToHighlight = navigator.languages
+      .find((supportedLocale) =>
+        (i18n.locales as readonly string[]).includes(
+          supportedLocale.slice(0, 2),
+        ),
+      )
+      ?.slice(0, 2);
+
+    if (localeToHighlight && localeToHighlight !== locale) {
+      try {
+        const highlightHiddenUntil = Number.parseInt(
+          localStorage.getItem(localeHighlightLocalStorageKey) ?? "0",
+          10,
+        );
+        if (highlightHiddenUntil > Date.now()) {
+          stopHighlightingLocaleForSomeTime();
+        } else {
+          setHighlightedLocale(localeToHighlight);
+        }
+      } catch {
+        // noop (handling unavailable localStorage in private tabs)
+      }
+    }
+  }, [locale]);
+
   return (
-    <div className="self-end leading-3">
+    <div className="-mr-5 -mt-4 -mb-10 -ml-10 self-end overflow-hidden pr-5 pl-10 pt-4 pb-10 leading-3">
       <ul>
         {i18n.locales.map((currentLocale) => {
           return (
-            <li key={currentLocale} className="ml-3 inline-block">
-              {locale === currentLocale ? (
-                currentLocale
-              ) : (
-                <Link
-                  href={`${baseUrlByLocale[currentLocale]}${pathname}${
-                    stringifiedSearchParams ? `?${stringifiedSearchParams}` : ""
-                  }`}
-                >
-                  {currentLocale}
-                </Link>
-              )}
-            </li>
+            <LocaleListItem
+              key={currentLocale}
+              locale={currentLocale}
+              href={
+                locale === currentLocale
+                  ? undefined
+                  : `${baseUrlByLocale[currentLocale]}${pathname}${
+                      stringifiedSearchParams
+                        ? `?${stringifiedSearchParams}`
+                        : ""
+                    }`
+              }
+              highlighted={currentLocale === highlightedLocale}
+              onStopHighlighting={stopHighlightingLocaleForSomeTime}
+            />
           );
         })}
       </ul>
