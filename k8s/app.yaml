@@ -37,8 +37,6 @@ spec:
               value: https://kachkaev.uk
             - name: BASE_URL_RU
               value: https://kachkaev.ru
-            - name: PROFILE_INFOS_DIR
-              value: /data/profile-infos
             - name: FLICKR_USER_ID
               valueFrom:
                 secretKeyRef:

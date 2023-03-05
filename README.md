@@ -11,7 +11,7 @@ Feel free to use this codebase to learn something new or to reuse various bits i
 - **[Tailwind CSS](https://tailwindcss.com)** to style the UI (including dark/light themes)
 - **[FormatJS](https://formatjs.io)** to handle internationalization ([ICU](https://formatjs.io/docs/core-concepts/icu-syntax/) plurals etc.)
 - **[Google Analytics](https://analytics.google.com)** to track website usage
-- **[Axios](https://axios-http.com)**, **[Zod](https://zod.dev)** and **[Playwright](https://playwright.dev)** to update profile infos in API handlers
+- **[Axios](https://axios-http.com)**, **[Zod](https://zod.dev)** and **[Playwright](https://playwright.dev)** to update profile infos
 - **[ESLint](https://eslint.org)**, **[Markdownlint](https://github.com/DavidAnson/markdownlint)**, **[Prettier](https://prettier.io)** and **[TypeScript](https://www.typescriptlang.org)** to statically check and autocorrect source files
 - **[pnpm](https://pnpm.io)** to manage dependencies
 - **[Docker](https://www.docker.com)** to generate a deployable production artifact
@@ -147,7 +147,7 @@ docker run \
   --env-file=.env.local \
   --publish 3000:3000 \
   --rm \
-  --volume $(pwd)/profile-infos:/data/profile-infos \
+  --volume $(pwd)/data:/data \
   website
 ```
 
