@@ -34,7 +34,7 @@ function LocaleHighlighter() {
 
   return (
     <span className="pointer-events-none absolute inset-1/2 align-middle">
-      <span className="absolute -left-5 -top-5 h-10 w-10 rounded-full bg-blue-400 opacity-25 group-visited:bg-purple-400 group-hover:bg-red-400 group-active:bg-red-400" />
+      <span className="absolute -left-5 -top-5 h-10 w-10 rounded-full bg-blue-400 opacity-25 group-visited:bg-violet-400 group-hover:bg-red-400 group-active:bg-red-400 dark:group-visited:bg-violet-300" />
     </span>
   );
 }
