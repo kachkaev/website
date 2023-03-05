@@ -43,7 +43,7 @@ function stopHighlightingLocaleForSomeTime() {
   try {
     localStorage.setItem(
       localeHighlightLocalStorageKey,
-      `${Date.now() + 7 * 24 * 60 * 60 * 1000 /* one week */}`,
+      `${Date.now() + 24 * 60 * 60 * 1000 /* one day */}`,
     );
   } catch {
     // noop (handling unavailable localStorage in private tabs)
@@ -72,9 +72,7 @@ function LocaleListItem({
           }}
         >
           {highlighted && <LocaleHighlighter />}
-          <span className="border-b-[1px] border-inherit text-inherit">
-            {locale}
-          </span>
+          <span className="border-b-[1px] border-inherit">{locale}</span>
         </Link>
       ) : (
         <span className="inline-block p-3">{locale}</span>
