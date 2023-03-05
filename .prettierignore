@@ -44,7 +44,7 @@ next-env.d.ts
 *.pem
 
 ## App-specific
-/profile-infos/
+/data/
 
 #########################
 ## Shared between linters

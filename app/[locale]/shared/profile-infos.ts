@@ -5,14 +5,18 @@ import { dump, load } from "js-yaml";
 
 import { cleanProcessEnv, envalid } from "./env";
 
-function getProfileInfosDirPath(): string {
+function getDataDirPath(): string {
   const env = cleanProcessEnv({
-    PROFILE_INFOS_DIR: envalid.str({
-      default: "./profile-infos",
+    DATA_DIR: envalid.str({
+      default: "./data",
     }),
   });
 
-  return path.resolve(env.PROFILE_INFOS_DIR);
+  return path.resolve(env.DATA_DIR);
+}
+
+function getProfileInfosDirPath(): string {
+  return path.resolve(getDataDirPath(), "profile-infos");
 }
 
 const profileInfosDirPath = getProfileInfosDirPath();
