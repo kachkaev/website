@@ -9,6 +9,7 @@ specifiers:
   '@tsconfig/node-lts-strictest-esm': 18.12.1
   '@types/js-yaml': 4.0.5
   '@types/node': 18.14.5
+  '@types/nprogress': 0.2.0
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
   autoprefixer: 10.4.13
@@ -19,6 +20,7 @@ specifiers:
   markdownlint-cli: 0.33.0
   next: 13.2.4-canary.1
   npm-run-all: 4.1.5
+  nprogress: 0.2.0
   playwright: 1.31.2
   postcss: 8.4.21
   prettier: 2.8.4
@@ -43,6 +45,7 @@ devDependencies:
   '@tsconfig/node-lts-strictest-esm': 18.12.1
   '@types/js-yaml': 4.0.5
   '@types/node': 18.14.5
+  '@types/nprogress': 0.2.0
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
   autoprefixer: 10.4.13_postcss@8.4.21
@@ -53,6 +56,7 @@ devDependencies:
   markdownlint-cli: 0.33.0
   next: 13.2.4-canary.1_biqbaboplfbrettd7655fr4n2y
   npm-run-all: 4.1.5
+  nprogress: 0.2.0
   postcss: 8.4.21
   prettier: 2.8.4
   prettier-plugin-tailwindcss: 0.2.4_prettier@2.8.4
@@ -443,6 +447,10 @@ packages:
 
   /@types/normalize-package-data/2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
+    dev: true
+
+  /@types/nprogress/0.2.0:
+    resolution: {integrity: sha512-1cYJrqq9GezNFPsWTZpFut/d4CjpZqA0vhqDUPFWYKF1oIyBz5qnoYMzR+0C/T96t3ebLAC1SSnwrVOm5/j74A==}
     dev: true
 
   /@types/prop-types/15.7.5:
@@ -2406,6 +2414,10 @@ packages:
       read-pkg: 3.0.0
       shell-quote: 1.8.0
       string.prototype.padend: 3.1.4
+    dev: true
+
+  /nprogress/0.2.0:
+    resolution: {integrity: sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==}
     dev: true
 
   /object-assign/4.1.1:

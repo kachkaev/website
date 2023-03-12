@@ -5,6 +5,7 @@ import Script from "next/script";
 
 import type { Locale } from "../../i18n-config";
 import LocaleSwitcher from "./layout/locale-switcher";
+import NextAppNprogress from "./layout/next-app-nprogress";
 
 export default async function Root({
   children,
@@ -20,6 +21,7 @@ export default async function Root({
       <body
         className={`relative flex h-full w-full flex-col overflow-y-scroll px-5 pt-4 ${locale}`}
       >
+        <NextAppNprogress />
         {gaMeasurementId ? (
           <>
             <Script

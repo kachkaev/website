@@ -58,12 +58,15 @@ Because `/update-profiles/*` endpoints are public, a security token is introduce
   This enables custom 404 pages which are i18n-aware, but requires manual updates to `existingPathnamePatterns` each time a new app route is added.
   Thus, the current workaround is error-prone, especially for apps that have a lot of routes.
 
-- **No progress bar when navigating between pages**  
+- **Progress bar for page navigation may need improvement**  
   I like using [`nprogress`](https://www.npmjs.com/package/nprogress) in apps with client-side navigation between pages.
   A progress bar improves the perceived performance of the app and makes it feel more responsive.
-  Unfortunately, `nprogress` does not work well with Next.js apps that use server components.
-  I hope to find a solution to this problem in the future.
+  Unfortunately, established approaches to integrating `nprogress` with Next.js do not work with server components.
+
+  I hope to find a good solution to this problem in the future, but in the meantime, I have implemented a custom solution in [`app/[locale]/layout/next-app-nprogress.tsx`](app/[locale]/layout/next-app-nprogress.tsx).
+
   Related issues:
+
   - https://github.com/vercel/next.js/issues/45499
   - https://github.com/apal21/nextjs-progressbar/issues/86
 
@@ -142,7 +145,7 @@ Note that updating Flickr profile requires API authentication, so requests to `/
 
 ### Playing with i18n
 
-Internationalization (i18n) is setup in [i18n-config.ts](i18n-config.ts), [i18n-server.ts](i18n-server.ts) and [middleware.ts](middleware.ts).
+Internationalization (i18n) is setup in [`i18n-config.ts`](i18n-config.ts), [`i18n-server.ts`](i18n-server.ts) and [`middleware.ts`](middleware.ts).
 
 By default, requests to [localhost:3000](http://localhost:3000) map to the `en` locale and requests to [ru.localhost:3000](http://ru.localhost:3000) map to the `ru` locale.
 You can change this by setting `BASE_URL_RU` and `BASE_URL_EN` in `.env.local`.
@@ -164,7 +167,7 @@ The linters examine the codebase from different angles and help with early detec
 They are also used to maintain a consistent code style.
 Some linters provide autofixes, which can be applied with `pnpm fix:<linter-name>` (e.g. `pnpm fix:eslint`).
 
-All linters are executed as part of the CI pipeline ([.github/workflows/ci.yaml](.github/workflows/ci.yaml)).
+All linters are executed as part of the CI pipeline ([`.github/workflows/ci.yaml`](.github/workflows/ci.yaml)).
 They run for pull requests as well as pushes to the `main` branch.
 
 ### Testing
@@ -205,7 +208,7 @@ docker run \
   website
 ```
 
-The ‘official’ website image is created from GitHub Actions ([.github/workflows/generate-docker-image.yaml](.github/workflows/generate-docker-image.yaml)) and is hosted on GitHub ([github.com/kachkaev/website/pkgs/container/website](https://github.com/kachkaev/website/pkgs/container/website)).
+The ‘official’ website image is created from GitHub Actions ([`.github/workflows/generate-docker-image.yaml`](.github/workflows/generate-docker-image.yaml)) and is hosted on GitHub ([github.com/kachkaev/website/pkgs/container/website](https://github.com/kachkaev/website/pkgs/container/website)).
 
 ### Kubernetes (K8s)
 
@@ -280,7 +283,7 @@ In any case, the updates will run with zero downtime because of their rolling na
 #### Initial profile infos
 
 Because profile infos have not been collected yet, the app will ‘gracefully degrade’ by showing blank space instead of statistics.
-We can instantiate profile infos by manually requesting several public URLs: `/update-profiles/[profile-name]?[security-token]`.
+We can instantiate profile infos by manually requesting corresponding URLs: `/update-profiles/[profile-name]?[security-token]`.
 
 #### Cron jobs (recurring updates to profile infos)
 
