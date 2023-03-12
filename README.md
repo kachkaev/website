@@ -133,21 +133,39 @@ To set it to `123`, add the following line to `.env.local`:
 UPDATE_PROFILE_SECURITY_TOKEN=123
 ```
 
-Once you have saved `.env.local` and have restarted the dev server (`pnpm dev`), you can update profile infos by making a GET request to `/update-profiles/[profile-name]?123`.
-The list of available profiles can be found in [`app/[locale]/update-profiles/`](app/[locale]/update-profiles/).
+Once you have saved `.env.local` and have restarted the dev server (`pnpm dev`), you can update profile infos by making GET requests to `/update-profiles/[profile-name]?123`.
+If a request is successful, the app will create or update a corresponding file named `data/profile-infos/[profile-name].yaml`.
+The contents of this file are then used to render profile info on the home page.
 
-Note that updating Flickr profile requires API authentication.
-So requests to `/update-profiles/flickr?123` will fail without valid `FLICKR_USER_ID` and `FLICKR_API_KEY` inside `.env.local`.
+The list of available profiles can be found in [`app/[locale]/update-profiles/`](app/[locale]/update-profiles/).
+Note that updating Flickr profile requires API authentication, so requests to `/update-profiles/flickr?123` will fail without valid values for `FLICKR_USER_ID` and `FLICKR_API_KEY` inside `.env.local`.
 
 ### Playing with i18n
 
-TODO
+Internationalization (i18n) is setup in [i18n-config.ts](i18n-config.ts), [i18n-server.ts](i18n-server.ts) and [middleware.ts](middleware.ts).
+
+By default, requests to [localhost:3000](http://localhost:3000) map to the `en` locale and requests to [ru.localhost:3000](http://ru.localhost:3000) map to the `ru` locale.
+You can change this by setting `BASE_URL_RU` and `BASE_URL_EN` in `.env.local`.
+For example, if you add `BASE_URL_RU=http://localhost:3000`, requests to [localhost:3000](http://localhost:3000) will be mapped to the `ru` locale.
+Just like with any other changes in `.env.local`, you will need to restart the dev server (`pnpm dev`) for the new values to be read.
+
+Note that `localhost` subdomains [need to be configured on your machine](https://stackoverflow.com/q/19016553/1818285) to become resolvable.
 
 ## Quality checks
 
 ### Linting
 
-TODO describe
+Codebase integrity is continuously checked with several [linting](<https://en.wikipedia.org/wiki/Lint_(software)>) tools.
+You can find them in [`package.json`](`package.json`) under `scripts` → `lint:*`.
+To run a specific linter, use `pnpm lint:<linter-name>` (e.g. `pnpm lint:eslint`).
+To run all linters, use `pnpm lint`.
+
+The linters examine the codebase from different angles and help with early detection of potential issues.
+They are also used to maintain a consistent code style.
+Some linters provide autofixes, which can be applied with `pnpm fix:<linter-name>` (e.g. `pnpm fix:eslint`).
+
+All linters are executed as part of the CI pipeline ([.github/workflows/ci.yaml](.github/workflows/ci.yaml)).
+They run for pull requests as well as pushes to the `main` branch.
 
 ### Testing
 
@@ -155,15 +173,30 @@ TODO implement
 
 ## Deployment
 
-TODO describe how to deploy the app
+Next.js apps are often deployed to cloud-native environments such as [Vercel](https://vercel.com), [Netlify](https://netlify.com), [AWS Amplify](https://aws.amazon.com/amplify/), etc.
+This makes them highly scalable and resilient to failures.
+One limitation that cloud-native deployments impose on Next.js apps is to do with the the size of the [Lambda functions](https://en.wikipedia.org/wiki/AWS_Lambda).
+These functions handle API requests and render React pages on the server side.
 
-<img src="https://gitlab.com/kachkaev/website/uploads/a416ccf87b7a1cd2e2bb386f8109f936/thinking.png" alt="thinking meme face" width="120" />
+<img src="https://gitlab.com/kachkaev/website/uploads/a416ccf87b7a1cd2e2bb386f8109f936/thinking.png" alt="thinking meme face" width="120" /><br>
+
+With Playwright browser used in `/update-profiles/[profile-name]?[security-token]`, the size of some Lambda functions would exceed the [limit of 50 MB](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html).
+Besides, deploying this mini-website to a cloud-native environment would make it harder for me to co-host it with other projects on the same domains.
+
+To overcome these two limitations, I have decided to deploy the app to a [Kubernetes](https://kubernetes.io) cluster, in which I run most of my side projects.
 
 ### Docker
 
+I use [Docker](https://www.docker.com) to make the Next.js app deployable to Kubernetes.
+You can dockerize the app locally with this command:
+
 ```sh
 docker build --tag website .
+```
 
+Once the container image is created, you can test it at [localhost:3000](http://localhost:3000) like this:
+
+```sh
 docker run \
   --env-file=.env.local \
   --publish 3000:3000 \
@@ -172,17 +205,43 @@ docker run \
   website
 ```
 
-### Kubernetes (K8S)
+The ‘official’ website image is created from GitHub Actions ([.github/workflows/generate-docker-image.yaml](.github/workflows/generate-docker-image.yaml)) and is hosted on GitHub ([github.com/kachkaev/website/pkgs/container/website](https://github.com/kachkaev/website/pkgs/container/website)).
+
+### Kubernetes (K8s)
 
 <img src="https://gitlab.com/kachkaev/website/uploads/c0799225fbfc40e2c493ed290bc345d1/doing.png" alt="concentrated meme face" width="120" />
 
+[Kubernetes](https://kubernetes.io) is an open platform for running custom cloud-native workloads.
+Just as any K8s deployment, this mini-website is described in yaml files which are located in [`k8s`](k8s) directory of this repo.
+These yamls can serve as examples for deploying similar Next.js apps with ‘heavy’ API handlers.
+Such handlers would be [slow inside Lambda functions](https://github.com/orgs/vercel/discussions/496) or even exceed their size limit.
+
+The commands in this section assume that a Kubernetes cluster is already setup, `kubectl` client is configured against it and the current Kubernetes user is able to create resources in the `website` namespace.
+It is also assumed that the cluster’s [ingress controller](https://kubernetes.io/docs/concepts/services-networking/ingress/) is in place, so the creation of `Ingress` objects leads to exposing Kubernetes services to the outer world via HTTP and HTTPS.
+If you are not using [Traefik](https://traefik.io) as the ingress controller, you might need to replace a couple of annotations in the yamls (e.g. `traefik.ingress.kubernetes.io/router.tls`).
+You may also want to modify some other bits such as those containing host names.
+
 #### Namespace
+
+First, let’s ensure that a namespace called `website` exists in your cluster:
 
 ```sh
 kubectl apply -f k8s/namespace.yaml
 ```
 
+#### Persistent volume claim for data
+
+We don’t want profile infos to be erased every time the app deployment is updated.
+To achieve this, we will use a persistent volume claim (PVC):
+
+```sh
+kubectl apply -f k8s/pvc.yaml
+```
+
 #### Secrets
+
+We can pass environment variables to the app deployment directly inside the yaml.
+However, because some of the values are sensitive, it is better to maintain them as Kubernetes secrets:
 
 ```sh
 FLICKR_USER_ID=??
@@ -200,27 +259,13 @@ kubectl create secret generic update-profile \
   --from-literal=proxy-server-url=${UPDATE_PROFILE_PROXY_SERVER_URL}
 ```
 
-#### Persistent volume claim for data
-
-```sh
-kubectl apply -f k8s/pvc.yaml
-```
-
 #### The app (deployment, service, ingress)
+
+Now that we have a namespace, a PVC and the secrets, we can deploy the app itself:
 
 ```sh
 kubectl apply -f k8s/app.yaml
 ```
-
-#### Cron jobs (recurring profile updates)
-
-```sh
-kubectl apply -f k8s/cron-jobs.yaml
-```
-
-All done!
-
-<img src="https://gitlab.com/kachkaev/website/uploads/83aa65c795d488f754a34a4e61d57cfd/done.png" alt="happy meme face" width="120" />
 
 To manually update the app deployment, this commands can be used:
 
@@ -229,10 +274,29 @@ NEW_IMAGE_TAG=$(git rev-parse --short HEAD)
 kubectl set image --namespace=website deployment/website-app main=ghcr.io/kachkaev/website:${NEW_IMAGE_TAG}
 ```
 
-Alternatively, it is possible to modify docker image urls directly in yaml files and then run `kubectl apply ...` again.
+Alternatively, it is possible to modify Docker image urls directly in yaml files and then run `kubectl apply ...` again.
 In any case, the updates will run with zero downtime because of their rolling nature.
 
-The real production cluster contains a couple of other microservices such as for redirecting www domains to non-www ones, but these yamls are omitted from the repository to keep it focused.
+#### Initial profile infos
+
+Because profile infos have not been collected yet, the app will ‘gracefully degrade’ by showing blank space instead of statistics.
+We can instantiate profile infos by manually requesting several public URLs: `/update-profiles/[profile-name]?[security-token]`.
+
+#### Cron jobs (recurring updates to profile infos)
+
+We can always update profile infos by opening `/update-profiles/[profile-name]?[security-token]`.
+To automate this process, we can use Kubernetes cron jobs which will make GET requests on a schedule:
+
+```sh
+kubectl apply -f k8s/cron-jobs.yaml
+```
+
+All done!
+
+<img src="https://gitlab.com/kachkaev/website/uploads/83aa65c795d488f754a34a4e61d57cfd/done.png" alt="happy meme face" width="120" /><br><br>
+
+The real production cluster contains other Kubernetes payload including redirects from www domains to non-www ones.
+These yamls are omitted from the repository to keep it focused.
 
 ## Project history
 
