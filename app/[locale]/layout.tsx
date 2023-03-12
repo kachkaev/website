@@ -21,7 +21,7 @@ export default async function Root({
       <body
         className={`relative flex h-full w-full flex-col overflow-y-scroll px-5 pt-4 ${locale}`}
       >
-        <NextAppNprogress />
+        <NextAppNprogress color="var(--nprogress-color)" />
         {gaMeasurementId ? (
           <>
             <Script

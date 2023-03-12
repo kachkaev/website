@@ -13,14 +13,15 @@ type PushStateInput = [
 ];
 
 export default function NextAppNprogress({
+  color = "#29d",
   height = "2px",
-  color = "#000",
 }: {
   color?: string | undefined;
   height?: string | number | undefined;
 }) {
   const styles = (
     <style>
+      {/* Source: https://github.com/rstacruz/nprogress/blob/e1a8b7fb6e059085df5f83c45d3c2308a147ca18/nprogress.css */}
       {`
         #nprogress {
           pointer-events: none;
@@ -34,7 +35,6 @@ export default function NextAppNprogress({
           width: 100%;
           height: ${typeof height === `string` ? height : `${height}px`};
         }
-        /* Fancy blur effect */
         #nprogress .peg {
           display: block;
           position: absolute;
