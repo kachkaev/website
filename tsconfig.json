@@ -6,6 +6,7 @@
     "noEmit": true,
     "resolveJsonModule": true,
     "allowJs": true,
+    "ignoreDeprecations": "5.0",
     "incremental": true,
     "module": "esnext",
     "isolatedModules": true,

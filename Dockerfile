@@ -4,7 +4,7 @@ ENV NEXT_TELEMETRY_DISABLED true
 ENV PLAYWRIGHT_BROWSERS_PATH=/playwright
 ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD true
 
-RUN npm install --global pnpm@7.28.0
+RUN npm install --global pnpm@7.29.3
 
 ################################################################################
 FROM base AS deps
