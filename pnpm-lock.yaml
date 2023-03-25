@@ -6,7 +6,9 @@ specifiers:
   '@kachkaev/markdownlint-config': 0.5.0
   '@kachkaev/prettier-config': 1.4.0
   '@next/eslint-plugin-next': 13.2.4
-  '@tsconfig/node-lts-strictest-esm': 18.12.1
+  '@tsconfig/esm': 1.0.2
+  '@tsconfig/next': 1.0.5
+  '@tsconfig/strictest': 1.0.2
   '@types/js-yaml': 4.0.5
   '@types/node': 18.15.9
   '@types/nprogress': 0.2.0
@@ -42,7 +44,9 @@ devDependencies:
   '@kachkaev/markdownlint-config': 0.5.0_markdownlint-cli@0.33.0
   '@kachkaev/prettier-config': 1.4.0_prettier@2.8.7
   '@next/eslint-plugin-next': 13.2.4
-  '@tsconfig/node-lts-strictest-esm': 18.12.1
+  '@tsconfig/esm': 1.0.2
+  '@tsconfig/next': 1.0.5
+  '@tsconfig/strictest': 1.0.2
   '@types/js-yaml': 4.0.5
   '@types/node': 18.15.9
   '@types/nprogress': 0.2.0
@@ -440,8 +444,16 @@ packages:
       tslib: 2.5.0
     dev: true
 
-  /@tsconfig/node-lts-strictest-esm/18.12.1:
-    resolution: {integrity: sha512-LvBLmaC6Q/txTddLc11OeMHF9XjJFzlilkETJuvBlUvHy9pPiMsoH3nxWZM1FMSO53zp4mJP6gzOzxKEq0me7Q==}
+  /@tsconfig/esm/1.0.2:
+    resolution: {integrity: sha512-awiISx+G4L+7k97nKnfA5QF6rukawiuycMPfASFHG/0fqjrUlYBuNISy3Yjl1SHIpVi57lYf7dc6L/FoQQCKcA==}
+    dev: true
+
+  /@tsconfig/next/1.0.5:
+    resolution: {integrity: sha512-ZpAlWqSGE3ZWFqKmI3FiQEu8WcBF3uii1z1ovedMcALflsRoJnExp3YzWQ/fU7lzGmYtfX1CWFpf1Gl8aEC6GQ==}
+    dev: true
+
+  /@tsconfig/strictest/1.0.2:
+    resolution: {integrity: sha512-IRKlC8cnP7zMz1SDBjyIVyPapkEGWLZ6wkF6Z8T+xU80P9sO5uGXlIUvtzjx+7ehPJRWxkB6CeIDwUfyqNtYkQ==}
     dev: true
 
   /@types/js-yaml/4.0.5:

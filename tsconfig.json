@@ -1,17 +1,5 @@
 {
-  "extends": "@tsconfig/node-lts-strictest-esm",
-  "compilerOptions": {
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "jsx": "preserve",
-    "noEmit": true,
-    "resolveJsonModule": true,
-    "allowJs": true,
-    "ignoreDeprecations": "5.0",
-    "incremental": true,
-    "module": "esnext",
-    "isolatedModules": true,
-    "plugins": [{ "name": "next" }]
-  },
+  "extends": ["@tsconfig/next/tsconfig.json", "@tsconfig/strictest/tsconfig.json", "@tsconfig/esm/tsconfig.json"],
   "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }
