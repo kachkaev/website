@@ -14,7 +14,7 @@
     "lint:markdownlint": "markdownlint --dot .",
     "lint:pnpm-dedupe": "pnpm dedupe; git diff --exit-code -- pnpm-lock.yaml",
     "lint:prettier": "prettier --check .",
-    "lint:tsc": "tsc --project .",
+    "lint:tsc": "tsc --noEmit --project .",
     "start": "next start"
   },
   "dependencies": {
