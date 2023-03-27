@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import * as React from "react";
 
-import { i18n, Locale } from "../../../i18n-config";
+import { type Locale, i18n } from "../../../i18n-config";
 
 const localeHighlightLocalStorageKey = "hideLocaleHighlightUntil";
 

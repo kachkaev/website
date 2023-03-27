@@ -1,9 +1,12 @@
 {
   "extends": [
-    "@tsconfig/next/tsconfig.json",
     "@tsconfig/esm/tsconfig.json",
+    "@tsconfig/next/tsconfig.json",
     "@tsconfig/strictest/tsconfig.json"
   ],
   "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "module": "esnext"
+  }
 }
