@@ -4,14 +4,13 @@ ENV NEXT_TELEMETRY_DISABLED true
 ENV PLAYWRIGHT_BROWSERS_PATH=/playwright
 ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD true
 
-RUN npm install --global pnpm@7.30.3
-
 ################################################################################
 FROM base AS deps
 WORKDIR /app
 
 COPY package.json pnpm-lock.yaml ./
 
+RUN corepack enable && corepack prepare --activate
 RUN pnpm install --frozen-lockfile
 
 ################################################################################
