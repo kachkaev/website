@@ -34,8 +34,8 @@ devDependencies:
     specifier: 0.2.0
     version: 0.2.0
   '@types/react':
-    specifier: 18.0.29
-    version: 18.0.29
+    specifier: 18.0.31
+    version: 18.0.31
   '@types/react-dom':
     specifier: 18.0.11
     version: 18.0.11
@@ -471,6 +471,7 @@ packages:
 
   /@tsconfig/node-lts-strictest-esm@18.12.1:
     resolution: {integrity: sha512-LvBLmaC6Q/txTddLc11OeMHF9XjJFzlilkETJuvBlUvHy9pPiMsoH3nxWZM1FMSO53zp4mJP6gzOzxKEq0me7Q==}
+    deprecated: TypeScript 5.0 supports combining TSConfigs using array syntax in extends
     dev: true
 
   /@types/js-yaml@4.0.5:
@@ -504,11 +505,11 @@ packages:
   /@types/react-dom@18.0.11:
     resolution: {integrity: sha512-O38bPbI2CWtgw/OoQoY+BRelw7uysmXbWvw3nLWO21H1HSh+GOlqPuXshJfjmpNlKiiSDG9cc1JZAaMmVdcTlw==}
     dependencies:
-      '@types/react': 18.0.29
+      '@types/react': 18.0.31
     dev: true
 
-  /@types/react@18.0.29:
-    resolution: {integrity: sha512-wXHktgUABxplw1+UnljseDq4+uztQyp2tlWZRIxHlpchsCFqiYkvaDS8JR7eKOQm8wziTH/el5qL7D6gYNkYcw==}
+  /@types/react@18.0.31:
+    resolution: {integrity: sha512-EEG67of7DsvRDU6BLLI0p+k1GojDLz9+lZsnCpCRTa/lOokvyPBvp8S5x+A24hME3yyQuIipcP70KJ6H7Qupww==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
