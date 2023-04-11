@@ -18,7 +18,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "playwright": "1.32.1"
+    "playwright": "1.32.3"
   },
   "devDependencies": {
     "@formatjs/intl": "2.6.9",
