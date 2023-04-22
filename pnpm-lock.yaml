@@ -22,14 +22,14 @@ devDependencies:
     specifier: 13.3.1
     version: 13.3.1
   '@tsconfig/esm':
-    specifier: 1.0.2
-    version: 1.0.2
+    specifier: 1.0.3
+    version: 1.0.3
   '@tsconfig/next':
     specifier: 1.0.5
     version: 1.0.5
   '@tsconfig/strictest':
-    specifier: 2.0.0
-    version: 2.0.0
+    specifier: 2.0.1
+    version: 2.0.1
   '@types/js-yaml':
     specifier: 4.0.5
     version: 4.0.5
@@ -439,16 +439,16 @@ packages:
       tslib: 2.5.0
     dev: true
 
-  /@tsconfig/esm@1.0.2:
-    resolution: {integrity: sha512-awiISx+G4L+7k97nKnfA5QF6rukawiuycMPfASFHG/0fqjrUlYBuNISy3Yjl1SHIpVi57lYf7dc6L/FoQQCKcA==}
+  /@tsconfig/esm@1.0.3:
+    resolution: {integrity: sha512-Gp56rIc3R8ab032nXMUitmc7YIb4nAi8DQ6Qt47tuL0Ssn9LIOm+o2FQmqPu3jX4z0TsqgzWwkmVygxcq+yHYg==}
     dev: true
 
   /@tsconfig/next@1.0.5:
     resolution: {integrity: sha512-ZpAlWqSGE3ZWFqKmI3FiQEu8WcBF3uii1z1ovedMcALflsRoJnExp3YzWQ/fU7lzGmYtfX1CWFpf1Gl8aEC6GQ==}
     dev: true
 
-  /@tsconfig/strictest@2.0.0:
-    resolution: {integrity: sha512-E0dpiZNdwO20c8d3seh7OmjAvDpwoRkTcU6M8cvggzB45Bd45tyTU2XJeA5Wfq+8NzVGhunvqOJ30AjSkywMXA==}
+  /@tsconfig/strictest@2.0.1:
+    resolution: {integrity: sha512-7JHHCbyCsGUxLd0pDbp24yz3zjxw2t673W5oAP6HCEdr/UUhaRhYd3SSnUsGCk+VnPVJVA4mXROzbhI+nyIk+w==}
     dev: true
 
   /@types/js-yaml@4.0.5:
