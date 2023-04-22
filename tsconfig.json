@@ -2,7 +2,7 @@
   "extends": [
     "@tsconfig/next/tsconfig.json",
     "@tsconfig/strictest/tsconfig.json",
-    "@tsconfig/esm/tsconfig.json",
+    "@tsconfig/esm/tsconfig.json"
   ],
   "compilerOptions": {
     "module": "esnext"

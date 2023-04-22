@@ -1,8 +1,8 @@
-# [kachkaev.uk](https://kachkaev.uk) / [.ru](https://kachkaev.ru) source code
+# [kachkaev.uk](https://kachkaev.uk) / [.ru](https://kachkaev.ru)
 
 This repository contains the source code of my personal mini-website.
 It represents a simple instance of a&nbsp;Next.js app with server components, API routes and domain-based internationalization.
-Feel free to explore this repository to learn something new or even reuse code your own projects.
+Feel free to explore this repository to learn something new or even to reuse its code in your own projects.
 
 ## Key ingredients
 
@@ -74,7 +74,7 @@ Because `/update-profiles/*` endpoints are public, a security token is introduce
 
 ### Getting started
 
-1.  Open a command line and ensure you have [git](https://git-scm.com), [Node.js](https://nodejs.org) and [pnpm](https://pnpm.io) installed:
+1.  Open a command line and ensure you have [git](https://git-scm.com) and [Node.js](https://nodejs.org) installed:
 
     ```sh
     git --version
@@ -83,8 +83,8 @@ Because `/update-profiles/*` endpoints are public, a security token is introduce
     node --version
     ## ≥ 18.12.0
     
-    pnpm --version
-    ## ≥ 7.28.0
+    corepack --version
+    ## ≥ 0.14.0, comes with Node.js
     ```
 
 1.  Clone the repo from GitHub:
@@ -93,6 +93,15 @@ Because `/update-profiles/*` endpoints are public, a security token is introduce
     cd PATH/TO/MISC/PROJECTS ## replace example path with a directory of your choice
     git clone https://github.com/kachkaev/website.git
     cd website
+    ```
+
+1.  Prepare [pnpm](https://pnpm.io) for dependency management:
+
+    ```sh
+    corepack enable && corepack prepare --activate
+    
+    pnpm --version
+    ## same as in package.json → packageManager
     ```
 
 1.  Install dependencies:
