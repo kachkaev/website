@@ -237,17 +237,11 @@ async function Flickr({ locale, dictionary }: KeyProfileProps) {
 export default async function KeyProfiles(props: KeyProfileProps) {
   return (
     <>
-      {/* @ts-expect-error -- server component https://github.com/vercel/next.js/issues/42292 */}
       <Openaccess {...props} />
-      {/* @ts-expect-error -- server component */}
       <LinkedIn {...props} />
-      {/* @ts-expect-error -- server component */}
       <GitHub {...props} />
-      {/* @ts-expect-error -- server component */}
       <Osm {...props} />
-      {/* @ts-expect-error -- server component */}
       <Twitter {...props} />
-      {/* @ts-expect-error -- server component */}
       <Flickr {...props} />
     </>
   );
