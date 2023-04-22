@@ -10,8 +10,7 @@ WORKDIR /app
 
 COPY package.json pnpm-lock.yaml ./
 
-RUN corepack enable && corepack prepare --activate
-RUN pnpm install --frozen-lockfile
+RUN corepack pnpm install --frozen-lockfile
 
 ################################################################################
 FROM base AS builder
@@ -20,7 +19,7 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-RUN pnpm run build
+RUN corepack pnpm run build
 
 ################################################################################
 FROM base AS runner
@@ -33,9 +32,9 @@ RUN adduser --system --uid 10001 nextjs
 
 COPY package.json pnpm-lock.yaml ./
 
-RUN pnpm install --frozen-lockfile --production \
-  && pnpm playwright install-deps firefox \
-  && pnpm playwright install firefox
+RUN corepack pnpm install --frozen-lockfile --production \
+  && corepack pnpm playwright install-deps firefox \
+  && corepack pnpm playwright install firefox
 
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone  ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static  ./.next/static
