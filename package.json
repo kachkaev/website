@@ -12,7 +12,7 @@
     "lint": "npm-run-all --continue-on-error \"lint:*\"",
     "lint:eslint": "next lint",
     "lint:markdownlint": "markdownlint --dot .",
-    "lint:pnpm-dedupe": "pnpm dedupe; git diff --exit-code -- pnpm-lock.yaml",
+    "lint:pnpm-dedupe": "pnpm dedupe --check",
     "lint:prettier": "prettier --check .",
     "lint:tsc": "tsc --project .",
     "start": "next start"
