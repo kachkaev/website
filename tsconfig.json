@@ -5,6 +5,7 @@
     "@tsconfig/esm/tsconfig.json"
   ],
   "compilerOptions": {
+    "module": "ESNext",
     "target": "ESNext"
   },
   "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx"],
