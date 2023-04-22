@@ -1,8 +1,8 @@
-# [kachkaev.uk](https://kachkaev.uk) / [.ru](https://kachkaev.ru) source code
+# [kachkaev.uk](https://kachkaev.uk) / [.ru](https://kachkaev.ru)
 
 This repository contains the source code of my personal mini-website.
 It represents a simple instance of a&nbsp;Next.js app with server components, API routes and domain-based internationalization.
-Feel free to explore this repository to learn something new or even reuse code your own projects.
+Feel free to explore this repository to learn something new or even to reuse its code in your own projects.
 
 ## Key ingredients
 
