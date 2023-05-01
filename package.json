@@ -21,7 +21,7 @@
     "playwright": "1.32.3"
   },
   "devDependencies": {
-    "@formatjs/intl": "2.7.1",
+    "@formatjs/intl": "2.7.2",
     "@kachkaev/eslint-config-react": "0.5.1",
     "@kachkaev/markdownlint-config": "0.5.0",
     "@kachkaev/prettier-config": "1.4.0",
