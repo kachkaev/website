@@ -15,7 +15,13 @@
     "lint:pnpm-dedupe": "pnpm dedupe --check",
     "lint:prettier": "prettier --check .",
     "lint:tsc": "tsc --noEmit --project .",
+    "prepare": "husky install",
     "start": "next start"
+  },
+  "lint-staged": {
+    "**": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "playwright": "1.32.3"
@@ -25,7 +31,7 @@
     "@kachkaev/eslint-config-react": "0.5.1",
     "@kachkaev/markdownlint-config": "0.5.0",
     "@kachkaev/prettier-config": "1.4.0",
-    "@next/eslint-plugin-next": "13.3.4",
+    "@next/eslint-plugin-next": "13.4.0",
     "@tsconfig/esm": "1.0.3",
     "@tsconfig/next": "1.0.5",
     "@tsconfig/strictest": "2.0.1",
@@ -38,9 +44,11 @@
     "axios": "1.4.0",
     "envalid": "7.3.1",
     "eslint": "8.39.0",
+    "husky": "8.0.0",
     "js-yaml": "4.1.0",
+    "lint-staged": "13.2.2",
     "markdownlint-cli": "0.34.0",
-    "next": "13.3.4",
+    "next": "13.4.0",
     "npm-run-all": "4.1.5",
     "nprogress": "0.2.0",
     "postcss": "8.4.23",
