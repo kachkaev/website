@@ -15,7 +15,13 @@
     "lint:pnpm-dedupe": "pnpm dedupe --check",
     "lint:prettier": "prettier --check .",
     "lint:tsc": "tsc --noEmit --project .",
+    "prepare": "husky install",
     "start": "next start"
+  },
+  "lint-staged": {
+    "**": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "playwright": "1.32.3"
@@ -38,7 +44,9 @@
     "axios": "1.4.0",
     "envalid": "7.3.1",
     "eslint": "8.39.0",
+    "husky": "8.0.0",
     "js-yaml": "4.1.0",
+    "lint-staged": "13.2.2",
     "markdownlint-cli": "0.34.0",
     "next": "13.4.0",
     "npm-run-all": "4.1.5",
