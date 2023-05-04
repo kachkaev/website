@@ -26,7 +26,7 @@ jobs:
           cache: pnpm
 
       - name: Install dependencies
-        run: pnpm install  --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Run pnpm lint:eslint
         if: ${{ success() || failure() }}
@@ -52,6 +52,20 @@ jobs:
             exit 1
           fi
 
+      - name: Run pnpm lint:pnpm-dedupe
+        if: ${{ success() || failure() }}
+        run: |
+          if ! pnpm lint:pnpm-dedupe; then
+            echo ''
+            echo ''
+            echo 'ℹ️ ℹ️ ℹ️'
+            echo 'Some dependencies can be deduplicated, which will make pnpm-lock.yaml'
+            echo 'lighter and potentially save us from unexplainable bugs.'
+            echo 'Please run `pnpm fix:pnpm-dedupe` locally and commit pnpm-lock.yaml.'
+            echo 'ℹ️ ℹ️ ℹ️'
+            exit 1
+          fi
+
       - name: Run pnpm lint:prettier
         if: ${{ success() || failure() }}
         run: |
@@ -73,20 +87,6 @@ jobs:
             echo 'ℹ️ ℹ️ ℹ️'
             echo 'Please fix the above errors locally for the check to pass.'
             echo 'If you don’t see them, try merging target branch into yours.'
-            echo 'ℹ️ ℹ️ ℹ️'
-            exit 1
-          fi
-
-      - name: Run pnpm lint:pnpm-dedupe
-        if: ${{ success() || failure() }}
-        run: |
-          if ! pnpm lint:pnpm-dedupe; then
-            echo ''
-            echo ''
-            echo 'ℹ️ ℹ️ ℹ️'
-            echo 'Some dependencies can be deduplicated, which will make pnpm-lock.yaml'
-            echo 'lighter and potentially save us from unexplainable bugs.'
-            echo 'Please run `pnpm fix:pnpm-dedupe` locally and commit pnpm-lock.yaml.'
             echo 'ℹ️ ℹ️ ℹ️'
             exit 1
           fi
