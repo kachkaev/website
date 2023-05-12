@@ -4,6 +4,7 @@ import path from "node:path";
 import axios from "axios";
 import { NextResponse } from "next/server";
 import type { Browser, BrowserContext, Page } from "playwright";
+import { firefox } from "playwright";
 import type { TypeOf, ZodType } from "zod";
 
 import { cleanProcessEnv, envalid } from "../../shared/env";
@@ -31,11 +32,6 @@ export async function extractDataFromWebPage<Data>({
         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0",
     }),
   });
-
-  // eslint-disable-next-line no-eval -- Some internal Playwright imports do not work when bundled by webpack
-  const { firefox } = (await eval(
-    'import("playwright")',
-  )) as typeof import("playwright");
 
   let browser: Browser | undefined;
   let context: BrowserContext | undefined;
