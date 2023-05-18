@@ -32,7 +32,7 @@ RUN adduser --system --uid 10001 nextjs
 
 COPY package.json pnpm-lock.yaml ./
 
-RUN corepack pnpm install --frozen-lockfile --production \
+RUN corepack pnpm install --ignore-scripts --frozen-lockfile --production \
   && corepack pnpm playwright install-deps firefox \
   && corepack pnpm playwright install firefox
 
