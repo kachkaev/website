@@ -12,6 +12,19 @@ const nextConfig = {
   // For local checks, run `pnpm run lint`.
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },
+
+  redirects: async () => [
+    {
+      source: "/index.(htm|html|php)",
+      destination: "/",
+      permanent: false,
+    },
+    {
+      source: "/:path*/index.(htm|html|php)",
+      destination: "/:path*",
+      permanent: false,
+    },
+  ],
 };
 
 export default nextConfig;
