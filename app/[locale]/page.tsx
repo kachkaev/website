@@ -61,7 +61,6 @@ export default async function Page({ params: { locale } }: PageProps) {
       </div>
 
       {/* Key profiles */}
-      {/* @ts-expect-error -- server component https://github.com/vercel/next.js/issues/42292 */}
       <KeyProfiles locale={locale} dictionary={dictionary} />
 
       {/* Misc profiles */}
