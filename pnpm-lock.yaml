@@ -20,8 +20,8 @@ devDependencies:
     specifier: 0.5.0
     version: 0.5.0(markdownlint-cli@0.34.0)
   '@kachkaev/prettier-config':
-    specifier: 1.4.0
-    version: 1.4.0(prettier@2.8.8)
+    specifier: 1.4.1
+    version: 1.4.1(prettier@2.8.8)
   '@next/eslint-plugin-next':
     specifier: 13.4.4
     version: 13.4.4
@@ -309,8 +309,8 @@ packages:
       markdownlint-cli: 0.34.0
     dev: true
 
-  /@kachkaev/prettier-config@1.4.0(prettier@2.8.8):
-    resolution: {integrity: sha512-nKuKapMuXPXic+T+AX+ZEo6ZqPsbZt/dyfeD0zTzPtowsk8cqwm86CzSoEPXwEm5X8h/vHjWeRu6J8GWzC8JZg==}
+  /@kachkaev/prettier-config@1.4.1(prettier@2.8.8):
+    resolution: {integrity: sha512-62mkD1HDEuUd3xp7IrYrpSSzKVmRpbnrdhDnjghotv2rDfPEaskT5zoPb4Y/SfeYdyS9qWp3i62sqJNKVsPekg==}
     peerDependencies:
       prettier: ^2.2.1
     dependencies:
