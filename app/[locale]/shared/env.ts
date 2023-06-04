@@ -16,7 +16,7 @@ export const cleanProcessEnv = <T>(specs: {
         messageChunks.push(message as string);
       });
 
-      throw new Error(messageChunks.join("\n"));
+      throw new Error(messageChunks.join("\n") || "Invalid environment");
     },
   });
 };
