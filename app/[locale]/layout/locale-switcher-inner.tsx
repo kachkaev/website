@@ -63,7 +63,7 @@ function LocaleListItem({
   onStopHighlighting: () => void;
 }) {
   return (
-    <li className="-mt-3 -mr-3 inline-block">
+    <li className="-mr-3 -mt-3 inline-block">
       {href ? (
         <Link
           className="border-bottom-0 group relative inline-block border-none p-3"
@@ -123,7 +123,7 @@ export default function LocaleSwitcherInner({
   }, [locale]);
 
   return (
-    <div className="-mr-5 -mt-4 -mb-10 -ml-10 self-end overflow-hidden pr-5 pl-10 pt-4 pb-10 leading-3">
+    <div className="-mb-10 -ml-10 -mr-5 -mt-4 self-end overflow-hidden pb-10 pl-10 pr-5 pt-4 leading-3">
       <ul>
         {i18n.locales.map((currentLocale) => {
           return (
