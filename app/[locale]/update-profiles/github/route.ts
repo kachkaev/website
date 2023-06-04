@@ -34,9 +34,11 @@ export const GET = generateUpdateProfileHandler({
 
     const sources = listOfRepos.filter((repo) => !repo.fork);
 
-    const languageSet = new Set(listOfRepos.map((repo) => repo.language));
-    // eslint-disable-next-line unicorn/no-null
-    languageSet.delete(null);
+    const languageSet = new Set(
+      listOfRepos
+        .map((repo) => repo.language)
+        .filter((language) => language !== null),
+    );
 
     return {
       repoCount: listOfRepos.length,
