@@ -65,7 +65,7 @@ export function generateUpdateProfileErrorPathPrefix(
     .toISOString()
     .slice(0, 19)
     .replace("T", "-")
-    .replaceAll(/:/g, "");
+    .replaceAll(":", "");
 
   return path.resolve(
     profileInfosUpdateErrorsDirPath,
