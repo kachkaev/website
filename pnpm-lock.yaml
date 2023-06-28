@@ -26,8 +26,8 @@ devDependencies:
     specifier: 13.4.7
     version: 13.4.7
   '@tsconfig/esm':
-    specifier: 1.0.3
-    version: 1.0.3
+    specifier: 1.0.4
+    version: 1.0.4
   '@tsconfig/next':
     specifier: 1.0.5
     version: 1.0.5
@@ -519,8 +519,8 @@ packages:
       tslib: 2.5.3
     dev: true
 
-  /@tsconfig/esm@1.0.3:
-    resolution: {integrity: sha512-Gp56rIc3R8ab032nXMUitmc7YIb4nAi8DQ6Qt47tuL0Ssn9LIOm+o2FQmqPu3jX4z0TsqgzWwkmVygxcq+yHYg==}
+  /@tsconfig/esm@1.0.4:
+    resolution: {integrity: sha512-bix9CWljCxyD06nGQRDYdmTw0wevvEDyrLKjbDocGV31JQYbfqqgMV1yFeJ9aDgorKQ9yDLrak8poiggsB5Liw==}
     dev: true
 
   /@tsconfig/next@1.0.5:
