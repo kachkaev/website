@@ -29,8 +29,8 @@ devDependencies:
     specifier: 1.0.4
     version: 1.0.4
   '@tsconfig/next':
-    specifier: 1.0.5
-    version: 1.0.5
+    specifier: 2.0.0
+    version: 2.0.0
   '@tsconfig/strictest':
     specifier: 2.0.1
     version: 2.0.1
@@ -523,8 +523,8 @@ packages:
     resolution: {integrity: sha512-bix9CWljCxyD06nGQRDYdmTw0wevvEDyrLKjbDocGV31JQYbfqqgMV1yFeJ9aDgorKQ9yDLrak8poiggsB5Liw==}
     dev: true
 
-  /@tsconfig/next@1.0.5:
-    resolution: {integrity: sha512-ZpAlWqSGE3ZWFqKmI3FiQEu8WcBF3uii1z1ovedMcALflsRoJnExp3YzWQ/fU7lzGmYtfX1CWFpf1Gl8aEC6GQ==}
+  /@tsconfig/next@2.0.0:
+    resolution: {integrity: sha512-ip/XpFLWuUrhDkbI8ixpWxPlmWvUhQCLS5rB7nibcZUavA1Ru34Q7a5CniBM7BdHw1YlAXu40HXUn66h/A4EBQ==}
     dev: true
 
   /@tsconfig/strictest@2.0.1:
