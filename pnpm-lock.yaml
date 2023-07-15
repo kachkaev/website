@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   playwright:
-    specifier: 1.36.1
-    version: 1.36.1
+    specifier: 1.37.0-alpha-jul-15-2023
+    version: 1.37.0-alpha-jul-15-2023
 
 devDependencies:
   '@formatjs/intl':
@@ -3123,19 +3123,19 @@ packages:
     engines: {node: '>= 6'}
     dev: true
 
-  /playwright-core@1.36.1:
-    resolution: {integrity: sha512-7+tmPuMcEW4xeCL9cp9KxmYpQYHKkyjwoXRnoeTowaeNat8PoBMk/HwCYhqkH2fRkshfKEOiVus/IhID2Pg8kg==}
+  /playwright-core@1.37.0-alpha-jul-15-2023:
+    resolution: {integrity: sha512-fuQ3F+5mPSHopqPVXqcRrqT9jaQKQSV2eVTYcSpIrK6n1hubTfbBLBwkLwUS9DvPM8RqRw2Fvg3SHpHF18Jt+w==}
     engines: {node: '>=16'}
     hasBin: true
     dev: false
 
-  /playwright@1.36.1:
-    resolution: {integrity: sha512-2ZqHpD0U0COKR8bqR3W5IkyIAAM0mT9FgGJB9xWCI1qAUkqLxJskA1ueeQOTH2Qfz3+oxdwwf2EzdOX+RkZmmQ==}
+  /playwright@1.37.0-alpha-jul-15-2023:
+    resolution: {integrity: sha512-wLIvo1XwwgmsPe8Rwsn9Qf3VisM+LfYtCfjqmad56LclmDfKndRAoqz674CYkxw4nmIS2vad/6NQuBhbJHabpg==}
     engines: {node: '>=16'}
     hasBin: true
     requiresBuild: true
     dependencies:
-      playwright-core: 1.36.1
+      playwright-core: 1.37.0-alpha-jul-15-2023
     dev: false
 
   /pluralize@8.0.0:
