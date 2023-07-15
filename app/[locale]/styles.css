@@ -5,7 +5,11 @@
 @layer base {
   html {
     @apply h-full w-full dark:bg-zinc-900 dark:text-gray-100;
-    font: 14px Helvetica, Arial, "Lucida Grande", sans-serif;
+    font:
+      14px Helvetica,
+      Arial,
+      "Lucida Grande",
+      sans-serif;
     line-height: 1.4em;
   }
 
