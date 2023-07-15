@@ -20,8 +20,8 @@ devDependencies:
     specifier: 0.5.0
     version: 0.5.0(markdownlint-cli@0.35.0)
   '@kachkaev/prettier-config':
-    specifier: 1.4.1
-    version: 1.4.1(prettier@3.0.0)
+    specifier: 2.0.0
+    version: 2.0.0(prettier@3.0.0)
   '@next/eslint-plugin-next':
     specifier: 13.4.10
     version: 13.4.10
@@ -377,14 +377,14 @@ packages:
       markdownlint-cli: 0.35.0
     dev: true
 
-  /@kachkaev/prettier-config@1.4.1(prettier@3.0.0):
-    resolution: {integrity: sha512-62mkD1HDEuUd3xp7IrYrpSSzKVmRpbnrdhDnjghotv2rDfPEaskT5zoPb4Y/SfeYdyS9qWp3i62sqJNKVsPekg==}
+  /@kachkaev/prettier-config@2.0.0(prettier@3.0.0):
+    resolution: {integrity: sha512-K3udgyQJRhxLryIZ4kyZehJ4CAOfXmVnZnplHy8pRptzy2axVZigTk/n+3DoEFOEwXp4YBGeZfYRmjtjA7qOrw==}
     peerDependencies:
-      prettier: ^2.2.1
+      prettier: ^3.0.0
     dependencies:
       prettier: 3.0.0
-      prettier-plugin-packagejson: 2.4.3(prettier@3.0.0)
-      prettier-plugin-sh: 0.12.8(prettier@3.0.0)
+      prettier-plugin-packagejson: 2.4.5(prettier@3.0.0)
+      prettier-plugin-sh: 0.13.1(prettier@3.0.0)
     dev: true
 
   /@next/env@13.4.10:
@@ -3247,8 +3247,8 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier-plugin-packagejson@2.4.3(prettier@3.0.0):
-    resolution: {integrity: sha512-kPeeviJiwy0BgOSk7No8NmzzXfW4R9FYWni6ziA5zc1kGVVrKnBzMZdu2TUhI+I7h8/5Htt3vARYOk7KKJTTNQ==}
+  /prettier-plugin-packagejson@2.4.5(prettier@3.0.0):
+    resolution: {integrity: sha512-glG71jE1gO3y5+JNAhC8X+4yrlN28rub6Aj461SKbaPie9RgMiHKcInH2Moi2VGOfkTXaEHBhg4uVMBqa+kBUA==}
     peerDependencies:
       prettier: '>= 1.16.0'
     peerDependenciesMeta:
@@ -3256,20 +3256,19 @@ packages:
         optional: true
     dependencies:
       prettier: 3.0.0
-      sort-package-json: 2.4.1
+      sort-package-json: 2.5.1
       synckit: 0.8.5
     dev: true
 
-  /prettier-plugin-sh@0.12.8(prettier@3.0.0):
-    resolution: {integrity: sha512-VOq8h2Gn5UzrCIKm4p/nAScXJbN09HdyFDknAcxt6Qu/tv/juu9bahxSrcnM9XWYA+Spz1F1ANJ4LhfwB7+Q1Q==}
-    engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
+  /prettier-plugin-sh@0.13.1(prettier@3.0.0):
+    resolution: {integrity: sha512-ytMcl1qK4s4BOFGvsc9b0+k9dYECal7U29bL/ke08FEUsF/JLN0j6Peo0wUkFDG4y2UHLMhvpyd6Sd3zDXe/eg==}
+    engines: {node: '>=16.0.0'}
     peerDependencies:
-      prettier: ^2.0.0
+      prettier: ^3.0.0
     dependencies:
       mvdan-sh: 0.10.1
       prettier: 3.0.0
-      sh-syntax: 0.3.7
-      synckit: 0.8.5
+      sh-syntax: 0.4.1
     dev: true
 
   /prettier@3.0.0:
@@ -3534,9 +3533,9 @@ packages:
     resolution: {integrity: sha512-qepMx2JxAa5jjfzxG79yPPq+8BuFToHd1hm7kI+Z4zAq1ftQiP7HcxMhDDItrbtwVeLg/cY2JnKnrcFkmiswNA==}
     dev: true
 
-  /sh-syntax@0.3.7:
-    resolution: {integrity: sha512-xIB/uRniZ9urxAuXp1Ouh/BKSI1VK8RSqfwGj7cV57HvGrFo3vHdJfv8Tdp/cVcxJgXQTkmHr5mG5rqJW8r4wQ==}
-    engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
+  /sh-syntax@0.4.1:
+    resolution: {integrity: sha512-MW/ZsCYTu11EIYYTSZcfAgMFszAodCmQVB27XssHoIN6L4EG0KSA3h32x8whaSOKuYBX5wz9EybfnPBUFQMCKA==}
+    engines: {node: '>=16.0.0'}
     dependencies:
       tslib: 2.6.0
     dev: true
@@ -3659,12 +3658,13 @@ packages:
     resolution: {integrity: sha512-855pvK+VkU7PaKYPc+Jjnmt4EzejQHyhhF33q31qG8x7maDzkeFhAAThdCYay11CISO+qAMwjOBP+fPZe0IPyg==}
     dev: true
 
-  /sort-package-json@2.4.1:
-    resolution: {integrity: sha512-Nd3rgLBJcZ4iw7tpuOhwBupG6SvUDU0Fy1cZGAMorA2JmDUb+29Dg5phJK9gapa2Ak9d15w/RuMl/viwX+nKwQ==}
+  /sort-package-json@2.5.1:
+    resolution: {integrity: sha512-vx/KoZxm8YNMUqdlw7SGTfqR5pqZ/sUfgOuRtDILiOy/3AvzhAibyUe2cY3OpLs3oRSow9up4yLVtQaM24rbDQ==}
     hasBin: true
     dependencies:
       detect-indent: 7.0.1
       detect-newline: 4.0.0
+      get-stdin: 9.0.0
       git-hooks-list: 3.1.0
       globby: 13.2.0
       is-plain-obj: 4.1.0
