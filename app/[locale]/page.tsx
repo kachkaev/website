@@ -22,7 +22,7 @@ export default async function Page({ params: { locale } }: PageProps) {
         <span className="relative inline-block">
           {dictionary.index["h1.lastName"]}
           {locale === "en" && (
-            <span className="absolute bottom-[-20px] left-0 right-0 inline-block text-center text-[13px] font-normal opacity-60">
+            <span className="absolute inset-x-0 bottom-[-20px] inline-block text-center text-[13px] font-normal opacity-60">
               {" "}
               <span className="invisible">(</span>
               catch · ka ′ yev

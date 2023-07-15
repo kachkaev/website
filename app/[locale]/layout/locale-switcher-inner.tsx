@@ -66,7 +66,7 @@ function LocaleListItem({
     <li className="-mr-3 -mt-3 inline-block">
       {href ? (
         <Link
-          className="border-bottom-0 group relative inline-block border-none p-3"
+          className="group relative inline-block border-none p-3"
           href={href}
           onClick={() => {
             onStopHighlighting();
