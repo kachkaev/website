@@ -36,7 +36,6 @@
     "profiles.gitlab.name": "GitLab",
     "profiles.telegram.name": "Telegram",
     "profiles.facebook.name": "Facebook",
-    "profiles.vk.name": "VK",
     "profiles.habr.name": "Habr",
     "profiles.stackoverflow.name": "Stack Overflow",
     "profiles.wikipedia.name": "Wikipedia",

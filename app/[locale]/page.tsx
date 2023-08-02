@@ -75,9 +75,6 @@ export default async function Page({ params: { locale } }: PageProps) {
         <a className="mx-1" href="https://www.facebook.com/kachkaev">
           {dictionary.index["profiles.facebook.name"]}
         </a>{" "}
-        <a className="mx-1" href="https://vk.com/kachkaev">
-          {dictionary.index["profiles.vk.name"]}
-        </a>
         {locale === "ru" && (
           <>
             {" "}
