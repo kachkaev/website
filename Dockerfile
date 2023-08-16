@@ -1,4 +1,4 @@
-FROM node:18.17.0-slim AS base
+FROM node:hydrogen-bookworm-slim AS base
 
 ENV NEXT_TELEMETRY_DISABLED true
 ENV PLAYWRIGHT_BROWSERS_PATH=/playwright
