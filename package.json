@@ -60,7 +60,7 @@
     "sharp": "0.32.5",
     "tailwindcss": "3.3.3",
     "typescript": "5.1.6",
-    "zod": "3.22.0"
+    "zod": "3.22.1"
   },
   "packageManager": "pnpm@8.6.9"
 }
