@@ -24,7 +24,7 @@
     ]
   },
   "dependencies": {
-    "playwright": "1.37.0-alpha-jul-15-2023"
+    "playwright": "1.38.1"
   },
   "devDependencies": {
     "@formatjs/intl": "2.9.3",
