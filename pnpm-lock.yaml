@@ -29,8 +29,8 @@ devDependencies:
     specifier: 1.0.5
     version: 1.0.5
   '@tsconfig/next':
-    specifier: 2.0.0
-    version: 2.0.0
+    specifier: 2.0.1
+    version: 2.0.1
   '@tsconfig/strictest':
     specifier: 2.0.2
     version: 2.0.2
@@ -526,10 +526,11 @@ packages:
 
   /@tsconfig/esm@1.0.5:
     resolution: {integrity: sha512-JzoZ0h299JRLPfV5VBsMq1TuMy+OmU9bdV/7NcjfRojL0eIcA1k5ESrtjWrDwJRJnk9B0QmgR0rq04LERbdfWw==}
+    deprecated: this package has been deprecated
     dev: true
 
-  /@tsconfig/next@2.0.0:
-    resolution: {integrity: sha512-ip/XpFLWuUrhDkbI8ixpWxPlmWvUhQCLS5rB7nibcZUavA1Ru34Q7a5CniBM7BdHw1YlAXu40HXUn66h/A4EBQ==}
+  /@tsconfig/next@2.0.1:
+    resolution: {integrity: sha512-8Za+6fv85ipdoO1u/Xknyurab8T92LbS0/KzRB0/GHvPh3xl0L4yf5+VmSxXNwjF1uS/xLSqf+BPhfaqasCpZw==}
     dev: true
 
   /@tsconfig/strictest@2.0.2:
