@@ -35,8 +35,8 @@ devDependencies:
     specifier: 2.0.2
     version: 2.0.2
   '@types/js-yaml':
-    specifier: 4.0.6
-    version: 4.0.6
+    specifier: 4.0.7
+    version: 4.0.7
   '@types/node':
     specifier: 18.18.4
     version: 18.18.4
@@ -537,8 +537,8 @@ packages:
     resolution: {integrity: sha512-jt4jIsWKvUvuY6adJnQJlb/UR7DdjC8CjHI/OaSQruj2yX9/K6+KOvDt/vD6udqos/FUk5Op66CvYT7TBLYO5Q==}
     dev: true
 
-  /@types/js-yaml@4.0.6:
-    resolution: {integrity: sha512-ACTuifTSIIbyksx2HTon3aFtCKWcID7/h3XEmRpDYdMCXxPbl+m9GteOJeaAkiAta/NJaSFuA7ahZ0NkwajDSw==}
+  /@types/js-yaml@4.0.7:
+    resolution: {integrity: sha512-RJZP9WAMMr1514KbdSXkLRrKvYQacjr1+HWnY8pui/uBTBoSgD9ZGR17u/d4nb9NpERp0FkdLBe7hq8NIPBgkg==}
     dev: true
 
   /@types/json-schema@7.0.12:
