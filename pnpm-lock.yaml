@@ -11,8 +11,8 @@ dependencies:
 
 devDependencies:
   '@formatjs/intl':
-    specifier: 2.9.4
-    version: 2.9.4(typescript@5.2.2)
+    specifier: 2.9.5
+    version: 2.9.5(typescript@5.2.2)
   '@kachkaev/eslint-config-react':
     specifier: 0.6.0
     version: 0.6.0(eslint@8.52.0)(typescript@5.2.2)
@@ -222,8 +222,8 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /@formatjs/intl-displaynames@6.6.0:
-    resolution: {integrity: sha512-bskUou9boZOzTqI8JdNCNkDavXf8uWWz/6NG1og/XJKpn4zsfiLdQ9EYKhVe/CfbCjlSyieJYn7/NztdoprHjw==}
+  /@formatjs/intl-displaynames@6.6.1:
+    resolution: {integrity: sha512-TIPaDu0SlwJUXlIyeSL9052jrUC4QviLnvUEJ53Ldc3Q4nZJnT2wD8NHIroTOYX9lgp5m3BeTlhpRcsnuExDkA==}
     dependencies:
       '@formatjs/ecma402-abstract': 1.17.2
       '@formatjs/intl-localematcher': 0.4.2
@@ -244,8 +244,8 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /@formatjs/intl@2.9.4(typescript@5.2.2):
-    resolution: {integrity: sha512-hY0UlbDz8jY12RkQtkzxe3OfUmsIcUcsvVYyr1TFue6oTrUHqpkmYLdQ626V3BCSLc90EZDXdvmsPfMd3hTcYQ==}
+  /@formatjs/intl@2.9.5(typescript@5.2.2):
+    resolution: {integrity: sha512-WEdEv8Jf2nKBErTK4MJ2xCesUJVHH9iunXzfHzZo4tnn2NSj48g04FNH9w17XDpEbj9KEM39fLkwBz7ay/ErPQ==}
     peerDependencies:
       typescript: '5'
     peerDependenciesMeta:
@@ -255,7 +255,7 @@ packages:
       '@formatjs/ecma402-abstract': 1.17.2
       '@formatjs/fast-memoize': 2.2.0
       '@formatjs/icu-messageformat-parser': 2.7.0
-      '@formatjs/intl-displaynames': 6.6.0
+      '@formatjs/intl-displaynames': 6.6.1
       '@formatjs/intl-listformat': 7.5.0
       intl-messageformat: 10.5.4
       tslib: 2.6.2
