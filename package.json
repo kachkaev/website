@@ -24,7 +24,7 @@
     ]
   },
   "dependencies": {
-    "playwright": "1.38.1"
+    "playwright": "1.40.0"
   },
   "devDependencies": {
     "@formatjs/intl": "2.9.9",
