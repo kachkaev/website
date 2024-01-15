@@ -16,7 +16,7 @@ function PhotoSample({ alt }: { alt: string }) {
         alt={alt}
         src="https://farm8.staticflickr.com/7247/7511763574_d528f4ce04_z_d.jpg"
       />
-      <span className="absolute bottom-[.5rem] right-[1.5rem] h-0 w-0 origin-bottom-left -rotate-90 overflow-visible whitespace-nowrap text-sm !text-white opacity-80 shadow-md drop-shadow-md">
+      <span className="absolute bottom-[.5rem] right-[1.5rem] size-0 origin-bottom-left -rotate-90 overflow-visible whitespace-nowrap text-sm !text-white opacity-80 shadow-md drop-shadow-md">
         kachkaev.ru/photos
       </span>
       <span className="absolute inset-x-0 bottom-0 block group-hover:border-t-2 group-hover:border-t-red-500" />
