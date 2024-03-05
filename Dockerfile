@@ -1,4 +1,4 @@
-FROM node:18.18.2-slim AS base
+FROM node:20.11.1-slim AS base
 
 ENV NEXT_TELEMETRY_DISABLED true
 ENV PLAYWRIGHT_BROWSERS_PATH=/playwright
