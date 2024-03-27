@@ -32,8 +32,8 @@ devDependencies:
     specifier: 2.0.2
     version: 2.0.2
   '@tsconfig/strictest':
-    specifier: 2.0.4
-    version: 2.0.4
+    specifier: 2.0.5
+    version: 2.0.5
   '@types/js-yaml':
     specifier: 4.0.9
     version: 4.0.9
@@ -719,8 +719,8 @@ packages:
     resolution: {integrity: sha512-W84/xm8UevymR1tuxU1/qPM0di7FZahaSaJj92K7/y2hYB28Y/4dvaXm/hud3DPsG+b4BVNk4RCzCKA9/dPIbw==}
     dev: true
 
-  /@tsconfig/strictest@2.0.4:
-    resolution: {integrity: sha512-/VKO/oufDOvAE48KGzZOEXFBKtR3PnGlb4cJoRtw3Ax5tYwaWnaNgyTJDviIbvjlnn82WMfTNvhegFkj5Xt2UA==}
+  /@tsconfig/strictest@2.0.5:
+    resolution: {integrity: sha512-ec4tjL2Rr0pkZ5hww65c+EEPYwxOi4Ryv+0MtjeaSQRJyq322Q27eOQiFbuNgw2hpL4hB1/W/HBGk3VKS43osg==}
     dev: true
 
   /@types/js-yaml@4.0.9:
