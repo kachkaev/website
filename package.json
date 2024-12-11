@@ -43,7 +43,7 @@
     "autoprefixer": "10.4.20",
     "axios": "1.7.9",
     "envalid": "8.0.0",
-    "eslint": "8.57.1",
+    "eslint": "9.16.0",
     "eslint-plugin-tailwindcss": "3.17.5",
     "husky": "9.1.7",
     "js-yaml": "4.1.0",
