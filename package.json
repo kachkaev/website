@@ -50,7 +50,7 @@
     "lint-staged": "15.2.11",
     "markdownlint-cli": "0.43.0",
     "next": "15.1.0",
-    "npm-run-all2": "7.0.1",
+    "npm-run-all2": "7.0.2",
     "nprogress": "0.2.0",
     "postcss": "8.4.49",
     "prettier": "3.4.2",
