@@ -59,7 +59,7 @@
     "server-only": "0.0.1",
     "sharp": "0.33.5",
     "tailwindcss": "3.4.17",
-    "typescript": "5.7.2",
+    "typescript": "5.7.3",
     "zod": "3.24.1"
   },
   "packageManager": "pnpm@9.9.0"
