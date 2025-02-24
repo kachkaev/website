@@ -81,10 +81,7 @@ Because `/update-profiles/*` endpoints are public, a security token is introduce
     ## ≥ 2.30.0
     
     node --version
-    ## ≥ 18.12.0
-    
-    corepack --version
-    ## ≥ 0.14.0, comes with Node.js
+    ## ≥ 18.19.1
     ```
 
 1.  Clone the repo from GitHub:
@@ -98,7 +95,7 @@ Because `/update-profiles/*` endpoints are public, a security token is introduce
 1.  Prepare [pnpm](https://pnpm.io) for dependency management:
 
     ```sh
-    corepack enable && corepack prepare --activate
+    corepack enable
     
     pnpm --version
     ## same as in package.json → packageManager
