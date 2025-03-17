@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       playwright:
-        specifier: 1.50.1
-        version: 1.50.1
+        specifier: 1.51.1
+        version: 1.51.1
     devDependencies:
       '@formatjs/intl':
         specifier: 3.1.4
@@ -1949,13 +1949,13 @@ packages:
     resolution: {integrity: sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==}
     engines: {node: '>= 6'}
 
-  playwright-core@1.50.1:
-    resolution: {integrity: sha512-ra9fsNWayuYumt+NiM069M6OkcRb1FZSK8bgi66AtpFoWkg2+y0bJSNmkFrWhMbEBbVKC/EruAHH3g0zmtwGmQ==}
+  playwright-core@1.51.1:
+    resolution: {integrity: sha512-/crRMj8+j/Nq5s8QcvegseuyeZPxpQCZb6HNk3Sos3BlZyAknRjoyJPFWkpNn8v0+P3WiwqFF8P+zQo4eqiNuw==}
     engines: {node: '>=18'}
     hasBin: true
 
-  playwright@1.50.1:
-    resolution: {integrity: sha512-G8rwsOQJ63XG6BbKj2w5rHeavFjy5zynBA9zsJMMtBoe/Uf757oG12NXz6e6OirF7RCrTVAKFXbLmn1RbL7Qaw==}
+  playwright@1.51.1:
+    resolution: {integrity: sha512-kkx+MB2KQRkyxjYPc3a0wLZZoDczmppyGJIvQ43l+aZihkaVvmu/21kiyaHeHjiFxjxNNFnUncKmcGIyOojsaw==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -4620,11 +4620,11 @@ snapshots:
 
   pirates@4.0.6: {}
 
-  playwright-core@1.50.1: {}
+  playwright-core@1.51.1: {}
 
-  playwright@1.50.1:
+  playwright@1.51.1:
     dependencies:
-      playwright-core: 1.50.1
+      playwright-core: 1.51.1
     optionalDependencies:
       fsevents: 2.3.2
 
