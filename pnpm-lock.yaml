@@ -13,8 +13,8 @@ importers:
         version: 1.50.1
     devDependencies:
       '@formatjs/intl':
-        specifier: 3.1.5
-        version: 3.1.5(typescript@5.8.2)
+        specifier: 3.1.6
+        version: 3.1.6(typescript@5.8.2)
       '@kachkaev/eslint-config-react':
         specifier: 0.6.0
         version: 0.6.0(eslint@8.57.1)(typescript@5.8.2)
@@ -171,10 +171,10 @@ packages:
   '@formatjs/intl-localematcher@0.6.1':
     resolution: {integrity: sha512-ePEgLgVCqi2BBFnTMWPfIghu6FkbZnnBVhO2sSxvLfrdFw7wCHAHiDoM2h4NRgjbaY7+B7HgOLZGkK187pZTZg==}
 
-  '@formatjs/intl@3.1.5':
-    resolution: {integrity: sha512-cCTrhTqXGbacet55cKrRlT6lhhDqCBJCqoyngksWNqKzr832jDqrMLjf2tihJArx6TNhPdCJOVgyDw93DhfFhA==}
+  '@formatjs/intl@3.1.6':
+    resolution: {integrity: sha512-tDkXnA4qpIFcDWac8CyVJq6oW8DR7W44QDUBsfXWIIJD/FYYen0QoH46W7XsVMFfPOVKkvbufjboZrrWbEfmww==}
     peerDependencies:
-      typescript: 5.8.2
+      typescript: ^5.6.0
     peerDependenciesMeta:
       typescript:
         optional: true
@@ -2606,7 +2606,7 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@formatjs/intl@3.1.5(typescript@5.8.2)':
+  '@formatjs/intl@3.1.6(typescript@5.8.2)':
     dependencies:
       '@formatjs/ecma402-abstract': 2.3.4
       '@formatjs/fast-memoize': 2.2.7
