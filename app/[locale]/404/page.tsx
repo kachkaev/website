@@ -6,10 +6,14 @@ import { getDictionary } from "../../../i18n-server";
 import Mailto from "../shared/mailto";
 
 interface PageProps {
-  params: { locale: Locale };
+  params: Promise<{ locale: Locale }>;
 }
 
-export default async function Page({ params: { locale } }: PageProps) {
+export default async function Page(props: PageProps) {
+  const params = await props.params;
+
+  const { locale } = params;
+
   const dictionary = await getDictionary(locale);
 
   return (
@@ -31,9 +35,11 @@ export default async function Page({ params: { locale } }: PageProps) {
   );
 }
 
-export async function generateMetadata({
-  params: { locale },
-}: PageProps): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
+
+  const { locale } = params;
+
   const dictionary = await getDictionary(locale);
 
   return {

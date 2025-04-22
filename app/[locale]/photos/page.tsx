@@ -25,10 +25,14 @@ function PhotoSample({ alt }: { alt: string }) {
 }
 
 interface PageProps {
-  params: { locale: Locale };
+  params: Promise<{ locale: Locale }>;
 }
 
-export default async function Page({ params: { locale } }: PageProps) {
+export default async function Page(props: PageProps) {
+  const params = await props.params;
+
+  const { locale } = params;
+
   const dictionary = await getDictionary(locale);
 
   return (
@@ -64,7 +68,11 @@ export default async function Page({ params: { locale } }: PageProps) {
   );
 }
 
-export async function generateMetadata({ params: { locale } }: PageProps) {
+export async function generateMetadata(props: PageProps) {
+  const params = await props.params;
+
+  const { locale } = params;
+
   const dictionary = await getDictionary(locale);
 
   return { title: dictionary.photos.title };

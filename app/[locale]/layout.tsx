@@ -7,13 +7,16 @@ import type { Locale } from "../../i18n-config";
 import LocaleSwitcher from "./layout/locale-switcher";
 import NextAppNprogress from "./layout/next-app-nprogress";
 
-export default async function Root({
-  children,
-  params: { locale },
-}: {
+export default async function Root(props: {
   children: React.ReactNode;
-  params: { locale: Locale };
+  params: Promise<{ locale: Locale }>;
 }) {
+  const params = await props.params;
+
+  const { locale } = params;
+
+  const { children } = props;
+
   const gaMeasurementId = process.env["GA_MEASUREMENT_ID"];
 
   return (
