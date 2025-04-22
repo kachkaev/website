@@ -1,6 +1,5 @@
 import "./styles.css";
 
-import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 
 import type { Locale } from "../../i18n-config";
