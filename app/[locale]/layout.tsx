@@ -1,6 +1,6 @@
 import "./styles.css";
 
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 
 import type { Locale } from "../../i18n-config";
@@ -76,8 +76,11 @@ export function generateMetadata(): Metadata {
       shortcut: "/favicon.ico",
     },
     manifest: "/manifest.json",
-    themeColor: "#ffffff",
   };
 }
+
+export const viewport: Viewport = {
+  themeColor: "#ffffff",
+};
 
 export const dynamic = "force-dynamic";
