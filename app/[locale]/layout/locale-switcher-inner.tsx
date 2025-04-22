@@ -73,7 +73,7 @@ function LocaleListItem({
           }}
         >
           {highlighted && <LocaleHighlighter />}
-          <span className="border-b-[1px] border-inherit">{locale}</span>
+          <span className="border-b border-inherit">{locale}</span>
         </Link>
       ) : (
         <span className="inline-block p-3">{locale}</span>

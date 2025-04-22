@@ -41,7 +41,7 @@ function KeyProfile({
           {name}
         </a>
       </h2>
-      <p className="mb-3 mt-[1px] opacity-60">{children ?? <>&nbsp;</>}</p>
+      <p className="mb-3 mt-px opacity-60">{children ?? <>&nbsp;</>}</p>
     </>
   );
 }
