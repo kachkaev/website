@@ -18,11 +18,7 @@ const localeByHost = Object.fromEntries(
 export function middleware(request: NextRequest) {
   const newUrl = new URL(request.url);
 
-  if (
-    ["/browserconfig.xml", "/manifest.json", "/robots.txt"].includes(
-      request.nextUrl.pathname,
-    )
-  ) {
+  if (["/manifest.json", "/robots.txt"].includes(request.nextUrl.pathname)) {
     return NextResponse.next();
   }
 
