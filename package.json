@@ -36,7 +36,7 @@
     "@tsconfig/next": "2.0.3",
     "@tsconfig/strictest": "2.0.5",
     "@types/js-yaml": "4.0.9",
-    "@types/node": "22.15.18",
+    "@types/node": "22.15.19",
     "@types/nprogress": "0.2.3",
     "@types/react": "19.1.4",
     "@types/react-dom": "19.1.5",
