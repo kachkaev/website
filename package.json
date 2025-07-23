@@ -41,7 +41,7 @@
     "@types/react": "19.1.8",
     "@types/react-dom": "19.1.6",
     "autoprefixer": "10.4.21",
-    "axios": "1.10.0",
+    "axios": "1.11.0",
     "envalid": "8.1.0",
     "eslint": "8.57.1",
     "eslint-plugin-tailwindcss": "3.18.2",
