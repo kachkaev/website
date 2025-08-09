@@ -27,12 +27,12 @@ importers:
       '@next/eslint-plugin-next':
         specifier: 15.4.6
         version: 15.4.6
-      '@tsconfig/esm':
-        specifier: 1.0.5
-        version: 1.0.5
       '@tsconfig/next':
         specifier: 2.0.3
         version: 2.0.3
+      '@tsconfig/node-ts':
+        specifier: 23.6.1
+        version: 23.6.1
       '@tsconfig/strictest':
         specifier: 2.0.5
         version: 2.0.5
@@ -439,12 +439,11 @@ packages:
   '@swc/helpers@0.5.15':
     resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
 
-  '@tsconfig/esm@1.0.5':
-    resolution: {integrity: sha512-JzoZ0h299JRLPfV5VBsMq1TuMy+OmU9bdV/7NcjfRojL0eIcA1k5ESrtjWrDwJRJnk9B0QmgR0rq04LERbdfWw==}
-    deprecated: this package has been deprecated
-
   '@tsconfig/next@2.0.3':
     resolution: {integrity: sha512-b4aKvmdWnv9aUy+NStUFlefirk3SItW20OJtbi5/ue9oMRaQtUYbN5zsr7OmV3rlx6Gp6h7A82gPoCXhrNGVPQ==}
+
+  '@tsconfig/node-ts@23.6.1':
+    resolution: {integrity: sha512-1E5cUp+S65pLKKI9VrGMQPWDHxOEq3dAGM2onG3fLeSRwWbylYFwhIjnzJikjSN7w2nCgwxmv8ifvUKDFkK38Q==}
 
   '@tsconfig/strictest@2.0.5':
     resolution: {integrity: sha512-ec4tjL2Rr0pkZ5hww65c+EEPYwxOi4Ryv+0MtjeaSQRJyq322Q27eOQiFbuNgw2hpL4hB1/W/HBGk3VKS43osg==}
@@ -2841,9 +2840,9 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@tsconfig/esm@1.0.5': {}
-
   '@tsconfig/next@2.0.3': {}
+
+  '@tsconfig/node-ts@23.6.1': {}
 
   '@tsconfig/strictest@2.0.5': {}
 
