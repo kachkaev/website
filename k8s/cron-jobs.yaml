@@ -15,12 +15,20 @@ spec:
         spec:
           containers:
             - name: main
-              image: curlimages/curl:8.4.0
+              image: curlimages/curl:8.15.0
               imagePullPolicy: IfNotPresent
               command:
                 - /bin/sh
                 - -ec
-                - curl --no-progress-meter --fail https://kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}; [ $? -eq 0 ]  || exit 1
+                - |
+                  response=$(curl -sS -w "\n%{http_code}" --no-progress-meter --max-redirs 0 "https://kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}")
+                  body=$(printf "%s" "$response" | sed '$d')
+                  status=$(printf "%s" "$response" | tail -n1)
+                  echo "Status: $status"
+                  echo "Body: $body"
+                  if [ "$status" -ne 200 ]; then
+                    exit 1
+                  fi
               env:
                 - name: PROFILE_NAME
                   value: flickr
@@ -66,12 +74,20 @@ spec:
         spec:
           containers:
             - name: main
-              image: curlimages/curl:8.4.0
+              image: curlimages/curl:8.15.0
               imagePullPolicy: IfNotPresent
               command:
                 - /bin/sh
                 - -ec
-                - curl --no-progress-meter --fail https://kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}; [ $? -eq 0 ]  || exit 1
+                - |
+                  response=$(curl -sS -w "\n%{http_code}" --no-progress-meter --max-redirs 0 "https://kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}")
+                  body=$(printf "%s" "$response" | sed '$d')
+                  status=$(printf "%s" "$response" | tail -n1)
+                  echo "Status: $status"
+                  echo "Body: $body"
+                  if [ "$status" -ne 200 ]; then
+                    exit 1
+                  fi
               env:
                 - name: PROFILE_NAME
                   value: github
@@ -117,12 +133,20 @@ spec:
         spec:
           containers:
             - name: main
-              image: curlimages/curl:8.4.0
+              image: curlimages/curl:8.15.0
               imagePullPolicy: IfNotPresent
               command:
                 - /bin/sh
                 - -ec
-                - curl --no-progress-meter --fail https://kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}; [ $? -eq 0 ]  || exit 1
+                - |
+                  response=$(curl -sS -w "\n%{http_code}" --no-progress-meter --max-redirs 0 "https://kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}")
+                  body=$(printf "%s" "$response" | sed '$d')
+                  status=$(printf "%s" "$response" | tail -n1)
+                  echo "Status: $status"
+                  echo "Body: $body"
+                  if [ "$status" -ne 200 ]; then
+                    exit 1
+                  fi
               env:
                 - name: PROFILE_NAME
                   value: openaccess
@@ -168,12 +192,20 @@ spec:
         spec:
           containers:
             - name: main
-              image: curlimages/curl:8.4.0
+              image: curlimages/curl:8.15.0
               imagePullPolicy: IfNotPresent
               command:
                 - /bin/sh
                 - -ec
-                - curl --no-progress-meter --fail https://kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}; [ $? -eq 0 ]  || exit 1
+                - |
+                  response=$(curl -sS -w "\n%{http_code}" --no-progress-meter --max-redirs 0 "https://kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}")
+                  body=$(printf "%s" "$response" | sed '$d')
+                  status=$(printf "%s" "$response" | tail -n1)
+                  echo "Status: $status"
+                  echo "Body: $body"
+                  if [ "$status" -ne 200 ]; then
+                    exit 1
+                  fi
               env:
                 - name: PROFILE_NAME
                   value: linkedin
@@ -219,12 +251,20 @@ spec:
         spec:
           containers:
             - name: main
-              image: curlimages/curl:8.4.0
+              image: curlimages/curl:8.15.0
               imagePullPolicy: IfNotPresent
               command:
                 - /bin/sh
                 - -ec
-                - curl --no-progress-meter --fail https://kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}; [ $? -eq 0 ]  || exit 1
+                - |
+                  response=$(curl -sS -w "\n%{http_code}" --no-progress-meter --max-redirs 0 "https://kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}")
+                  body=$(printf "%s" "$response" | sed '$d')
+                  status=$(printf "%s" "$response" | tail -n1)
+                  echo "Status: $status"
+                  echo "Body: $body"
+                  if [ "$status" -ne 200 ]; then
+                    exit 1
+                  fi
               env:
                 - name: PROFILE_NAME
                   value: osm
@@ -270,12 +310,20 @@ spec:
         spec:
           containers:
             - name: main
-              image: curlimages/curl:8.4.0
+              image: curlimages/curl:8.15.0
               imagePullPolicy: IfNotPresent
               command:
                 - /bin/sh
                 - -ec
-                - curl --no-progress-meter --fail https://kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}; [ $? -eq 0 ]  || exit 1
+                - |
+                  response=$(curl -sS -w "\n%{http_code}" --no-progress-meter --max-redirs 0 "https://kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}")
+                  body=$(printf "%s" "$response" | sed '$d')
+                  status=$(printf "%s" "$response" | tail -n1)
+                  echo "Status: $status"
+                  echo "Body: $body"
+                  if [ "$status" -ne 200 ]; then
+                    exit 1
+                  fi
               env:
                 - name: PROFILE_NAME
                   value: twitter-en
@@ -321,12 +369,20 @@ spec:
         spec:
           containers:
             - name: main
-              image: curlimages/curl:8.4.0
+              image: curlimages/curl:8.15.0
               imagePullPolicy: IfNotPresent
               command:
                 - /bin/sh
                 - -ec
-                - curl --no-progress-meter --fail https://kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}; [ $? -eq 0 ]  || exit 1
+                - |
+                  response=$(curl -sS -w "\n%{http_code}" --no-progress-meter --max-redirs 0 "https://kachkaev.uk/update-profiles/${PROFILE_NAME}?${SECURITY_TOKEN}")
+                  body=$(printf "%s" "$response" | sed '$d')
+                  status=$(printf "%s" "$response" | tail -n1)
+                  echo "Status: $status"
+                  echo "Body: $body"
+                  if [ "$status" -ne 200 ]; then
+                    exit 1
+                  fi
               env:
                 - name: PROFILE_NAME
                   value: twitter-ru
