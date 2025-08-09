@@ -88,6 +88,7 @@ export async function fetchJson<Schema extends ZodType>(
   }
 
   const data = await response.json();
+
   return schema.parse(data);
 }
 
