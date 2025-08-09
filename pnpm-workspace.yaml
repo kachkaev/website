@@ -3,3 +3,5 @@ ignoredBuiltDependencies:
 
 hoistPattern:
   - prettier-plugin-*
+
+nodeLinker: isolated
