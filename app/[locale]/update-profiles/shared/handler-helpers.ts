@@ -85,7 +85,7 @@ export async function fetchJson<Schema extends ZodType>(
     },
   });
 
-  return schema.parse(response.data) as unknown;
+  return schema.parse(response.data);
 }
 
 export function generateUpdateProfileHandler({
