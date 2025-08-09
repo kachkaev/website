@@ -1,7 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 
-import axios from "axios";
 import { NextResponse } from "next/server";
 import type { Browser, BrowserContext, Page } from "playwright";
 import { firefox } from "playwright";
@@ -78,14 +77,18 @@ export async function fetchJson<Schema extends ZodType>(
   url: string,
   schema: Schema,
 ): Promise<TypeOf<Schema>> {
-  const response = await axios.get(url, {
-    responseType: "json",
+  const response = await fetch(url, {
     headers: {
       "Content-Type": "application/json",
     },
   });
 
-  return schema.parse(response.data);
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  const data = await response.json();
+  return schema.parse(data);
 }
 
 export function generateUpdateProfileHandler({
