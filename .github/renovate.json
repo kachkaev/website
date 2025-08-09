@@ -1,14 +1,12 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base",
+    "config:recommended",
     ":maintainLockFilesWeekly",
     ":semanticCommitsDisabled"
   ],
-
   "rangeStrategy": "bump",
   "postUpdateOptions": ["pnpmDedupe"],
-
   "packageRules": [
     {
       "matchDepTypes": ["devDependencies"],
