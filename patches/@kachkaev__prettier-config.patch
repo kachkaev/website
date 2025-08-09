@@ -1,0 +1,15 @@
+diff --git a/main.js b/main.js
+index e7886bd523b7e08b65904d9fde682f28366afac3..23e5f034476c32ac2e52123e4bcd9821ab64f2cb 100644
+--- a/main.js
++++ b/main.js
+@@ -1,6 +1,9 @@
++import packageJson from "prettier-plugin-packagejson";
++import sh from "prettier-plugin-sh";
++
+ /** @type {import("prettier").Config} */
+ const config = {
+-  plugins: ["prettier-plugin-packagejson", "prettier-plugin-sh"],
++  plugins: [packageJson, sh],
+ };
+ 
+ // eslint-disable-next-line import/no-default-export -- required for Prettier
