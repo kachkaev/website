@@ -4,11 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-patchedDependencies:
-  '@kachkaev/prettier-config':
-    hash: 17a49f26ae2eeb89530f7bc9578a5c4d50701aa99bf401e19e32e9162f8d41bb
-    path: patches/@kachkaev__prettier-config.patch
-
 importers:
 
   .:
@@ -27,8 +22,8 @@ importers:
         specifier: 0.5.0
         version: 0.5.0(markdownlint-cli@0.45.0)
       '@kachkaev/prettier-config':
-        specifier: 2.0.0
-        version: 2.0.0(patch_hash=17a49f26ae2eeb89530f7bc9578a5c4d50701aa99bf401e19e32e9162f8d41bb)(prettier@3.6.2)
+        specifier: 2.1.0
+        version: 2.1.0(prettier@3.6.2)
       '@next/eslint-plugin-next':
         specifier: 15.4.6
         version: 15.4.6
@@ -359,8 +354,8 @@ packages:
     peerDependencies:
       markdownlint-cli: '>=0.30.0'
 
-  '@kachkaev/prettier-config@2.0.0':
-    resolution: {integrity: sha512-K3udgyQJRhxLryIZ4kyZehJ4CAOfXmVnZnplHy8pRptzy2axVZigTk/n+3DoEFOEwXp4YBGeZfYRmjtjA7qOrw==}
+  '@kachkaev/prettier-config@2.1.0':
+    resolution: {integrity: sha512-1Bbz9HYkZFoF3G7XHJ1KHiK3ifTF406q2i6J9gLYg/1Tl/UFcchgqCSt2ijAAfYQQhaJvoIwCafAADkOkyltXA==}
     peerDependencies:
       prettier: ^3.0.0
 
@@ -437,6 +432,10 @@ packages:
   '@pkgr/core@0.2.9':
     resolution: {integrity: sha512-QNqXyfVS2wm9hweSYD2O7F0G06uurj9kZ96TRQE5Y9hU7+tgdZwIkbAKc5Ocy1HxEY2kuDQa6cQ1WRs/O5LFKA==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
+
+  '@reteps/dockerfmt@0.3.6':
+    resolution: {integrity: sha512-Tb5wIMvBf/nLejTQ61krK644/CEMB/cpiaIFXqGApfGqO3GwcR3qnI0DbmkFVCl2OyEp8LnLX3EkucoL0+tbFg==}
+    engines: {node: ^v12.20.0 || ^14.13.0 || >=16.0.0}
 
   '@rtsao/scc@1.1.0':
     resolution: {integrity: sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==}
@@ -1756,10 +1755,6 @@ packages:
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
 
-  mvdan-sh@0.10.1:
-    resolution: {integrity: sha512-kMbrH0EObaKmK3nVRKUIIya1dpASHIEusM13S4V1ViHFuxuNxCo+arxoa6j/dbV22YBGjl7UKJm9QQKJ2Crzhg==}
-    deprecated: See https://github.com/mvdan/sh/issues/1145
-
   mz@2.7.0:
     resolution: {integrity: sha512-z81GNO7nnYMEhrGh9LeymoE4+Yr0Wn5McHIZMK5cfQCl+NDX08sCZgUc9/6MHni9IWuFLm1Z3HTCXu2z9fN62Q==}
 
@@ -2036,11 +2031,11 @@ packages:
       prettier:
         optional: true
 
-  prettier-plugin-sh@0.13.1:
-    resolution: {integrity: sha512-ytMcl1qK4s4BOFGvsc9b0+k9dYECal7U29bL/ke08FEUsF/JLN0j6Peo0wUkFDG4y2UHLMhvpyd6Sd3zDXe/eg==}
+  prettier-plugin-sh@0.18.0:
+    resolution: {integrity: sha512-cW1XL27FOJQ/qGHOW6IHwdCiNWQsAgK+feA8V6+xUTaH0cD3Mh+tFAtBvEEWvuY6hTDzRV943Fzeii+qMOh7nQ==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
-      prettier: ^3.0.0
+      prettier: ^3.6.0
 
   prettier@3.6.2:
     resolution: {integrity: sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==}
@@ -2193,8 +2188,8 @@ packages:
     resolution: {integrity: sha512-RJRdvCo6IAnPdsvP/7m6bsQqNnn1FCBX5ZNtFL98MmFF/4xAIJTIg1YbHW5DC2W5SKZanrC6i4HsJqlajw/dZw==}
     engines: {node: '>= 0.4'}
 
-  sh-syntax@0.4.2:
-    resolution: {integrity: sha512-/l2UZ5fhGZLVZa16XQM9/Vq/hezGGbdHeVEA01uWjOL1+7Ek/gt6FquW0iKKws4a9AYPYvlz6RyVvjh3JxOteg==}
+  sh-syntax@0.5.8:
+    resolution: {integrity: sha512-JfVoxf4FxQI5qpsPbkHhZo+n6N9YMJobyl4oGEUBb/31oQYlgTjkXQD8PBiafS2UbWoxrTO0Z5PJUBXEPAG1Zw==}
     engines: {node: '>=16.0.0'}
 
   sharp@0.34.3:
@@ -2786,11 +2781,11 @@ snapshots:
     dependencies:
       markdownlint-cli: 0.45.0
 
-  '@kachkaev/prettier-config@2.0.0(patch_hash=17a49f26ae2eeb89530f7bc9578a5c4d50701aa99bf401e19e32e9162f8d41bb)(prettier@3.6.2)':
+  '@kachkaev/prettier-config@2.1.0(prettier@3.6.2)':
     dependencies:
       prettier: 3.6.2
       prettier-plugin-packagejson: 2.5.19(prettier@3.6.2)
-      prettier-plugin-sh: 0.13.1(prettier@3.6.2)
+      prettier-plugin-sh: 0.18.0(prettier@3.6.2)
 
   '@next/env@15.4.6': {}
 
@@ -2838,6 +2833,8 @@ snapshots:
     optional: true
 
   '@pkgr/core@0.2.9': {}
+
+  '@reteps/dockerfmt@0.3.6': {}
 
   '@rtsao/scc@1.1.0': {}
 
@@ -4429,8 +4426,6 @@ snapshots:
 
   ms@2.1.3: {}
 
-  mvdan-sh@0.10.1: {}
-
   mz@2.7.0:
     dependencies:
       any-promise: 1.3.0
@@ -4700,11 +4695,11 @@ snapshots:
     optionalDependencies:
       prettier: 3.6.2
 
-  prettier-plugin-sh@0.13.1(prettier@3.6.2):
+  prettier-plugin-sh@0.18.0(prettier@3.6.2):
     dependencies:
-      mvdan-sh: 0.10.1
+      '@reteps/dockerfmt': 0.3.6
       prettier: 3.6.2
-      sh-syntax: 0.4.2
+      sh-syntax: 0.5.8
 
   prettier@3.6.2: {}
 
@@ -4876,7 +4871,7 @@ snapshots:
       es-errors: 1.3.0
       es-object-atoms: 1.1.1
 
-  sh-syntax@0.4.2:
+  sh-syntax@0.5.8:
     dependencies:
       tslib: 2.8.1
 

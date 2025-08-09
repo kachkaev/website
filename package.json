@@ -30,7 +30,7 @@
     "@formatjs/intl": "3.1.6",
     "@kachkaev/eslint-config-react": "0.6.0",
     "@kachkaev/markdownlint-config": "0.5.0",
-    "@kachkaev/prettier-config": "2.0.0",
+    "@kachkaev/prettier-config": "2.1.0",
     "@next/eslint-plugin-next": "15.4.6",
     "@tsconfig/next": "2.0.3",
     "@tsconfig/node-ts": "23.6.1",

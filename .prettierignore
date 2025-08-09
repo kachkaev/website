@@ -18,33 +18,8 @@
 !*.yaml
 !*.yml
 
-########################
-## Same as in .gitignore
-########################
-
-## Dependencies
-/node_modules/
-/.pnp
-.pnp.js
-.pnpm-debug.log*
-
-## Next.js
-/.next/
-/out/
-*.tsbuildinfo
-next-env.d.ts
-
-## Testing
-/coverage/
-
-## Misc
-.DS_Store
-.env*.local
-*.log
-*.pem
-
-## App-specific
-/data/
+## Allow certain files without extensions
+!.husky/*
 
 #########################
 ## Shared between linters

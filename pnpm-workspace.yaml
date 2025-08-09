@@ -2,6 +2,3 @@ ignoredBuiltDependencies:
   - sharp ## Install script is only required when compiling sharp from source - https://sharp.pixelplumbing.com/install
 
 nodeLinker: isolated
-
-patchedDependencies:
-  "@kachkaev/prettier-config": patches/@kachkaev__prettier-config.patch
