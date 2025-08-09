@@ -15,7 +15,7 @@
     "lint:pnpm-dedupe": "pnpm dedupe --check",
     "lint:prettier": "prettier --check .",
     "lint:tsc": "tsc --noEmit --project .",
-    "prepare": "husky install",
+    "prepare": "husky",
     "start": "next start"
   },
   "lint-staged": {
