@@ -3,8 +3,8 @@ import path from "node:path";
 
 import { NextResponse } from "next/server";
 import type { Browser, BrowserContext, Page } from "playwright";
-import { firefox } from "playwright";
-import type { TypeOf, ZodType } from "zod";
+import { chromium } from "playwright";
+import type { ZodType } from "zod";
 
 import { cleanProcessEnv, envalid } from "../../shared/env";
 import { writeProfileInfo } from "../../shared/profile-infos";
@@ -28,7 +28,7 @@ export async function extractDataFromWebPage<Data>({
     PLAYWRIGHT_HEADLESS: envalid.bool({ default: true }),
     PLAYWRIGHT_USER_AGENT: envalid.str({
       default:
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0",
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 14.5; rv:126.0) Gecko/20100101 Firefox/126.0",
     }),
   });
 
@@ -37,9 +37,9 @@ export async function extractDataFromWebPage<Data>({
   let page: Page | undefined;
 
   try {
-    // Using Firefox because LinkedIn redirects to auth wall on headless Chromium
-    browser = await firefox.launch({
+    browser = await chromium.launch({
       headless: env.PLAYWRIGHT_HEADLESS,
+      timeout: 5000,
     });
 
     const proxyServerUrl = getProxyServerUrl();
@@ -76,7 +76,7 @@ export async function extractDataFromWebPage<Data>({
 export async function fetchJson<Schema extends ZodType>(
   url: string,
   schema: Schema,
-): Promise<TypeOf<Schema>> {
+): Promise<Schema["_output"]> {
   const response = await fetch(url, {
     headers: {
       "Content-Type": "application/json",
