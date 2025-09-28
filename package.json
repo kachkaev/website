@@ -46,7 +46,7 @@
     "eslint-plugin-tailwindcss": "3.18.2",
     "husky": "9.1.7",
     "js-yaml": "4.1.0",
-    "lint-staged": "16.2.1",
+    "lint-staged": "16.2.3",
     "markdownlint-cli": "0.45.0",
     "next": "15.5.4",
     "npm-run-all2": "8.0.4",
