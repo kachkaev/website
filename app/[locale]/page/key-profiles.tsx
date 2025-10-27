@@ -1,18 +1,18 @@
 import { createIntl, createIntlCache } from "@formatjs/intl";
 import * as React from "react";
 
-import type { Dictionary, Locale } from "../../../i18n-config";
+import type { Dictionary, LocaleParam } from "../../../i18n-config";
 import { readProfileInfo } from "../shared/profile-infos";
 
 const intlCache = createIntlCache();
 
 interface KeyProfileProps {
-  locale: Locale;
+  locale: LocaleParam;
   dictionary: Dictionary;
 }
 
 function formatMessage(
-  locale: Locale,
+  locale: LocaleParam,
   messageLookup: Dictionary["index"],
   messageId: keyof Dictionary["index"],
   valueLookup: Record<string, unknown>,

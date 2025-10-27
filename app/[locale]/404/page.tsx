@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import type { Locale } from "../../../i18n-config";
 import { getDictionary } from "../../../i18n-server";
 import Mailto from "../shared/mailto";
+import type { LocaleParam } from "../../../i18n-config";
 
 interface PageProps {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: LocaleParam }>;
 }
 
 export default async function Page(props: PageProps) {
