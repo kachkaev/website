@@ -2,13 +2,13 @@ import "./styles.css";
 
 import Script from "next/script";
 
-import type { Locale } from "../../i18n-config";
+import type { LocaleParam } from "../../i18n-config";
 import LocaleSwitcher from "./layout/locale-switcher";
 import NextAppNprogress from "./layout/next-app-nprogress";
 
 export default async function Root(props: {
   children: React.ReactNode;
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: LocaleParam }>;
 }) {
   const params = await props.params;
 

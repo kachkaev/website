@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
-import type { Locale } from "../../i18n-config";
+import type { LocaleParam } from "../../i18n-config";
 import { getDictionary } from "../../i18n-server";
 import photo from "../../public/images/alexander_kachkaev.jpg";
 import KeyProfiles from "./page/key-profiles";
 import Mailto from "./shared/mailto";
 
 interface PageProps {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: LocaleParam }>;
 }
 
 export default async function Page(props: PageProps) {

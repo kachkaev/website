@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import * as React from "react";
 
-import { type Locale } from "../../../i18n-config";
+import { type LocaleParam } from "../../../i18n-config";
 import { i18n } from "../../../i18n-config";
 
 const localeHighlightLocalStorageKey = "hideLocaleHighlightUntil";
@@ -86,7 +86,7 @@ export default function LocaleSwitcherInner({
   locale,
   baseUrlByLocale,
 }: {
-  locale: Locale;
+  locale: LocaleParam;
   baseUrlByLocale: Record<string, string>;
 }) {
   const pathname = usePathname();

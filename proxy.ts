@@ -15,7 +15,7 @@ const localeByHost = Object.fromEntries(
   ]),
 );
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const newUrl = new URL(request.url);
 
   if (["/manifest.json", "/robots.txt"].includes(request.nextUrl.pathname)) {

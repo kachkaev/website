@@ -1,12 +1,11 @@
 import * as React from "react";
-
-import type { Locale } from "../../../i18n-config";
+import type { LocaleParam } from "../../../i18n-config";
 
 export default function Mailto({
   locale,
   children,
 }: {
-  locale: Locale;
+  locale: LocaleParam;
   children?: React.ReactNode;
 }) {
   const email =
