@@ -1,8 +1,10 @@
+require("@rushstack/eslint-patch/modern-module-resolution.js");
+
 module.exports = {
   extends: [
     "@kachkaev/eslint-config-react",
     "@kachkaev/eslint-config-react/extra-type-checking",
-    "plugin:@next/next/recommended",
+    "plugin:@next/next/recommended-legacy",
     "plugin:tailwindcss/recommended",
   ],
   rules: {
@@ -11,6 +13,7 @@ module.exports = {
     "@typescript-eslint/no-unsafe-assignment": "off",
     "@typescript-eslint/no-unsafe-call": "off",
     "@typescript-eslint/no-unsafe-member-access": "off",
+    "@typescript-eslint/no-parameter-properties": "off",
     "@typescript-eslint/require-await": "off",
     "@typescript-eslint/restrict-template-expressions": "off",
 
@@ -24,6 +27,17 @@ module.exports = {
     "import/no-default-export": "off",
     "react/react-in-jsx-scope": "off",
     "unicorn/import-style": "off",
+    "unicorn/expiring-todo-comments": "off",
     "no-restricted-syntax": "off",
   },
+
+  overrides: [
+    {
+      files: ["**/*.cjs"],
+      rules: {
+        "@typescript-eslint/no-require-imports": "off",
+        "unicorn/no-empty-file": "off",
+      },
+    },
+  ],
 };

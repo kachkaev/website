@@ -1,3 +1,5 @@
+import type * as enDictionary from "./dictionaries/en.json";
+
 export const i18n = {
   defaultLocale: "en",
   locales: ["en", "ru"],
@@ -5,4 +7,4 @@ export const i18n = {
 
 export type Locale = (typeof i18n)["locales"][number];
 export type LocaleParam = string;
-export type Dictionary = typeof import("./dictionaries/en.json");
+export type Dictionary = typeof enDictionary;

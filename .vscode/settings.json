@@ -1,4 +1,5 @@
 {
+  "eslint.useFlatConfig": false,
   "tailwindCSS.classAttributes": ["class", "className", ".*ClassName"],
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true
