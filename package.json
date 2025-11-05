@@ -42,7 +42,7 @@
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
     "autoprefixer": "10.4.21",
-    "envalid": "8.1.0",
+    "envalid": "8.1.1",
     "eslint": "9.39.1",
     "eslint-plugin-tailwindcss": "3.18.2",
     "husky": "9.1.7",

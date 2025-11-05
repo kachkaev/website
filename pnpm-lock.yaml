@@ -62,8 +62,8 @@ importers:
         specifier: 10.4.21
         version: 10.4.21(postcss@8.5.6)
       envalid:
-        specifier: 8.1.0
-        version: 8.1.0
+        specifier: 8.1.1
+        version: 8.1.1
       eslint:
         specifier: 9.39.1
         version: 9.39.1(jiti@1.21.7)
@@ -949,8 +949,8 @@ packages:
     resolution: {integrity: sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==}
     engines: {node: '>=0.12'}
 
-  envalid@8.1.0:
-    resolution: {integrity: sha512-OT6+qVhKVyCidaGoXflb2iK1tC8pd0OV2Q+v9n33wNhUJ+lus+rJobUj4vJaQBPxPZ0vYrPGuxdrenyCAIJcow==}
+  envalid@8.1.1:
+    resolution: {integrity: sha512-vOUfHxAFFvkBjbVQbBfgnCO9d3GcNfMMTtVfgqSU2rQGMFEVqWy9GBuoSfHnwGu7EqR0/GeukQcL3KjFBaga9w==}
     engines: {node: '>=18'}
 
   environment@1.1.0:
@@ -3362,7 +3362,7 @@ snapshots:
 
   entities@4.5.0: {}
 
-  envalid@8.1.0:
+  envalid@8.1.1:
     dependencies:
       tslib: 2.8.1
 
