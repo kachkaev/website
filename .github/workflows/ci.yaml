@@ -40,6 +40,18 @@ jobs:
             exit 1
           fi
 
+      - name: Run pnpm lint:knip
+        if: ${{ success() || failure() }}
+        run: |
+          if ! pnpm lint:knip; then
+            echo ''
+            echo ''
+            echo 'ℹ️ ℹ️ ℹ️'
+            echo 'Try running `pnpm fix:knip` locally to apply autofixes.'
+            echo 'ℹ️ ℹ️ ℹ️'
+            exit 1
+          fi
+
       - name: Run pnpm lint:markdownlint
         if: ${{ success() || failure() }}
         run: |
