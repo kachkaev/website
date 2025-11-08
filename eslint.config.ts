@@ -19,11 +19,4 @@ export default defineConfig([
       ],
     },
   },
-
-  // TODO: Triage
-  {
-    rules: {
-      "@typescript-eslint/prefer-nullish-coalescing": "off",
-    },
-  },
 ]);

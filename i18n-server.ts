@@ -22,6 +22,6 @@ export async function getDictionary(locale: string): Promise<Dictionary> {
 }
 
 export const baseUrlByLocale: Record<Locale, string> = {
-  en: process.env["BASE_URL_EN"] || "http://localhost:3000",
-  ru: process.env["BASE_URL_RU"] || "http://ru.localhost:3000",
+  en: process.env["BASE_URL_EN"] ?? "http://localhost:3000",
+  ru: process.env["BASE_URL_RU"] ?? "http://ru.localhost:3000",
 };
