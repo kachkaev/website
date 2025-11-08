@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 
-import { NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import {
   type Browser,
   type BrowserContext,
@@ -102,7 +102,7 @@ export function generateUpdateProfileHandler({
 }: {
   profileName: string;
   generateProfileInfo: () => Promise<Record<string, unknown>>;
-}): (request: Request) => Promise<NextResponse> {
+}): (request: NextRequest) => Promise<NextResponse> {
   return async (request) => {
     const env = cleanProcessEnv({
       UPDATE_PROFILE_SECURITY_TOKEN: envalid.str(),

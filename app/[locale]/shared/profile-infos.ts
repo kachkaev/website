@@ -44,7 +44,7 @@ export async function readProfileInfo(
 export async function writeProfileInfo(
   profileName: string,
   profileInfo: Record<string, unknown>,
-) {
+): Promise<void> {
   await fs.mkdir(profileInfosDirPath, { recursive: true });
   await fs.writeFile(
     path.resolve(profileInfosDirPath, `${profileName}.yaml`),

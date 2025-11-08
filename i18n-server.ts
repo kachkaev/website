@@ -1,14 +1,14 @@
 // @todo Bring back the import when middleware.ts stops crashing because of that
 // import "server-only";
 
-import { i18n, type Locale } from "./i18n-config";
+import { type Dictionary, i18n, type Locale } from "./i18n-config";
 
 const dictionaryLookup = {
   en: () => import("./dictionaries/en.json").then((module) => module.default),
   ru: () => import("./dictionaries/ru.json").then((module) => module.default),
 };
 
-export async function getDictionary(locale: string) {
+export async function getDictionary(locale: string): Promise<Dictionary> {
   // Locale may be equal to any value if matcher in middleware.ts returns false
 
   if (Object.hasOwn(dictionaryLookup, locale)) {
