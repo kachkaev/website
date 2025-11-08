@@ -56,20 +56,20 @@ export default function NextAppNprogress({
   React.useEffect(() => {
     NProgress.configure({ showSpinner: false });
 
-    const handleAnchorClick = (event: MouseEvent) => {
+    function handleAnchorClick(event: MouseEvent) {
       const targetUrl = (event.currentTarget as HTMLAnchorElement).href;
       const currentUrl = location.href;
       if (targetUrl !== currentUrl) {
         NProgress.start();
       }
-    };
+    }
 
-    const handleMutation = () => {
+    function handleMutation() {
       const anchorElements = document.querySelectorAll("a");
       for (const anchor of anchorElements) {
         anchor.addEventListener("click", handleAnchorClick);
       }
-    };
+    }
 
     const mutationObserver = new MutationObserver(handleMutation);
     mutationObserver.observe(document, { childList: true, subtree: true });

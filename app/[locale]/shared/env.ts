@@ -2,9 +2,9 @@ import * as envalid from "envalid";
 
 export * as envalid from "envalid";
 
-export const cleanProcessEnv = <T>(specs: {
+export function cleanProcessEnv<T>(specs: {
   [K in keyof T]: envalid.ValidatorSpec<T[K]>;
-}) => {
+}): envalid.CleanedEnv<{ [K in keyof T]: envalid.ValidatorSpec<T[K]> }> {
   return envalid.cleanEnv(process.env, specs, {
     reporter: ({ errors }) => {
       if (Object.keys(errors).length === 0) {
@@ -19,4 +19,4 @@ export const cleanProcessEnv = <T>(specs: {
       throw new Error(messageChunks.join("\n") || "Invalid environment");
     },
   });
-};
+}

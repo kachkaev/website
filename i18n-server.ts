@@ -8,7 +8,7 @@ const dictionaryLookup = {
   ru: () => import("./dictionaries/ru.json").then((module) => module.default),
 };
 
-export const getDictionary = async (locale: string) => {
+export async function getDictionary(locale: string) {
   // Locale may be equal to any value if matcher in middleware.ts returns false
 
   if (locale in dictionaryLookup) {
@@ -16,7 +16,7 @@ export const getDictionary = async (locale: string) => {
   }
 
   return dictionaryLookup[i18n.defaultLocale]();
-};
+}
 
 export const baseUrlByLocale: Record<Locale, string> = {
   en: process.env["BASE_URL_EN"] || "http://localhost:3000",
