@@ -25,7 +25,6 @@ export default defineConfig([
     rules: {
       "@typescript-eslint/no-unsafe-assignment": "off",
       "@typescript-eslint/prefer-nullish-coalescing": "off",
-      "@typescript-eslint/require-await": "off",
     },
   },
 ]);
