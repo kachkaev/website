@@ -29,7 +29,7 @@ function LocaleHighlighter() {
   }, []);
 
   if (!visible) {
-    return <></>;
+    return;
   }
 
   return (
