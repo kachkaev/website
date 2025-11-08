@@ -81,7 +81,7 @@ function LocaleListItem({
   );
 }
 
-export default function LocaleSwitcherInner({
+export function LocaleSwitcherInner({
   locale,
   baseUrlByLocale,
 }: {

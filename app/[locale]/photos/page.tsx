@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import type { LocaleParam } from "../../../i18n-config";
 import { getDictionary } from "../../../i18n-server";
-import Mailto from "../shared/mailto";
+import { Mailto } from "../shared/mailto";
 
 function PhotoSample({ alt }: { alt: string }) {
   return (

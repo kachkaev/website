@@ -12,7 +12,7 @@ type PushStateInput = [
   url?: string | URL | null | undefined,
 ];
 
-export default function NextAppNprogress({
+export function NextAppNprogress({
   color = "#29d",
   height = "2px",
 }: {

@@ -34,8 +34,6 @@ export default defineConfig([
       "@typescript-eslint/no-unsafe-assignment": "off",
       "@typescript-eslint/prefer-nullish-coalescing": "off",
       "@typescript-eslint/require-await": "off",
-      "import/no-default-export": "off",
-      "import/no-duplicates": "off",
       "react-hooks/purity": "off",
       "react/prefer-destructuring-assignment": "off",
     },

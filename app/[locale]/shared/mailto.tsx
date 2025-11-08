@@ -2,7 +2,7 @@ import * as React from "react";
 
 import type { LocaleParam } from "../../../i18n-config";
 
-export default function Mailto({
+export function Mailto({
   locale,
   children,
 }: {

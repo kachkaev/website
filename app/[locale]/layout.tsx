@@ -3,8 +3,8 @@ import "./styles.css";
 import Script from "next/script";
 
 import type { LocaleParam } from "../../i18n-config";
-import LocaleSwitcher from "./layout/locale-switcher";
-import NextAppNprogress from "./layout/next-app-nprogress";
+import { LocaleSwitcher } from "./layout/locale-switcher";
+import { NextAppNprogress } from "./layout/next-app-nprogress";
 
 export default async function Root(props: {
   children: React.ReactNode;

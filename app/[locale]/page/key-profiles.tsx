@@ -233,7 +233,7 @@ async function Flickr({ locale, dictionary }: KeyProfileProps) {
   );
 }
 
-export default async function KeyProfiles(props: KeyProfileProps) {
+export async function KeyProfiles(props: KeyProfileProps) {
   return (
     <>
       <Openaccess {...props} />

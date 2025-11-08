@@ -4,8 +4,8 @@ import Image from "next/image";
 import type { LocaleParam } from "../../i18n-config";
 import { getDictionary } from "../../i18n-server";
 import photo from "../../public/images/alexander_kachkaev.jpg";
-import KeyProfiles from "./page/key-profiles";
-import Mailto from "./shared/mailto";
+import { KeyProfiles } from "./page/key-profiles";
+import { Mailto } from "./shared/mailto";
 
 interface PageProps {
   params: Promise<{ locale: LocaleParam }>;
