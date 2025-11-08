@@ -178,12 +178,18 @@ async function Twitter({ locale, dictionary }: KeyProfileProps) {
   );
 }
 
+function shuffle<T extends unknown[] | undefined>(array: T): T {
+  return array?.toSorted(() => Math.random() - 0.5) as T;
+}
+
 async function Flickr({ locale, dictionary }: KeyProfileProps) {
   const profileInfo = await readProfileInfo("flickr");
 
-  const mostViewedPhotos = profileInfo?.["mostViewedPhotos"] as
-    | Array<{ title: string; url: string; thumbnailUrl: string }>
-    | undefined;
+  const shuffledPhotos = shuffle(
+    profileInfo?.["mostViewedPhotos"] as
+      | Array<{ title: string; url: string; thumbnailUrl: string }>
+      | undefined,
+  );
 
   return (
     <>
@@ -202,29 +208,26 @@ async function Flickr({ locale, dictionary }: KeyProfileProps) {
           </>
         ) : undefined}
       </KeyProfile>
-      {mostViewedPhotos && (
+      {shuffledPhotos && (
         <div className="relative -mt-2 h-[50px] overflow-hidden rounded-[5px] bg-gray-300 bg-clip-padding">
           <div className="absolute whitespace-nowrap">
-            {mostViewedPhotos
-              .toSorted(() => (Math.random() >= 0.5 ? 1 : -1))
-              .slice(0, 9)
-              .map(({ thumbnailUrl, title, url }) => (
-                <a
-                  key={url}
-                  href={url}
-                  title={title}
-                  className="group relative inline-block size-[50px] border-none! grayscale hover:grayscale-0 active:grayscale-0"
-                >
-                  <img
-                    className="inline-block"
-                    src={thumbnailUrl}
-                    alt={title}
-                    width={50}
-                    height={50}
-                  />
-                  <span className="absolute inset-x-0 bottom-0 block bg-slate-500 group-hover:border-t-2 group-hover:border-t-red-500" />
-                </a>
-              ))}
+            {shuffledPhotos.map(({ thumbnailUrl, title, url }) => (
+              <a
+                key={url}
+                href={url}
+                title={title}
+                className="group relative inline-block size-[50px] border-none! grayscale hover:grayscale-0 active:grayscale-0"
+              >
+                <img
+                  className="inline-block"
+                  src={thumbnailUrl}
+                  alt={title}
+                  width={50}
+                  height={50}
+                />
+                <span className="absolute inset-x-0 bottom-0 block bg-slate-500 group-hover:border-t-2 group-hover:border-t-red-500" />
+              </a>
+            ))}
           </div>
         </div>
       )}
