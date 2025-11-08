@@ -34,7 +34,6 @@ export default defineConfig([
       "@typescript-eslint/prefer-nullish-coalescing": "off",
       "@typescript-eslint/require-await": "off",
       "react-hooks/purity": "off",
-      "react/prefer-destructuring-assignment": "off",
     },
   },
 ]);
