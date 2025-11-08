@@ -36,7 +36,7 @@ export const GET = generateUpdateProfileHandler({
         id: photo.id,
         title: photo.title,
         url: `https://www.flickr.com/photos/kachkaev/${photo.id}/`,
-        thumbnailUrl: photo["url_sq"],
+        thumbnailUrl: photo.url_sq,
         views: Number.parseInt(photo.views),
       }))
       .toSorted((a, b) => b.views - a.views)
