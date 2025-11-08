@@ -5,9 +5,9 @@ import type { LocaleParam } from "../../../i18n-config";
 import { getDictionary } from "../../../i18n-server";
 import { Mailto } from "../shared/mailto";
 
-interface PageProps {
+type PageProps = {
   params: Promise<{ locale: LocaleParam }>;
-}
+};
 
 export default async function Page(props: PageProps) {
   const params = await props.params;

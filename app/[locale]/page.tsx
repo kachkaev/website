@@ -7,9 +7,9 @@ import photo from "../../public/images/alexander_kachkaev.jpg";
 import { KeyProfiles } from "./page/key-profiles";
 import { Mailto } from "./shared/mailto";
 
-interface PageProps {
+type PageProps = {
   params: Promise<{ locale: LocaleParam }>;
-}
+};
 
 export default async function Page(props: PageProps) {
   const params = await props.params;

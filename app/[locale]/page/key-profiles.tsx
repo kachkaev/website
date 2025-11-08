@@ -6,10 +6,10 @@ import { readProfileInfo } from "../shared/profile-infos";
 
 const intlCache = createIntlCache();
 
-interface KeyProfileProps {
+type KeyProfileProps = {
   locale: LocaleParam;
   dictionary: Dictionary;
-}
+};
 
 function formatMessage(
   locale: LocaleParam,

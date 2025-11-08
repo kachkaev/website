@@ -23,9 +23,9 @@ function PhotoSample({ alt }: { alt: string }) {
   );
 }
 
-interface PageProps {
+type PageProps = {
   params: Promise<{ locale: LocaleParam }>;
-}
+};
 
 export default async function Page(props: PageProps) {
   const params = await props.params;

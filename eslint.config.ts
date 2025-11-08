@@ -23,7 +23,6 @@ export default defineConfig([
   // TODO: Triage
   {
     rules: {
-      "@typescript-eslint/consistent-type-definitions": "off",
       "@typescript-eslint/consistent-type-imports": "off",
       "@typescript-eslint/dot-notation": "off",
       "@typescript-eslint/explicit-module-boundary-types": "off",
