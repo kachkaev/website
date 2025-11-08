@@ -52,12 +52,6 @@ export async function writeProfileInfo(
   );
 }
 
-export async function ensureProfileInfosUpdateErrorsDir(): Promise<void> {
-  await fs.mkdir(path.resolve(profileInfosUpdateErrorsDirPath), {
-    recursive: true,
-  });
-}
-
 export function generateUpdateProfileErrorPathPrefix(
   profileName: string,
 ): string {
