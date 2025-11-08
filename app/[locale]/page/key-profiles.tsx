@@ -1,5 +1,5 @@
 import { createIntl, createIntlCache } from "@formatjs/intl";
-import * as React from "react";
+import type * as React from "react";
 
 import type { Dictionary, LocaleParam } from "../../../i18n-config";
 import { readProfileInfo } from "../shared/profile-infos";
