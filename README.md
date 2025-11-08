@@ -12,7 +12,7 @@ Feel free to explore this repository to learn something new or even to reuse its
 - **[FormatJS](https://formatjs.io)** to handle internationalization ([ICU](https://formatjs.io/docs/core-concepts/icu-syntax/) plurals etc.)
 - **[Google Analytics](https://analytics.google.com)** to track website usage
 - **[Zod](https://zod.dev)** and **[Playwright](https://playwright.dev)** to update profile infos
-- **[ESLint](https://eslint.org)**, **[Markdownlint](https://github.com/DavidAnson/markdownlint)**, **[Prettier](https://prettier.io)** and **[TypeScript](https://www.typescriptlang.org)** to statically check and autocorrect source files
+- **[ESLint](https://eslint.org)**, **[Knip](https://github.com/webpro-nl/knip)**, **[Markdownlint](https://github.com/DavidAnson/markdownlint)**, **[Prettier](https://prettier.io)** and **[TypeScript](https://www.typescriptlang.org)** to statically check and autocorrect source files
 - **[pnpm](https://pnpm.io)** to manage dependencies
 - **[Docker](https://www.docker.com)** to generate a deployable production artifact
 - **[Kubernetes](https://kubernetes.io)** to run the app in production
