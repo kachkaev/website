@@ -2,7 +2,7 @@ import "./styles.css";
 
 import Script from "next/script";
 
-import type { LocaleParam } from "../../i18n-config";
+import { i18n, type LocaleParam } from "../../i18n-config";
 import { LocaleSwitcher } from "./layout/locale-switcher";
 import { NextAppNprogress } from "./layout/next-app-nprogress";
 
@@ -46,4 +46,6 @@ export default async function Root(props: {
   );
 }
 
-export const dynamic = "force-dynamic";
+export async function generateStaticParams() {
+  return i18n.locales.map((locale) => ({ locale }));
+}
