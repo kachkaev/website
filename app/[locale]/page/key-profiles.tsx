@@ -215,7 +215,6 @@ async function Flickr({ locale, dictionary }: KeyProfileProps) {
                   title={title}
                   className="group relative inline-block size-[50px] !border-none grayscale hover:grayscale-0 active:grayscale-0"
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element -- external image */}
                   <img
                     className="inline-block"
                     src={thumbnailUrl}

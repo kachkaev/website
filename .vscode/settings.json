@@ -1,6 +1,6 @@
 {
-  "eslint.useFlatConfig": false,
   "tailwindCSS.classAttributes": ["class", "className", ".*ClassName"],
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "tailwindCSS.lint.suggestCanonicalClasses": "ignore",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
