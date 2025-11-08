@@ -2,8 +2,12 @@ import fs from "node:fs/promises";
 import path from "node:path";
 
 import { NextResponse } from "next/server";
-import type { Browser, BrowserContext, Page } from "playwright";
-import { chromium } from "playwright";
+import {
+  type Browser,
+  type BrowserContext,
+  chromium,
+  type Page,
+} from "playwright";
 import type { ZodType } from "zod";
 
 import { cleanProcessEnv, envalid } from "../../shared/env";

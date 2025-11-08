@@ -1,8 +1,7 @@
 // @todo Bring back the import when middleware.ts stops crashing because of that
 // import "server-only";
 
-import { type Locale } from "./i18n-config";
-import { i18n } from "./i18n-config";
+import { i18n, type Locale } from "./i18n-config";
 
 const dictionaryLookup = {
   en: () => import("./dictionaries/en.json").then((module) => module.default),

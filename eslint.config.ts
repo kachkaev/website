@@ -6,6 +6,19 @@ export default defineConfig([
     tailwindcssEntryPoint: "./app/[locale]/styles.css",
   }),
 
+  {
+    rules: {
+      "import/no-extraneous-dependencies": [
+        "warn",
+        {
+          devDependencies: true, // Allowing imports from dev dependencies because build is standalone
+          optionalDependencies: false,
+          peerDependencies: false,
+        },
+      ],
+    },
+  },
+
   // TODO: Triage
   {
     rules: {
@@ -24,7 +37,6 @@ export default defineConfig([
       "func-style": "off",
       "import/no-default-export": "off",
       "import/no-duplicates": "off",
-      "import/no-extraneous-dependencies": "off",
       "react-hooks/purity": "off",
       "react/prefer-destructuring-assignment": "off",
     },

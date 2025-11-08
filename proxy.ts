@@ -1,5 +1,4 @@
-import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 
 import { i18n } from "./i18n-config";
 import { baseUrlByLocale } from "./i18n-server";
