@@ -1,0 +1,38 @@
+import { generateNextConfigs } from "@kachkaev/eslint-config-next";
+import { defineConfig } from "eslint/config";
+
+export default defineConfig([
+  ...generateNextConfigs({
+    tailwindcssEntryPoint: "./app/[locale]/styles.css",
+  }),
+
+  // TODO: Triage
+  {
+    rules: {
+      "@eslint-react/hooks-extra/no-direct-set-state-in-use-effect": "off",
+      "@eslint-react/no-useless-fragment": "off",
+      "@eslint-react/prefer-destructuring-assignment": "off",
+      "@eslint-react/web-api/no-leaked-event-listener": "off",
+      "@stylistic/quotes": "off",
+      "@typescript-eslint/consistent-type-assertions": "off",
+      "@typescript-eslint/consistent-type-definitions": "off",
+      "@typescript-eslint/consistent-type-imports": "off",
+      "@typescript-eslint/dot-notation": "off",
+      "@typescript-eslint/explicit-module-boundary-types": "off",
+      "@typescript-eslint/no-unsafe-assignment": "off",
+      "@typescript-eslint/prefer-nullish-coalescing": "off",
+      "@typescript-eslint/require-await": "off",
+      "better-tailwindcss/enforce-canonical-classes": "off",
+      "better-tailwindcss/enforce-consistent-class-order": "off",
+      "better-tailwindcss/no-duplicate-classes": "off",
+      "better-tailwindcss/no-unknown-classes": "off",
+      "func-style": "off",
+      "import/no-default-export": "off",
+      "import/no-duplicates": "off",
+      "import/no-extraneous-dependencies": "off",
+      "react-hooks/purity": "off",
+      "react/prefer-destructuring-assignment": "off",
+      "unicorn/no-array-sort": "off",
+    },
+  },
+]);
