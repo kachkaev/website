@@ -33,7 +33,7 @@ export default function NextAppNprogress({
           top: 0;
           left: 0;
           width: 100%;
-          height: ${typeof height === `string` ? height : `${height}px`};
+          height: ${typeof height === "string" ? height : `${height}px`};
         }
         #nprogress .peg {
           display: block;
