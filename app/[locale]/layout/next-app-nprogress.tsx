@@ -22,6 +22,7 @@ export default function NextAppNprogress({
   const styles = (
     <style>
       {/* Source: https://github.com/rstacruz/nprogress/blob/e1a8b7fb6e059085df5f83c45d3c2308a147ca18/nprogress.css */}
+      {/* eslint-disable better-tailwindcss/enforce-canonical-classes, better-tailwindcss/no-duplicate-classes, better-tailwindcss/no-unknown-classes -- Inline CSS (not class names) */}
       {`
         #nprogress {
           pointer-events: none;
@@ -48,6 +49,7 @@ export default function NextAppNprogress({
                   transform: rotate(3deg) translate(0px, -4px);
         }
     `}
+      {/* eslint-enable better-tailwindcss/enforce-canonical-classes, better-tailwindcss/no-duplicate-classes, better-tailwindcss/no-unknown-classes */}
     </style>
   );
 

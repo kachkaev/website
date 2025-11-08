@@ -38,7 +38,7 @@ export default async function Root(props: {
           </>
         ) : undefined}
         <LocaleSwitcher locale={locale} />
-        <div className="flex w-full min-w-[260px] max-w-[450px] grow self-center">
+        <div className="flex w-full max-w-[450px] min-w-[260px] grow self-center">
           <div className="w-full self-center pb-6">{children}</div>
         </div>
       </body>

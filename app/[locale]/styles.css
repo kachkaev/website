@@ -51,29 +51,20 @@
   }
 }
 
-@layer components {
-  .description-on-index-page {
-    @apply mb-0 pb-8 pt-4;
-  }
-
-  @media (min-width: 310px) {
-    body.en .description-on-index-page {
-      @apply text-center;
-    }
-    body.en .description-on-index-page span {
-      @apply block;
-    }
-  }
+@utility description-on-index-page {
+  @apply mb-0 pb-8 pt-4;
 
   @media (min-width: 470px) {
-    body.ru .description-on-index-page {
+    body.ru & {
       @apply text-center;
     }
-    body.ru .description-on-index-page span {
+    body.ru & span {
       @apply block;
     }
   }
+}
 
+@layer components {
   /* nprogress */
   html {
     --nprogress-color: rgba(0, 0, 0, 0.75);

@@ -35,7 +35,7 @@ function LocaleHighlighter() {
 
   return (
     <span className="pointer-events-none absolute inset-1/2 align-middle">
-      <span className="absolute -left-5 -top-5 size-10 rounded-full bg-blue-400 opacity-25 group-visited:bg-violet-400 group-hover:bg-red-400 group-active:bg-red-400 dark:group-visited:bg-violet-300" />
+      <span className="absolute -top-5 -left-5 size-10 rounded-full bg-blue-400 opacity-25 group-visited:bg-violet-400 group-hover:bg-red-400 group-active:bg-red-400 dark:group-visited:bg-violet-300" />
     </span>
   );
 }
@@ -63,7 +63,7 @@ function LocaleListItem({
   onStopHighlighting: () => void;
 }) {
   return (
-    <li className="-mr-3 -mt-3 inline-block">
+    <li className="-mt-3 -mr-3 inline-block">
       {href ? (
         <Link
           className="group relative inline-block border-none p-3"
@@ -123,7 +123,7 @@ export default function LocaleSwitcherInner({
   }, [locale]);
 
   return (
-    <div className="-mb-10 -ml-10 -mr-5 -mt-4 self-end overflow-hidden pb-10 pl-10 pr-5 pt-4 leading-3">
+    <div className="-mt-4 -mr-5 -mb-10 -ml-10 self-end overflow-hidden pt-4 pr-5 pb-10 pl-10 leading-3">
       <ul>
         {i18n.locales.map((currentLocale) => {
           return (

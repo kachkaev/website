@@ -53,7 +53,7 @@ export default async function Page(props: PageProps) {
       </p>
 
       {/* Photo */}
-      <div className="float-right mb-8 ml-8 mt-1">
+      <div className="float-right mt-1 mb-8 ml-8">
         <Image
           className="overflow-hidden rounded-[5px] bg-gray-300 text-gray-300"
           width={100}

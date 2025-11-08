@@ -37,11 +37,11 @@ function KeyProfile({
   return (
     <>
       <h2>
-        <a className="whitespace-nowrap font-semibold" href={url}>
+        <a className="font-semibold whitespace-nowrap" href={url}>
           {name}
         </a>
       </h2>
-      <p className="mb-3 mt-px opacity-60">{children ?? <>&nbsp;</>}</p>
+      <p className="mt-px mb-3 opacity-60">{children ?? <>&nbsp;</>}</p>
     </>
   );
 }
@@ -213,7 +213,7 @@ async function Flickr({ locale, dictionary }: KeyProfileProps) {
                   key={url}
                   href={url}
                   title={title}
-                  className="group relative inline-block size-[50px] !border-none grayscale hover:grayscale-0 active:grayscale-0"
+                  className="group relative inline-block size-[50px] border-none! grayscale hover:grayscale-0 active:grayscale-0"
                 >
                   <img
                     className="inline-block"
