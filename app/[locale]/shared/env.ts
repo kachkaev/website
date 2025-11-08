@@ -13,7 +13,10 @@ export function cleanProcessEnv<T>(specs: {
 
       const messageChunks: string[] = [];
       envalid.envalidErrorFormatter(errors, (message) => {
-        messageChunks.push(message as string);
+        if (typeof message !== "string") {
+          return;
+        }
+        messageChunks.push(message);
       });
 
       throw new Error(messageChunks.join("\n") || "Invalid environment");

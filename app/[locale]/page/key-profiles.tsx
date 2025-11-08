@@ -21,6 +21,7 @@ function formatMessage(
 
   return intl.formatMessage(
     { id: messageId },
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- TODO: refactor
     valueLookup as Record<string, string>,
   );
 }
@@ -179,6 +180,7 @@ async function Twitter({ locale, dictionary }: KeyProfileProps) {
 }
 
 function shuffle<T extends unknown[] | undefined>(array: T): T {
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- Needed for overloading
   return array?.toSorted(() => Math.random() - 0.5) as T;
 }
 
@@ -186,6 +188,7 @@ async function Flickr({ locale, dictionary }: KeyProfileProps) {
   const profileInfo = await readProfileInfo("flickr");
 
   const shuffledPhotos = shuffle(
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- TODO: use zod instead of type assertions
     profileInfo?.["mostViewedPhotos"] as
       | Array<{ title: string; url: string; thumbnailUrl: string }>
       | undefined,

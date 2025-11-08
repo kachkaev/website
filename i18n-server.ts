@@ -11,8 +11,11 @@ const dictionaryLookup = {
 export async function getDictionary(locale: string) {
   // Locale may be equal to any value if matcher in middleware.ts returns false
 
-  if (locale in dictionaryLookup) {
-    return dictionaryLookup[locale as Locale]();
+  if (Object.hasOwn(dictionaryLookup, locale)) {
+    return dictionaryLookup[
+      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- protected by Object.hasOwn
+      locale as Locale
+    ]();
   }
 
   return dictionaryLookup[i18n.defaultLocale]();

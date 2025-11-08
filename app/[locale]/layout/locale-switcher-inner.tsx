@@ -98,7 +98,8 @@ export function LocaleSwitcherInner({
   React.useEffect(() => {
     const localeToHighlight = navigator.languages
       .find((supportedLocale) =>
-        (i18n.locales as readonly string[]).includes(
+        i18n.locales.includes(
+          // @ts-expect-error -- a string can match Locale type
           supportedLocale.slice(0, 2),
         ),
       )

@@ -57,8 +57,13 @@ export function NextAppNprogress({
     NProgress.configure({ showSpinner: false });
 
     function handleAnchorClick(event: MouseEvent) {
-      const targetUrl = (event.currentTarget as HTMLAnchorElement).href;
+      if (!(event.currentTarget instanceof HTMLAnchorElement)) {
+        return;
+      }
+
+      const targetUrl = event.currentTarget.href;
       const currentUrl = location.href;
+
       if (targetUrl !== currentUrl) {
         NProgress.start();
       }

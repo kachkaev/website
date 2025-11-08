@@ -29,6 +29,7 @@ export async function readProfileInfo(
   profileName: string,
 ): Promise<Record<string, unknown> | undefined> {
   try {
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- TODO: Use zod instead of type assertions
     return load(
       await fs.readFile(
         path.resolve(profileInfosDirPath, `${profileName}.yaml`),
