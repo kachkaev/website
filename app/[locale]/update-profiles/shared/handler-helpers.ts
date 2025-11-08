@@ -10,16 +10,8 @@ import {
 } from "playwright";
 import type { ZodType } from "zod";
 
-import { cleanProcessEnv, envalid } from "../../shared/env";
 import { writeProfileInfo } from "../../shared/profile-infos";
-
-function getProxyServerUrl(): string | undefined {
-  const env = cleanProcessEnv({
-    UPDATE_PROFILE_PROXY_SERVER_URL: envalid.str({ default: "" }),
-  });
-
-  return env.UPDATE_PROFILE_PROXY_SERVER_URL || undefined;
-}
+import { serverEnv } from "../../shared/server-env";
 
 export async function extractDataFromWebPage<Data>({
   errorPathPrefix,
@@ -28,28 +20,20 @@ export async function extractDataFromWebPage<Data>({
   errorPathPrefix: string;
   handler: (payload: { page: Page }) => Promise<Data>;
 }): Promise<Data> {
-  const env = cleanProcessEnv({
-    PLAYWRIGHT_HEADLESS: envalid.bool({ default: true }),
-    PLAYWRIGHT_USER_AGENT: envalid.str({
-      default:
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 14.5; rv:126.0) Gecko/20100101 Firefox/126.0",
-    }),
-  });
-
   let browser: Browser | undefined;
   let context: BrowserContext | undefined;
   let page: Page | undefined;
 
   try {
     browser = await chromium.launch({
-      headless: env.PLAYWRIGHT_HEADLESS,
+      headless: serverEnv.PLAYWRIGHT_HEADLESS,
       timeout: 5000,
     });
 
-    const proxyServerUrl = getProxyServerUrl();
+    const proxyServerUrl = serverEnv.UPDATE_PROFILE_PROXY_SERVER_URL;
 
     context = await browser.newContext({
-      userAgent: env.PLAYWRIGHT_USER_AGENT,
+      userAgent: serverEnv.PLAYWRIGHT_USER_AGENT,
       ...(proxyServerUrl ? { proxy: { server: proxyServerUrl } } : {}),
     });
 
@@ -104,14 +88,19 @@ export function generateUpdateProfileHandler({
   generateProfileInfo: () => Promise<Record<string, unknown>>;
 }): (request: NextRequest) => Promise<NextResponse> {
   return async (request) => {
-    const env = cleanProcessEnv({
-      UPDATE_PROFILE_SECURITY_TOKEN: envalid.str(),
-    });
+    if (!serverEnv.UPDATE_PROFILE_SECURITY_TOKEN) {
+      return NextResponse.json(
+        { error: "Security token is not set" },
+        { status: 500 },
+      );
+    }
 
     const securityTokenIsValid =
       request.headers.get("x-security-token") ===
-        env.UPDATE_PROFILE_SECURITY_TOKEN ||
-      new URL(request.url).searchParams.has(env.UPDATE_PROFILE_SECURITY_TOKEN);
+        serverEnv.UPDATE_PROFILE_SECURITY_TOKEN ||
+      new URL(request.url).searchParams.has(
+        serverEnv.UPDATE_PROFILE_SECURITY_TOKEN,
+      );
 
     if (!securityTokenIsValid) {
       return NextResponse.json(

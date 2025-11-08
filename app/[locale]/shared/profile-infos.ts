@@ -3,16 +3,10 @@ import path from "node:path";
 
 import { dump, load } from "js-yaml";
 
-import { cleanProcessEnv, envalid } from "./env";
+import { serverEnv } from "./server-env";
 
 function getDataDirPath(): string {
-  const env = cleanProcessEnv({
-    DATA_DIR: envalid.str({
-      default: "./data",
-    }),
-  });
-
-  return path.resolve(env.DATA_DIR);
+  return path.resolve(serverEnv.DATA_DIR);
 }
 
 function getProfileInfosDirPath(): string {

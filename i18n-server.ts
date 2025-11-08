@@ -1,6 +1,6 @@
-// @todo Bring back the import when proxy.ts stops crashing because of that
-// import "server-only";
+import "server-only";
 
+import { serverEnv } from "./app/[locale]/shared/server-env";
 import { type Dictionary, i18n, type Locale } from "./i18n-config";
 
 const dictionaryLookup = {
@@ -22,6 +22,6 @@ export async function getDictionary(locale: string): Promise<Dictionary> {
 }
 
 export const baseUrlByLocale: Record<Locale, string> = {
-  en: process.env["BASE_URL_EN"] ?? "http://localhost:3000",
-  ru: process.env["BASE_URL_RU"] ?? "http://ru.localhost:3000",
+  en: serverEnv.BASE_URL_EN,
+  ru: serverEnv.BASE_URL_RU,
 };

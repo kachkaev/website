@@ -4,7 +4,10 @@ import { i18n } from "./i18n-config";
 import { baseUrlByLocale } from "./i18n-server";
 
 function geRequestHost(request: NextRequest) {
-  return request.headers.get("x-forwarded-host") ?? request.headers.get("host");
+  return (
+    (request.headers.get("x-forwarded-host") ?? "") ||
+    request.headers.get("host")
+  );
 }
 
 const localeByHost = Object.fromEntries(
