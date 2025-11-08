@@ -8,6 +8,7 @@ export default defineConfig([
 
   {
     rules: {
+      "@eslint-react/prefer-destructuring-assignment": "off", // Enable if `await props.params` is no longer used
       "import/no-extraneous-dependencies": [
         "warn",
         {
@@ -22,7 +23,6 @@ export default defineConfig([
   // TODO: Triage
   {
     rules: {
-      "@eslint-react/prefer-destructuring-assignment": "off",
       "@eslint-react/web-api/no-leaked-event-listener": "off",
       "@typescript-eslint/consistent-type-assertions": "off",
       "@typescript-eslint/consistent-type-definitions": "off",
