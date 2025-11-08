@@ -22,7 +22,6 @@ export default defineConfig([
   // TODO: Triage
   {
     rules: {
-      "@eslint-react/hooks-extra/no-direct-set-state-in-use-effect": "off",
       "@eslint-react/prefer-destructuring-assignment": "off",
       "@eslint-react/web-api/no-leaked-event-listener": "off",
       "@typescript-eslint/consistent-type-assertions": "off",
