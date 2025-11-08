@@ -23,7 +23,6 @@ export default defineConfig([
   // TODO: Triage
   {
     rules: {
-      "@eslint-react/web-api/no-leaked-event-listener": "off",
       "@typescript-eslint/consistent-type-assertions": "off",
       "@typescript-eslint/consistent-type-definitions": "off",
       "@typescript-eslint/consistent-type-imports": "off",

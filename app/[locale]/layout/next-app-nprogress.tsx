@@ -67,6 +67,7 @@ export function NextAppNprogress({
     function handleMutation() {
       const anchorElements = document.querySelectorAll("a");
       for (const anchor of anchorElements) {
+        // eslint-disable-next-line @eslint-react/web-api/no-leaked-event-listener -- TODO: Replace this component with `@bprogress/next`
         anchor.addEventListener("click", handleAnchorClick);
       }
     }
