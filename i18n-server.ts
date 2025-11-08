@@ -1,4 +1,4 @@
-// @todo Bring back the import when middleware.ts stops crashing because of that
+// @todo Bring back the import when proxy.ts stops crashing because of that
 // import "server-only";
 
 import { type Dictionary, i18n, type Locale } from "./i18n-config";
@@ -9,7 +9,7 @@ const dictionaryLookup = {
 };
 
 export async function getDictionary(locale: string): Promise<Dictionary> {
-  // Locale may be equal to any value if matcher in middleware.ts returns false
+  // Locale may be equal to any value if matcher in proxy.ts returns false
 
   if (Object.hasOwn(dictionaryLookup, locale)) {
     return dictionaryLookup[

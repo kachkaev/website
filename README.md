@@ -52,9 +52,9 @@ Because `/update-profiles/*` endpoints are public, a security token is introduce
   Ideally, I would like to have i18n resources available as React context and use components inside i18n strings (e.g. `Hello <a>world</a>!`).
   The latter is possible with [`<Trans />` component](https://react.i18next.com/latest/trans-component) in `react-i18next`, which I hope to use at some point.
 
-- **Custom 404 page is implemented via `middleware.ts`**  
+- **Custom 404 page is implemented via `proxy.ts`**  
   As of early March 2023, Next.js [does not support](https://beta.nextjs.org/docs/api-reference/file-conventions/not-found) custom 404 pages inside the `/app` directory.
-  Until a&nbsp;permanent solution is available, incoming requests are checked against `existingPathnamePatterns` in&nbsp;[`middleware.ts`](./middleware.ts).
+  Until a&nbsp;permanent solution is available, incoming requests are checked against `existingPathnamePatterns` in&nbsp;[`proxy.ts`](./proxy.ts).
   This enables custom 404 pages which are i18n-aware, but requires manual updates to `existingPathnamePatterns` each time a new app route is added.
   Thus, the current workaround is error-prone, especially for apps that have a lot of routes.
 
@@ -153,7 +153,7 @@ Note that updating Flickr profile requires API authentication, so requests to `/
 
 ### Playing with i18n
 
-Internationalization (i18n) is setup in [`i18n-config.ts`](i18n-config.ts), [`i18n-server.ts`](i18n-server.ts) and [`middleware.ts`](middleware.ts).
+Internationalization (i18n) is setup in [`i18n-config.ts`](i18n-config.ts), [`i18n-server.ts`](i18n-server.ts) and [`proxy.ts`](proxy.ts).
 
 By default, requests to [localhost:3000](http://localhost:3000) map to the `en` locale and requests to [ru.localhost:3000](http://ru.localhost:3000) map to the `ru` locale.
 You can change this by setting `BASE_URL_RU` and `BASE_URL_EN` in `.env.local`.
