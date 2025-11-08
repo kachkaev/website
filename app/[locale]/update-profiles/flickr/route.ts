@@ -39,7 +39,7 @@ export const GET = generateUpdateProfileHandler({
         thumbnailUrl: photo["url_sq"],
         views: Number.parseInt(photo.views),
       }))
-      .sort((a, b) => b.views - a.views)
+      .toSorted((a, b) => b.views - a.views)
       .slice(0, 100);
 
     return {

@@ -27,7 +27,6 @@ export default defineConfig([
       "import/no-extraneous-dependencies": "off",
       "react-hooks/purity": "off",
       "react/prefer-destructuring-assignment": "off",
-      "unicorn/no-array-sort": "off",
     },
   },
 ]);

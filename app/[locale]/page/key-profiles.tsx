@@ -206,7 +206,7 @@ async function Flickr({ locale, dictionary }: KeyProfileProps) {
         <div className="relative -mt-2 h-[50px] overflow-hidden rounded-[5px] bg-gray-300 bg-clip-padding">
           <div className="absolute whitespace-nowrap">
             {mostViewedPhotos
-              .sort(() => (Math.random() >= 0.5 ? 1 : -1))
+              .toSorted(() => (Math.random() >= 0.5 ? 1 : -1))
               .slice(0, 9)
               .map(({ thumbnailUrl, title, url }) => (
                 <a
