@@ -14,6 +14,8 @@ export const serverEnv = createEnv({
 
     DATA_DIR: z.string().default("./data"),
 
+    GA_MEASUREMENT_ID: z.string().optional(),
+
     FLICKR_API_KEY: z.string().optional(),
     FLICKR_USER_ID: z.string().optional(),
 

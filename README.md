@@ -58,17 +58,6 @@ Because `/update-profiles/*` endpoints are public, a security token is introduce
   This enables custom 404 pages which are i18n-aware, but requires manual updates to `existingPathnamePatterns` each time a new app route is added.
   Thus, the current workaround is error-prone, especially for apps that have a lot of routes.
 
-- **Progress bar for page navigation may need improvement**  
-  I like using [`nprogress`](https://www.npmjs.com/package/nprogress) in apps with client-side navigation between pages.
-  A progress bar improves the perceived performance of the app and makes it feel more responsive.
-  Unfortunately, established approaches to integrating `nprogress` with Next.js do not work with server components.
-
-  I hope to find a good solution to this problem in the future, but in the meantime, I have implemented a custom solution in [`app/[locale]/layout/next-app-nprogress.tsx`](app/[locale]/layout/next-app-nprogress.tsx).
-
-  Related issues:
-  - https://github.com/vercel/next.js/issues/45499
-  - https://github.com/apal21/nextjs-progressbar/issues/86
-
 ## Local development
 
 ### Getting started
