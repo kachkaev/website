@@ -23,7 +23,6 @@ export default defineConfig([
   // TODO: Triage
   {
     rules: {
-      "@typescript-eslint/no-unsafe-assignment": "off",
       "@typescript-eslint/prefer-nullish-coalescing": "off",
     },
   },

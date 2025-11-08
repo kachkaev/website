@@ -91,7 +91,7 @@ export async function fetchJson<Schema extends ZodType>(
     throw new Error(`HTTP error! status: ${response.status}`);
   }
 
-  const data = await response.json();
+  const data: unknown = await response.json();
 
   return schema.parse(data);
 }
