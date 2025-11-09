@@ -62,17 +62,17 @@ Because `/update-profiles/*` endpoints are public, a security token is introduce
 
 ### Getting started
 
-1.  Open a command line and ensure you have [git](https://git-scm.com) and [Node.js](https://nodejs.org) installed:
+1.  Open a command line and ensure you have [git](https://git-scm.com), [Node.js](https://nodejs.org) and [pnpm](https://pnpm.io) installed:
 
     ```sh
     git --version
     ## ≥ 2.30.0
     
     node --version
-    ## ≥ 18.12.0
+    ## ≥ 24.10.0
     
-    corepack --version
-    ## ≥ 0.14.0, comes with Node.js
+    pnpm --version
+    ## ≥ 10.0.0
     ```
 
 1.  Clone the repo from GitHub:
@@ -81,15 +81,6 @@ Because `/update-profiles/*` endpoints are public, a security token is introduce
     cd PATH/TO/MISC/PROJECTS ## replace example path with a directory of your choice
     git clone https://github.com/kachkaev/website.git
     cd website
-    ```
-
-1.  Prepare [pnpm](https://pnpm.io) for dependency management:
-
-    ```sh
-    corepack enable && corepack prepare --activate
-    
-    pnpm --version
-    ## same as in package.json → packageManager
     ```
 
 1.  Install dependencies:
