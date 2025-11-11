@@ -4,5 +4,3 @@ export const GET = generateUpdateTwitterProfileHandler({
   profileName: "twitter-ru",
   twitterAccountId: "kachkaev_ru",
 });
-
-export const dynamic = "force-dynamic";
