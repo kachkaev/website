@@ -46,8 +46,8 @@ importers:
         specifier: 23.6.2
         version: 23.6.2
       '@tsconfig/strictest':
-        specifier: 2.0.7
-        version: 2.0.7
+        specifier: 2.0.8
+        version: 2.0.8
       '@types/js-yaml':
         specifier: 4.0.9
         version: 4.0.9
@@ -818,8 +818,8 @@ packages:
   '@tsconfig/node-ts@23.6.2':
     resolution: {integrity: sha512-WcU3KR3tHB8XMotRBpUEGfPLT3W0gAhrHcTxU7mNQ4N1+fwF3LbjpWP07TuhZtN5ehK3bcK/R4Zzqp7Pqd7Nqg==}
 
-  '@tsconfig/strictest@2.0.7':
-    resolution: {integrity: sha512-lG1bXQloBVvQXasPBZSBaWbs7GNW4txZMYs7XMUVzM0s4seCbJACYBPFIRpGNVD3gC8gndK00AZON1uBrJt4Fw==}
+  '@tsconfig/strictest@2.0.8':
+    resolution: {integrity: sha512-XnQ7vNz5HRN0r88GYf1J9JJjqtZPiHt2woGJOo2dYqyHGGcd6OLGqSlBB6p1j9mpzja6Oe5BoPqWmeDx6X9rLw==}
 
   '@tybys/wasm-util@0.10.1':
     resolution: {integrity: sha512-9tTaPJLSiejZKx+Bmog4uSubteqTvFrVrURwkmHixBo0G4seD0zUxp98E1DzUBJxLQ3NPwXrGKDiVjwx/DpPsg==}
@@ -3466,7 +3466,7 @@ snapshots:
 
   '@tsconfig/node-ts@23.6.2': {}
 
-  '@tsconfig/strictest@2.0.7': {}
+  '@tsconfig/strictest@2.0.8': {}
 
   '@tybys/wasm-util@0.10.1':
     dependencies:
