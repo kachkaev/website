@@ -63,7 +63,7 @@
     "typescript": "5.9.3",
     "zod": "4.1.12"
   },
-  "packageManager": "pnpm@10.20.0",
+  "packageManager": "pnpm@10.22.0",
   "postcss": {
     "plugins": {
       "@tailwindcss/postcss": {}
