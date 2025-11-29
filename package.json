@@ -44,7 +44,7 @@
     "@tsconfig/strictest": "2.0.8",
     "@types/js-yaml": "4.0.9",
     "@types/node": "24.10.1",
-    "@types/react": "19.2.6",
+    "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3",
     "eslint": "9.39.1",
     "husky": "9.1.7",
