@@ -35,7 +35,7 @@ importers:
         version: 16.0.3
       '@t3-oss/env-nextjs':
         specifier: 0.13.8
-        version: 0.13.8(typescript@5.9.3)(valibot@1.1.0(typescript@5.9.3))(zod@4.1.12)
+        version: 0.13.8(typescript@5.9.3)(valibot@1.1.0(typescript@5.9.3))(zod@4.1.13)
       '@tailwindcss/postcss':
         specifier: 4.1.17
         version: 4.1.17
@@ -106,8 +106,8 @@ importers:
         specifier: 5.9.3
         version: 5.9.3
       zod:
-        specifier: 4.1.12
-        version: 4.1.12
+        specifier: 4.1.13
+        version: 4.1.13
 
 packages:
 
@@ -2681,8 +2681,8 @@ packages:
     peerDependencies:
       zod: ^3.25.0 || ^4.0.0
 
-  zod@4.1.12:
-    resolution: {integrity: sha512-JInaHOamG8pt5+Ey8kGmdcAcg3OL9reK8ltczgHTAwNhMys/6ThXHityHxVV2p3fkw/c+MAvBHFVYHFZDmjMCQ==}
+  zod@4.1.13:
+    resolution: {integrity: sha512-AvvthqfqrAhNH9dnfmrfKzX5upOdjUVJYFqNSlkmGf64gRaTzlPwz99IHYnVs28qYAybvAlBV+H7pn0saFY4Ig==}
 
 snapshots:
 
@@ -2887,7 +2887,7 @@ snapshots:
       '@eslint-react/eff': 2.3.1
       '@typescript-eslint/utils': 8.46.3(eslint@9.39.1(jiti@2.6.1))(typescript@5.9.3)
       ts-pattern: 5.9.0
-      zod: 4.1.12
+      zod: 4.1.13
     transitivePeerDependencies:
       - eslint
       - supports-color
@@ -3293,19 +3293,19 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@t3-oss/env-core@0.13.8(typescript@5.9.3)(valibot@1.1.0(typescript@5.9.3))(zod@4.1.12)':
+  '@t3-oss/env-core@0.13.8(typescript@5.9.3)(valibot@1.1.0(typescript@5.9.3))(zod@4.1.13)':
     optionalDependencies:
       typescript: 5.9.3
       valibot: 1.1.0(typescript@5.9.3)
-      zod: 4.1.12
+      zod: 4.1.13
 
-  '@t3-oss/env-nextjs@0.13.8(typescript@5.9.3)(valibot@1.1.0(typescript@5.9.3))(zod@4.1.12)':
+  '@t3-oss/env-nextjs@0.13.8(typescript@5.9.3)(valibot@1.1.0(typescript@5.9.3))(zod@4.1.13)':
     dependencies:
-      '@t3-oss/env-core': 0.13.8(typescript@5.9.3)(valibot@1.1.0(typescript@5.9.3))(zod@4.1.12)
+      '@t3-oss/env-core': 0.13.8(typescript@5.9.3)(valibot@1.1.0(typescript@5.9.3))(zod@4.1.13)
     optionalDependencies:
       typescript: 5.9.3
       valibot: 1.1.0(typescript@5.9.3)
-      zod: 4.1.12
+      zod: 4.1.13
 
   '@tailwindcss/node@4.1.17':
     dependencies:
@@ -4026,8 +4026,8 @@ snapshots:
       '@babel/parser': 7.28.5
       eslint: 9.39.1(jiti@2.6.1)
       hermes-parser: 0.25.1
-      zod: 4.1.12
-      zod-validation-error: 4.0.2(zod@4.1.12)
+      zod: 4.1.13
+      zod-validation-error: 4.0.2(zod@4.1.13)
     transitivePeerDependencies:
       - supports-color
 
@@ -4623,7 +4623,7 @@ snapshots:
       smol-toml: 1.5.2
       strip-json-comments: 5.0.3
       typescript: 5.9.3
-      zod: 4.1.12
+      zod: 4.1.13
 
   levn@0.4.1:
     dependencies:
@@ -5702,8 +5702,8 @@ snapshots:
 
   yocto-queue@0.1.0: {}
 
-  zod-validation-error@4.0.2(zod@4.1.12):
+  zod-validation-error@4.0.2(zod@4.1.13):
     dependencies:
-      zod: 4.1.12
+      zod: 4.1.13
 
-  zod@4.1.12: {}
+  zod@4.1.13: {}
