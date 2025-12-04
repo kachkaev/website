@@ -36,7 +36,7 @@
     "@kachkaev/eslint-config-next": "1.0.1",
     "@kachkaev/markdownlint-config": "1.0.0",
     "@kachkaev/prettier-config": "2.1.4",
-    "@next/eslint-plugin-next": "16.0.5",
+    "@next/eslint-plugin-next": "16.0.6",
     "@t3-oss/env-nextjs": "0.13.8",
     "@tailwindcss/postcss": "4.1.17",
     "@tsconfig/next": "2.0.4",
