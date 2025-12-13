@@ -39,7 +39,7 @@
     "@next/eslint-plugin-next": "16.0.8",
     "@t3-oss/env-nextjs": "0.13.8",
     "@tailwindcss/postcss": "4.1.17",
-    "@tsconfig/next": "2.0.4",
+    "@tsconfig/next": "2.0.5",
     "@tsconfig/node-ts": "23.6.2",
     "@tsconfig/strictest": "2.0.8",
     "@types/js-yaml": "4.0.9",
