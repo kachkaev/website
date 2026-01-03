@@ -61,7 +61,7 @@
     "server-only": "0.0.1",
     "tailwindcss": "4.1.18",
     "typescript": "5.9.3",
-    "zod": "4.2.1"
+    "zod": "4.3.4"
   },
   "packageManager": "pnpm@10.26.2",
   "postcss": {
