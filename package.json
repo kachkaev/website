@@ -35,7 +35,7 @@
     "@formatjs/intl": "4.1.2",
     "@kachkaev/eslint-config-next": "1.1.1",
     "@kachkaev/markdownlint-config": "1.0.1",
-    "@kachkaev/prettier-config": "2.2.0",
+    "@kachkaev/prettier-config": "2.2.1",
     "@next/eslint-plugin-next": "16.1.6",
     "@t3-oss/env-nextjs": "0.13.10",
     "@tailwindcss/postcss": "4.1.18",
