@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  cacheComponents: true,
   output: "standalone",
   reactStrictMode: true,
   typescript: { ignoreBuildErrors: true },
