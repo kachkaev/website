@@ -29,7 +29,7 @@ importers:
         version: 1.0.1(markdownlint-cli@0.48.0)
       '@kachkaev/prettier-config':
         specifier: 2.2.1
-        version: 2.2.1(prettier@3.8.2)
+        version: 2.2.1(prettier@3.8.3)
       '@next/eslint-plugin-next':
         specifier: 16.2.3
         version: 16.2.3
@@ -88,8 +88,8 @@ importers:
         specifier: 8.5.10
         version: 8.5.10
       prettier:
-        specifier: 3.8.2
-        version: 3.8.2
+        specifier: 3.8.3
+        version: 3.8.3
       react:
         specifier: 19.2.5
         version: 19.2.5
@@ -2424,8 +2424,8 @@ packages:
     peerDependencies:
       prettier: ^3.6.0
 
-  prettier@3.8.2:
-    resolution: {integrity: sha512-8c3mgTe0ASwWAJK+78dpviD+A8EqhndQPUBpNUIPt6+xWlIigCwfN01lWr9MAede4uqXGTEKeQWTvzb3vjia0Q==}
+  prettier@3.8.3:
+    resolution: {integrity: sha512-7igPTM53cGHMW8xWuVTydi2KO233VFiTNyF5hLJqpilHfmn8C8gPf+PS7dUT64YcXFbiMGZxS9pCSxL/Dxm/Jw==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -3340,11 +3340,11 @@ snapshots:
     dependencies:
       markdownlint-cli: 0.48.0
 
-  '@kachkaev/prettier-config@2.2.1(prettier@3.8.2)':
+  '@kachkaev/prettier-config@2.2.1(prettier@3.8.3)':
     dependencies:
-      prettier: 3.8.2
-      prettier-plugin-packagejson: 3.0.2(prettier@3.8.2)
-      prettier-plugin-sh: 0.18.0(prettier@3.8.2)
+      prettier: 3.8.3
+      prettier-plugin-packagejson: 3.0.2(prettier@3.8.3)
+      prettier-plugin-sh: 0.18.0(prettier@3.8.3)
 
   '@napi-rs/wasm-runtime@1.1.1':
     dependencies:
@@ -5452,19 +5452,19 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-packagejson@3.0.2(prettier@3.8.2):
+  prettier-plugin-packagejson@3.0.2(prettier@3.8.3):
     dependencies:
       sort-package-json: 3.6.1
     optionalDependencies:
-      prettier: 3.8.2
+      prettier: 3.8.3
 
-  prettier-plugin-sh@0.18.0(prettier@3.8.2):
+  prettier-plugin-sh@0.18.0(prettier@3.8.3):
     dependencies:
       '@reteps/dockerfmt': 0.3.6
-      prettier: 3.8.2
+      prettier: 3.8.3
       sh-syntax: 0.5.8
 
-  prettier@3.8.2: {}
+  prettier@3.8.3: {}
 
   prop-types@15.8.1:
     dependencies:
