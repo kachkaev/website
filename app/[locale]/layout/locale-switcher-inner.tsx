@@ -114,7 +114,7 @@ export function LocaleSwitcherInner({
         if (highlightHiddenUntil > Date.now()) {
           stopHighlightingLocaleForSomeTime();
         } else {
-          // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect -- intended use (setting state based on navigator API data)
+          // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect, react-hooks/set-state-in-effect -- intended use (setting state based on navigator API data)
           setHighlightedLocale(localeToHighlight);
         }
       } catch {
