@@ -51,7 +51,7 @@
     "js-yaml": "4.3.0",
     "knip": "6.26.0",
     "lint-staged": "17.0.8",
-    "markdownlint-cli": "0.49.0",
+    "markdownlint-cli": "0.49.1",
     "next": "16.2.10",
     "npm-run-all2": "9.0.2",
     "postcss": "8.5.16",
