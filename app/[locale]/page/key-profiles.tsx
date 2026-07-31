@@ -190,8 +190,7 @@ async function Flickr({ locale, dictionary }: KeyProfileProps) {
   const shuffledPhotos = shuffle(
     // eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- TODO: use zod instead of type assertions
     profileInfo?.["mostViewedPhotos"] as
-      | Array<{ title: string; url: string; thumbnailUrl: string }>
-      | undefined,
+      Array<{ title: string; url: string; thumbnailUrl: string }> | undefined,
   );
 
   return (
