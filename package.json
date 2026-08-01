@@ -54,7 +54,7 @@
     "markdownlint-cli": "0.49.1",
     "next": "16.2.11",
     "npm-run-all2": "9.0.3",
-    "postcss": "8.5.23",
+    "postcss": "8.5.25",
     "prettier": "3.9.6",
     "react": "19.2.8",
     "react-dom": "19.2.8",
