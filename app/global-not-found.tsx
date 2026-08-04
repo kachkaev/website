@@ -11,7 +11,7 @@ import { Mailto } from "./[locale]/shared/mailto";
  * This route is outside the [locale] segment, so it comes with its own HTML document.
  * The locale is resolved by the request host (see i18n/request.ts).
  */
-export default function NotFound() {
+export default function GlobalNotFound() {
   const t = useTranslations("error");
   const tCommon = useTranslations("common");
 
