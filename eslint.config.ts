@@ -8,6 +8,7 @@ const tailwindcssEntryPoint = "./app/[locale]/styles.css";
 
 export default defineConfig([
   // Configs for TS and TSX are not restricted to these extensions, so they break on CSS
+  // https://github.com/kachkaev/reusable-stuff/issues/302
   ...generateNextConfigs({ tailwindcssEntryPoint }).map((config) =>
     (config.rules ?? config.languageOptions)
       ? { ...config, ignores: [...(config.ignores ?? []), "**/*.css"] }
