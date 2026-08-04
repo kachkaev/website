@@ -1,7 +1,8 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-import type { LocaleParam } from "../../../i18n-config";
-import { getDictionary } from "../../../i18n-server";
 import { Mailto } from "../shared/mailto";
 
 function PhotoSample({ alt }: { alt: string }) {
@@ -23,56 +24,48 @@ function PhotoSample({ alt }: { alt: string }) {
   );
 }
 
-interface PageProps {
-  params: Promise<{ locale: LocaleParam }>;
-}
-
-export default async function Page(props: PageProps) {
-  const params = await props.params;
-
-  const { locale } = params;
-
-  const dictionary = await getDictionary(locale);
+export default function Page() {
+  const locale = useLocale();
+  const t = useTranslations("photos");
+  const tCommon = useTranslations("common");
 
   return (
     <>
-      <h1>{dictionary.photos.h1}</h1>
-      <PhotoSample alt={dictionary.photos["photo.alt"]} />
+      <h1>{t("h1")}</h1>
+      <PhotoSample alt={t("photoAlt")} />
       <p>
-        {dictionary.photos["explanation.1"]}
-        <a href="https://www.flickr.com/people/kachkaev">
-          {dictionary.photos["explanation.2"]}
-        </a>
-        {dictionary.photos["explanation.3"]}
+        {t.rich("explanation", {
+          flickr: (chunks) => (
+            <a href="https://www.flickr.com/people/kachkaev">{chunks}</a>
+          ),
+        })}
       </p>
       <ul className="ml-4">
         <li>
-          {dictionary.photos["hint1.1"]}
-          <a href={`https://${locale}.wikipedia.org/wiki/Creative_Commons`}>
-            {dictionary.photos["hint1.2"]}
-          </a>
-          {dictionary.photos["hint1.3"]}
+          {t.rich("hints.license", {
+            cc: (chunks) => (
+              <a href={`https://${locale}.wikipedia.org/wiki/Creative_Commons`}>
+                {chunks}
+              </a>
+            ),
+          })}
         </li>
-        <li>{dictionary.photos.hint2}</li>
+        <li>{t("hints.exif")}</li>
         <li>
-          {dictionary.photos["hint3.1"]}
-          <Mailto locale={locale}>{dictionary.photos["hint3.2"]}</Mailto>
-          {dictionary.photos["hint3.3"]}
+          {t.rich("hints.contact", {
+            email: (chunks) => <Mailto>{chunks}</Mailto>,
+          })}
         </li>
       </ul>
       <div>
-        <Link href="/">{dictionary.common.signature}</Link>
+        <Link href="/">{tCommon("signature")}</Link>
       </div>
     </>
   );
 }
 
-export async function generateMetadata(props: PageProps) {
-  const params = await props.params;
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("photos");
 
-  const { locale } = params;
-
-  const dictionary = await getDictionary(locale);
-
-  return { title: dictionary.photos.title };
+  return { title: t("title") };
 }

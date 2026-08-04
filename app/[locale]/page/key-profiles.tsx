@@ -1,28 +1,18 @@
-import { createIntl, createIntlCache } from "@formatjs/intl";
-import * as React from "react";
+import { getLocale, getTranslations } from "next-intl/server";
+import type * as React from "react";
 
-import type { Dictionary, LocaleParam } from "../../../i18n-config";
 import { readProfileInfo } from "../shared/profile-infos";
 
-const intlCache = createIntlCache();
+/**
+ * @todo Use zod to parse profile infos, which would make this helper unnecessary
+ */
+function readCount(
+  profileInfo: Record<string, unknown> | undefined,
+  key: string,
+): number | undefined {
+  const value = profileInfo?.[key];
 
-interface KeyProfileProps {
-  locale: LocaleParam;
-  dictionary: Dictionary;
-}
-
-function formatMessage(
-  locale: LocaleParam,
-  messageLookup: Dictionary["index"],
-  messageId: keyof Dictionary["index"],
-  valueLookup: Record<string, unknown>,
-): string {
-  const intl = createIntl({ locale, messages: messageLookup }, intlCache);
-
-  return intl.formatMessage(
-    { id: messageId },
-    valueLookup as Record<string, string>,
-  );
+  return typeof value === "number" ? value : undefined;
 }
 
 function KeyProfile({
@@ -46,167 +36,154 @@ function KeyProfile({
   );
 }
 
-async function Openaccess({ locale, dictionary }: KeyProfileProps) {
-  const profileInfo = await readProfileInfo("openaccess");
+async function Openaccess() {
+  const t = await getTranslations("index");
+  const paperCount = readCount(
+    await readProfileInfo("openaccess"),
+    "paperCount",
+  );
 
   return (
     <KeyProfile
-      name={dictionary.index["profiles.openaccess.name"]}
+      name={t("profiles.openaccess.name")}
       url="https://openaccess.city.ac.uk/view/creators/Kachkaev=3AA=2E=3A=3A.html"
     >
-      {profileInfo ? (
-        <>
-          {formatMessage(
-            locale,
-            dictionary.index,
-            "profiles.openaccess.description.1",
-            profileInfo,
-          )}
-          <a href="https://openaccess.city.ac.uk/12460/">
-            {dictionary.index["profiles.openaccess.description.2"]}
-          </a>
-          {dictionary.index["profiles.openaccess.description.3"]}
-        </>
-      ) : undefined}
+      {paperCount === undefined
+        ? undefined
+        : t.rich("profiles.openaccess.description", {
+            paperCount,
+            thesis: (chunks) => (
+              <a href="https://openaccess.city.ac.uk/12460/">{chunks}</a>
+            ),
+          })}
     </KeyProfile>
   );
 }
 
-async function LinkedIn({ locale, dictionary }: KeyProfileProps) {
-  const profileInfo = await readProfileInfo("linkedin");
+async function LinkedIn() {
+  const t = await getTranslations("index");
+  const connectionCount = readCount(
+    await readProfileInfo("linkedin"),
+    "connectionCount",
+  );
 
   return (
     <KeyProfile
-      name={dictionary.index["profiles.linkedin.name"]}
+      name={t("profiles.linkedin.name")}
       url="https://www.linkedin.com/in/kachkaev/"
     >
-      {profileInfo
-        ? formatMessage(
-            locale,
-            dictionary.index,
-            "profiles.linkedin.description",
-            profileInfo,
-          )
-        : undefined}
+      {connectionCount === undefined
+        ? undefined
+        : t("profiles.linkedin.description", { connectionCount })}
     </KeyProfile>
   );
 }
 
-async function GitHub({ locale, dictionary }: KeyProfileProps) {
-  const profileInfo = await readProfileInfo("github");
+async function GitHub() {
+  const t = await getTranslations("index");
+  const repoCount = readCount(await readProfileInfo("github"), "repoCount");
 
   return (
     <KeyProfile
-      name={dictionary.index["profiles.github.name"]}
+      name={t("profiles.github.name")}
       url="https://github.com/kachkaev"
     >
-      {profileInfo ? (
-        <>
-          {formatMessage(
-            locale,
-            dictionary.index,
-            "profiles.github.description.1",
-            profileInfo,
-          )}
-          <a href="https://github.com/kachkaev/website">
-            {dictionary.index["profiles.github.description.2"]}
-          </a>
-          {dictionary.index["profiles.github.description.3"]}
-        </>
-      ) : undefined}
+      {repoCount === undefined
+        ? undefined
+        : t.rich("profiles.github.description", {
+            repoCount,
+            website: (chunks) => (
+              <a href="https://github.com/kachkaev/website">{chunks}</a>
+            ),
+          })}
     </KeyProfile>
   );
 }
 
-async function Osm({ locale, dictionary }: KeyProfileProps) {
+async function Osm() {
+  const t = await getTranslations("index");
   const profileInfo = await readProfileInfo("osm");
+  const changesetCount = readCount(profileInfo, "changesetCount");
+  const gpsTraceCount = readCount(profileInfo, "gpsTraceCount");
 
   return (
     <KeyProfile
-      name={dictionary.index["profiles.osm.name"]}
+      name={t("profiles.osm.name")}
       url="https://www.openstreetmap.org/user/Kachkaev"
     >
-      {profileInfo ? (
-        <>
-          {formatMessage(
-            locale,
-            dictionary.index,
-            "profiles.osm.description.1",
-            profileInfo,
-          )}
-          <a href="https://yosmhm.neis-one.org/?u=Kachkaev&zoom=3&lat=50&lon=20&layers=B00TTF">
-            {dictionary.index["profiles.osm.description.2"]}
-          </a>
-          {dictionary.index["profiles.osm.description.3"]}
-        </>
-      ) : undefined}
+      {changesetCount === undefined || gpsTraceCount === undefined
+        ? undefined
+        : t.rich("profiles.osm.description", {
+            changesetCount,
+            gpsTraceCount,
+            hdyc: (chunks) => (
+              <a href="https://yosmhm.neis-one.org/?u=Kachkaev&zoom=3&lat=50&lon=20&layers=B00TTF">
+                {chunks}
+              </a>
+            ),
+          })}
     </KeyProfile>
   );
 }
 
-async function Twitter({ locale, dictionary }: KeyProfileProps) {
-  const profileInfoEn = await readProfileInfo("twitter-en");
-  const profileInfoRu = await readProfileInfo("twitter-ru");
+async function Twitter() {
+  const locale = await getLocale();
+  const t = await getTranslations("index");
+
+  const tweetCountEn = readCount(
+    await readProfileInfo("twitter-en"),
+    "tweetCount",
+  );
+  const tweetCountRu = readCount(
+    await readProfileInfo("twitter-ru"),
+    "tweetCount",
+  );
+
   const urlEn = "https://twitter.com/kachkaev";
   const urlRu = "https://twitter.com/kachkaev_ru";
 
+  const isEn = locale === "en";
+  const tweetCount = isEn ? tweetCountEn : tweetCountRu;
+  const otherTweetCount = isEn ? tweetCountRu : tweetCountEn;
+
   return (
-    <KeyProfile
-      name={dictionary.index["profiles.twitter.name"]}
-      url={locale === "en" ? urlEn : urlRu}
-    >
-      {profileInfoEn && profileInfoRu ? (
-        <>
-          {formatMessage(
-            locale,
-            dictionary.index,
-            "profiles.twitter.description.1",
-            locale === "en" ? profileInfoEn : profileInfoRu,
-          )}
-          {formatMessage(
-            locale,
-            dictionary.index,
-            "profiles.twitter.description.2",
-            locale === "en" ? profileInfoRu : profileInfoEn,
-          )}
-          <a href={locale === "en" ? urlRu : urlEn}>
-            {dictionary.index["profiles.twitter.description.3"]}
-          </a>
-        </>
-      ) : undefined}
+    <KeyProfile name={t("profiles.twitter.name")} url={isEn ? urlEn : urlRu}>
+      {tweetCount === undefined || otherTweetCount === undefined
+        ? undefined
+        : t.rich("profiles.twitter.description", {
+            tweetCount,
+            otherTweetCount,
+            other: (chunks) => <a href={isEn ? urlRu : urlEn}>{chunks}</a>,
+          })}
     </KeyProfile>
   );
 }
 
 function shuffle<T extends unknown[] | undefined>(array: T): T {
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- Needed for overloading
   return array?.toSorted(() => Math.random() - 0.5) as T;
 }
 
-async function Flickr({ locale, dictionary }: KeyProfileProps) {
+async function Flickr() {
+  const t = await getTranslations("index");
   const profileInfo = await readProfileInfo("flickr");
+  const photoCount = readCount(profileInfo, "photoCount");
 
   const shuffledPhotos = shuffle(
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- TODO: use zod instead of type assertions
     profileInfo?.["mostViewedPhotos"] as
-      | Array<{ title: string; url: string; thumbnailUrl: string }>
-      | undefined,
+      Array<{ title: string; url: string; thumbnailUrl: string }> | undefined,
   );
 
   return (
     <>
       <KeyProfile
-        name={dictionary.index["profiles.flickr.name"]}
+        name={t("profiles.flickr.name")}
         url="https://www.flickr.com/people/kachkaev"
       >
-        {profileInfo ? (
-          <>
-            {formatMessage(
-              locale,
-              dictionary.index,
-              "profiles.flickr.description",
-              profileInfo,
-            )}
-          </>
-        ) : undefined}
+        {photoCount === undefined
+          ? undefined
+          : t("profiles.flickr.description", { photoCount })}
       </KeyProfile>
       {shuffledPhotos && (
         <div className="relative -mt-2 h-[50px] overflow-hidden rounded-[5px] bg-gray-300 bg-clip-padding">
@@ -231,20 +208,19 @@ async function Flickr({ locale, dictionary }: KeyProfileProps) {
           </div>
         </div>
       )}
-      {}
     </>
   );
 }
 
-export async function KeyProfiles(props: KeyProfileProps) {
+export function KeyProfiles() {
   return (
     <>
-      <Openaccess {...props} />
-      <LinkedIn {...props} />
-      <GitHub {...props} />
-      <Osm {...props} />
-      <Twitter {...props} />
-      <Flickr {...props} />
+      <Openaccess />
+      <LinkedIn />
+      <GitHub />
+      <Osm />
+      <Twitter />
+      <Flickr />
     </>
   );
 }

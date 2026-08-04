@@ -8,7 +8,6 @@ export default defineConfig([
 
   {
     rules: {
-      "@eslint-react/prefer-destructuring-assignment": "off", // Enable if `await props.params` is no longer used
       "import/no-extraneous-dependencies": [
         "warn",
         {
@@ -17,20 +16,6 @@ export default defineConfig([
           peerDependencies: false,
         },
       ],
-    },
-  },
-
-  // TODO: Triage
-  {
-    rules: {
-      "@typescript-eslint/consistent-type-assertions": "off",
-      "@typescript-eslint/consistent-type-definitions": "off",
-      "@typescript-eslint/consistent-type-imports": "off",
-      "@typescript-eslint/dot-notation": "off",
-      "@typescript-eslint/explicit-module-boundary-types": "off",
-      "@typescript-eslint/no-unsafe-assignment": "off",
-      "@typescript-eslint/prefer-nullish-coalescing": "off",
-      "@typescript-eslint/require-await": "off",
     },
   },
 ]);

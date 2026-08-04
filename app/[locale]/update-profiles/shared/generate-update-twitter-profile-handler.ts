@@ -1,3 +1,5 @@
+import type { NextRequest, NextResponse } from "next/server";
+
 import { generateUpdateProfileErrorPathPrefix } from "../../shared/profile-infos";
 import {
   extractDataFromWebPage,
@@ -10,7 +12,7 @@ export function generateUpdateTwitterProfileHandler({
 }: {
   profileName: string;
   twitterAccountId: string;
-}) {
+}): (request: NextRequest) => Promise<NextResponse> {
   return generateUpdateProfileHandler({
     profileName,
     generateProfileInfo: () =>

@@ -14,19 +14,41 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Check out repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6.0.10
 
       - name: Setup node
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           cache: pnpm
           node-version-file: .tool-versions
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
+
+      - name: Load CSpell cache
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          key: cspell-${{ github.run_id }}
+          path: node_modules/.cache/cspell
+          restore-keys: |
+            cspell-
+
+      - name: Run pnpm lint:cspell
+        if: ${{ success() || failure() }}
+        run: |
+          if ! pnpm lint:cspell; then
+            echo ''
+            echo ''
+            echo 'ℹ️ ℹ️ ℹ️'
+            echo 'Please fix the above errors locally for the check to pass.'
+            echo 'If you do not see them, try merging target branch into yours.'
+            echo 'You can add exceptions to `cspell-words.txt`, if necessary.'
+            echo 'ℹ️ ℹ️ ℹ️'
+            exit 1
+          fi
 
       - name: Run pnpm lint:eslint
         if: ${{ success() || failure() }}

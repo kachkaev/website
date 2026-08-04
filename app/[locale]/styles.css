@@ -64,14 +64,14 @@
   }
 }
 
+@import "@bprogress/core/css" layer(components);
 @layer components {
-  /* nprogress */
-  html {
-    --nprogress-color: rgba(0, 0, 0, 0.75);
+  :root {
+    --bprogress-color: rgba(0, 0, 0, 0.75);
   }
   @media (prefers-color-scheme: dark) {
-    html {
-      --nprogress-color: rgba(255, 255, 255, 0.75);
+    :root {
+      --bprogress-color: rgba(255, 255, 255, 0.75);
     }
   }
 }

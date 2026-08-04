@@ -1,51 +1,10 @@
-import "./styles.css";
+import { routing } from "../../i18n/routing";
+import { Shell } from "./layout/shell";
 
-import Script from "next/script";
-
-import { i18n, type LocaleParam } from "../../i18n-config";
-import { LocaleSwitcher } from "./layout/locale-switcher";
-import { NextAppNprogress } from "./layout/next-app-nprogress";
-
-export default async function Root(props: {
-  children: React.ReactNode;
-  params: Promise<{ locale: LocaleParam }>;
-}) {
-  const params = await props.params;
-
-  const { locale } = params;
-
-  const { children } = props;
-
-  const gaMeasurementId = process.env["GA_MEASUREMENT_ID"];
-
-  return (
-    <html lang={locale}>
-      <body
-        className={`relative flex size-full flex-col overflow-y-scroll px-5 pt-4 ${locale}`}
-      >
-        <NextAppNprogress color="var(--nprogress-color)" />
-        {gaMeasurementId ? (
-          <>
-            <Script
-              async={true}
-              src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
-              strategy="afterInteractive"
-            />
-            <Script
-              id="google-analytics"
-              strategy="afterInteractive"
-            >{`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${gaMeasurementId}');`}</Script>
-          </>
-        ) : undefined}
-        <LocaleSwitcher locale={locale} />
-        <div className="flex w-full max-w-[450px] min-w-[260px] grow self-center">
-          <div className="w-full self-center pb-6">{children}</div>
-        </div>
-      </body>
-    </html>
-  );
+export default function Root({ children }: { children: React.ReactNode }) {
+  return <Shell>{children}</Shell>;
 }
 
-export async function generateStaticParams() {
-  return i18n.locales.map((locale) => ({ locale }));
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
 }

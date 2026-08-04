@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
+import { hasLocale, type Locale, useLocale } from "next-intl";
 import * as React from "react";
 
-import { i18n, type LocaleParam } from "../../../i18n-config";
+import { routing } from "../../../i18n/routing";
 
 const localeHighlightLocalStorageKey = "hideLocaleHighlightUntil";
 
@@ -82,12 +83,11 @@ function LocaleListItem({
 }
 
 export function LocaleSwitcherInner({
-  locale,
   baseUrlByLocale,
 }: {
-  locale: LocaleParam;
-  baseUrlByLocale: Record<string, string>;
+  baseUrlByLocale: Record<Locale, string>;
 }) {
+  const locale = useLocale();
   const pathname = usePathname();
   const stringifiedSearchParams = useSearchParams().toString();
 
@@ -97,12 +97,8 @@ export function LocaleSwitcherInner({
 
   React.useEffect(() => {
     const localeToHighlight = navigator.languages
-      .find((supportedLocale) =>
-        (i18n.locales as readonly string[]).includes(
-          supportedLocale.slice(0, 2),
-        ),
-      )
-      ?.slice(0, 2);
+      .map((language) => language.slice(0, 2))
+      .find((language) => hasLocale(routing.locales, language));
 
     if (localeToHighlight && localeToHighlight !== locale) {
       try {
@@ -113,7 +109,7 @@ export function LocaleSwitcherInner({
         if (highlightHiddenUntil > Date.now()) {
           stopHighlightingLocaleForSomeTime();
         } else {
-          // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect -- intended use (setting state based on navigator API data)
+          // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect, react-hooks/set-state-in-effect -- intended use (setting state based on navigator API data)
           setHighlightedLocale(localeToHighlight);
         }
       } catch {
@@ -125,7 +121,7 @@ export function LocaleSwitcherInner({
   return (
     <div className="-mt-4 -mr-5 -mb-10 -ml-10 self-end overflow-hidden pt-4 pr-5 pb-10 pl-10 leading-3">
       <ul>
-        {i18n.locales.map((currentLocale) => {
+        {routing.locales.map((currentLocale) => {
           return (
             <LocaleListItem
               key={currentLocale}

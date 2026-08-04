@@ -1,4 +1,4 @@
-FROM node:24.11.0-slim AS base
+FROM node:24.19.0-slim AS base
 
 ENV NEXT_TELEMETRY_DISABLED=true
 ENV PLAYWRIGHT_BROWSERS_PATH=0
@@ -14,7 +14,8 @@ WORKDIR /app
 
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
+  pnpm install --frozen-lockfile
 
 ################################################################################
 FROM base AS builder
@@ -36,7 +37,8 @@ RUN adduser --system --uid 10001 nextjs
 
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile --ignore-scripts --production \
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
+  pnpm install --frozen-lockfile --ignore-scripts --production \
   && pnpm playwright install --with-deps chromium
 
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
