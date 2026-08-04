@@ -133,7 +133,8 @@ Note that updating Flickr profile requires API authentication, so requests to `/
 
 ### Playing with i18n
 
-Internationalization (i18n) is setup in [`i18n-config.ts`](i18n-config.ts), [`i18n-server.ts`](i18n-server.ts) and [`proxy.ts`](proxy.ts).
+Internationalization (i18n) is powered by [next-intl](https://next-intl.dev) and is set up in [`i18n/`](i18n/) and [`proxy.ts`](proxy.ts).
+Translated messages live in [`messages/`](messages/).
 
 By default, requests to [localhost:3000](http://localhost:3000) map to the `en` locale and requests to [ru.localhost:3000](http://ru.localhost:3000) map to the `ru` locale.
 You can change this by setting `BASE_URL_RU` and `BASE_URL_EN` in `.env.local`.

@@ -1,4 +1,6 @@
 allowBuilds:
+  "@parcel/watcher": false ## Only used by next-intl’s opt-in message extractor, which this project does not enable
+  "@swc/core": false ## Only used by next-intl’s opt-in message extractor, which this project does not enable
   sharp: false ## Install script is only required when compiling sharp from source - https://sharp.pixelplumbing.com/install
 
 ## Wait 8 hours (480 min) after a version is published before pnpm installs it, which gives a compromised

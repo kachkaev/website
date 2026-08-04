@@ -8,7 +8,6 @@ export default defineConfig([
 
   {
     rules: {
-      "@eslint-react/prefer-destructuring-assignment": "off", // Enable if `await props.params` is no longer used
       "import/no-extraneous-dependencies": [
         "warn",
         {
