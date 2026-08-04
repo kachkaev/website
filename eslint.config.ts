@@ -7,6 +7,14 @@ export default defineConfig([
   }),
 
   {
+    // The shared config allowlists Next.js file conventions, but not this one yet
+    files: ["app/global-not-found.tsx"],
+    rules: {
+      "import/no-default-export": "off",
+    },
+  },
+
+  {
     rules: {
       "import/no-extraneous-dependencies": [
         "warn",

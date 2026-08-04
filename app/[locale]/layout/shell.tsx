@@ -9,7 +9,7 @@ import { ProgressProvider } from "./progress-provider";
 
 /**
  * Wraps page contents into an HTML document.
- * Used by layout.tsx as well as by not-found.tsx, which is outside the [locale] segment.
+ * Used by layout.tsx as well as by global-not-found.tsx, which is outside the [locale] segment.
  */
 export function Shell({ children }: { children: React.ReactNode }) {
   const locale = useLocale();
