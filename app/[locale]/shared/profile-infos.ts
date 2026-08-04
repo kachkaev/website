@@ -9,7 +9,7 @@ import { serverEnv } from "./server-env";
 
 const twitterProfileInfoSchema = z.object({ tweetCount: z.number() });
 
-const profileInfoSchemas = {
+const profileInfoSchemaLookup = {
   flickr: z.object({
     photoCount: z.number(),
     mostViewedPhotos: z.array(
@@ -37,19 +37,19 @@ const profileInfoSchemas = {
   "twitter-ru": twitterProfileInfoSchema,
 };
 
-export type ProfileName = keyof typeof profileInfoSchemas;
+export type ProfileName = keyof typeof profileInfoSchemaLookup;
 
 export type ProfileInfo<Name extends ProfileName> = z.infer<
-  (typeof profileInfoSchemas)[Name]
+  (typeof profileInfoSchemaLookup)[Name]
 >;
 
 /**
- * Same schemas, but as a mapped type, which can be indexed with a generic profile name.
+ * Same lookup, but as a mapped type, which can be indexed with a generic profile name.
  * This keeps the result of readProfileInfo() strongly typed.
  */
-const profileInfoSchemasByName: {
+const indexableProfileInfoSchemaLookup: {
   [Name in ProfileName]: z.ZodType<ProfileInfo<Name>>;
-} = profileInfoSchemas;
+} = profileInfoSchemaLookup;
 
 const profileInfosDirPath = path.resolve(serverEnv.DATA_DIR, "profile-infos");
 const profileInfosUpdateErrorsDirPath = path.resolve(
@@ -70,7 +70,7 @@ export async function readProfileInfo<Name extends ProfileName>(
   cacheTag(generateProfileInfoCacheTag(profileName));
 
   try {
-    return profileInfoSchemasByName[profileName].parse(
+    return indexableProfileInfoSchemaLookup[profileName].parse(
       load(
         await fs.readFile(
           path.resolve(profileInfosDirPath, `${profileName}.yaml`),

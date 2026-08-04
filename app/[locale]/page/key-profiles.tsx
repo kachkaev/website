@@ -160,9 +160,9 @@ async function TwitterDescription() {
   const profileInfoEn = await readProfileInfo("twitter-en");
   const profileInfoRu = await readProfileInfo("twitter-ru");
 
-  const isEn = locale === "en";
-  const profileInfo = isEn ? profileInfoEn : profileInfoRu;
-  const otherProfileInfo = isEn ? profileInfoRu : profileInfoEn;
+  const inEn = locale === "en";
+  const profileInfo = inEn ? profileInfoEn : profileInfoRu;
+  const otherProfileInfo = inEn ? profileInfoRu : profileInfoEn;
 
   if (!profileInfo || !otherProfileInfo) {
     return descriptionPlaceholder;
@@ -172,7 +172,7 @@ async function TwitterDescription() {
     tweetCount: profileInfo.tweetCount,
     otherTweetCount: otherProfileInfo.tweetCount,
     other: (chunks) => (
-      <a href={isEn ? twitterUrlRu : twitterUrlEn}>{chunks}</a>
+      <a href={inEn ? twitterUrlRu : twitterUrlEn}>{chunks}</a>
     ),
   });
 }
