@@ -5,18 +5,6 @@ import * as React from "react";
 
 import { readProfileInfo } from "../shared/profile-infos";
 
-/**
- * @todo Use zod to parse profile infos, which would make this helper unnecessary
- */
-function readCount(
-  profileInfo: Record<string, unknown> | undefined,
-  key: string,
-): number | undefined {
-  const value = profileInfo?.[key];
-
-  return typeof value === "number" ? value : undefined;
-}
-
 /** Preserves the height of a profile description while it is loading or missing */
 const descriptionPlaceholder = <>&nbsp;</>;
 
@@ -48,17 +36,14 @@ function KeyProfile({
 
 async function OpenaccessDescription() {
   const t = await getTranslations("index");
-  const paperCount = readCount(
-    await readProfileInfo("openaccess"),
-    "paperCount",
-  );
+  const profileInfo = await readProfileInfo("openaccess");
 
-  if (paperCount === undefined) {
+  if (!profileInfo) {
     return descriptionPlaceholder;
   }
 
   return t.rich("profiles.openaccess.description", {
-    paperCount,
+    paperCount: profileInfo.paperCount,
     thesis: (chunks) => (
       <a href="https://openaccess.city.ac.uk/12460/">{chunks}</a>
     ),
@@ -80,16 +65,15 @@ function Openaccess() {
 
 async function LinkedInDescription() {
   const t = await getTranslations("index");
-  const connectionCount = readCount(
-    await readProfileInfo("linkedin"),
-    "connectionCount",
-  );
+  const profileInfo = await readProfileInfo("linkedin");
 
-  if (connectionCount === undefined) {
+  if (!profileInfo) {
     return descriptionPlaceholder;
   }
 
-  return t("profiles.linkedin.description", { connectionCount });
+  return t("profiles.linkedin.description", {
+    connectionCount: profileInfo.connectionCount,
+  });
 }
 
 function LinkedIn() {
@@ -107,14 +91,14 @@ function LinkedIn() {
 
 async function GitHubDescription() {
   const t = await getTranslations("index");
-  const repoCount = readCount(await readProfileInfo("github"), "repoCount");
+  const profileInfo = await readProfileInfo("github");
 
-  if (repoCount === undefined) {
+  if (!profileInfo) {
     return descriptionPlaceholder;
   }
 
   return t.rich("profiles.github.description", {
-    repoCount,
+    repoCount: profileInfo.repoCount,
     website: (chunks) => (
       <a href="https://github.com/kachkaev/website">{chunks}</a>
     ),
@@ -137,16 +121,14 @@ function GitHub() {
 async function OsmDescription() {
   const t = await getTranslations("index");
   const profileInfo = await readProfileInfo("osm");
-  const changesetCount = readCount(profileInfo, "changesetCount");
-  const gpsTraceCount = readCount(profileInfo, "gpsTraceCount");
 
-  if (changesetCount === undefined || gpsTraceCount === undefined) {
+  if (!profileInfo) {
     return descriptionPlaceholder;
   }
 
   return t.rich("profiles.osm.description", {
-    changesetCount,
-    gpsTraceCount,
+    changesetCount: profileInfo.changesetCount,
+    gpsTraceCount: profileInfo.gpsTraceCount,
     hdyc: (chunks) => (
       <a href="https://yosmhm.neis-one.org/?u=Kachkaev&zoom=3&lat=50&lon=20&layers=B00TTF">
         {chunks}
@@ -175,26 +157,20 @@ async function TwitterDescription() {
   const locale = await getLocale();
   const t = await getTranslations("index");
 
-  const tweetCountEn = readCount(
-    await readProfileInfo("twitter-en"),
-    "tweetCount",
-  );
-  const tweetCountRu = readCount(
-    await readProfileInfo("twitter-ru"),
-    "tweetCount",
-  );
+  const profileInfoEn = await readProfileInfo("twitter-en");
+  const profileInfoRu = await readProfileInfo("twitter-ru");
 
   const isEn = locale === "en";
-  const tweetCount = isEn ? tweetCountEn : tweetCountRu;
-  const otherTweetCount = isEn ? tweetCountRu : tweetCountEn;
+  const profileInfo = isEn ? profileInfoEn : profileInfoRu;
+  const otherProfileInfo = isEn ? profileInfoRu : profileInfoEn;
 
-  if (tweetCount === undefined || otherTweetCount === undefined) {
+  if (!profileInfo || !otherProfileInfo) {
     return descriptionPlaceholder;
   }
 
   return t.rich("profiles.twitter.description", {
-    tweetCount,
-    otherTweetCount,
+    tweetCount: profileInfo.tweetCount,
+    otherTweetCount: otherProfileInfo.tweetCount,
     other: (chunks) => (
       <a href={isEn ? twitterUrlRu : twitterUrlEn}>{chunks}</a>
     ),
@@ -215,20 +191,21 @@ function Twitter() {
   );
 }
 
-function shuffle<T extends unknown[] | undefined>(array: T): T {
-  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- Needed for overloading
-  return array?.toSorted(() => Math.random() - 0.5) as T;
+function shuffle<T>(array: readonly T[]): T[] {
+  return array.toSorted(() => Math.random() - 0.5);
 }
 
 async function FlickrDescription() {
   const t = await getTranslations("index");
-  const photoCount = readCount(await readProfileInfo("flickr"), "photoCount");
+  const profileInfo = await readProfileInfo("flickr");
 
-  if (photoCount === undefined) {
+  if (!profileInfo) {
     return descriptionPlaceholder;
   }
 
-  return t("profiles.flickr.description", { photoCount });
+  return t("profiles.flickr.description", {
+    photoCount: profileInfo.photoCount,
+  });
 }
 
 const photoStripClassName =
@@ -243,15 +220,11 @@ async function FlickrPhotos() {
 
   const profileInfo = await readProfileInfo("flickr");
 
-  const shuffledPhotos = shuffle(
-    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- TODO: use zod instead of type assertions
-    profileInfo?.["mostViewedPhotos"] as
-      Array<{ title: string; url: string; thumbnailUrl: string }> | undefined,
-  );
-
-  if (!shuffledPhotos) {
+  if (!profileInfo) {
     return photosPlaceholder;
   }
+
+  const shuffledPhotos = shuffle(profileInfo.mostViewedPhotos);
 
   return (
     <div className={photoStripClassName}>
