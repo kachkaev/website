@@ -3,6 +3,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { getLocale, getTranslations } from "next-intl/server";
 import * as React from "react";
 
+import { cn } from "../shared/cn";
 import { readProfileInfo } from "../shared/profile-infos";
 
 /** Preserves the height of a profile description while it is loading or missing */
@@ -208,8 +209,9 @@ async function FlickrDescription() {
   });
 }
 
-const photoStripClassName =
-  "relative -mt-2 h-[50px] overflow-hidden rounded-[5px] bg-gray-300 bg-clip-padding";
+const photoStripClassName = cn(
+  "relative -mt-2 h-[50px] overflow-hidden rounded-[5px] bg-gray-300 bg-clip-padding",
+);
 
 /** Preserves the height of the photo strip while it is loading or missing */
 const photosPlaceholder = <div className={photoStripClassName} />;

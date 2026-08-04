@@ -15,7 +15,7 @@ const localeByHost: Record<string, Locale | undefined> = Object.fromEntries(
 
 /**
  * Resolves the locale the same way proxy.ts does.
- * Needed in routes that are outside the [locale] segment (e.g. not-found.tsx),
+ * Needed in routes that are outside the [locale] segment (e.g. global-not-found.tsx),
  * because next/root-params is unavailable there.
  */
 export async function getLocaleByHost(): Promise<Locale> {
