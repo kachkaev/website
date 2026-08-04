@@ -4,6 +4,12 @@ import createNextIntlPlugin from "next-intl/plugin";
 const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
+  experimental: {
+    // `typescript` resolves to `@typescript/typescript6`, which ships no `tsc`
+    // binary, so Next.js has to use the TypeScript API instead of the CLI
+    useTypeScriptCli: false,
+  },
+
   output: "standalone",
   reactStrictMode: true,
   typescript: { ignoreBuildErrors: true },
