@@ -109,6 +109,9 @@ Once you have saved `.env.local` and have restarted the dev server (`pnpm dev`),
 If a request is successful, the app will create or update a corresponding file named `data/profile-infos/[profile-name].yaml`.
 The contents of this file are then used to render profile info on the home page.
 
+Because profile infos rarely change, they are read via [`use cache`](https://nextjs.org/docs/app/api-reference/directives/use-cache) and are kept in memory until an update endpoint rewrites them.
+This means that manual edits to `data/profile-infos/*.yaml` only show up after a server restart.
+
 The list of available profiles can be found in [`app/[locale]/update-profiles/`](app/[locale]/update-profiles/).
 Note that updating Flickr profile requires API authentication, so requests to `/update-profiles/flickr?123` will fail without valid values for `FLICKR_USER_ID` and `FLICKR_API_KEY` inside `.env.local`.
 

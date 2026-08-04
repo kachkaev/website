@@ -2,6 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 
 import { dump, load } from "js-yaml";
+import { cacheLife, cacheTag, revalidateTag } from "next/cache";
 
 import { serverEnv } from "./server-env";
 
@@ -19,9 +20,18 @@ const profileInfosUpdateErrorsDirPath = path.resolve(
   "update-errors",
 );
 
+function generateProfileInfoCacheTag(profileName: string): string {
+  return `profile-info:${profileName}`;
+}
+
 export async function readProfileInfo(
   profileName: string,
 ): Promise<Record<string, unknown> | undefined> {
+  "use cache";
+  // Profile infos only change when writeProfileInfo() is called, which expires the cache tag
+  cacheLife("max");
+  cacheTag(generateProfileInfoCacheTag(profileName));
+
   try {
     // eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- TODO: Use zod instead of type assertions
     return load(
@@ -45,6 +55,8 @@ export async function writeProfileInfo(
     dump(profileInfo),
     "utf8",
   );
+
+  revalidateTag(generateProfileInfoCacheTag(profileName), "max");
 }
 
 export function generateUpdateProfileErrorPathPrefix(
