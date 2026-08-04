@@ -11,6 +11,7 @@
     "fix:pnpm-dedupe": "pnpm dedupe",
     "fix:prettier": "prettier --write .",
     "lint": "npm-run-all --continue-on-error \"lint:*\"",
+    "lint:cspell": "cspell --cache --cache-location=node_modules/.cache/cspell/.cspellcache --cache-strategy=content --dot --no-progress \"**/*\"",
     "lint:eslint": "next typegen && eslint --max-warnings=0",
     "lint:knip": "knip",
     "lint:markdownlint": "markdownlint --dot .",
@@ -32,6 +33,7 @@
   "devDependencies": {
     "@bprogress/core": "1.3.4",
     "@bprogress/next": "3.2.12",
+    "@cspell/dict-ru_ru": "2.3.2",
     "@formatjs/intl": "4.1.18",
     "@kachkaev/eslint-config-next": "1.2.0",
     "@kachkaev/markdownlint-config": "1.0.1",
@@ -46,6 +48,7 @@
     "@types/react": "19.2.18",
     "@types/react-dom": "19.2.4",
     "@typescript/native": "npm:typescript@7.0.2",
+    "cspell": "10.0.1",
     "eslint": "9.39.5",
     "husky": "9.1.7",
     "js-yaml": "5.2.3",
