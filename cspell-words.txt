@@ -8,8 +8,10 @@ dedupe
 domcontentloaded
 env
 formatjs
+gicentre
 GIS
 habr
+hdyc
 Kachkaev
 knip
 letsencrypt
@@ -24,6 +26,7 @@ stackoverflow
 stringbool
 subline
 svgjs
+swc
 tsc
 xlink
 yamls
