@@ -38,3 +38,9 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return { title: t("title") };
 }
+
+/**
+ * There is no [locale] segment to prerender this route for, so the whole document
+ * (including `lang` and the messages) depends on the request host
+ */
+export const instant = false;
