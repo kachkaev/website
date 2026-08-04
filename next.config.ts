@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
   partialPrefetching: true,
 
   experimental: {
+    // The root layout is inside the [locale] segment, so there is no app/layout.tsx that
+    // app/not-found.tsx could be composed with. Without this flag, Next.js wraps not-found.tsx
+    // into a built-in `<html><body>` layout, which conflicts with the document rendered by Shell.
+    globalNotFound: true,
+
     // `typescript` resolves to `@typescript/typescript6`, which ships no `tsc`
     // binary, so Next.js has to use the TypeScript API instead of the CLI
     useTypeScriptCli: false,
