@@ -1,4 +1,10 @@
 allowBuilds:
   sharp: false ## Install script is only required when compiling sharp from source - https://sharp.pixelplumbing.com/install
 
+## Wait 8 hours (480 min) after a version is published before pnpm installs it, which gives a compromised
+## release time to be spotted and unpublished. pnpm’s own default of 1 day delays updates more than we’d
+## like. Must stay in sync with the `minimumReleaseAge` floor in .github/renovate.json, so that Renovate
+## never proposes a version pnpm would then refuse to lock.
+minimumReleaseAge: 480
+
 nodeLinker: isolated
