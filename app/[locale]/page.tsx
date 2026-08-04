@@ -1,30 +1,23 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-import type { LocaleParam } from "../../i18n-config";
-import { getDictionary } from "../../i18n-server";
 import photo from "../../public/images/alexander_kachkaev.jpg";
 import { KeyProfiles } from "./page/key-profiles";
 import { Mailto } from "./shared/mailto";
 
-type PageProps = {
-  params: Promise<{ locale: LocaleParam }>;
-};
-
-export default async function Page(props: PageProps) {
-  const params = await props.params;
-
-  const { locale } = params;
-
-  const dictionary = await getDictionary(locale);
+export default function Page() {
+  const locale = useLocale();
+  const t = useTranslations("index");
 
   return (
     <>
       {/* Header */}
       <h1>
-        {dictionary.index["h1.firstName"]}{" "}
+        {t("h1.firstName")}{" "}
         <span className="relative inline-block">
-          {dictionary.index["h1.lastName"]}
+          {t("h1.lastName")}
           {locale === "en" && (
             <span className="absolute inset-x-0 bottom-[-20px] inline-block text-center text-[13px] font-normal opacity-60">
               {" "}
@@ -38,18 +31,20 @@ export default async function Page(props: PageProps) {
 
       {/* Description */}
       <p className="description-on-index-page">
-        <span>{dictionary.index["description.l1"]}</span>{" "}
+        <span>{t("intro.l1")}</span>{" "}
         <span>
-          {dictionary.index["description.l2.1"]}
-          <a
-            href="https://www.gicentre.net/about"
-            className="whitespace-nowrap"
-          >
-            {dictionary.index["description.l2.2"]}
-          </a>
-          {dictionary.index["description.l2.3"]}
+          {t.rich("intro.l2", {
+            gicentre: (chunks) => (
+              <a
+                href="https://www.gicentre.net/about"
+                className="whitespace-nowrap"
+              >
+                {chunks}
+              </a>
+            ),
+          })}
         </span>{" "}
-        <span>{dictionary.index["description.l3"]}</span>
+        <span>{t("intro.l3")}</span>
       </p>
 
       {/* Photo */}
@@ -59,38 +54,38 @@ export default async function Page(props: PageProps) {
           width={100}
           height={100}
           priority={true}
-          alt={dictionary.index.photoAlt}
+          alt={t("photoAlt")}
           src={photo}
         />
       </div>
 
       {/* Key profiles */}
-      <KeyProfiles locale={locale} dictionary={dictionary} />
+      <KeyProfiles />
 
       {/* Misc profiles */}
       <div className="clear-both" />
       <div className="mt-6 text-center">
         <a className="mx-1" href="https://gitlab.com/kachkaev">
-          {dictionary.index["profiles.gitlab.name"]}
+          {t("profiles.gitlab.name")}
         </a>{" "}
         <a className="mx-1" href="https://t.me/kachkaev">
-          {dictionary.index["profiles.telegram.name"]}
+          {t("profiles.telegram.name")}
         </a>{" "}
         <a className="mx-1" href="https://www.facebook.com/kachkaev">
-          {dictionary.index["profiles.facebook.name"]}
+          {t("profiles.facebook.name")}
         </a>{" "}
         {locale === "ru" && (
           <>
             {" "}
             <a className="mx-1" href="https://habr.com/users/kachkaev/">
-              {dictionary.index["profiles.habr.name"]}
+              {t("profiles.habr.name")}
             </a>
             &nbsp;
             <a
               className="mx-1"
               href="https://ru.wikipedia.org/wiki/Участник:Kachkaev"
             >
-              {dictionary.index["profiles.wikipedia.name"]}
+              {t("profiles.wikipedia.name")}
             </a>
           </>
         )}{" "}
@@ -98,22 +93,18 @@ export default async function Page(props: PageProps) {
 
       {/* Email */}
       <div className="mt-5 text-center">
-        <Mailto locale={locale} />
-        <div className="opacity-60">{dictionary.index.emailRemark}</div>
+        <Mailto />
+        <div className="opacity-60">{t("emailRemark")}</div>
       </div>
     </>
   );
 }
 
-export async function generateMetadata(props: PageProps): Promise<Metadata> {
-  const params = await props.params;
-
-  const { locale } = params;
-
-  const dictionary = await getDictionary(locale);
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("index");
 
   return {
-    title: dictionary.index.title,
-    description: dictionary.index.description,
+    title: t("title"),
+    description: t("description"),
   };
 }
