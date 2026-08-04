@@ -1,9 +1,9 @@
 import "../styles.css";
 
-import Script from "next/script";
 import { NextIntlClientProvider, useLocale } from "next-intl";
+import * as React from "react";
 
-import { serverEnv } from "../shared/server-env";
+import { GoogleAnalytics } from "./google-analytics";
 import { LocaleSwitcher } from "./locale-switcher";
 import { ProgressProvider } from "./progress-provider";
 
@@ -13,8 +13,6 @@ import { ProgressProvider } from "./progress-provider";
  */
 export function Shell({ children }: { children: React.ReactNode }) {
   const locale = useLocale();
-
-  const gaMeasurementId = serverEnv.GA_MEASUREMENT_ID;
 
   return (
     <html lang={locale}>
@@ -27,19 +25,9 @@ export function Shell({ children }: { children: React.ReactNode }) {
           messages={null}
         >
           <ProgressProvider>
-            {gaMeasurementId ? (
-              <>
-                <Script
-                  async={true}
-                  src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
-                  strategy="afterInteractive"
-                />
-                <Script
-                  id="google-analytics"
-                  strategy="afterInteractive"
-                >{`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${gaMeasurementId}');`}</Script>
-              </>
-            ) : undefined}
+            <React.Suspense>
+              <GoogleAnalytics />
+            </React.Suspense>
             <LocaleSwitcher />
             <div className="flex w-full max-w-[450px] min-w-[260px] grow self-center">
               <div className="w-full self-center pb-6">{children}</div>

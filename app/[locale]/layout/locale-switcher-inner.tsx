@@ -51,6 +51,14 @@ function stopHighlightingLocaleForSomeTime() {
   }
 }
 
+function LocaleSwitcherLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="-mt-4 -mr-5 -mb-10 -ml-10 self-end overflow-hidden pt-4 pr-5 pb-10 pl-10 leading-3">
+      <ul>{children}</ul>
+    </div>
+  );
+}
+
 function LocaleListItem({
   locale,
   href,
@@ -59,8 +67,8 @@ function LocaleListItem({
 }: {
   href?: string | undefined;
   locale: string;
-  highlighted: boolean;
-  onStopHighlighting: () => void;
+  highlighted?: boolean;
+  onStopHighlighting?: () => void;
 }) {
   return (
     <li className="-mt-3 -mr-3 inline-block">
@@ -69,7 +77,7 @@ function LocaleListItem({
           className="group relative inline-block border-none p-3"
           href={href}
           onClick={() => {
-            onStopHighlighting();
+            onStopHighlighting?.();
           }}
         >
           {highlighted && <LocaleHighlighter />}
@@ -119,28 +127,37 @@ export function LocaleSwitcherInner({
   }, [locale]);
 
   return (
-    <div className="-mt-4 -mr-5 -mb-10 -ml-10 self-end overflow-hidden pt-4 pr-5 pb-10 pl-10 leading-3">
-      <ul>
-        {routing.locales.map((currentLocale) => {
-          return (
-            <LocaleListItem
-              key={currentLocale}
-              locale={currentLocale}
-              href={
-                locale === currentLocale
-                  ? undefined
-                  : `${baseUrlByLocale[currentLocale]}${pathname}${
-                      stringifiedSearchParams
-                        ? `?${stringifiedSearchParams}`
-                        : ""
-                    }`
-              }
-              highlighted={currentLocale === highlightedLocale}
-              onStopHighlighting={stopHighlightingLocaleForSomeTime}
-            />
-          );
-        })}
-      </ul>
-    </div>
+    <LocaleSwitcherLayout>
+      {routing.locales.map((currentLocale) => {
+        return (
+          <LocaleListItem
+            key={currentLocale}
+            locale={currentLocale}
+            href={
+              locale === currentLocale
+                ? undefined
+                : `${baseUrlByLocale[currentLocale]}${pathname}${
+                    stringifiedSearchParams ? `?${stringifiedSearchParams}` : ""
+                  }`
+            }
+            highlighted={currentLocale === highlightedLocale}
+            onStopHighlighting={stopHighlightingLocaleForSomeTime}
+          />
+        );
+      })}
+    </LocaleSwitcherLayout>
+  );
+}
+
+/**
+ * Reserves the space taken by the locale switcher until the links are ready
+ */
+export function LocaleSwitcherPlaceholder() {
+  return (
+    <LocaleSwitcherLayout>
+      {routing.locales.map((currentLocale) => (
+        <LocaleListItem key={currentLocale} locale={currentLocale} />
+      ))}
+    </LocaleSwitcherLayout>
   );
 }
