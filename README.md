@@ -9,7 +9,7 @@ Feel free to explore this repository to learn something new or even to reuse its
 - **[Next.js](https://nextjs.org)** (with `/app` directory) as the architecture framework
 - **[React](https://reactjs.org)** to define the UI (server and client components)
 - **[Tailwind CSS](https://tailwindcss.com)** to style the UI (including dark/light themes)
-- **[FormatJS](https://formatjs.io)** to handle internationalization ([ICU](https://formatjs.io/docs/core-concepts/icu-syntax/) plurals etc.)
+- **[next-intl](https://next-intl.dev)** to handle internationalization ([ICU](https://formatjs.io/docs/core-concepts/icu-syntax/) plurals, rich text etc.)
 - **[Google Analytics](https://analytics.google.com)** to track website usage
 - **[Zod](https://zod.dev)** and **[Playwright](https://playwright.dev)** to update profile infos
 - **[ESLint](https://eslint.org)**, **[Knip](https://github.com/webpro-nl/knip)**, **[Markdownlint](https://github.com/DavidAnson/markdownlint)**, **[Prettier](https://prettier.io)** and **[TypeScript](https://www.typescriptlang.org)** to statically check and autocorrect source files
@@ -22,7 +22,6 @@ Feel free to explore this repository to learn something new or even to reuse its
 
 The codebase is inspired by these Next.js examples:
 
-- [app-dir-i18n-routing](https://github.com/vercel/next.js/tree/canary/examples/app-dir-i18n-routing)
 - [with-tailwindcss](https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss)
 - [with-typescript](https://github.com/vercel/next.js/tree/canary/examples/with-typescript)
 
@@ -39,24 +38,6 @@ This approach is used when it is easier to scrape a web page than to interact wi
 
 Profiles are updated on a schedule (see [Deployment](#deployment) section).
 Because `/update-profiles/*` endpoints are public, a security token is introduced to prevent unauthorised requests.
-
-## Known issues
-
-- **Internationalized (i18n) is hacky**  
-  My go-to solution for internationalising Next.js pages is [`next-i18next`](https://www.npmjs.com/package/next-i18next).
-  Because this package is incompatible with the `/app` directory (at least as of early March 2023), I have used a rather bare-bones approach inspired by the [app-dir-i18n-routing](https://github.com/vercel/next.js/tree/canary/examples/app-dir-i18n-routing) example.
-  The current solution is not as polished as `next-i18next` when it comes to propagating translations to components, but it works well enough for my needs.
-  I might consider following [i18next/next-13-app-dir-i18next-example](https://github.com/i18next/next-13-app-dir-i18next-example) in the future but I am generally waiting for this space to mature.
-
-  In the meantime, I use [`@formatjs/intl`](https://www.npmjs.com/package/@formatjs/intl) to handle plurals, which is somewhat low-level and should not be done without a wrapper in a Next.js app.
-  Ideally, I would like to have i18n resources available as React context and use components inside i18n strings (e.g. `Hello <a>world</a>!`).
-  The latter is possible with [`<Trans />` component](https://react.i18next.com/latest/trans-component) in `react-i18next`, which I hope to use at some point.
-
-- **Custom 404 page is implemented via `proxy.ts`**  
-  As of early March 2023, Next.js [does not support](https://beta.nextjs.org/docs/api-reference/file-conventions/not-found) custom 404 pages inside the `/app` directory.
-  Until a&nbsp;permanent solution is available, incoming requests are checked against `existingPathnamePatterns` in&nbsp;[`proxy.ts`](./proxy.ts).
-  This enables custom 404 pages which are i18n-aware, but requires manual updates to `existingPathnamePatterns` each time a new app route is added.
-  Thus, the current workaround is error-prone, especially for apps that have a lot of routes.
 
 ## Local development
 
