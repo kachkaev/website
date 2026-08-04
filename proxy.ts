@@ -15,7 +15,9 @@ export const proxy = createMiddleware({
 });
 
 export const config = {
-  // Paths with a file extension are served as they are (favicons, manifest.json, robots.txt, images)
-  // eslint-disable-next-line unicorn/prefer-string-raw -- Next.js statically analyses this value, so it has to be a plain string literal
-  matcher: "/((?!_next|.*\\..*).*)",
+  // Static files are served as they are, while all other pathnames (including unknown ones)
+  // are localized. The list matches static files in app/ and public/.
+  matcher:
+    // eslint-disable-next-line unicorn/prefer-string-raw -- Next.js statically analyses this value, so it has to be a plain string literal
+    "/((?!_next/|images/|apple-icon\\.png|favicon\\.ico|icon0\\.svg|icon1\\.png|manifest\\.json|robots\\.txt).*)",
 };
