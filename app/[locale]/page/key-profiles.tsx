@@ -231,6 +231,12 @@ async function FlickrDescription() {
   return t("profiles.flickr.description", { photoCount });
 }
 
+const photoStripClassName =
+  "relative -mt-2 h-[50px] overflow-hidden rounded-[5px] bg-gray-300 bg-clip-padding";
+
+/** Preserves the height of the photo strip while it is loading or missing */
+const photosPlaceholder = <div className={photoStripClassName} />;
+
 async function FlickrPhotos() {
   // Photos are shuffled on each request, which requires a random seed
   await connection();
@@ -244,11 +250,11 @@ async function FlickrPhotos() {
   );
 
   if (!shuffledPhotos) {
-    return;
+    return photosPlaceholder;
   }
 
   return (
-    <div className="relative -mt-2 h-[50px] overflow-hidden rounded-[5px] bg-gray-300 bg-clip-padding">
+    <div className={photoStripClassName}>
       <div className="absolute whitespace-nowrap">
         {shuffledPhotos.map(({ thumbnailUrl, title, url }) => (
           <a
@@ -283,7 +289,7 @@ function Flickr() {
       >
         <FlickrDescription />
       </KeyProfile>
-      <React.Suspense>
+      <React.Suspense fallback={photosPlaceholder}>
         <FlickrPhotos />
       </React.Suspense>
     </>
