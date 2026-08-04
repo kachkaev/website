@@ -8,6 +8,7 @@
     ":semanticCommitsDisabled",
     "helpers:pinGitHubActionDigestsToSemver"
   ],
+  "minimumReleaseAge": "8 hours",
   "packageRules": [
     {
       "autoApprove": true,
