@@ -10,7 +10,11 @@ import {
 } from "playwright";
 import type { ZodType } from "zod";
 
-import { writeProfileInfo } from "../../shared/profile-infos";
+import {
+  type ProfileInfo,
+  type ProfileName,
+  writeProfileInfo,
+} from "../../shared/profile-infos";
 import { serverEnv } from "../../shared/server-env";
 
 export async function extractDataFromWebPage<Data>({
@@ -80,12 +84,12 @@ export async function fetchJson<Schema extends ZodType>(
   return schema.parse(data);
 }
 
-export function generateUpdateProfileHandler({
+export function generateUpdateProfileHandler<Name extends ProfileName>({
   profileName,
   generateProfileInfo,
 }: {
-  profileName: string;
-  generateProfileInfo: () => Promise<Record<string, unknown>>;
+  profileName: Name;
+  generateProfileInfo: () => Promise<ProfileInfo<Name>>;
 }): (request: NextRequest) => Promise<NextResponse> {
   return async (request) => {
     if (!serverEnv.UPDATE_PROFILE_SECURITY_TOKEN) {

@@ -10,7 +10,7 @@ export function generateUpdateTwitterProfileHandler({
   profileName,
   twitterAccountId,
 }: {
-  profileName: string;
+  profileName: "twitter-en" | "twitter-ru";
   twitterAccountId: string;
 }): (request: NextRequest) => Promise<NextResponse> {
   return generateUpdateProfileHandler({
