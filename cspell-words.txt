@@ -3,6 +3,7 @@ adduser
 bprogress
 certresolver
 cjs
+csstree
 curlimages
 dedupe
 domcontentloaded
