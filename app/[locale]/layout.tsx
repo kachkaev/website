@@ -17,7 +17,11 @@ export default function Root({ children }: { children: React.ReactNode }) {
       <body
         className={`relative flex size-full flex-col overflow-y-scroll px-5 pt-4 ${locale}`}
       >
-        <NextIntlClientProvider>
+        {/* Messages are only used in server components, so they are kept out of the client payload */}
+        <NextIntlClientProvider
+          // eslint-disable-next-line unicorn/no-null -- `undefined` would mean ‘inherit all messages from the server’
+          messages={null}
+        >
           <ProgressProvider>
             {gaMeasurementId ? (
               <>
