@@ -76,8 +76,8 @@ importers:
         specifier: 9.1.7
         version: 9.1.7
       js-yaml:
-        specifier: 5.2.3
-        version: 5.2.3
+        specifier: 5.3.0
+        version: 5.3.0
       knip:
         specifier: 6.32.2
         version: 6.32.2
@@ -2629,6 +2629,10 @@ packages:
 
   js-yaml@5.2.3:
     resolution: {integrity: sha512-n+mUVyUX5bVv7G/G2zyIHOhdxfuU1dY2NOFzTQUWiMUbFss8b57NFlgCCaggU78wSw5KVS9cllzeLyzyR+n5nw==}
+    hasBin: true
+
+  js-yaml@5.3.0:
+    resolution: {integrity: sha512-muutsYr+e2+d3rTgUGslq5rxbBlUy3cJ61IsHag2QNDQV+7zXWjkUpmALIajhrlLlrgRUiymj6U3zUr/TMK84Q==}
     hasBin: true
 
   jsdoc-type-pratt-parser@7.3.0:
@@ -6092,6 +6096,10 @@ snapshots:
       argparse: 2.0.1
 
   js-yaml@5.2.3:
+    dependencies:
+      argparse: 2.0.1
+
+  js-yaml@5.3.0:
     dependencies:
       argparse: 2.0.1
 
