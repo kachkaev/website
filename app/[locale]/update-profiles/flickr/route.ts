@@ -22,7 +22,7 @@ export const GET = generateUpdateProfileHandler({
             z.object({
               id: z.string(),
               title: z.string(),
-              url_sq: z.string(),
+              url_sq: z.url(),
               views: z.string(),
             }),
           ),

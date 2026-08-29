@@ -3,51 +3,90 @@ import path from "node:path";
 
 import { dump, load } from "js-yaml";
 import { cacheLife, cacheTag, revalidateTag } from "next/cache";
+import { z } from "zod";
 
 import { serverEnv } from "./server-env";
 
-function getDataDirPath(): string {
-  return path.resolve(serverEnv.DATA_DIR);
-}
+const twitterProfileInfoSchema = z.object({ tweetCount: z.number() });
 
-function getProfileInfosDirPath(): string {
-  return path.resolve(getDataDirPath(), "profile-infos");
-}
+const profileInfoSchemaLookup = {
+  flickr: z.object({
+    photoCount: z.number(),
+    mostViewedPhotos: z.array(
+      z.object({
+        id: z.string(),
+        title: z.string(),
+        url: z.url(),
+        thumbnailUrl: z.url(),
+        views: z.number(),
+      }),
+    ),
+  }),
+  github: z.object({
+    repoCount: z.number(),
+    sourceCount: z.number(),
+    languageCount: z.number(),
+  }),
+  linkedin: z.object({ connectionCount: z.number() }),
+  openaccess: z.object({ paperCount: z.number() }),
+  osm: z.object({
+    changesetCount: z.number(),
+    gpsTraceCount: z.number(),
+  }),
+  "twitter-en": twitterProfileInfoSchema,
+  "twitter-ru": twitterProfileInfoSchema,
+};
 
-const profileInfosDirPath = getProfileInfosDirPath();
+export type ProfileName = keyof typeof profileInfoSchemaLookup;
+
+export type ProfileInfo<Name extends ProfileName> = z.infer<
+  (typeof profileInfoSchemaLookup)[Name]
+>;
+
+/**
+ * Same lookup, but as a mapped type, which can be indexed with a generic profile name.
+ * This keeps the result of readProfileInfo() strongly typed.
+ */
+const indexableProfileInfoSchemaLookup: {
+  [Name in ProfileName]: z.ZodType<ProfileInfo<Name>>;
+} = profileInfoSchemaLookup;
+
+const profileInfosDirPath = path.resolve(serverEnv.DATA_DIR, "profile-infos");
 const profileInfosUpdateErrorsDirPath = path.resolve(
   profileInfosDirPath,
   "update-errors",
 );
 
-function generateProfileInfoCacheTag(profileName: string): string {
+function generateProfileInfoCacheTag(profileName: ProfileName): string {
   return `profile-info:${profileName}`;
 }
 
-export async function readProfileInfo(
-  profileName: string,
-): Promise<Record<string, unknown> | undefined> {
+export async function readProfileInfo<Name extends ProfileName>(
+  profileName: Name,
+): Promise<ProfileInfo<Name> | undefined> {
   "use cache";
   // Profile infos only change when writeProfileInfo() is called, which expires the cache tag
   cacheLife("max");
   cacheTag(generateProfileInfoCacheTag(profileName));
 
   try {
-    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- TODO: Use zod instead of type assertions
-    return load(
-      await fs.readFile(
-        path.resolve(profileInfosDirPath, `${profileName}.yaml`),
-        "utf8",
+    return indexableProfileInfoSchemaLookup[profileName].parse(
+      load(
+        await fs.readFile(
+          path.resolve(profileInfosDirPath, `${profileName}.yaml`),
+          "utf8",
+        ),
       ),
-    ) as Record<string, unknown>;
+    );
   } catch {
+    // A profile info is missing until its first update and can go stale after a schema change
     return undefined;
   }
 }
 
-export async function writeProfileInfo(
-  profileName: string,
-  profileInfo: Record<string, unknown>,
+export async function writeProfileInfo<Name extends ProfileName>(
+  profileName: Name,
+  profileInfo: ProfileInfo<Name>,
 ): Promise<void> {
   await fs.mkdir(profileInfosDirPath, { recursive: true });
   await fs.writeFile(
@@ -60,7 +99,7 @@ export async function writeProfileInfo(
 }
 
 export function generateUpdateProfileErrorPathPrefix(
-  profileName: string,
+  profileName: ProfileName,
 ): string {
   const stringifiedTime = new Date()
     .toISOString()
