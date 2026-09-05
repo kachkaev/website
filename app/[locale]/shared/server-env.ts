@@ -10,6 +10,7 @@ export const serverEnv = createEnv({
   server: {
     BASE_URL_EN: z.url().default("http://localhost:3000"),
 
+    // eslint-disable-next-line unicorn/prefer-https -- Local development URL; `localhost` itself is exempt from the rule but its subdomains are not
     BASE_URL_RU: z.url().default("http://ru.localhost:3000"),
 
     DATA_DIR: z.string().default("./data"),

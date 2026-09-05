@@ -34,7 +34,7 @@ export async function extractDataFromWebPage<Data>({
 
     context = await browser.newContext({
       userAgent: serverEnv.PLAYWRIGHT_USER_AGENT,
-      ...(proxyServerUrl ? { proxy: { server: proxyServerUrl } } : {}),
+      ...(proxyServerUrl && { proxy: { server: proxyServerUrl } }),
     });
 
     context.setDefaultTimeout(5000);

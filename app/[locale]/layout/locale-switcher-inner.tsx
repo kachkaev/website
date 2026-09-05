@@ -44,7 +44,7 @@ function stopHighlightingLocaleForSomeTime() {
   try {
     localStorage.setItem(
       localeHighlightLocalStorageKey,
-      `${Date.now() + 24 * 60 * 60 * 1000 /* one day */}`,
+      String(Date.now() + 24 * 60 * 60 * 1000 /* one day */),
     );
   } catch {
     // noop (handling unavailable localStorage in private tabs)
@@ -110,14 +110,13 @@ export function LocaleSwitcherInner({
 
     if (localeToHighlight && localeToHighlight !== locale) {
       try {
-        const highlightHiddenUntil = Number.parseInt(
+        const highlightHiddenUntil = Number(
           localStorage.getItem(localeHighlightLocalStorageKey) ?? "0",
-          10,
         );
         if (highlightHiddenUntil > Date.now()) {
           stopHighlightingLocaleForSomeTime();
         } else {
-          // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect, react-hooks/set-state-in-effect -- intended use (setting state based on navigator API data)
+          // eslint-disable-next-line @eslint-react/set-state-in-effect, react-hooks/set-state-in-effect -- intended use (setting state based on navigator API data)
           setHighlightedLocale(localeToHighlight);
         }
       } catch {
