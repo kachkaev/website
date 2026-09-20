@@ -48,7 +48,7 @@
     "@types/react-dom": "19.3.0",
     "@typescript/native": "npm:typescript@7.0.2",
     "cspell": "10.3.3",
-    "eslint": "10.10.0",
+    "eslint": "10.11.0",
     "husky": "9.1.7",
     "js-yaml": "5.4.2",
     "knip": "6.35.1",
