@@ -3,6 +3,18 @@ allowBuilds:
   "@swc/core": false ## Only used by next-intl’s opt-in message extractor, which this project does not enable
   sharp: false ## Install script is only required when compiling sharp from source - https://sharp.pixelplumbing.com/install
 
+## Collapse compatible duplicate versions whenever pnpm writes the lockfile, so every install keeps it as
+## lean as `pnpm dedupe` would. This replaces the `pnpm dedupe --check` CI step: the two algorithms can
+## break ties differently, so the check could fail a lockfile a plain `pnpm install` just wrote.
+autoDedupe: true
+
+## TEMPORARY, see https://github.com/kachkaev/reusable-stuff/issues/347: @kachkaev/eslint-config-next v2
+## installs eslint-plugin-import and eslint-plugin-react from git snapshots because neither plugin has an
+## ESLint 10-compatible release on npm yet, and pnpm blocks git-hosted transitive dependencies by default.
+## While this is off, review lockfile diffs in dependency PRs for unexpected codeload.github.com tarballs.
+## Remove once the config is back on npm releases (tracked in the issue above).
+blockExoticSubdeps: false
+
 ## Wait 8 hours (480 min) after a version is published before pnpm installs it, which gives a compromised
 ## release time to be spotted and unpublished. pnpm’s own default of 1 day delays updates more than we’d
 ## like. Must stay in sync with the `minimumReleaseAge` floor in the shared Renovate preset
@@ -17,9 +29,5 @@ minimumReleaseAgeExclude:
 
 nodeLinker: isolated
 
-## TEMPORARY, see https://github.com/kachkaev/reusable-stuff/issues/347: @kachkaev/eslint-config-next v2
-## installs eslint-plugin-import and eslint-plugin-react from git snapshots because neither plugin has an
-## ESLint 10-compatible release on npm yet, and pnpm blocks git-hosted transitive dependencies by default.
-## While this is off, review lockfile diffs in dependency PRs for unexpected codeload.github.com tarballs.
-## Remove once the config is back on npm releases (tracked in the issue above).
-blockExoticSubdeps: false
+## Have `pnpm add` also add the matching `@types/*` package to devDependencies, when one exists
+saveTypes: true
