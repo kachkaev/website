@@ -65,7 +65,7 @@
     "typescript": "npm:@typescript/typescript6@6.0.2",
     "zod": "4.6.5"
   },
-  "packageManager": "pnpm@12.9.1",
+  "packageManager": "pnpm@12.11.2",
   "devEngines": {
     "runtime": {
       "name": "node",
