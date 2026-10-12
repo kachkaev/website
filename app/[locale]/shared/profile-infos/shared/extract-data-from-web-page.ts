@@ -22,7 +22,7 @@ export async function extractDataFromWebPage<Data>({
   try {
     browser = await chromium.launch({
       headless: serverEnv.PLAYWRIGHT_HEADLESS,
-      timeout: 5000,
+      timeout: 30_000,
     });
 
     const proxyServerUrl = serverEnv.UPDATE_PROFILE_PROXY_SERVER_URL;
