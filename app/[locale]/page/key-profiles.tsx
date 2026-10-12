@@ -1,4 +1,4 @@
-import { connection } from "next/server";
+import { io } from "next/cache";
 import { useLocale, useTranslations } from "next-intl";
 import { getLocale, getTranslations } from "next-intl/server";
 import * as React from "react";
@@ -223,7 +223,7 @@ const photosMissingPlaceholder = (
 
 async function FlickrPhotos() {
   // Photos are shuffled on each request, which requires a random seed
-  await connection();
+  await io();
 
   const profileInfo = await readProfileInfo("flickr");
 

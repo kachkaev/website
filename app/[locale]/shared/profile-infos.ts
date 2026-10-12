@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 
 import { dump, load } from "js-yaml";
-import { cacheLife, cacheTag, revalidateTag } from "next/cache";
+import { cacheLife, cacheTag, io, revalidateTag } from "next/cache";
 import type { z } from "zod";
 
 import { flickrProfileDefinition } from "./profile-infos/=flickr";
@@ -53,7 +53,7 @@ function generateProfileInfoCacheTag(profileName: ProfileName): string {
   return `profile-info:${profileName}`;
 }
 
-export async function readProfileInfo<Name extends ProfileName>(
+async function readCachedProfileInfo<Name extends ProfileName>(
   profileName: Name,
 ): Promise<ProfileInfo<Name> | undefined> {
   "use cache";
@@ -74,6 +74,16 @@ export async function readProfileInfo<Name extends ProfileName>(
     // A profile info is missing until its first update and can go stale after a schema change
     return undefined;
   }
+}
+
+export async function readProfileInfo<Name extends ProfileName>(
+  profileName: Name,
+): Promise<ProfileInfo<Name> | undefined> {
+  // Profile infos live in DATA_DIR, which is only populated at runtime. Without this,
+  // `next build` would bake whatever it finds there (usually nothing) into the static shell.
+  await io();
+
+  return await readCachedProfileInfo(profileName);
 }
 
 function generateUpdateProfileErrorPathPrefix(
