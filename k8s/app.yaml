@@ -64,11 +64,13 @@ spec:
               port: 3000
             initialDelaySeconds: 2
             periodSeconds: 1
-          livenessProbe:
-            tcpSocket:
+          livenessProbe: ## HTTP instead of TCP so that the container is restarted when it stops responding (e.g. when thrashing near its memory limit)
+            httpGet:
+              path: /robots.txt
               port: 3000
             initialDelaySeconds: 15
             periodSeconds: 20
+            timeoutSeconds: 5
           resources:
             requests:
               cpu: 200m
