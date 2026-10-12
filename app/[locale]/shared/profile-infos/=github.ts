@@ -1,15 +1,19 @@
 import { z } from "zod";
 
-import {
-  fetchJson,
-  generateUpdateProfileHandler,
-} from "../shared/handler-helpers";
+import { fetchJson } from "./shared/fetch-json";
+import type { ProfileDefinition } from "./shared/types";
+
+const infoSchema = z.object({
+  repoCount: z.number(),
+  sourceCount: z.number(),
+  languageCount: z.number(),
+});
 
 const maxReposPerPage = 100;
 
-export const GET = generateUpdateProfileHandler({
-  profileName: "github",
-  generateProfileInfo: async () => {
+export const githubProfileDefinition = {
+  infoSchema,
+  generateInfo: async () => {
     const schema = z.array(
       z.object({
         language: z.nullable(z.string()),
@@ -46,4 +50,4 @@ export const GET = generateUpdateProfileHandler({
       languageCount: languageSet.size,
     };
   },
-});
+} satisfies ProfileDefinition<typeof infoSchema>;

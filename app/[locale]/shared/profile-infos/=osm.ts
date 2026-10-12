@@ -1,13 +1,16 @@
 import { z } from "zod";
 
-import {
-  fetchJson,
-  generateUpdateProfileHandler,
-} from "../shared/handler-helpers";
+import { fetchJson } from "./shared/fetch-json";
+import type { ProfileDefinition } from "./shared/types";
 
-export const GET = generateUpdateProfileHandler({
-  profileName: "osm",
-  generateProfileInfo: async () => {
+const infoSchema = z.object({
+  changesetCount: z.number(),
+  gpsTraceCount: z.number(),
+});
+
+export const osmProfileDefinition = {
+  infoSchema,
+  generateInfo: async () => {
     const data = await fetchJson(
       "https://www.openstreetmap.org/api/0.6/user/231451.json",
       z.object({
@@ -23,4 +26,4 @@ export const GET = generateUpdateProfileHandler({
       gpsTraceCount: data.user.traces.count,
     };
   },
-});
+} satisfies ProfileDefinition<typeof infoSchema>;
