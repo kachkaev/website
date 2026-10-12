@@ -1,14 +1,25 @@
 import { z } from "zod";
 
-import { serverEnv } from "../../shared/server-env";
-import {
-  fetchJson,
-  generateUpdateProfileHandler,
-} from "../shared/handler-helpers";
+import { serverEnv } from "../server-env";
+import { fetchJson } from "./shared/fetch-json";
+import type { ProfileDefinition } from "./shared/types";
 
-export const GET = generateUpdateProfileHandler({
-  profileName: "flickr",
-  generateProfileInfo: async () => {
+const infoSchema = z.object({
+  photoCount: z.number(),
+  mostViewedPhotos: z.array(
+    z.object({
+      id: z.string(),
+      title: z.string(),
+      url: z.url(),
+      thumbnailUrl: z.url(),
+      views: z.number(),
+    }),
+  ),
+});
+
+export const flickrProfileDefinition = {
+  infoSchema,
+  generateInfo: async () => {
     if (!serverEnv.FLICKR_API_KEY || !serverEnv.FLICKR_USER_ID) {
       throw new Error("FLICKR_API_KEY and FLICKR_USER_ID are required");
     }
@@ -46,4 +57,4 @@ export const GET = generateUpdateProfileHandler({
       mostViewedPhotos,
     };
   },
-});
+} satisfies ProfileDefinition<typeof infoSchema>;
