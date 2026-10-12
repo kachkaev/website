@@ -1,11 +1,11 @@
+import { io } from "next/cache";
 import Script from "next/script";
-import { connection } from "next/server";
 
 import { serverEnv } from "../shared/server-env";
 
 export async function GoogleAnalytics() {
   // GA_MEASUREMENT_ID comes from an env var, which is only known at runtime
-  await connection();
+  await io();
 
   const gaMeasurementId = serverEnv.GA_MEASUREMENT_ID;
 
