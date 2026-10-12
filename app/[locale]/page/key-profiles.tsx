@@ -213,8 +213,13 @@ const photoStripClassName = cn(
   "relative -mt-2 h-[50px] overflow-hidden rounded-[5px] bg-gray-300 bg-clip-padding",
 );
 
-/** Preserves the height of the photo strip while it is loading or missing */
-const photosPlaceholder = <div className={photoStripClassName} />;
+/** Preserves the height of the photo strip while it is loading */
+const photosLoadingPlaceholder = <div className={photoStripClassName} />;
+
+/** Preserves the height of the photo strip when photos are missing, but stays hidden */
+const photosMissingPlaceholder = (
+  <div className={cn(photoStripClassName, "invisible")} />
+);
 
 async function FlickrPhotos() {
   // Photos are shuffled on each request, which requires a random seed
@@ -222,8 +227,8 @@ async function FlickrPhotos() {
 
   const profileInfo = await readProfileInfo("flickr");
 
-  if (!profileInfo) {
-    return photosPlaceholder;
+  if (!profileInfo || profileInfo.mostViewedPhotos.length === 0) {
+    return photosMissingPlaceholder;
   }
 
   const shuffledPhotos = shuffle(profileInfo.mostViewedPhotos);
@@ -264,7 +269,7 @@ function Flickr() {
       >
         <FlickrDescription />
       </KeyProfile>
-      <React.Suspense fallback={photosPlaceholder}>
+      <React.Suspense fallback={photosLoadingPlaceholder}>
         <FlickrPhotos />
       </React.Suspense>
     </>
