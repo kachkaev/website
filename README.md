@@ -62,10 +62,10 @@ Because `/update-profiles/*` endpoints are public, a security token is introduce
     ## ≥ 24.19.0
     
     pnpm --version
-    ## ≥ 11.0.0
+    ## ≥ 12.0.0
     ```
 
-    The expected Node.js version is recorded in [`.tool-versions`](.tool-versions), so if you use a version manager such as [mise](https://mise.jdx.dev), it will be picked automatically once you have cloned the repo.
+    The expected Node.js version is recorded in [`devEngines.runtime`](package.json) in `package.json`, so pnpm downloads and uses it automatically once you have cloned the repo.
 
 1.  Clone the repo from GitHub:
 

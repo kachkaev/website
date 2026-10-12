@@ -1,55 +1,22 @@
-import eslintPluginCss from "@eslint/css";
 import { generateNextConfigs } from "@kachkaev/eslint-config-next";
 import { defineConfig } from "eslint/config";
-import eslintPluginBetterTailwindcss from "eslint-plugin-better-tailwindcss";
-import { tailwind4 } from "tailwind-csstree";
-
-const tailwindcssEntryPoint = "./app/[locale]/styles.css";
 
 export default defineConfig([
-  // Configs for TS and TSX are not restricted to these extensions, so they break on CSS
-  // https://github.com/kachkaev/reusable-stuff/issues/302
-  ...generateNextConfigs({ tailwindcssEntryPoint }).map((config) =>
-    (config.rules ?? config.languageOptions)
-      ? { ...config, ignores: [...(config.ignores ?? []), "**/*.css"] }
-      : config,
-  ),
+  generateNextConfigs({ tailwindcssEntryPoint: "./app/[locale]/styles.css" }),
 
-  // Class names in @apply are invisible to the configs above, which only cover TS and TSX
   {
-    name: "tailwindcss in css",
-    files: ["**/*.css"],
-    language: "css/css",
-    languageOptions: { customSyntax: tailwind4, tolerant: true },
-    plugins: {
-      "better-tailwindcss": eslintPluginBetterTailwindcss,
-      css: eslintPluginCss,
-    },
-    settings: { "better-tailwindcss": { entryPoint: tailwindcssEntryPoint } },
+    // Rules added in eslint-plugin-unicorn v65–v74 (via @kachkaev/eslint-config-next v2) that this
+    // codebase does not adopt yet; reviewed collectively in https://github.com/kachkaev/repo-dive/issues/212.
+    files: ["**/*.{ts,tsx}"],
     rules: {
-      "better-tailwindcss/enforce-canonical-classes": "warn",
-      "better-tailwindcss/enforce-consistent-class-order": "warn",
-      "better-tailwindcss/enforce-consistent-variable-syntax": "warn",
-      "better-tailwindcss/enforce-shorthand-classes": "warn",
-      "better-tailwindcss/no-conflicting-classes": "warn",
-      "better-tailwindcss/no-deprecated-classes": "warn",
-      "better-tailwindcss/no-duplicate-classes": "warn",
-      "better-tailwindcss/no-restricted-classes": "error",
-      "better-tailwindcss/no-unknown-classes": "error",
-      "better-tailwindcss/no-unnecessary-whitespace": "warn",
+      "unicorn/consistent-boolean-name": "off", // Flags exported names that follow external conventions, such as `instant` in global-not-found.tsx.
+      "unicorn/max-nested-calls": "off",
+      "unicorn/single-line-block-comment-style": "off", // Single-line `/** … */` doc comments are the norm here; rewriting them into three-line blocks is churn without benefit. // Data-shaping pipelines in route handlers nest calls deeply by nature.
     },
   },
 
   {
-    // The shared config allowlists Next.js file conventions, but not this one yet
-    files: ["app/global-not-found.tsx"],
-    rules: {
-      "import/no-default-export": "off",
-    },
-  },
-
-  {
-    ignores: ["**/*.css"],
+    files: ["**/*.{ts,tsx}"],
     rules: {
       "import/no-extraneous-dependencies": [
         "warn",
