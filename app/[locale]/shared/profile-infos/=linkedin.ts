@@ -1,16 +1,15 @@
-import { generateUpdateProfileErrorPathPrefix } from "../../shared/profile-infos";
-import {
-  extractDataFromWebPage,
-  generateUpdateProfileHandler,
-} from "../shared/handler-helpers";
+import { z } from "zod";
 
-const profileName = "linkedin";
+import { extractDataFromWebPage } from "./shared/extract-data-from-web-page";
+import type { ProfileDefinition } from "./shared/types";
 
-export const GET = generateUpdateProfileHandler({
-  profileName,
-  generateProfileInfo: () =>
+const infoSchema = z.object({ connectionCount: z.number() });
+
+export const linkedinProfileDefinition = {
+  infoSchema,
+  generateInfo: ({ errorPathPrefix }) =>
     extractDataFromWebPage({
-      errorPathPrefix: generateUpdateProfileErrorPathPrefix(profileName),
+      errorPathPrefix,
       handler: async ({ page }) => {
         await page.goto("https://www.linkedin.com/in/kachkaev/", {
           waitUntil: "domcontentloaded",
@@ -30,4 +29,4 @@ export const GET = generateUpdateProfileHandler({
         return { connectionCount };
       },
     }),
-});
+} satisfies ProfileDefinition<typeof infoSchema>;

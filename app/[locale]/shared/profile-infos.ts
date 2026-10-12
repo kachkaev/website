@@ -3,53 +3,45 @@ import path from "node:path";
 
 import { dump, load } from "js-yaml";
 import { cacheLife, cacheTag, revalidateTag } from "next/cache";
-import { z } from "zod";
+import type { z } from "zod";
 
+import { flickrProfileDefinition } from "./profile-infos/=flickr";
+import { githubProfileDefinition } from "./profile-infos/=github";
+import { linkedinProfileDefinition } from "./profile-infos/=linkedin";
+import { openaccessProfileDefinition } from "./profile-infos/=openaccess";
+import { osmProfileDefinition } from "./profile-infos/=osm";
+import { twitterEnProfileDefinition } from "./profile-infos/=twitter-en";
+import { twitterRuProfileDefinition } from "./profile-infos/=twitter-ru";
+import type { ProfileDefinition } from "./profile-infos/shared/types";
 import { serverEnv } from "./server-env";
 
-const twitterProfileInfoSchema = z.object({ tweetCount: z.number() });
+const profileDefinitionLookup = {
+  flickr: flickrProfileDefinition,
+  github: githubProfileDefinition,
+  linkedin: linkedinProfileDefinition,
+  openaccess: openaccessProfileDefinition,
+  osm: osmProfileDefinition,
+  "twitter-en": twitterEnProfileDefinition,
+  "twitter-ru": twitterRuProfileDefinition,
+} satisfies Record<string, ProfileDefinition>;
 
-const profileInfoSchemaLookup = {
-  flickr: z.object({
-    photoCount: z.number(),
-    mostViewedPhotos: z.array(
-      z.object({
-        id: z.string(),
-        title: z.string(),
-        url: z.url(),
-        thumbnailUrl: z.url(),
-        views: z.number(),
-      }),
-    ),
-  }),
-  github: z.object({
-    repoCount: z.number(),
-    sourceCount: z.number(),
-    languageCount: z.number(),
-  }),
-  linkedin: z.object({ connectionCount: z.number() }),
-  openaccess: z.object({ paperCount: z.number() }),
-  osm: z.object({
-    changesetCount: z.number(),
-    gpsTraceCount: z.number(),
-  }),
-  "twitter-en": twitterProfileInfoSchema,
-  "twitter-ru": twitterProfileInfoSchema,
-};
+type ProfileName = keyof typeof profileDefinitionLookup;
 
-export type ProfileName = keyof typeof profileInfoSchemaLookup;
-
-export type ProfileInfo<Name extends ProfileName> = z.infer<
-  (typeof profileInfoSchemaLookup)[Name]
+type ProfileInfo<Name extends ProfileName> = z.output<
+  (typeof profileDefinitionLookup)[Name]["infoSchema"]
 >;
 
 /**
  * Same lookup, but as a mapped type, which can be indexed with a generic profile name.
- * This keeps the result of readProfileInfo() strongly typed.
+ * This keeps the results of readProfileInfo() and updateProfileInfo() strongly typed.
  */
-const indexableProfileInfoSchemaLookup: {
-  [Name in ProfileName]: z.ZodType<ProfileInfo<Name>>;
-} = profileInfoSchemaLookup;
+const indexableProfileDefinitionLookup: {
+  [Name in ProfileName]: ProfileDefinition<z.ZodType<ProfileInfo<Name>>>;
+} = profileDefinitionLookup;
+
+export function isProfileName(value: string): value is ProfileName {
+  return Object.hasOwn(profileDefinitionLookup, value);
+}
 
 const profileInfosDirPath = path.resolve(serverEnv.DATA_DIR, "profile-infos");
 const profileInfosUpdateErrorsDirPath = path.resolve(
@@ -65,12 +57,12 @@ export async function readProfileInfo<Name extends ProfileName>(
   profileName: Name,
 ): Promise<ProfileInfo<Name> | undefined> {
   "use cache";
-  // Profile infos only change when writeProfileInfo() is called, which expires the cache tag
+  // Profile infos only change when updateProfileInfo() is called, which expires the cache tag
   cacheLife("max");
   cacheTag(generateProfileInfoCacheTag(profileName));
 
   try {
-    return indexableProfileInfoSchemaLookup[profileName].parse(
+    return indexableProfileDefinitionLookup[profileName].infoSchema.parse(
       load(
         await fs.readFile(
           path.resolve(profileInfosDirPath, `${profileName}.yaml`),
@@ -84,21 +76,7 @@ export async function readProfileInfo<Name extends ProfileName>(
   }
 }
 
-export async function writeProfileInfo<Name extends ProfileName>(
-  profileName: Name,
-  profileInfo: ProfileInfo<Name>,
-): Promise<void> {
-  await fs.mkdir(profileInfosDirPath, { recursive: true });
-  await fs.writeFile(
-    path.resolve(profileInfosDirPath, `${profileName}.yaml`),
-    dump(profileInfo),
-    "utf8",
-  );
-
-  revalidateTag(generateProfileInfoCacheTag(profileName), "max");
-}
-
-export function generateUpdateProfileErrorPathPrefix(
+function generateUpdateProfileErrorPathPrefix(
   profileName: ProfileName,
 ): string {
   const stringifiedTime = new Date()
@@ -111,4 +89,24 @@ export function generateUpdateProfileErrorPathPrefix(
     profileInfosUpdateErrorsDirPath,
     `${stringifiedTime}-${profileName}`,
   );
+}
+
+export async function updateProfileInfo<Name extends ProfileName>(
+  profileName: Name,
+): Promise<ProfileInfo<Name>> {
+  const { generateInfo } = indexableProfileDefinitionLookup[profileName];
+  const profileInfo = await generateInfo({
+    errorPathPrefix: generateUpdateProfileErrorPathPrefix(profileName),
+  });
+
+  await fs.mkdir(profileInfosDirPath, { recursive: true });
+  await fs.writeFile(
+    path.resolve(profileInfosDirPath, `${profileName}.yaml`),
+    dump(profileInfo),
+    "utf8",
+  );
+
+  revalidateTag(generateProfileInfoCacheTag(profileName), "max");
+
+  return profileInfo;
 }

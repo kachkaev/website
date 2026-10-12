@@ -1,16 +1,15 @@
-import { generateUpdateProfileErrorPathPrefix } from "../../shared/profile-infos";
-import {
-  extractDataFromWebPage,
-  generateUpdateProfileHandler,
-} from "../shared/handler-helpers";
+import { z } from "zod";
 
-const profileName = "openaccess";
+import { extractDataFromWebPage } from "./shared/extract-data-from-web-page";
+import type { ProfileDefinition } from "./shared/types";
 
-export const GET = generateUpdateProfileHandler({
-  profileName,
-  generateProfileInfo: () =>
+const infoSchema = z.object({ paperCount: z.number() });
+
+export const openaccessProfileDefinition = {
+  infoSchema,
+  generateInfo: ({ errorPathPrefix }) =>
     extractDataFromWebPage({
-      errorPathPrefix: generateUpdateProfileErrorPathPrefix(profileName),
+      errorPathPrefix,
       handler: async ({ page }) => {
         await page.goto(
           "https://openaccess.city.ac.uk/view/creators/Kachkaev=3AA=2E=3A=3A.html",
@@ -31,4 +30,4 @@ export const GET = generateUpdateProfileHandler({
         return { paperCount };
       },
     }),
-});
+} satisfies ProfileDefinition<typeof infoSchema>;
