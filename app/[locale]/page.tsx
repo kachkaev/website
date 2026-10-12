@@ -5,15 +5,23 @@ import { getTranslations } from "next-intl/server";
 
 import photo from "../../public/images/alexander_kachkaev.jpg";
 import { KeyProfiles } from "./page/key-profiles";
+import { cn } from "./shared/cn";
 import { ImageReveal } from "./shared/image-reveal";
 import { Mailto } from "./shared/mailto";
+
+const photoClassName = cn(
+  "inline-block size-[100px] overflow-hidden rounded-[5px] bg-gray-300 text-gray-300",
+);
+
+/** Preserves the size of the photo while it is loading */
+const photoPlaceholder = <div className={photoClassName} />;
 
 export default function Page() {
   const locale = useLocale();
   const t = useTranslations("index");
 
   const { props: photoProps } = getImageProps({
-    className: "overflow-hidden rounded-[5px] bg-gray-300 text-gray-300",
+    className: photoClassName,
     width: 100,
     height: 100,
     loading: "eager",
@@ -60,11 +68,7 @@ export default function Page() {
 
       {/* Photo */}
       <div className="float-right mt-1 mb-8 ml-8">
-        <ImageReveal
-          fallback={
-            <div className="inline-block size-[100px] rounded-[5px] bg-gray-300" />
-          }
-        >
+        <ImageReveal fallback={photoPlaceholder}>
           <img {...photoProps} />
         </ImageReveal>
       </div>
