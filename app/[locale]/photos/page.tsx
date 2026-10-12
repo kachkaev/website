@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 
+import { ImageReveal } from "../shared/image-reveal";
 import { Mailto } from "../shared/mailto";
 
 function PhotoSample({ alt }: { alt: string }) {
@@ -32,7 +33,13 @@ export default function Page() {
   return (
     <>
       <h1>{t("h1")}</h1>
-      <PhotoSample alt={t("photoAlt")} />
+      <ImageReveal
+        fallback={
+          <div className="mb-6 aspect-450/298 w-full rounded-[4px] bg-gray-300" />
+        }
+      >
+        <PhotoSample alt={t("photoAlt")} />
+      </ImageReveal>
       <p>
         {t.rich("explanation", {
           flickr: (chunks) => (

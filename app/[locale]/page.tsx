@@ -1,15 +1,26 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import { getImageProps } from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 
 import photo from "../../public/images/alexander_kachkaev.jpg";
 import { KeyProfiles } from "./page/key-profiles";
+import { ImageReveal } from "./shared/image-reveal";
 import { Mailto } from "./shared/mailto";
 
 export default function Page() {
   const locale = useLocale();
   const t = useTranslations("index");
+
+  const { props: photoProps } = getImageProps({
+    className: "overflow-hidden rounded-[5px] bg-gray-300 text-gray-300",
+    width: 100,
+    height: 100,
+    loading: "eager",
+    fetchPriority: "high",
+    alt: t("photoAlt"),
+    src: photo,
+  });
 
   return (
     <>
@@ -49,14 +60,13 @@ export default function Page() {
 
       {/* Photo */}
       <div className="float-right mt-1 mb-8 ml-8">
-        <Image
-          className="overflow-hidden rounded-[5px] bg-gray-300 text-gray-300"
-          width={100}
-          height={100}
-          priority={true}
-          alt={t("photoAlt")}
-          src={photo}
-        />
+        <ImageReveal
+          fallback={
+            <div className="inline-block size-[100px] rounded-[5px] bg-gray-300" />
+          }
+        >
+          <img {...photoProps} />
+        </ImageReveal>
       </div>
 
       {/* Key profiles */}

@@ -4,6 +4,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import * as React from "react";
 
 import { cn } from "../shared/cn";
+import { ImageReveal } from "../shared/image-reveal";
 import { readProfileInfo } from "../shared/profile-infos";
 
 /** Preserves the height of a profile description while it is loading or missing */
@@ -269,9 +270,9 @@ function Flickr() {
       >
         <FlickrDescription />
       </KeyProfile>
-      <React.Suspense fallback={photosLoadingPlaceholder}>
+      <ImageReveal fallback={photosLoadingPlaceholder}>
         <FlickrPhotos />
-      </React.Suspense>
+      </ImageReveal>
     </>
   );
 }
