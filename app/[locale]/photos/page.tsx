@@ -3,16 +3,25 @@ import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 
+import { cn } from "../shared/cn";
+import { ImageReveal } from "../shared/image-reveal";
 import { Mailto } from "../shared/mailto";
+
+const photoSampleClassName = cn(
+  "relative mx-auto mb-6 block aspect-450/298 w-full overflow-hidden rounded-[4px] border-none! bg-gray-300",
+);
+
+/** Preserves the size of the photo sample while it is loading */
+const photoSamplePlaceholder = <div className={photoSampleClassName} />;
 
 function PhotoSample({ alt }: { alt: string }) {
   return (
     <a
-      className="group relative mx-auto mb-6 block w-full overflow-hidden rounded-[4px]"
+      className={cn("group", photoSampleClassName)}
       href="https://www.flickr.com/photos/kachkaev/7511763574/"
     >
       <img
-        className="inline-block aspect-450/298 w-full align-middle grayscale hover:grayscale-0 active:grayscale-0"
+        className="block size-full grayscale hover:grayscale-0 active:grayscale-0"
         alt={alt}
         src="https://farm8.staticflickr.com/7247/7511763574_d528f4ce04_z_d.jpg"
       />
@@ -32,7 +41,9 @@ export default function Page() {
   return (
     <>
       <h1>{t("h1")}</h1>
-      <PhotoSample alt={t("photoAlt")} />
+      <ImageReveal fallback={photoSamplePlaceholder}>
+        <PhotoSample alt={t("photoAlt")} />
+      </ImageReveal>
       <p>
         {t.rich("explanation", {
           flickr: (chunks) => (
