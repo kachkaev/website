@@ -49,6 +49,8 @@ spec:
                   key: api_key
             - name: GA_MEASUREMENT_ID
               value: G-J6MN46V0VL
+            - name: MALLOC_ARENA_MAX ## Without it, glibc malloc arenas in next-server grow by tens of MB a day until the container hits its memory limit
+              value: "2"
             - name: UPDATE_PROFILE_SECURITY_TOKEN
               valueFrom:
                 secretKeyRef:
