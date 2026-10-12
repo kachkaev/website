@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 
 import { dump, load } from "js-yaml";
-import { cacheLife, cacheTag, revalidateTag } from "next/cache";
+import { cacheLife, cacheTag, io, revalidateTag } from "next/cache";
 import { z } from "zod";
 
 import { serverEnv } from "./server-env";
@@ -62,6 +62,16 @@ function generateProfileInfoCacheTag(profileName: ProfileName): string {
 }
 
 export async function readProfileInfo<Name extends ProfileName>(
+  profileName: Name,
+): Promise<ProfileInfo<Name> | undefined> {
+  // Profile infos live in DATA_DIR, which is only populated at runtime. Without this,
+  // `next build` would bake whatever it finds there (usually nothing) into the static shell.
+  await io();
+
+  return await readCachedProfileInfo(profileName);
+}
+
+async function readCachedProfileInfo<Name extends ProfileName>(
   profileName: Name,
 ): Promise<ProfileInfo<Name> | undefined> {
   "use cache";
