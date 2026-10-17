@@ -22,7 +22,7 @@
       "matchPackageNames": ["ghcr.io/pnpm/pnpm"]
     },
     {
-      "description": "Give the Dockerfile copy of `pnpm` the same settings as the shared preset’s rule for `packageManager`, which only matches the npm manager. A branch waits for dashboard approval if any of its updates does and automerges only if all of them do, so without this the joint PR would no longer automerge.",
+      "description": "Give the Dockerfile copy of `pnpm` the same settings as the shared preset’s rule for `packageManager`, which only matches the npm manager. A branch waits for dashboard approval if any of its updates does and is merged automatically only if all of them are, so without this the joint PR would wait for approval.",
       "autoApprove": true,
       "automerge": true,
       "dependencyDashboardApproval": false,
