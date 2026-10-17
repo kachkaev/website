@@ -15,6 +15,11 @@ autoDedupe: true
 ## Remove once the config is back on npm releases (tracked in the issue above).
 blockExoticSubdeps: false
 
+## Record `autoDedupe` and the other resolution settings in pnpm-lock.yaml. Without it, pnpm cannot tell how
+## the lockfile was resolved, so every install that is not frozen resolves it again (and says so).
+lockfile:
+  includeResolutionSettings: true
+
 ## Wait 8 hours (480 min) after a version is published before pnpm installs it, which gives a compromised
 ## release time to be spotted and unpublished. pnpm’s own default of 1 day delays updates more than we’d
 ## like. Must stay in sync with the `minimumReleaseAge` floor in the shared Renovate preset
