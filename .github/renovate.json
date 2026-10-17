@@ -1,4 +1,35 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["github>kachkaev/reusable-stuff:renovate-preset"]
+  "extends": ["github>kachkaev/reusable-stuff:renovate-preset"],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Treat the pnpm base image tag in Dockerfile as the `pnpm` npm dependency that `packageManager` in package.json pins. Sharing the dep name and datasource gives both one release-age clock and one branch (`renovate/pnpm-<major>.x`), so the tag moves in the same PR as `packageManager`. Grouping the docker datasource with the npm package (as `group:pnpm` does) is not enough: Renovate gets no release timestamp for ghcr.io tags, so the image never clears `minimumReleaseAge` and the group PR ships the npm bump alone while the tag waits in Pending Status Checks. The image is published a few minutes after the npm release, well within the release age. Renovate runs `matchStrings` over the whole file without the multiline flag, so the pattern ends in `\\s` rather than `$`.",
+      "managerFilePatterns": ["/^Dockerfile$/"],
+      "matchStrings": [
+        "FROM ghcr\\.io/pnpm/pnpm:(?<currentValue>\\d+\\.\\d+\\.\\d+)\\s"
+      ],
+      "datasourceTemplate": "npm",
+      "depNameTemplate": "pnpm",
+      "versioningTemplate": "npm"
+    }
+  ],
+  "packageRules": [
+    {
+      "description": "The dockerfile manager still sees the pnpm base image as a docker dependency; leave that view switched off so it cannot open a second, unsynchronised PR for the same tag",
+      "enabled": false,
+      "matchManagers": ["dockerfile"],
+      "matchPackageNames": ["ghcr.io/pnpm/pnpm"]
+    },
+    {
+      "description": "Give the Dockerfile copy of `pnpm` the same settings as the shared preset’s rule for `packageManager`, which only matches the npm manager. A branch waits for dashboard approval if any of its updates does and automerges only if all of them do, so without this the joint PR would no longer automerge.",
+      "autoApprove": true,
+      "automerge": true,
+      "dependencyDashboardApproval": false,
+      "enabled": true,
+      "matchManagers": ["custom.regex"],
+      "matchPackageNames": ["pnpm"],
+      "schedule": ["every weekend"]
+    }
+  ]
 }
