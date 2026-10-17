@@ -26,7 +26,7 @@ COPY . .
 RUN pnpm run build
 
 ################################################################################
-FROM node:24.21.0-slim AS runner
+FROM node:24.22.0-slim AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
