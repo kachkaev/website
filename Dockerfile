@@ -1,6 +1,6 @@
 ## pnpm’s official image only contains pnpm’s standalone binary (https://pnpm.io/docker).
 ## Node.js for the build comes from `devEngines.runtime` in package.json.
-FROM ghcr.io/pnpm/pnpm:12.14.0 AS pnpm
+FROM ghcr.io/pnpm/pnpm:12.15.0 AS pnpm
 WORKDIR /app
 
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
