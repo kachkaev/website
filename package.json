@@ -37,7 +37,7 @@
     "@kachkaev/prettier-config": "2.2.1",
     "@next/eslint-plugin-next": "16.4.5",
     "@t3-oss/env-nextjs": "0.13.11",
-    "@tailwindcss/postcss": "4.3.4",
+    "@tailwindcss/postcss": "4.3.5",
     "@tsconfig/next": "2.0.6",
     "@tsconfig/node-ts": "23.6.4",
     "@tsconfig/strictest": "2.0.8",
@@ -61,7 +61,7 @@
     "react-dom": "19.3.1",
     "server-only": "0.0.1",
     "tailwind-merge": "3.7.0",
-    "tailwindcss": "4.3.4",
+    "tailwindcss": "4.3.5",
     "typescript": "npm:@typescript/typescript6@6.0.2",
     "zod": "4.6.7"
   },
