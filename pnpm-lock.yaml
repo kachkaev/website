@@ -205,8 +205,8 @@ importers:
         specifier: 2.0.7
         version: 2.0.7
       '@tsconfig/node-ts':
-        specifier: 23.6.4
-        version: 23.6.4
+        specifier: 23.6.5
+        version: 23.6.5
       '@tsconfig/strictest':
         specifier: 2.0.8
         version: 2.0.8
@@ -1669,8 +1669,8 @@ packages:
   '@tsconfig/next@2.0.7':
     resolution: {integrity: sha512-psWzmDIrqPirnNhZnOAG21yEdzaVF6v30xTVeDUR7VKg88taKsG9QXAyFFUUE3Xd79ySQ3Q37ps7ggz6hxc+3Q==}
 
-  '@tsconfig/node-ts@23.6.4':
-    resolution: {integrity: sha512-37BMJvNQZ+vTgd1xG2TGBkJ6ENeT4eO4Wh2CHrnn0IwH7ybLFCzh4Uc//kc7UIvqiRac4uGdIc1meKOjMSlKzw==}
+  '@tsconfig/node-ts@23.6.5':
+    resolution: {integrity: sha512-Wi2qMgKqBddhC/rN1CfYAB+Ayk5KxR8i8bVOQGPI26+2URbY435D9f28pRKmplWOIR0Ii/MmyWPDH12P38pRXw==}
 
   '@tsconfig/strictest@2.0.8':
     resolution: {integrity: sha512-XnQ7vNz5HRN0r88GYf1J9JJjqtZPiHt2woGJOo2dYqyHGGcd6OLGqSlBB6p1j9mpzja6Oe5BoPqWmeDx6X9rLw==}
@@ -5157,7 +5157,7 @@ snapshots:
 
   '@tsconfig/next@2.0.7': {}
 
-  '@tsconfig/node-ts@23.6.4': {}
+  '@tsconfig/node-ts@23.6.5': {}
 
   '@tsconfig/strictest@2.0.8': {}
 
