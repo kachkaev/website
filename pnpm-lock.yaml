@@ -202,8 +202,8 @@ importers:
         specifier: 4.3.5
         version: 4.3.5
       '@tsconfig/next':
-        specifier: 2.0.6
-        version: 2.0.6
+        specifier: 2.0.7
+        version: 2.0.7
       '@tsconfig/node-ts':
         specifier: 23.6.4
         version: 23.6.4
@@ -1666,8 +1666,8 @@ packages:
   '@tailwindcss/postcss@4.3.5':
     resolution: {integrity: sha512-FAV37Tlx9wBiT/hkfgVD0Q6CWsP2oUX3lf28nrfjW8+ksILjnpuFulUqWDfNR4/ZiEHHDRBX8DUTzD1Rys687A==}
 
-  '@tsconfig/next@2.0.6':
-    resolution: {integrity: sha512-C6eZoNyAMKv2UvzDZqcp8zXPviu6W4Ev1KUbqfmaMSZuq+tmbtTWaqxTif/yaui8WCEcRlQrHC8q9tNzBclHOw==}
+  '@tsconfig/next@2.0.7':
+    resolution: {integrity: sha512-psWzmDIrqPirnNhZnOAG21yEdzaVF6v30xTVeDUR7VKg88taKsG9QXAyFFUUE3Xd79ySQ3Q37ps7ggz6hxc+3Q==}
 
   '@tsconfig/node-ts@23.6.4':
     resolution: {integrity: sha512-37BMJvNQZ+vTgd1xG2TGBkJ6ENeT4eO4Wh2CHrnn0IwH7ybLFCzh4Uc//kc7UIvqiRac4uGdIc1meKOjMSlKzw==}
@@ -5155,7 +5155,7 @@ snapshots:
       postcss: 8.5.32
       tailwindcss: 4.3.5
 
-  '@tsconfig/next@2.0.6': {}
+  '@tsconfig/next@2.0.7': {}
 
   '@tsconfig/node-ts@23.6.4': {}
 
