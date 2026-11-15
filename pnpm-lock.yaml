@@ -235,8 +235,8 @@ importers:
         specifier: 5.5.0
         version: 5.5.0
       knip:
-        specifier: 6.44.2
-        version: 6.44.2
+        specifier: 6.45.1
+        version: 6.45.1
       lint-staged:
         specifier: 17.6.0
         version: 17.6.0
@@ -2921,8 +2921,8 @@ packages:
   keyv@5.6.0:
     resolution: {integrity: sha512-CYDD3SOtsHtyXeEORYRx2qBtpDJFjRTGXUtmNEMGyzYOKj1TE3tycdlho7kA1Ufx9OYWZzg52QFBGALTirzDSw==}
 
-  knip@6.44.2:
-    resolution: {integrity: sha512-6URO7pnqtOnyvSsXfW6+8C9j1lfcicxUCysXO0RgMtHTZ96HqCXh29op8iabeQW5JeIc8dJWwzSdJVWDokeScQ==}
+  knip@6.45.1:
+    resolution: {integrity: sha512-zp3zXKy2cZWiIttdlWU5fisKxVQaLSU6471ej0KGz1GdHdaHxpzTAO/LIyFNc3gU3v1W7LJaqvYumoO3l/u+6A==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
 
@@ -6601,7 +6601,7 @@ snapshots:
     dependencies:
       '@keyv/serialize': 1.1.1
 
-  knip@6.44.2:
+  knip@6.45.1:
     dependencies:
       formatly: 0.11.4
       get-tsconfig: 4.14.3
@@ -6614,7 +6614,6 @@ snapshots:
       tinyglobby: 0.2.17
       unbash: 6.0.4
       yaml: 2.9.1
-      zod: 4.6.7
 
   levn@0.4.1:
     dependencies:
