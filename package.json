@@ -50,7 +50,7 @@
     "husky": "9.1.7",
     "js-yaml": "5.5.0",
     "knip": "6.47.0",
-    "lint-staged": "17.6.1",
+    "lint-staged": "17.6.2",
     "markdownlint-cli": "0.50.1",
     "next": "16.4.6",
     "next-intl": "4.15.3",
